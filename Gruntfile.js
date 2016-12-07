@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
 		    files: [
 		      // includes files within path and its sub-directories
-		      {expand: true, cwd: 'src', src: ['**', '!**/*.html', '!**/*.css', '**/*.min.css', '**/*.min.js'], dest: 'build/'}
+		      {expand: true, cwd: 'src', src: ['**', '!**/*.html', '!**/*.css', '!**/*.scss', '**/*.min.css', '**/*.min.js'], dest: 'build/'}
 		       ],
 		  },
 		},
@@ -30,7 +30,8 @@ module.exports = function(grunt) {
 		sass: {
 			dist: {
 				files: {
-					'src/css/bootstrap.css': 'node_modules/bootstrap/scss/bootstrap.scss'
+					'src/css/bootstrap.css': 'node_modules/bootstrap/scss/bootstrap.scss',
+					'src/css/main.css': 'src/css/main.scss'
 				}
 			}
  	 },

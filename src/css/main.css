@@ -1,16 +1,53 @@
 body {
-    background-color: #F4F3F4
-}
+  background-color: #F4F3F4; }
+
 .navbar-fixed-top .navbar-brand {
-    float: none;
-}
+  float: none; }
+
 .carousel-section {
-    padding-top: 56px;
-    background: linear-gradient(to bottom, rgba(55,58,60,1) 0%,rgba(55,58,60,1) 65%,rgba(55,58,60,0) 65%,rgba(55,58,60,0) 100%);
-}
+  padding-top: 56px;
+  background: linear-gradient(to bottom, #373a3c 0%, #373a3c 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%); }
+
 .carousel {
-    max-width: 720px;
-    max-height: 320px;
+  max-width: 720px;
+  max-height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: #000; }
+
+main.apps {
+  margin-top: 40px; }
+  main.apps section {
+    max-width: 850px;
     margin-left: auto;
-    margin-right: auto;
-}
+    margin-right: auto; }
+
+.header {
+  height: 30px; }
+  .header h6 {
+    float: left;
+    display: inline;
+    margin-right: 10px; }
+  .header a {
+    color: #696969;
+    float: right; }
+    .header a:hover, .header a:focus {
+      text-decoration: none;
+      outline: none; }
+
+.pebble {
+  color: #ff4700 !important;
+  display: inline; }
+
+.apps .card-columns {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
+  .apps .card-columns .card {
+    max-width: 146px; }
+    .apps .card-columns .card img {
+      width: 100%;
+      height: auto; }
+
+/*# sourceMappingURL=main.css.map */
