@@ -70,3 +70,17 @@ main.apps {
     }
   }
 }
+
+footer {
+    margin-top: 40px;
+    background-color: #ff4700;
+    color: #fff;
+    padding: 5px 10px;
+    p {
+        display: inline;
+    }
+    a, a:hover, a:focus {
+        color: #ebebeb;
+        text-decoration: none;
+    }
+}

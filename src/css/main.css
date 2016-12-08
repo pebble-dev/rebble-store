@@ -50,4 +50,15 @@ main.apps {
       width: 100%;
       height: auto; }
 
+footer {
+  margin-top: 40px;
+  background-color: #ff4700;
+  color: #fff;
+  padding: 5px 10px; }
+  footer p {
+    display: inline; }
+  footer a, footer a:hover, footer a:focus {
+    color: #c0c0c0;
+    text-decoration: none; }
+
 /*# sourceMappingURL=main.css.map */
