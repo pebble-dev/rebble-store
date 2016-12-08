@@ -9,12 +9,44 @@ body {
   background-color: #F4F3F4;
 }
 
-.navbar-fixed-top .navbar-brand {
-  float: none;
+.navbar-fixed-top {
+    .navbar-brand {
+        float: none;
+        margin: 0;
+    }
 }
 
+.navbar-dark.bg-inverse.translucent {
+    .navbar-toggler, .navbar-toggler:focus {
+        border: 0;
+        border-radius: 0;
+        outline: none;
+    }
+    background-color: rgba(55, 58, 60, 0.95)!important;
+    @supports (backdrop-filter: blur(10px)) {
+    // code that will only run if CSS Grid is supported by the browser 
+         background-color: rgba(55, 58, 60, 0.88)!important;
+    }
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#categorySelector {
+    .btn-group {
+        .btn-outline-secondary.active, .btn-outline-secondary:active,  .btn-outline-secondary:hover, .open>.btn-outline-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: rgba(204, 204, 204, 0.50);
+            border-color: rgba(204, 204, 204, 0.50);
+        }
+        .btn-outline-secondary, .btn-outline-secondary:focus, .btn-outline-secondary.focus {
+            border-color: rgba(204, 204, 204, 0.50);
+        }
+        color: rgba(204, 204, 204, 0.50);
+    }
+}
 .carousel-section {
-  padding-top: 56px;
+  padding-top: 58px;
   background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
 }
 
@@ -58,17 +90,25 @@ main.apps {
   display: inline;
 }
 
-.apps .card-columns {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  .card {
-    max-width: 146px;
-    img {
-        width:100%;
-        height:auto;
+.apps{ 
+    section {
+        margin-bottom: 40px;
     }
-  }
+    section:last-child {
+        margin-bottom: 0;
+    }
+    .card-columns {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        .card {
+            max-width: 146px;
+            img {
+                width:100%;
+                height:auto;
+            }
+        }
+    }
 }
 
 footer {

@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-xs-center">
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-xs-center translucent">
       
       <a class="navbar-brand" href="#">The Panic Store <small>for&nbsp;<div class="pebble">pebble</div></small></a>
 
-      <button class="navbar-toggler float-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></button>
-      <div class="collapse text-xs-left" id="exCollapsingNavbar">
-        <div class="bg-inverse text-muted p-1">
-          <h4>Collapsed content</h4>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
+      <button class="navbar-toggler float-xs-right" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation"></button>
+      <div class="collapse text-xs-center" id="categorySelector">
+        <div class="text-muted p-1">
+          <div class="btn-group btn-group-lg" role="group">
+            <a href="#" class="btn btn-outline-secondary active" role="button">Watchfaces</a>
+            <a href="#" class="btn btn-outline-secondary" role="button">Apps</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -103,9 +105,59 @@
           
         </div>
       </section>
+      <section>
+        <div class="header">
+          <h6 class="text-xs-left"><div class="pebble">All Watchfaces</div></h6>
+          <small><a class="text-xs-right" href="#">See All ></a></small>
+        </div>
+        <div class="card-columns">
+          <div class="card">
+            <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My App">
+            <div class="card-block text-xs-center">
+              <h4 class="card-title">My App</h4>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i>14.5K</small></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My App">
+            <div class="card-block text-xs-center">
+              <h4 class="card-title">My App</h4>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i>14.5K</small></p>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My App">
+            <div class="card-block text-xs-center">
+              <h4 class="card-title">My App</h4>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i>14.5K</small></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My App">
+            <div class="card-block text-xs-center">
+              <h4 class="card-title">My App</h4>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i>14.5K</small></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My App">
+            <div class="card-block text-xs-center">
+              <h4 class="card-title">My App</h4>
+              <p class="card-text"><small class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i>14.5K</small></p>
+            </div>
+          </div>
+
+          
+        </div>
+      </section>
     </main>
     <footer>
-      <p>© 2016 Pebble Dev Community · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+      <p>© 2016 Pebble Dev Community · <a href="#">Contact Us</a> · <a href="#">Terms</a></p>
       <a class="pull-right" href="#">Developer Portal</a>
     </footer>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
