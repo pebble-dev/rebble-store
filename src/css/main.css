@@ -3,7 +3,9 @@ body {
 
 .navbar-fixed-top .navbar-brand {
   float: none;
-  margin: 0; }
+  margin: 0;
+  position: relative;
+  top: 5px; }
 
 .navbar-dark.bg-inverse.translucent {
   background-color: rgba(55, 58, 60, 0.95) !important;
@@ -17,14 +19,27 @@ body {
     .navbar-dark.bg-inverse.translucent {
       background-color: rgba(55, 58, 60, 0.88) !important; } }
 
-#categorySelector .btn-group {
-  color: rgba(204, 204, 204, 0.5); }
-  #categorySelector .btn-group .btn-outline-secondary.active, #categorySelector .btn-group .btn-outline-secondary:active, #categorySelector .btn-group .btn-outline-secondary:hover, #categorySelector .btn-group .open > .btn-outline-secondary.dropdown-toggle {
-    color: #fff;
-    background-color: rgba(204, 204, 204, 0.5);
-    border-color: rgba(204, 204, 204, 0.5); }
-  #categorySelector .btn-group .btn-outline-secondary, #categorySelector .btn-group .btn-outline-secondary:focus, #categorySelector .btn-group .btn-outline-secondary.focus {
-    border-color: rgba(204, 204, 204, 0.5); }
+a.back {
+  font-size: 27px;
+  color: #a5a6a7; }
+
+a.search {
+  font-size: 18px;
+  color: #a5a6a7;
+  padding: 5px; }
+
+#categorySelector {
+  width: 100vw;
+  margin-left: -16px;
+  margin-right: -16px; }
+  #categorySelector .btn-group {
+    color: rgba(204, 204, 204, 0.5); }
+    #categorySelector .btn-group .btn-outline-secondary.active, #categorySelector .btn-group .btn-outline-secondary:active, #categorySelector .btn-group .btn-outline-secondary:hover, #categorySelector .btn-group .open > .btn-outline-secondary.dropdown-toggle {
+      color: #fff;
+      background-color: rgba(204, 204, 204, 0.5);
+      border-color: rgba(204, 204, 204, 0.5); }
+    #categorySelector .btn-group .btn-outline-secondary, #categorySelector .btn-group .btn-outline-secondary:focus, #categorySelector .btn-group .btn-outline-secondary.focus {
+      border-color: rgba(204, 204, 204, 0.5); }
 
 .carousel-section {
   padding-top: 58px;
@@ -86,6 +101,18 @@ main.apps {
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
+
+ul.pagination .page-item .page-link:hover, ul.pagination .page-item .page-link:focus {
+  text-decoration: none;
+  outline: none; }
+ul.pagination .page-item .page-link {
+  color: #ff4700; }
+ul.pagination .page-item.active .page-link {
+  background: #ff4700;
+  border-color: #ff4700;
+  color: #fff; }
+ul.pagination .page-item.disabled .page-link {
+  color: #818a91; }
 
 footer {
   margin-top: 40px;
