@@ -71,6 +71,9 @@ main.apps {
     margin-left: auto;
     margin-right: auto; }
 
+.header-tool {
+  margin-bottom: 40px; }
+
 .header {
   height: 30px; }
   .header h6 {
