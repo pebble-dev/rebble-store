@@ -117,6 +117,11 @@ main.apps {
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
+.apps .mobile-cards {
+  display: none; }
+  @media screen and (max-width: 500px) {
+    .apps .mobile-cards {
+      display: inline; } }
 
 ul.pagination .page-item .page-link:hover, ul.pagination .page-item .page-link:focus {
   text-decoration: none;
