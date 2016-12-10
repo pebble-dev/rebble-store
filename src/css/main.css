@@ -113,7 +113,8 @@ main.apps {
   margin-left: auto;
   margin-right: auto; }
   .apps .card-columns .card {
-    max-width: 146px; }
+    max-width: 170px;
+    margin: 5px; }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
@@ -122,6 +123,11 @@ main.apps {
   @media screen and (max-width: 500px) {
     .apps .mobile-cards {
       display: inline; } }
+.apps .desktop-cards {
+  display: inline; }
+  @media screen and (max-width: 500px) {
+    .apps .desktop-cards {
+      display: none; } }
 
 ul.pagination .page-item .page-link:hover, ul.pagination .page-item .page-link:focus {
   text-decoration: none;
