@@ -48,3 +48,6 @@ jspm_packages
 
 # SASS Cache
 .sass-cache
+
+# Build Folder
+build
