@@ -46,7 +46,7 @@ b {
     }
     background-color: rgba(55, 58, 60, 0.95)!important;
     @supports (backdrop-filter: blur(10px)) {
-    // code that will only run if CSS Grid is supported by the browser 
+    // code that will only run if CSS Grid is supported by the browser
          background-color: rgba(55, 58, 60, 0.88)!important;
     }
 
@@ -206,7 +206,7 @@ main.apps {
     }
 }
 
-.rating{ 
+.rating{
     margin-top: 2px;
     margin-bottom: 2px;
     i {
@@ -272,40 +272,47 @@ main.apps {
     }
 }
 
-.apps{ 
+.apps{
     section {
         margin-bottom: 40px;
     }
     section:last-child {
         margin-bottom: 0;
     }
-    .card-columns {
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
         .card {
+<<<<<<< HEAD
             max-width: 170px;
+<<<<<<< HEAD
 			margin: 5px;
 
+=======
+						@media screen and (max-width: 500px) {
+							max-width: 140px;
+  					}
+						margin: 5px;
+=======
+            // max-width: 170px;
+						// margin: 5px;
+>>>>>>> 84c96023b99e8c2904b872410fe5c1893394b687
+>>>>>>> mvaneijgen-UI
             img {
                 width:100%;
                 height:auto;
             }
         }
-    }
 	.mobile-cards{
 		display: none;
 		@media screen and (max-width: 500px) {
 			display: inline;
   	}
-  
+
 	}
 	.desktop-cards{
 		display: inline;
 		@media screen and (max-width: 500px) {
 			display: none;
   	}
-  
+
 	}
 }
 
