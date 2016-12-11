@@ -221,9 +221,6 @@ main.apps {
   .apps .card-columns .card {
     max-width: 170px;
     margin: 5px; }
-    @media screen and (max-width: 500px) {
-      .apps .card-columns .card {
-        max-width: 140px; } }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
