@@ -71,6 +71,20 @@ a.search {
   .title-card h3 {
     margin: 0; }
 
+.search {
+  padding: 0; }
+  .search input {
+    width: 100%;
+    height: 70px;
+    font-size: 1.75rem;
+    padding: 20px;
+    border: 0;
+    background: none;
+    color: #373a3c;
+    font-family: 'Open Sans', sans-serif; }
+  .search input:focus {
+    outline: none; }
+
 .carousel {
   max-width: 720px;
   max-height: 320px;
