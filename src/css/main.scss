@@ -302,12 +302,14 @@ main.apps {
         column-count: 3;
         column-gap: 1.25rem;
 
-        a .card {
+        a {
             color: #373a3c;
+            text-decoration: none;
         }
-        a .card:hover, a .card:focus {
+        a:hover, a:focus {
             color: #373a3c;
             outline: none;
+            text-decoration: none;
         }
 
         .card {
@@ -315,6 +317,12 @@ main.apps {
 			margin: 5px;
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {
                 max-width: 32vw;
+                .card-title {
+                    font-size: 16px;
+                }
+                .card-text {
+                    font-size: 14px;
+                }
   			}
             img {
                 width:100%;

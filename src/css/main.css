@@ -236,17 +236,23 @@ main.apps {
   @media screen and (min-width: 992px) {
     .apps .card-columns {
       column-count: 4; } }
-  .apps .card-columns a .card {
-    color: #373a3c; }
-  .apps .card-columns a .card:hover, .apps .card-columns a .card:focus {
+  .apps .card-columns a {
     color: #373a3c;
-    outline: none; }
+    text-decoration: none; }
+  .apps .card-columns a:hover, .apps .card-columns a:focus {
+    color: #373a3c;
+    outline: none;
+    text-decoration: none; }
   .apps .card-columns .card {
     max-width: 170px;
     margin: 5px; }
     @media screen and (max-width: 576px) {
       .apps .card-columns .card {
-        max-width: 32vw; } }
+        max-width: 32vw; }
+        .apps .card-columns .card .card-title {
+          font-size: 16px; }
+        .apps .card-columns .card .card-text {
+          font-size: 14px; } }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
