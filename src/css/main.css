@@ -184,6 +184,31 @@ main.apps {
   white-space: -o-pre-wrap;
   font-family: 'Raleway', sans-serif;
   font-weight: 400; }
+.app-details table {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+  .app-details table tr td {
+    font-family: 'Open Sans', sans-serif;
+    padding-right: 10px; }
+  .app-details table tr td:last-child {
+    font-family: 'Raleway', sans-serif;
+    padding-right: 0; }
+.app-details a.app-button {
+  color: #ff4700; }
+  .app-details a.app-button div {
+    width: calc(100% + 2rem);
+    padding: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-top: 1px solid #e1e1e1; }
+    .app-details a.app-button div i {
+      font-size: 25px; }
+.app-details a:last-child div {
+  margin-bottom: -1rem; }
+.app-details a.app-button:hover, .app-details a.app-button:focus {
+  text-decoration: none;
+  outline: none; }
 
 .apps section {
   margin-bottom: 40px; }
