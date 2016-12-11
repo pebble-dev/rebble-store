@@ -1,11 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i");
 body {
-  background-color: #F4F3F4; }
+  background-color: #F4F3F4;
+  font-family: 'Raleway', sans-serif; }
+
+h1, h2, h3, h4, h5, h6, small {
+  font-family: 'Open Sans', sans-serif; }
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; }
+
+b {
+  font-weight: 700; }
 
 .navbar-fixed-top .navbar-brand {
   float: none;
   margin: 0;
   position: relative;
   top: 5px; }
+  .navbar-fixed-top .navbar-brand small {
+    font-weight: 400; }
 
 .navbar-dark.bg-inverse.translucent {
   background-color: rgba(55, 58, 60, 0.95) !important;
@@ -115,6 +130,14 @@ main.apps {
   background-color: #333;
   border-color: #333; }
 
+.card.subsection {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  margin-bottom: 40px; }
+
 .app-title {
   padding-left: 68px !important; }
   .app-title img {
@@ -125,8 +148,8 @@ main.apps {
     left: 16px; }
   .app-title .title-author {
     height: 42px;
-    margin-top: -4px;
-    margin-bottom: 4px;
+    margin-top: -3px;
+    margin-bottom: 3px;
     display: inline-block; }
     .app-title .title-author h1 {
       font-size: 19px;
@@ -139,11 +162,28 @@ main.apps {
       color: #c3c3c3;
       margin: 0; }
 
-.rating i {
-  margin-right: 2px; }
-.rating .btn-outline-secondary:hover, .rating .btn-outline-secondary:focus, .rating .btn-outline-secondary.active {
-  color: #333;
-  outline: none; }
+.rating {
+  margin-top: 2px;
+  margin-bottom: 2px; }
+  .rating i {
+    margin-right: 4px; }
+  .rating .btn-outline-secondary:hover, .rating .btn-outline-secondary:focus, .rating .btn-outline-secondary.active {
+    color: #333;
+    outline: none; }
+
+.app-details h1 {
+  font-size: 20px;
+  margin: none; }
+.app-details hr {
+  margin-top: 4px; }
+.app-details pre.description {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; }
 
 .apps section {
   margin-bottom: 40px; }
