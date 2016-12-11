@@ -271,7 +271,20 @@ main.apps {
         outline: none;
     }
 }
-
+.btn-download {
+    margin-left: 10px;
+    color: #ff4700;
+    border-color: #ff4700;
+    background-image: none;
+    background-color: transparent;
+     i {
+        margin-right: 4px;
+    }
+}
+.btn-download:hover {
+    background-color: #ff4700;
+    color: #333;
+}
 .apps{ 
     section {
         margin-bottom: 40px;
