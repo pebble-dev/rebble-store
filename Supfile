@@ -1,0 +1,41 @@
+# Supfile
+---
+version: 0.5
+
+env:
+  PORT: 8080
+  FOLDER: tmp
+  APPNAME: The-Panic-Store
+
+networks:
+  production:
+    hosts:
+      - pebble.frostyfrog.net
+
+targets:
+  deploy:
+    - build
+    - upload
+    - verify
+  deploy-dev:
+    - build
+    - upload
+    - verify
+    - run
+
+commands:
+  build:
+    desc: Build Pebble App Store
+    local: go build -ldflags "-X main.buildhost=`hostname -f` -X main.buildstamp=`date -u '+%Y-%m-%d_%I:%M:%S%p'` -X main.githash=`git rev-parse HEAD`" -o $APPNAME .
+  upload:
+    desc: Upload Pebble App Store
+    upload:
+    - src: ./$APPNAME
+      dst: $HOME/$FOLDER
+  verify:
+    desc: Verify that the latest version of pebble has been uploaded
+    run: date; $HOME/$FOLDER/$APPNAME --version
+  run:
+    desc: Run the appstore
+    run: echo running; $HOME/$FOLDER/$APPNAME
+# vim: set sts=2 ts=2 sw=2 ai et :
