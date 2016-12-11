@@ -235,6 +235,41 @@ main.apps {
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
     }
+    table {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        tr td {
+            font-family: 'Open Sans', sans-serif;
+            padding-right: 10px;
+        }
+        tr td:last-child {
+            font-family: 'Raleway', sans-serif;
+            padding-right: 0;
+        }
+    }
+    a.app-button {
+        div {
+            width: calc(100% + 2rem);
+            padding: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            margin-left: -16px;
+            margin-right: -16px;
+            border-top: 1px solid #e1e1e1;
+            i {
+                font-size: 25px
+            }
+        }
+        color: #ff4700;
+    }
+    a:last-child {
+        div {
+        margin-bottom: -1rem;
+        }
+    }
+    a.app-button:hover, a.app-button:focus {
+        text-decoration: none;
+        outline: none;
+    }
 }
 
 .apps{ 
@@ -250,10 +285,8 @@ main.apps {
         margin-right: auto;
         .card {
             max-width: 170px;
-						@media screen and (max-width: 500px) {
-							max-width: 140px;
-  					}
-						margin: 5px;
+			margin: 5px;
+
             img {
                 width:100%;
                 height:auto;
