@@ -1,0 +1,22 @@
+{
+  "name": "panic-store",
+  "version": "0.1.0",
+  "description": "Panic Store for pebble watches",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "bootstrap": "^4.0.0-alpha.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pebble-dev/The-Panic-Store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pebble-dev/The-Panic-Store/issues"
+  },
+  "homepage": "https://github.com/pebble-dev/The-Panic-Store#readme"
+}

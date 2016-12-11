@@ -1,0 +1,301 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i');
+
+body {
+  background-color: #F4F3F4;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+b {
+    font-weight: 700;
+}
+
+.navbar-fixed-top {
+    .navbar-brand {
+        float: none;
+        margin: 0;
+        position: relative;
+        top: 5px;
+        small {
+            font-weight: 400;
+        }
+    }
+}
+
+.navbar-dark.bg-inverse.translucent {
+    .navbar-toggler, .navbar-toggler:focus {
+        border: 0;
+        border-radius: 0;
+        outline: none;
+    }
+    background-color: rgba(55, 58, 60, 0.95)!important;
+    @supports (backdrop-filter: blur(10px)) {
+    // code that will only run if CSS Grid is supported by the browser
+         background-color: rgba(55, 58, 60, 0.88)!important;
+    }
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+a.back {
+    font-size: 27px;
+    color: #a5a6a7;
+}
+a.search {
+    font-size: 18px;
+    color: #a5a6a7;
+    padding: 5px;
+}
+
+#categorySelector {
+
+    width: 100vw;
+    margin-left: -16px;
+    margin-right: -16px;
+    .btn-group {
+        .btn-outline-secondary.active, .btn-outline-secondary:active,  .btn-outline-secondary:hover, .open>.btn-outline-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: rgba(204, 204, 204, 0.50);
+            border-color: rgba(204, 204, 204, 0.50);
+        }
+        .btn-outline-secondary, .btn-outline-secondary:focus, .btn-outline-secondary.focus {
+            border-color: rgba(204, 204, 204, 0.50);
+        }
+        color: rgba(204, 204, 204, 0.50);
+    }
+}
+.carousel-section {
+  padding-top: 58px;
+  background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
+}
+.title-card {
+    max-width: 720px;
+    width: 90vw;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    h3 {
+        margin: 0;
+    }
+}
+
+.carousel {
+  max-width: 720px;
+  max-height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: #000;
+}
+
+.app-banner {
+    max-width: 720px;
+    max-height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    background-color: #000;
+    img {
+        width: 100%;
+        max-width: 720px;
+    }
+}
+
+main.apps {
+  margin-top: 40px;
+  section {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.header-tool {
+    margin-bottom: 40px;
+}
+
+.header {
+  height: 30px;
+  h6 {
+    float: left;
+    display: inline;
+    margin-right: 10px;
+  }
+  a {
+    color: #696969;
+    float: right;
+    &:hover, &:focus {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
+
+.pebble {
+  color: #ff4700 !important;
+  display: inline;
+}
+
+.tag-pebble {
+    background-color: #ff4700;
+    //color: #333;
+}
+
+.card.subsection-inverse {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+    margin-bottom: 40px;
+    background-color: #333;
+    border-color: #333;
+}
+.card.subsection {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+    margin-bottom: 40px;
+}
+.app-title {
+    padding-left: 68px !important;
+    img {
+        position: absolute;
+        border-radius: 4px;
+        width: 42px;
+        height: 42px;
+        left: 16px;
+    }
+    .title-author {
+        height: 42px;
+        margin-top: -3px;
+        margin-bottom: 3px;
+        display: inline-block;
+        h1 {
+            font-size: 19px;
+            line-height: 26px;
+            display: inline;
+            color: #fff;
+        }
+        h2 {
+            line-height: 16px;
+            font-size: 16px;
+            color: #c3c3c3;
+            margin: 0;
+        }
+    }
+}
+
+.rating{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    i {
+        margin-right: 4px;
+    }
+    .btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary.active {
+        color: #333;
+        outline: none;
+    }
+}
+.app-details {
+    h1 {
+        font-size: 20px;
+        margin: none;
+    }
+    hr {
+        margin-top: 4px;
+    }
+    pre.description {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+    }
+}
+
+.apps{
+    section {
+        margin-bottom: 40px;
+    }
+    section:last-child {
+        margin-bottom: 0;
+    }
+        .card {
+            // max-width: 170px;
+						// margin: 5px;
+            img {
+                width:100%;
+                height:auto;
+            }
+        }
+	.mobile-cards{
+		display: none;
+		@media screen and (max-width: 500px) {
+			display: inline;
+  	}
+
+	}
+	.desktop-cards{
+		display: inline;
+		@media screen and (max-width: 500px) {
+			display: none;
+  	}
+
+	}
+}
+
+ul.pagination {
+    .page-item .page-link:hover, .page-item .page-link:focus  {
+        text-decoration: none;
+        outline: none;
+    }
+    .page-item .page-link {
+        color: #ff4700;
+    }
+    .page-item.active .page-link {
+        background: #ff4700;
+        border-color: #ff4700;
+        color: #fff;
+    }
+    .page-item.disabled .page-link {
+        color: #818a91;
+    }
+}
+
+footer {
+    margin-top: 40px;
+    background-color: #ff4700;
+    color: #fff;
+    padding: 5px 10px;
+    p {
+        display: inline;
+    }
+    a, a:hover, a:focus {
+        color: #ebebeb;
+        text-decoration: none;
+    }
+}
