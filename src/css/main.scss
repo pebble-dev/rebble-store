@@ -296,37 +296,33 @@ main.apps {
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+        @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+            column-count: 4;
+  		}
+        column-count: 3;
+        column-gap: 1.25rem;
+
+        a .card {
+            color: #373a3c;
+        }
+        a .card:hover, a .card:focus {
+            color: #373a3c;
+            outline: none;
+        }
+
         .card {
             max-width: 170px;
 			margin: 5px;
-							@media screen and (max-width: 500px) {
-								max-width: 140px;
-  					}
+            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+                max-width: 32vw;
+  			}
             img {
                 width:100%;
                 height:auto;
             }
         }
-				.card-link{
-					a {
-    				color: black;
-					}	
-			}
     }
-	.mobile-cards{
-		display: none;
-		@media screen and (max-width: 500px) {
-			display: inline;
-  	}
   
-	}
-	.desktop-cards{
-		display: inline;
-		@media screen and (max-width: 500px) {
-			display: none;
-  	}
-  
-	}
 }
 
 ul.pagination {

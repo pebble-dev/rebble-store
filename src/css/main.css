@@ -230,28 +230,26 @@ main.apps {
 .apps .card-columns {
   max-width: 800px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  column-count: 3;
+  column-gap: 1.25rem; }
+  @media screen and (min-width: 992px) {
+    .apps .card-columns {
+      column-count: 4; } }
+  .apps .card-columns a .card {
+    color: #373a3c; }
+  .apps .card-columns a .card:hover, .apps .card-columns a .card:focus {
+    color: #373a3c;
+    outline: none; }
   .apps .card-columns .card {
     max-width: 170px;
     margin: 5px; }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 576px) {
       .apps .card-columns .card {
-        max-width: 140px; } }
+        max-width: 32vw; } }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
-  .apps .card-columns .card-link a {
-    color: black; }
-.apps .mobile-cards {
-  display: none; }
-  @media screen and (max-width: 500px) {
-    .apps .mobile-cards {
-      display: inline; } }
-.apps .desktop-cards {
-  display: inline; }
-  @media screen and (max-width: 500px) {
-    .apps .desktop-cards {
-      display: none; } }
 
 ul.pagination .page-item .page-link:hover, ul.pagination .page-item .page-link:focus {
   text-decoration: none;
