@@ -101,11 +101,13 @@ main.apps {
   margin-bottom: 40px; }
 
 .header {
-  height: 30px; }
+  height: 30px;
+  margin-bottom: 10px; }
   .header h6 {
     float: left;
     display: inline;
-    margin-right: 10px; }
+    margin-right: 10px;
+    margin-bottom: 0; }
   .header a {
     color: #696969;
     float: right; }
@@ -136,6 +138,9 @@ main.apps {
   margin-right: auto;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0;
+  margin-bottom: 40px; }
+
+.screenshots {
   margin-bottom: 40px; }
 
 .app-title {
@@ -236,17 +241,29 @@ main.apps {
   @media screen and (min-width: 992px) {
     .apps .card-columns {
       column-count: 4; } }
-  .apps .card-columns a .card {
-    color: #373a3c; }
-  .apps .card-columns a .card:hover, .apps .card-columns a .card:focus {
+  @media screen and (max-width: 576px) {
+    .apps .card-columns {
+      column-gap: 0; } }
+  .apps .card-columns a {
     color: #373a3c;
-    outline: none; }
+    text-decoration: none; }
+  .apps .card-columns a:hover, .apps .card-columns a:focus {
+    color: #373a3c;
+    outline: none;
+    text-decoration: none; }
   .apps .card-columns .card {
     max-width: 170px;
     margin: 5px; }
     @media screen and (max-width: 576px) {
       .apps .card-columns .card {
-        max-width: 32vw; } }
+        max-width: 32vw; }
+        .apps .card-columns .card .card-block {
+          padding-left: 0.2rem;
+          padding-right: 0.2rem; }
+        .apps .card-columns .card .card-title {
+          font-size: 16px; }
+        .apps .card-columns .card .card-text {
+          font-size: 14px; } }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
