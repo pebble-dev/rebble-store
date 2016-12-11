@@ -134,10 +134,12 @@ main.apps {
 
 .header {
   height: 30px;
+  margin-bottom: 10px;
   h6 {
     float: left;
     display: inline;
     margin-right: 10px;
+    margin-bottom: 0;
   }
   a {
     color: #696969;
@@ -177,6 +179,11 @@ main.apps {
     border-radius: 0;
     margin-bottom: 40px;
 }
+
+.screenshots {
+    margin-bottom: 40px;
+}
+
 .app-title {
     padding-left: 68px !important;
     img {
@@ -299,6 +306,9 @@ main.apps {
         @media screen and (min-width: map-get($grid-breakpoints, lg)) {
             column-count: 4;
   		}
+        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+            column-gap: 0;
+        }
         column-count: 3;
         column-gap: 1.25rem;
 
@@ -317,6 +327,10 @@ main.apps {
 			margin: 5px;
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {
                 max-width: 32vw;
+                .card-block {
+                    padding-left: 0.2rem;
+                    padding-right: 0.2rem;
+                }
                 .card-title {
                     font-size: 16px;
                 }
