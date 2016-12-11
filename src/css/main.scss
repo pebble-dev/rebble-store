@@ -250,6 +250,9 @@ main.apps {
         margin-right: auto;
         .card {
             max-width: 170px;
+						@media screen and (max-width: 500px) {
+							max-width: 140px;
+  					}
 						margin: 5px;
             img {
                 width:100%;
