@@ -21,6 +21,10 @@ b {
   top: 5px; }
   .navbar-fixed-top .navbar-brand small {
     font-weight: 400; }
+  @media screen and (max-width: 370px) {
+    .navbar-fixed-top .navbar-brand {
+      top: 9px;
+      font-size: 1rem; } }
 
 .navbar-dark.bg-inverse.translucent {
   background-color: rgba(55, 58, 60, 0.95) !important;
@@ -181,6 +185,7 @@ main.apps {
     display: table; }
 
 .screenshots::-webkit-scrollbar {
+  background: transparent;
   width: 0 !important; }
 
 .app-title {
@@ -206,10 +211,25 @@ main.apps {
       font-size: 16px;
       color: #c3c3c3;
       margin: 0; }
+    @media screen and (max-width: 430px) {
+      .app-title .title-author h1 {
+        font-size: 15px; }
+      .app-title .title-author h2 {
+        font-size: 12px; } }
+    @media screen and (max-width: 320px) {
+      .app-title .title-author h1 {
+        font-size: 12px; }
+      .app-title .title-author h2 {
+        font-size: 10px; } }
 
 .rating {
   margin-top: 2px;
   margin-bottom: 2px; }
+  @media screen and (max-width: 430px) {
+    .rating .btn {
+      margin-top: 6px;
+      font-size: 0.7rem;
+      padding: .5rem .5rem; } }
   .rating i {
     margin-right: 4px; }
   .rating .btn-outline-secondary:hover, .rating .btn-outline-secondary:focus, .rating .btn-outline-secondary.active {

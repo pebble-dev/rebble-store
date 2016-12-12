@@ -35,6 +35,10 @@ b {
         small {
             font-weight: 400;
         }
+        @media screen and (max-width: 370px) {
+            top: 9px;
+            font-size: 1rem;
+        }
     }
 }
 
@@ -226,8 +230,9 @@ main.apps {
     }
 }
 .screenshots::-webkit-scrollbar {
-    width: 0 !important
-}
+    background: transparent;
+    width: 0 !important;
+  }
 
 .app-title {
     padding-left: 68px !important;
@@ -255,12 +260,35 @@ main.apps {
             color: #c3c3c3;
             margin: 0;
         }
+        @media screen and (max-width: 430px) {
+            h1 {
+                font-size: 15px;
+            }
+            h2 {
+                font-size: 12px;
+            }
+        }
+        @media screen and (max-width: 320px) {
+            h1 {
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 10px;
+            }
+        }
     }
 }
 
 .rating{ 
     margin-top: 2px;
     margin-bottom: 2px;
+    .btn {
+        @media screen and (max-width: 430px) {
+            margin-top: 6px;
+            font-size: 0.7rem;
+            padding: .5rem .5rem;
+        }
+    }
     i {
         margin-right: 4px;
     }
