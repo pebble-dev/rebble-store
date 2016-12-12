@@ -156,6 +156,9 @@ main.apps {
 
 .screenshots {
   margin-bottom: 40px; }
+  .screenshots img {
+    margin-left: auto;
+    margin-right: auto; }
 
 .app-title {
   padding-left: 68px !important; }
@@ -193,6 +196,14 @@ main.apps {
 .app-details h1 {
   font-size: 20px;
   margin: none; }
+.app-details h2 {
+  font-size: 16px;
+  display: inline; }
+.app-details h3 {
+  display: inline;
+  font-size: 14px;
+  margin-bottom: 0;
+  margin-top: 4px; }
 .app-details hr {
   margin-top: 4px; }
 .app-details pre.description {

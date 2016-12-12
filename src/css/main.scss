@@ -199,6 +199,10 @@ main.apps {
 
 .screenshots {
     margin-bottom: 40px;
+    img {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .app-title {
@@ -245,6 +249,16 @@ main.apps {
     h1 {
         font-size: 20px;
         margin: none;
+    }
+    h2 {
+        font-size: 16px;
+        display: inline;
+    }
+    h3 {
+        display: inline;
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-top: 4px;
     }
     hr {
         margin-top: 4px;
