@@ -66,10 +66,13 @@ a.search {
     font-size: 18px;
     color: #a5a6a7;
     padding: 5px;
+    svg {
+        height: 22px;
+        margin-top: 3px;
+    }
 }
 
 #categorySelector {
-
     width: 100vw;
     margin-left: -16px;
     margin-right: -16px;
@@ -284,19 +287,56 @@ main.apps {
     margin-bottom: 2px;
     .btn {
         @media screen and (max-width: 430px) {
-            margin-top: 6px;
+            margin-top: 3px;
             font-size: 0.7rem;
             padding: .5rem .5rem;
+            svg {
+                height: 16px !important;
+                margin-right: -5px;
+                margin-bottom: -10px;
+                top:-6px !important;
+            }
         }
-    }
-    i {
-        margin-right: 4px;
+        svg {
+            height: 20px;
+            position: relative;
+            top: 2px;
+        }
     }
     .btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary.active {
         color: #333;
         outline: none;
+        svg #Thumbs-Up {
+            stroke: #333;
+            #Shape {
+                fill: #ccc;
+            }
+        }
     }
 }
+
+.btn-download {
+    margin-left: 10px;
+    color: #ff4700;
+    border-color: #ff4700;
+    background-image: none;
+    background-color: transparent;
+}
+.btn-download:hover {
+    background-color: #ff4700;
+    color: #333;
+    svg {
+        #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
+            stroke: #333
+        }
+
+        #Rectangle-10, #Rectangle-8 #use1 {
+            fill: #ff4700;
+        }
+
+    }
+}
+
 .app-details {
     h1 {
         font-size: 20px;
@@ -361,20 +401,7 @@ main.apps {
         outline: none;
     }
 }
-.btn-download {
-    margin-left: 10px;
-    color: #ff4700;
-    border-color: #ff4700;
-    background-image: none;
-    background-color: transparent;
-     i {
-        margin-right: 4px;
-    }
-}
-.btn-download:hover {
-    background-color: #ff4700;
-    color: #333;
-}
+
 .apps{ 
     section {
         margin-bottom: 40px;
@@ -419,11 +446,23 @@ main.apps {
                 }
                 .card-text {
                     font-size: 14px;
+                    svg {
+                        height: 14px;
+                        top: 3px;
+                    }
                 }
   			}
             img {
                 width:100%;
                 height:auto;
+            }
+            .card-text {
+                svg {
+                    height: 16px;
+                    margin-right: -6px;
+                    position: relative;
+                    top: 2px;
+                }
             }
         }
     }
