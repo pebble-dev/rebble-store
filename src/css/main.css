@@ -46,6 +46,9 @@ a.search {
   font-size: 18px;
   color: #a5a6a7;
   padding: 5px; }
+  a.search svg {
+    height: 22px;
+    margin-top: 3px; }
 
 #categorySelector {
   width: 100vw;
@@ -227,14 +230,40 @@ main.apps {
   margin-bottom: 2px; }
   @media screen and (max-width: 430px) {
     .rating .btn {
-      margin-top: 6px;
+      margin-top: 3px;
       font-size: 0.7rem;
-      padding: .5rem .5rem; } }
-  .rating i {
-    margin-right: 4px; }
+      padding: .5rem .5rem; }
+      .rating .btn svg {
+        height: 16px !important;
+        margin-right: -5px;
+        margin-bottom: -10px;
+        top: -6px !important; } }
+  .rating .btn svg {
+    height: 20px;
+    position: relative;
+    top: 2px; }
   .rating .btn-outline-secondary:hover, .rating .btn-outline-secondary:focus, .rating .btn-outline-secondary.active {
     color: #333;
     outline: none; }
+    .rating .btn-outline-secondary:hover svg #Thumbs-Up, .rating .btn-outline-secondary:focus svg #Thumbs-Up, .rating .btn-outline-secondary.active svg #Thumbs-Up {
+      stroke: #333; }
+      .rating .btn-outline-secondary:hover svg #Thumbs-Up #Shape, .rating .btn-outline-secondary:focus svg #Thumbs-Up #Shape, .rating .btn-outline-secondary.active svg #Thumbs-Up #Shape {
+        fill: #ccc; }
+
+.btn-download {
+  margin-left: 10px;
+  color: #ff4700;
+  border-color: #ff4700;
+  background-image: none;
+  background-color: transparent; }
+
+.btn-download:hover {
+  background-color: #ff4700;
+  color: #333; }
+  .btn-download:hover svg #Rectangle-10, .btn-download:hover svg #Rectangle-11, .btn-download:hover svg #Rectangle-8 #use2 {
+    stroke: #333; }
+  .btn-download:hover svg #Rectangle-10, .btn-download:hover svg #Rectangle-8 #use1 {
+    fill: #ff4700; }
 
 .app-details h1 {
   font-size: 20px;
@@ -283,19 +312,6 @@ main.apps {
   text-decoration: none;
   outline: none; }
 
-.btn-download {
-  margin-left: 10px;
-  color: #ff4700;
-  border-color: #ff4700;
-  background-image: none;
-  background-color: transparent; }
-  .btn-download i {
-    margin-right: 4px; }
-
-.btn-download:hover {
-  background-color: #ff4700;
-  color: #333; }
-
 .apps section {
   margin-bottom: 40px; }
 .apps section:last-child {
@@ -331,10 +347,18 @@ main.apps {
         .apps .card-columns .card .card-title {
           font-size: 16px; }
         .apps .card-columns .card .card-text {
-          font-size: 14px; } }
+          font-size: 14px; }
+          .apps .card-columns .card .card-text svg {
+            height: 14px;
+            top: 3px; } }
     .apps .card-columns .card img {
       width: 100%;
       height: auto; }
+    .apps .card-columns .card .card-text svg {
+      height: 16px;
+      margin-right: -6px;
+      position: relative;
+      top: 2px; }
 
 ul.pagination .page-item .page-link:hover, ul.pagination .page-item .page-link:focus {
   text-decoration: none;
