@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i");
 body {
-  background-color: #F4F3F4;
   font-family: 'Raleway', sans-serif; }
 
 h1, h2, h3, h4, h5, h6, small {
@@ -13,6 +12,25 @@ p {
 
 b {
   font-weight: 700; }
+
+.search input {
+  font-family: 'Open Sans', sans-serif; }
+
+.app-details pre.description {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; }
+.app-details table tr td {
+  font-family: 'Open Sans', sans-serif; }
+.app-details table tr td:last-child {
+  font-family: 'Raleway', sans-serif; }
+.app-details a.app-button div {
+  font-family: 'Open Sans', sans-serif; }
+
+.navbar-fixed-top .navbar-brand small {
+  font-weight: 400; }
+
+body {
+  background-color: #F4F3F4; }
 
 .navbar-fixed-top .navbar-brand {
   float: none;
@@ -87,8 +105,7 @@ a.search {
     padding: 20px;
     border: 0;
     background: none;
-    color: #373a3c;
-    font-family: 'Open Sans', sans-serif; }
+    color: #373a3c; }
   .search input:focus {
     outline: none; }
 
@@ -283,24 +300,19 @@ main.apps {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400; }
+  white-space: -o-pre-wrap; }
 .app-details table {
   margin-top: 30px;
   margin-bottom: 30px; }
   .app-details table tr td {
-    font-family: 'Open Sans', sans-serif;
     padding-right: 10px; }
   .app-details table tr td:last-child {
-    font-family: 'Raleway', sans-serif;
     padding-right: 0; }
 .app-details a.app-button {
   color: #ff4700; }
   .app-details a.app-button div {
     width: calc(100% + 2rem);
     padding: 1rem;
-    font-family: 'Open Sans', sans-serif;
     margin-left: -16px;
     margin-right: -16px;
     border-top: 1px solid #e1e1e1; }

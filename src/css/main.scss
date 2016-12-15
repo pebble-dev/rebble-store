@@ -1,29 +1,13 @@
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-);
+// main.scss
+// Dont add scss code in here, only imports
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i');
+@import 'variables';
+@import 'fonts';
 
+
+// I know I'm voiding line 2, but I'll get it fixed soon™
 body {
-  background-color: #F4F3F4;
-  font-family: 'Raleway', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6, small {
-    font-family: 'Open Sans', sans-serif;
-}
-
-p {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-}
-b {
-    font-weight: 700;
+  background-color: $main-bg-color;
 }
 
 .navbar-fixed-top {
@@ -115,7 +99,6 @@ a.search {
         border: 0;
         background: none;
         color: #373a3c;
-        font-family: 'Open Sans', sans-serif;
     }
     input:focus {
         outline: none;
@@ -176,12 +159,12 @@ main.apps {
 }
 
 .pebble {
-  color: #ff4700 !important;
+  color: $pebble-color !important;
   display: inline;
 }
 
 .tag-pebble {
-    background-color: #ff4700;
+    background-color: $pebble-color;
     //color: #333;
 }
 
@@ -317,13 +300,13 @@ main.apps {
 
 .btn-download {
     margin-left: 10px;
-    color: #ff4700;
-    border-color: #ff4700;
+    color: $pebble-color;
+    border-color: $pebble-color;
     background-image: none;
     background-color: transparent;
 }
 .btn-download:hover {
-    background-color: #ff4700;
+    background-color: $pebble-color;
     color: #333;
     svg {
         #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
@@ -331,7 +314,7 @@ main.apps {
         }
 
         #Rectangle-10, #Rectangle-8 #use1 {
-            fill: #ff4700;
+            fill: $pebble-color;
         }
 
     }
@@ -361,19 +344,14 @@ main.apps {
         white-space: -moz-pre-wrap;
         white-space: -pre-wrap;
         white-space: -o-pre-wrap;
-
-        font-family: 'Raleway', sans-serif;
-        font-weight: 400;
     }
     table {
         margin-top: 30px;
         margin-bottom: 30px;
         tr td {
-            font-family: 'Open Sans', sans-serif;
             padding-right: 10px;
         }
         tr td:last-child {
-            font-family: 'Raleway', sans-serif;
             padding-right: 0;
         }
     }
@@ -381,7 +359,6 @@ main.apps {
         div {
             width: calc(100% + 2rem);
             padding: 1rem;
-            font-family: 'Open Sans', sans-serif;
             margin-left: -16px;
             margin-right: -16px;
             border-top: 1px solid #e1e1e1;
@@ -389,7 +366,7 @@ main.apps {
                 font-size: 25px
             }
         }
-        color: #ff4700;
+        color: $pebble-color;
     }
     a:last-child {
         div {
@@ -475,11 +452,11 @@ ul.pagination {
         outline: none;
     }
     .page-item .page-link {
-        color: #ff4700;
+        color: $pebble-color;
     }
     .page-item.active .page-link {
-        background: #ff4700;
-        border-color: #ff4700;
+        background: $pebble-color;
+        border-color: $pebble-color;
         color: #fff;
     }
     .page-item.disabled .page-link {
@@ -489,7 +466,7 @@ ul.pagination {
 
 footer {
     margin-top: 40px;
-    background-color: #ff4700;
+    background-color: $pebble-color;
     color: #fff;
     padding: 5px 10px;
     p {
