@@ -29,6 +29,28 @@ b {
 .navbar-fixed-top .navbar-brand small {
   font-weight: 400; }
 
+.app-details a.app-button div i {
+  font-size: 25px; }
+
+@media screen and (max-width: 430px) {
+  .app-button-container .btn svg {
+    height: 16px !important;
+    margin-right: -5px;
+    margin-bottom: -10px;
+    top: -6px !important; } }
+.app-button-container .btn svg {
+  height: 20px;
+  position: relative;
+  top: 2px; }
+.app-button-container .btn.btn-thumbs-up:hover svg #Thumbs-Up, .app-button-container .btn.btn-thumbs-up:focus svg #Thumbs-Up, .app-button-container .btn.btn-thumbs-up.active svg #Thumbs-Up {
+  stroke: #333; }
+  .app-button-container .btn.btn-thumbs-up:hover svg #Thumbs-Up #Shape, .app-button-container .btn.btn-thumbs-up:focus svg #Thumbs-Up #Shape, .app-button-container .btn.btn-thumbs-up.active svg #Thumbs-Up #Shape {
+    fill: #ccc; }
+.app-button-container .btn.btn-download:hover svg #Rectangle-10, .app-button-container .btn.btn-download:hover svg #Rectangle-11, .app-button-container .btn.btn-download:hover svg #Rectangle-8 #use2 {
+  stroke: #333; }
+.app-button-container .btn.btn-download:hover svg #Rectangle-10, .app-button-container .btn.btn-download:hover svg #Rectangle-8 #use1 {
+  fill: #ff4700; }
+
 body {
   background-color: #F4F3F4; }
 
@@ -242,45 +264,26 @@ main.apps {
       .app-title .title-author h2 {
         font-size: 10px; } }
 
-.rating {
+.app-button-container {
   margin-top: 2px;
   margin-bottom: 2px; }
   @media screen and (max-width: 430px) {
-    .rating .btn {
+    .app-button-container .btn {
       margin-top: 3px;
       font-size: 0.7rem;
-      padding: .5rem .5rem; }
-      .rating .btn svg {
-        height: 16px !important;
-        margin-right: -5px;
-        margin-bottom: -10px;
-        top: -6px !important; } }
-  .rating .btn svg {
-    height: 20px;
-    position: relative;
-    top: 2px; }
-  .rating .btn-outline-secondary:hover, .rating .btn-outline-secondary:focus, .rating .btn-outline-secondary.active {
+      padding: .5rem .5rem; } }
+  .app-button-container .btn.btn-thumbs-up:hover, .app-button-container .btn.btn-thumbs-up:focus, .app-button-container .btn.btn-thumbs-up.active {
     color: #333;
     outline: none; }
-    .rating .btn-outline-secondary:hover svg #Thumbs-Up, .rating .btn-outline-secondary:focus svg #Thumbs-Up, .rating .btn-outline-secondary.active svg #Thumbs-Up {
-      stroke: #333; }
-      .rating .btn-outline-secondary:hover svg #Thumbs-Up #Shape, .rating .btn-outline-secondary:focus svg #Thumbs-Up #Shape, .rating .btn-outline-secondary.active svg #Thumbs-Up #Shape {
-        fill: #ccc; }
-
-.btn-download {
-  margin-left: 10px;
-  color: #ff4700;
-  border-color: #ff4700;
-  background-image: none;
-  background-color: transparent; }
-
-.btn-download:hover {
-  background-color: #ff4700;
-  color: #333; }
-  .btn-download:hover svg #Rectangle-10, .btn-download:hover svg #Rectangle-11, .btn-download:hover svg #Rectangle-8 #use2 {
-    stroke: #333; }
-  .btn-download:hover svg #Rectangle-10, .btn-download:hover svg #Rectangle-8 #use1 {
-    fill: #ff4700; }
+  .app-button-container .btn.btn-download {
+    margin-left: 10px;
+    color: #ff4700;
+    border-color: #ff4700;
+    background-image: none;
+    background-color: transparent; }
+    .app-button-container .btn.btn-download:hover {
+      background-color: #ff4700;
+      color: #333; }
 
 .app-details h1 {
   font-size: 20px;
@@ -316,8 +319,6 @@ main.apps {
     margin-left: -16px;
     margin-right: -16px;
     border-top: 1px solid #e1e1e1; }
-    .app-details a.app-button div i {
-      font-size: 25px; }
 .app-details a:last-child div {
   margin-bottom: -1rem; }
 .app-details a.app-button:hover, .app-details a.app-button:focus {

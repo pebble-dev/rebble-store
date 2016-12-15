@@ -3,6 +3,7 @@
 
 @import 'variables';
 @import 'fonts';
+@import 'icons';
 
 
 // I know I'm voiding line 2, but I'll get it fixed soon™
@@ -26,7 +27,9 @@ body {
     }
 }
 
+// Select the dark translucent navbar
 .navbar-dark.bg-inverse.translucent {
+    // Hamburger icon
     .navbar-toggler, .navbar-toggler:focus {
         border: 0;
         border-radius: 0;
@@ -34,25 +37,25 @@ body {
     }
     background-color: rgba(55, 58, 60, 0.95)!important;
     @supports (backdrop-filter: blur(10px)) {
-    // code that will only run if CSS Grid is supported by the browser 
+        // Styles that will only apply if backdrop filters are supported by the browser 
          background-color: rgba(55, 58, 60, 0.88)!important;
+
+         // Make the navbar background blurry
+         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
+    // Back arrow button
+    a.back {
+        font-size: 27px;
+        color: #a5a6a7;
+    }
 
-a.back {
-    font-size: 27px;
-    color: #a5a6a7;
-}
-a.search {
-    font-size: 18px;
-    color: #a5a6a7;
-    padding: 5px;
-    svg {
-        height: 22px;
-        margin-top: 3px;
+    // Search, magnifier icon
+    a.search {
+        font-size: 18px;
+        color: #a5a6a7;
+        padding: 5px;
     }
 }
 
@@ -265,58 +268,41 @@ main.apps {
     }
 }
 
-.rating{ 
+// Set styles of buttons in the app-button-container (app-details and app-versions page)
+.app-button-container{ 
     margin-top: 2px;
     margin-bottom: 2px;
     .btn {
         @media screen and (max-width: 430px) {
+            // styles for when screen smaller than 430px to avoid breaking all styles (they make things smaller)
             margin-top: 3px;
             font-size: 0.7rem;
             padding: .5rem .5rem;
-            svg {
-                height: 16px !important;
-                margin-right: -5px;
-                margin-bottom: -10px;
-                top:-6px !important;
+        }
+
+        // Set thumbs up button styles
+        &.btn-thumbs-up {
+            // Styles for when it is in focus, hovered, or active
+            &:hover, &:focus, &.active {
+                color: #333;
+                outline: none;
             }
         }
-        svg {
-            height: 20px;
-            position: relative;
-            top: 2px;
-        }
-    }
-    .btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary.active {
-        color: #333;
-        outline: none;
-        svg #Thumbs-Up {
-            stroke: #333;
-            #Shape {
-                fill: #ccc;
+
+        // Download button styles (orange get button)
+        &.btn-download {
+            margin-left: 10px;
+            color: $pebble-color;
+            border-color: $pebble-color;
+            background-image: none;
+            background-color: transparent;
+
+            // Download button hover styles
+            &:hover {
+                background-color: $pebble-color;
+                color: #333;
             }
         }
-    }
-}
-
-.btn-download {
-    margin-left: 10px;
-    color: $pebble-color;
-    border-color: $pebble-color;
-    background-image: none;
-    background-color: transparent;
-}
-.btn-download:hover {
-    background-color: $pebble-color;
-    color: #333;
-    svg {
-        #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
-            stroke: #333
-        }
-
-        #Rectangle-10, #Rectangle-8 #use1 {
-            fill: $pebble-color;
-        }
-
     }
 }
 
@@ -362,9 +348,6 @@ main.apps {
             margin-left: -16px;
             margin-right: -16px;
             border-top: 1px solid #e1e1e1;
-            i {
-                font-size: 25px
-            }
         }
         color: $pebble-color;
     }
@@ -379,39 +362,54 @@ main.apps {
     }
 }
 
+// App columns container
 .apps{ 
     section {
+        // Add a margin to the bottom of each section
         margin-bottom: 40px;
     }
     section:last-child {
+        // Remove unnecesary margin from the last one
         margin-bottom: 0;
     }
+
     .card-columns {
+        // Modify bootstrap's default .card-columns stylse
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+
+        // Add more columns on large screens
         @media screen and (min-width: map-get($grid-breakpoints, lg)) {
             column-count: 4;
   		}
+        
+        // Remove gaps on smaller screens
         @media screen and (max-width: map-get($grid-breakpoints, sm)) {
             column-gap: 0;
         }
         column-count: 3;
         column-gap: 1.25rem;
 
+        
         a {
-            color: #373a3c;
-            text-decoration: none;
-        }
-        a:hover, a:focus {
-            color: #373a3c;
-            outline: none;
-            text-decoration: none;
-        }
 
+            // Remove text decoration that comes from having the .card inside a "a"
+            color: #373a3c;
+            text-decoration: none;
+            &:hover, &:focus {
+                color: #373a3c;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        
+        // This isn't inside the "a" to avoid issue if it doesn't ends up being inside a "a"
         .card {
             max-width: 170px;
 			margin: 5px;
+
+            // Make it smaller on small screens
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {
                 max-width: 32vw;
                 .card-block {
@@ -421,29 +419,16 @@ main.apps {
                 .card-title {
                     font-size: 16px;
                 }
-                .card-text {
-                    font-size: 14px;
-                    svg {
-                        height: 14px;
-                        top: 3px;
-                    }
-                }
   			}
+            
+            // Make the app-screenshot take full-width
+            // TODO: decide what to do with app icons
             img {
                 width:100%;
                 height:auto;
             }
-            .card-text {
-                svg {
-                    height: 16px;
-                    margin-right: -6px;
-                    position: relative;
-                    top: 2px;
-                }
-            }
         }
     }
-  
 }
 
 ul.pagination {
