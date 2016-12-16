@@ -20,13 +20,14 @@
 
       <a class="float-xs-right search" href="search.html">
         <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Search" stroke="#a5a6a7">
-                    <polygon id="Shape" stroke-width="1.5" fill="#373a3c" points="11 13 13 11 23 21 21 23"></polygon>
-                    <polygon id="Shape" stroke-width="2" fill="#373a3c" transform="translate(10.000000, 10.000000) rotate(-20.000000) translate(-10.000000, -10.000000) " points="3 7.00190065 7 3 13 3 17 7.00190065 17 13.0170515 13 17 7 17 3 13.0170515"></polygon>
-                    <path d="M11.5,6 L13.5,7 L14.5,10" id="Line" stroke-linecap="square"></path>
-                </g>
+          <g id="Icons"  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Search" stroke="#a5a6a7">
+              <path id="Shape" stroke-width="1.5" class="st0" fill="none" d="M13.9,16.6l1.2-0.4c0,0,0.8-1.5,0.8-1.6c2.3,2.4,4.7,4.7,7,7.1l-2,2
+                C18.5,21.2,16.2,18.9,13.9,16.6z"/>
+              <polygon id="Shape_1_" stroke-width="2" fill="none" class="st1" points="2.2,10.2 4.6,5 10.3,3 15.4,5.4 17.5,11 15.1,16.1 9.4,18.2 4.3,15.8 		"/>
+              <path id="Line" fill="none" class="st2" d="M11.3,6.6l2,1l1,3" stroke-linecap="square"/>
             </g>
+          </g>
         </svg>
       </a>
 
@@ -34,9 +35,9 @@
       <div class="collapse text-xs-center" id="categorySelector">
         <div class="text-muted p-1">
           <div class="btn-group btn-group-lg" role="group">
-            <a href="index.html" class="btn btn-outline-secondary" role="button">Watchfaces</a>
-            <a href="apps.html" class="btn btn-outline-secondary active" role="button">Apps</a>
-          </div>
+					<a href="index.html" class="btn btn-outline-secondary active" role="button">Watchfaces</a>
+					<a href="apps.html" class="btn btn-outline-secondary" role="button">Apps</a>
+				  </div>
         </div>
       </div>
     </nav>
@@ -45,15 +46,15 @@
         <img src="https://assets.getpebble.com/api/file/qaQdjUUrSOq0psR1XHDp/convert?cache=true&fit=crop&w=720&h=320" alt="App Banner">
       </div>
     </section>
-    <div class="card subsection-inverse card-inverse text-xs-left p-1 app-title">
+    <div class="card subsection-inverse card-inverse text-xs-left p-1 app-title-bar">
       <img class="app-icon" src="https://assets.getpebble.com/api/file/9AfKJDBBS72iAYR4WpgK/convert?cache=true&fit=crop&w=48&h=48" alt="My App">
       <div class="title-author">
         <h1 class="tile">Snowy</h1>
         <h2 class="author">Mathew Reiss</h2>
       </div>
 			
-      <div class="rating float-xs-right">
-        <button type="button" class="btn btn-outline-secondary">
+      <div class="app-button-container float-xs-right">
+        <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
           <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <defs></defs>
               <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -71,33 +72,7 @@
           2.3K
         </button>
         <a href="pebble://appstore/57ef907a05e4b17e1c000186" class="btn btn-download">
-          <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-                <rect id="path-1" x="2" y="16" width="21" height="8"></rect>
-                <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="8" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <polygon id="path-3" points="11 3 14 3 14 11 18 11 12.5 18 7 11 11 11"></polygon>
-                <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="15" height="19">
-                    <rect x="5" y="1" width="15" height="19" fill="white"></rect>
-                    <use xlink:href="#path-3" fill="black"></use>
-                </mask>
-                <rect id="path-5" x="18" y="19" width="2" height="2"></rect>
-                <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2" height="2" fill="white">
-                    <use xlink:href="#path-5"></use>
-                </mask>
-            </defs>
-            <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Download">
-                    <use id="Rectangle-10" stroke="#ff4700" mask="url(#mask-2)" stroke-width="4" fill="#333" xlink:href="#path-1"></use>
-                    <g id="Rectangle-8">
-                        <use id="use1" fill="#333" fill-rule="evenodd" xlink:href="#path-3"></use>
-                        <use id="use2" stroke="#ff4700" mask="url(#mask-4)" stroke-width="4" xlink:href="#path-3"></use>
-                    </g>
-                    <use id="Rectangle-11" stroke="#ff4700" mask="url(#mask-6)" stroke-width="2" fill="#D8D8D8" xlink:href="#path-5"></use>
-                </g>
-              </g>
-          </svg>
+          <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><rect id="path-1" x="2" y="16" width="21" height="8"></rect><mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="8" fill="white"><use xlink:href="#path-1"></use></mask><polygon id="path-3" points="11 3 14 3 14 11 18 11 12.5 18 7 11 11 11"></polygon><mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="15" height="19"><rect x="5" y="1" width="15" height="19" fill="white"></rect><use xlink:href="#path-3" fill="black"></use></mask><rect id="path-5" x="18" y="19" width="2" height="2"></rect><mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2" height="2" fill="white"><use xlink:href="#path-5"></use></mask></defs><g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Download"><use id="Rectangle-10" stroke="#ff4700" mask="url(#mask-2)" stroke-width="4" fill="#333" xlink:href="#path-1"></use><g id="Rectangle-8"><use id="use1" fill="#333" fill-rule="evenodd" xlink:href="#path-3"></use><use id="use2" stroke="#ff4700" mask="url(#mask-4)" stroke-width="4" xlink:href="#path-3"></use></g><use id="Rectangle-11" stroke="#ff4700" mask="url(#mask-6)" stroke-width="2" fill="#D8D8D8" xlink:href="#path-5"></use></g></g></svg>
           GET
         </a>
       </div>
