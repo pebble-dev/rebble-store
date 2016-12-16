@@ -58,7 +58,7 @@ b {
 }
 
 // Change the small "pebble" text in the navbar weight (it was to thin so I had to make it bigger)
-.navbar-fixed-top {
+.navbar-dark.bg-inverse.translucent {
     .navbar-brand {
         small {
             font-weight: 400;

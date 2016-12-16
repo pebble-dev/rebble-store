@@ -1,0 +1,19 @@
+// _footer.scss
+// Footer styles
+
+footer {
+    margin-top: 40px;
+    background-color: $pebble-color;
+    color: #fff;
+    padding: 5px 10px;
+    // Footer text styles
+    p {
+        display: inline;
+    }
+    
+    // Prevent bootstrap default link color and text-decoration
+    a, a:hover, a:focus {
+        color: #ebebeb;
+        text-decoration: none;
+    }
+}
