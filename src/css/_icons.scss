@@ -11,6 +11,43 @@
             margin-top: 3px;
         }
     }
+    #categorySelector {
+        width: 100vw;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        // Watchface/App Selecctor icon styles
+        .btn-group {
+            .btn-outline-secondary {
+                &.active, &:active,  &:hover {
+                    //Hover and active styles 
+                    svg {
+                        &.watchface {
+                            // Watchface Icon
+                            #Clock {
+                                stroke: #fff;
+                            }
+                        }
+                        &.app {
+                            // App Icon
+                            #App {
+                                #use2, #Line {
+                                    stroke: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Default icon styles
+                svg {
+                    margin-bottom: -6px;
+                    position: relative;
+                    top: -0.6px;
+                }
+            }
+            
+        }
+    }
 }
 
 
