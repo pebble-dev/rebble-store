@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Fresh Picks | The Panic Store</title>
+  <title>Fresh Picks | Rebble Store</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -16,7 +16,7 @@
 
     <a class="float-xs-left back" href="index.html"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
 
-    <a class="navbar-brand" href="index.html">The Panic Store <small>for&nbsp;<div class="pebble">pebble</div></small></a>
+    <a class="navbar-brand" href="index.html">Rebble Store <small>for&nbsp;<div class="pebble">pebble</div></small></a>
 
     <a class="float-xs-right search" href="search.html">
         <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -32,15 +32,44 @@
       </a>
 
     <button class="navbar-toggler float-xs-right" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse text-xs-center" id="categorySelector">
-      <div class="text-muted p-1">
-        <div class="btn-group btn-group-lg" role="group">
-          <a href="index.html" class="btn btn-outline-secondary active" role="button">Watchfaces</a>
-          <a href="apps.html" class="btn btn-outline-secondary" role="button">Apps</a>
+      <div class="collapse text-xs-center" id="categorySelector">
+        <div class="text-muted p-1">
+          <div class="btn-group btn-group-lg" role="group">
+            <a href="index.html" class="btn btn-outline-secondary" role="button">
+              <svg class="watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Clock" stroke-width="2" stroke="rgba(204,204,204,.5)">
+                          <polygon id="Shape" fill="none" points="2 8.00285097 8 2 17 2 23 8.00285097 23 17.0255772 17 23 8 23 2 17.0255772"></polygon>
+                          <polyline id="Line" stroke-linecap="square" points="15.5630383 14.7579965 12.040745 12.1503281 12 6"></polyline>
+                      </g>
+                  </g>
+              </svg> Watchfaces
+            </a>
+            <a href="apps.html" class="btn btn-outline-secondary active" role="button">
+              <svg class="app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                      <polygon id="path-1" points="9 4 19 4 21 6 21 16 19 18 9 18 7 15.9960225 7 6"></polygon>
+                      <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="18" height="18">
+                          <rect x="5" y="2" width="18" height="18" fill="white"></rect>
+                          <use xlink:href="#path-1" fill="black"></use>
+                      </mask>
+                  </defs>
+                  <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="App">
+                          <g id="Rectangle-2">
+                              <use fill="none" fill-rule="evenodd" xlink:href="#path-1"></use>
+                              <use id="use2" stroke="rgba(204,204,204,.5)" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+                          </g>
+                          <polyline id="Line" stroke="rgba(204,204,204,.5)" stroke-width="2" stroke-linecap="square" points="17 22.0005626 7 22.0005626 3 18 3 8"></polyline>
+                      </g>
+                  </g>
+              </svg>
+              Apps
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+  	</nav>
   <section class="carousel-section">
     <div class="title-card">
       <h3>Fresh Picks</h3>
