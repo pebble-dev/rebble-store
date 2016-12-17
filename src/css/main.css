@@ -54,18 +54,14 @@ b {
 .navbar-dark.bg-inverse.translucent a.search svg {
   height: 22px;
   margin-top: 3px; }
-.navbar-dark.bg-inverse.translucent #categorySelector {
-  width: 100vw;
-  margin-left: -16px;
-  margin-right: -16px; }
-  .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.watchface #Clock, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.watchface #Clock, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.watchface #Clock {
-    stroke: #fff; }
-  .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.app #App #Line, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.app #App #Line, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.app #App #Line {
-    stroke: #fff; }
-  .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary svg {
-    margin-bottom: -6px;
-    position: relative;
-    top: -0.6px; }
+.navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.watchface #Clock, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.watchface #Clock, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.watchface #Clock {
+  stroke: #fff; }
+.navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary.active svg.app #App #Line, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:active svg.app #App #Line, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.app #App #use2, .navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary:hover svg.app #App #Line {
+  stroke: #fff; }
+.navbar-dark.bg-inverse.translucent #categorySelector .btn-group .btn-outline-secondary svg {
+  margin-bottom: -6px;
+  position: relative;
+  top: -0.6px; }
 
 @media screen and (max-width: 576px) {
   .apps .card-columns .card .card-text svg.thumbs-up {
