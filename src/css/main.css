@@ -110,7 +110,7 @@ b {
     border: 0;
     border-radius: 0;
     outline: none; }
-  @supports (backdrop-filter: blur(10px)) {
+  @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
     .navbar-dark.bg-inverse.translucent {
       background-color: rgba(55, 58, 60, 0.88) !important;
       backdrop-filter: blur(10px);
