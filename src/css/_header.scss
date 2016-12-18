@@ -41,10 +41,15 @@
         font-size: 27px;
         color: #a5a6a7;
     }
+}
+.navbar__items {
+    position: absolute;
+    right: 20px;
+    top: 8px;
 
-    // Search, magnifier icon
-    a.search {
-        padding: 5px;
+    > * {
+        display: inline-block;
+        vertical-align: middle;
     }
 }
 

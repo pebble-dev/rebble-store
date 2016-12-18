@@ -134,8 +134,14 @@ b {
   .navbar-dark.bg-inverse.translucent a.back {
     font-size: 27px;
     color: #a5a6a7; }
-  .navbar-dark.bg-inverse.translucent a.search {
-    padding: 5px; }
+
+.navbar__items {
+  position: absolute;
+  right: 20px;
+  top: 8px; }
+  .navbar__items > * {
+    display: inline-block;
+    vertical-align: middle; }
 
 #categorySelector {
   width: 100vw;
