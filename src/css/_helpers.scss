@@ -17,6 +17,21 @@ body {
     //color: #333;
 }
 
+// Pebble color outline button
+.btn-outline-pebble {
+    margin-left: 10px;
+    color: $pebble-color;
+    border-color: $pebble-color;
+    background-image: none;
+    background-color: transparent;
+
+    // Pebble button button hover styles
+    &:hover {
+        background-color: $pebble-color;
+        color: #333;
+    }
+}
+
 // Add new card style called subsection with inverse color
 .card.subsection {
     max-width: 720px;
@@ -30,23 +45,4 @@ body {
     @extend .card.subsection;
     background-color: #333;
     border-color: #333;
-}
-
-.page-error {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  justify-content: center;
-}
-
-.pet-rock-pebble {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-.page-error__buttons {
-  margin-top: 3rem;
 }

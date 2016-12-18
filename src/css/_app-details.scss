@@ -21,7 +21,7 @@
         margin-right: 20px;
         margin-bottom: 5px;
         margin-top: 5px;
-        user-drag: none; 
+        user-drag: none;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-drag: none;
@@ -85,7 +85,7 @@
     }
 
     // Set styles of buttons in the app-button-container (app-details and app-versions page)
-    .app-button-container{ 
+    .app-button-container{
         margin-top: 2px;
         margin-bottom: 2px;
         .btn {
@@ -102,21 +102,6 @@
                 &:hover, &:focus, &.active {
                     color: #333;
                     outline: none;
-                }
-            }
-
-            // Download button styles (orange get button)
-            &.btn-download {
-                margin-left: 10px;
-                color: $pebble-color;
-                border-color: $pebble-color;
-                background-image: none;
-                background-color: transparent;
-
-                // Download button hover styles
-                &:hover {
-                    background-color: $pebble-color;
-                    color: #333;
                 }
             }
         }
