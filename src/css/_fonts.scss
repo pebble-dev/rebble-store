@@ -2,7 +2,7 @@
 // Set font-family and font-weight in here
 
 // Open Sans 300 for titles and 400 for small titles
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i');
 
 //Raleway 400, 400i, 700, 700i for all of the other text
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i');
@@ -13,6 +13,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, small {
     font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 p {
@@ -23,10 +24,19 @@ b {
     font-weight: 700;
 }
 
+.page-error {
+  h4 {
+    // Change font to make this page more interesting
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+  }
+}
+
 // Change search input font-family
 .search {
     input {
         font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
     }
 }
 
