@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i");
 body {
-  background-color: #F4F3F4; }
+  background-color: #f4f3f4; }
 
 .pebble {
   color: #ff4700 !important;
@@ -9,6 +9,16 @@ body {
 
 .tag-pebble {
   background-color: #ff4700; }
+
+.btn-outline-pebble {
+  margin-left: 10px;
+  color: #ff4700;
+  border-color: #ff4700;
+  background-image: none;
+  background-color: transparent; }
+  .btn-outline-pebble:hover {
+    background-color: #ff4700;
+    color: #333; }
 
 .card.subsection, .card.subsection-inverse {
   max-width: 720px;
@@ -22,28 +32,12 @@ body {
   background-color: #333;
   border-color: #333; }
 
-.page-error {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  justify-content: center; }
-
-.pet-rock-pebble {
-  margin-top: 3rem;
-  margin-bottom: 3rem; }
-
-.page-error__buttons {
-  margin-top: 3rem; }
-
 body {
   font-family: 'Raleway', sans-serif; }
 
 h1, h2, h3, h4, h5, h6, small {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
 
 p {
   font-family: 'Raleway', sans-serif;
@@ -52,8 +46,13 @@ p {
 b {
   font-weight: 700; }
 
+.page-error h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; }
+
 .search input {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
 
 .app-details pre.description {
   font-family: 'Raleway', sans-serif;
@@ -152,29 +151,29 @@ b {
     #categorySelector .btn-group .btn-outline-secondary:focus, #categorySelector .btn-group .btn-outline-secondary.focus {
       border-color: rgba(204, 204, 204, 0.5); }
 
-header, .carousel-section {
+header {
   padding-top: 58px;
   background: linear-gradient(to bottom, #373a3c 0%, #373a3c 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%); }
-  header .carousel, header .app-banner, header .carousel-section .app-banner, .carousel-section header .app-banner, header .title-card, header .carousel-section .title-card, .carousel-section header .title-card, .carousel-section .carousel, .carousel-section .app-banner, .carousel-section .title-card {
+  header .carousel, header .app-banner, header .title-card {
     max-width: 720px;
     max-height: 320px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     background-color: #000; }
-  header .app-banner img, .carousel-section .app-banner img {
+  header .app-banner img {
     width: 100%;
     max-width: 720px; }
-  header .title-card, .carousel-section .title-card {
+  header .title-card {
     max-height: auto;
     width: 90vw;
     padding: 20px;
     background-color: #fff; }
-    header .title-card h3, .carousel-section .title-card h3 {
+    header .title-card h3 {
       margin: 0; }
-  header .search, .carousel-section .search {
+  header .search {
     padding: 0; }
-    header .search input, .carousel-section .search input {
+    header .search input {
       width: 100%;
       height: 70px;
       font-size: 1.75rem;
@@ -182,8 +181,34 @@ header, .carousel-section {
       border: 0;
       background: none;
       color: #373a3c; }
-      header .search input:focus, .carousel-section .search input:focus {
+      header .search input:focus {
         outline: none; }
+
+.page-error {
+  margin-top: 98px;
+  min-height: 400px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center; }
+  .page-error .pet-rock-pebble {
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+  .page-error .page-error_buttons {
+    margin-top: 3rem; }
+    .page-error .page-error_buttons .btn-outline-pebble:hover {
+      color: #f4f3f4; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+  body .flex-content {
+    flex: 1; }
 
 footer {
   margin-top: 40px;
@@ -340,15 +365,6 @@ ul.pagination .page-item .page-link {
     .app-title-bar .app-button-container .btn.btn-thumbs-up:hover, .app-title-bar .app-button-container .btn.btn-thumbs-up:focus, .app-title-bar .app-button-container .btn.btn-thumbs-up.active {
       color: #333;
       outline: none; }
-    .app-title-bar .app-button-container .btn.btn-download {
-      margin-left: 10px;
-      color: #ff4700;
-      border-color: #ff4700;
-      background-image: none;
-      background-color: transparent; }
-      .app-title-bar .app-button-container .btn.btn-download:hover {
-        background-color: #ff4700;
-        color: #333; }
 
 .app-details h1 {
   font-size: 20px;

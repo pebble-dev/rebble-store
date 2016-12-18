@@ -10,7 +10,7 @@
         margin: 0;
         position: relative;
         top: 5px;
-        
+
         // Make text smaller on small screens
         @media screen and (max-width: 370px) {
             top: 9px;
@@ -28,7 +28,7 @@
 
 
     @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
-        // Styles that are in here will only apply if backdrop filters are supported by the browser 
+        // Styles that are in here will only apply if backdrop filters are supported by the browser
          background-color: rgba(55, 58, 60, 0.88)!important;
 
          // Make the navbar background blurry
@@ -71,12 +71,12 @@
                 border-color: rgba(204, 204, 204, 0.50);
             }
         }
-        
+
     }
 }
 
 // This .carousel section is actualy the header with the dark grey color (maybe should be completely renamed)
-header, .carousel-section {
+header {
   padding-top: 58px;
   background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
 
@@ -128,10 +128,3 @@ header, .carousel-section {
         }
     }
 }
-
-
-
-
-
-
-
