@@ -2,6 +2,7 @@
 // Store all the variables in here
 
 // Bootstrap's grid breakpoints
+// Use them this way: map-get($grid-breakpoints, sm)
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
