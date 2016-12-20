@@ -7,6 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Rebble Store</title>
+
+    <!-- Site icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/manifest.json">
+    <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#373a3c">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Rebble Store">
+    <meta name="application-name" content="Rebble Store">
+    <meta name="msapplication-config" content="assets/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -15,23 +28,30 @@
 
 <body>
   <div class="flex-content">
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-xs-center translucent">
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-sm-center translucent">
+      <div class="navbar-container">
 
-      <a class="navbar-brand" href="index.html">Rebble Store <small>for&nbsp;<div class="pebble">pebble</div></small></a>
-      <a class="float-xs-right search" href="search.html">
-        <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g id="Icons"  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="Search" stroke="#a5a6a7">
-              <path id="Shape" stroke-width="1.5" class="st0" fill="none" d="M13.9,16.6l1.2-0.4c0,0,0.8-1.5,0.8-1.6c2.3,2.4,4.7,4.7,7,7.1l-2,2
-              C18.5,21.2,16.2,18.9,13.9,16.6z"/>
-              <polygon id="Shape_1_" stroke-width="2" fill="none" class="st1" points="2.2,10.2 4.6,5 10.3,3 15.4,5.4 17.5,11 15.1,16.1 9.4,18.2 4.3,15.8 		"/>
-              <path id="Line" fill="none" class="st2" d="M11.3,6.6l2,1l1,3" stroke-linecap="square"/>
-            </g>
-          </g>
-        </svg>
-      </a>
+        <a class="navbar-brand" href="index.html">Rebble Store <small>for&nbsp;<div class="pebble">pebble</div></small></a>
 
-      <button class="navbar-toggler float-xs-right" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="navbar__items">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation"></button>
+
+          <a class="search" href="search.html">
+            <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Icons"  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Search" stroke="#a5a6a7">
+                  <path id="Shape" stroke-width="1.5" class="st0" fill="none" d="M13.9,16.6l1.2-0.4c0,0,0.8-1.5,0.8-1.6c2.3,2.4,4.7,4.7,7,7.1l-2,2
+                  C18.5,21.2,16.2,18.9,13.9,16.6z"/>
+                  <polygon id="Shape_1_" stroke-width="2" fill="none" class="st1" points="2.2,10.2 4.6,5 10.3,3 15.4,5.4 17.5,11 15.1,16.1 9.4,18.2 4.3,15.8 		"/>
+                  <path id="Line" fill="none" class="st2" d="M11.3,6.6l2,1l1,3" stroke-linecap="square"/>
+                </g>
+              </g>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
       <div class="collapse text-xs-center" id="categorySelector">
         <div class="text-muted p-1">
           <div class="btn-group btn-group-lg" role="group">

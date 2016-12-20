@@ -3,26 +3,52 @@
 
 // Select the dark translucent navbar
 .navbar-dark.bg-inverse.translucent {
+  .navbar-container {
+    // Fix navbar being smaller than 58px
+    min-height: 42px;
 
-    // Navbar brand (app logo or title) styles
-    .navbar-brand {
-        float: none;
-        margin: 0;
-        position: relative;
-        top: 5px;
-
-        // Make text smaller on small screens
-        @media screen and (max-width: 370px) {
-            top: 9px;
-            font-size: 1rem;
-        }
+    // Back arrow button
+    a.back {
+        font-size: 27px;
+        color: #a5a6a7;
+        margin-right: 20px;
     }
 
-    // Hamburger icon
-    .navbar-toggler, .navbar-toggler:focus {
-        border: 0;
-        border-radius: 0;
-        outline: none;
+      // Navbar brand (app logo or title) styles
+      .navbar-brand {
+          float: none;
+          margin: 0;
+          position: relative;
+          top: 5px;
+
+
+          // Make text smaller on small screens
+          @media screen and (max-width: 370px) {
+            margin-left: -10px;
+              top: 9px;
+              font-size: 1rem;
+          }
+      }
+
+      // Navbar items right container
+      .navbar__items {
+          position: absolute;
+          right: 20px;
+          top: 8px;
+
+          // Hamburger icon
+          .navbar-toggler, .navbar-toggler:focus {
+              border: 0;
+              border-radius: 0;
+              outline: none;
+          }
+
+          > * {
+              display: inline-block;
+              vertical-align: middle;
+          }
+      }
+
     }
     background-color: rgba(55, 58, 60, 0.95)!important;
 
@@ -36,22 +62,9 @@
         -webkit-backdrop-filter: blur(10px);
     }
 
-    // Back arrow button
-    a.back {
-        font-size: 27px;
-        color: #a5a6a7;
-    }
-}
-.navbar__items {
-    position: absolute;
-    right: 20px;
-    top: 8px;
 
-    > * {
-        display: inline-block;
-        vertical-align: middle;
-    }
 }
+
 
 // Collapsable menu (this may change in the future) in which you select to browse watchfaces or apps
 #categorySelector {
