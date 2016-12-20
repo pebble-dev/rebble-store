@@ -113,35 +113,38 @@ b {
 
 .navbar-dark.bg-inverse.translucent {
   background-color: rgba(55, 58, 60, 0.95) !important; }
-  .navbar-dark.bg-inverse.translucent .navbar-brand {
-    float: none;
-    margin: 0;
-    position: relative;
-    top: 5px; }
-    @media screen and (max-width: 370px) {
-      .navbar-dark.bg-inverse.translucent .navbar-brand {
-        top: 9px;
-        font-size: 1rem; } }
-  .navbar-dark.bg-inverse.translucent .navbar-toggler, .navbar-dark.bg-inverse.translucent .navbar-toggler:focus {
-    border: 0;
-    border-radius: 0;
-    outline: none; }
+  .navbar-dark.bg-inverse.translucent .navbar-container {
+    min-height: 42px; }
+    .navbar-dark.bg-inverse.translucent .navbar-container a.back {
+      font-size: 27px;
+      color: #a5a6a7;
+      margin-right: 20px; }
+    .navbar-dark.bg-inverse.translucent .navbar-container .navbar-brand {
+      float: none;
+      margin: 0;
+      position: relative;
+      top: 5px; }
+      @media screen and (max-width: 370px) {
+        .navbar-dark.bg-inverse.translucent .navbar-container .navbar-brand {
+          margin-left: -10px;
+          top: 9px;
+          font-size: 1rem; } }
+    .navbar-dark.bg-inverse.translucent .navbar-container .navbar__items {
+      position: absolute;
+      right: 20px;
+      top: 8px; }
+      .navbar-dark.bg-inverse.translucent .navbar-container .navbar__items .navbar-toggler, .navbar-dark.bg-inverse.translucent .navbar-container .navbar__items .navbar-toggler:focus {
+        border: 0;
+        border-radius: 0;
+        outline: none; }
+      .navbar-dark.bg-inverse.translucent .navbar-container .navbar__items > * {
+        display: inline-block;
+        vertical-align: middle; }
   @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
     .navbar-dark.bg-inverse.translucent {
       background-color: rgba(55, 58, 60, 0.88) !important;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px); } }
-  .navbar-dark.bg-inverse.translucent a.back {
-    font-size: 27px;
-    color: #a5a6a7; }
-
-.navbar__items {
-  position: absolute;
-  right: 20px;
-  top: 8px; }
-  .navbar__items > * {
-    display: inline-block;
-    vertical-align: middle; }
 
 #categorySelector {
   width: 100vw;
