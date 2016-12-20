@@ -7,13 +7,6 @@
     // Fix navbar being smaller than 58px
     min-height: 42px;
 
-    // Back arrow button
-    a.back {
-        font-size: 27px;
-        color: #a5a6a7;
-        margin-right: 20px;
-    }
-
       // Navbar brand (app logo or title) styles
       .navbar-brand {
           float: none;
@@ -33,7 +26,35 @@
       // Navbar items right container
       .navbar__items {
           position: absolute;
-          right: 20px;
+
+          // Items in the right
+          &.right {
+            right: 16px;
+          }
+
+          // Items in the left
+          &.left {
+            left: 16px;
+
+            // Prevent brand from going on top of this
+            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+              position: static;
+            }
+
+            // Back arrow button
+            a.back {
+                font-size: 27px;
+                color: #a5a6a7;
+
+                // Add margin on breakpoint to prevent brand from being really close
+                @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+                  margin-right: 20px;
+                }
+
+            }
+
+          }
+
           top: 8px;
 
           // Hamburger icon
