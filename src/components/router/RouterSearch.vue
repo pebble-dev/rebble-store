@@ -1,0 +1,25 @@
+<template>
+  <div>
+    <header>
+      <div class=" title-card search">
+        <input type="text" placeholder="Search">
+      </div>
+    </header>
+    <main class="apps container text-xs-center">
+      <section>
+        <div class="card-columns">
+          <!-- <app-single-cards v-for="n in 18">></app-single-cards> -->
+        </div>
+      </section>
+    </main>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'RouterSearch'
+}
+</script>
+
+<style lang="scss" scoped>
+</style>
