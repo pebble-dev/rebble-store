@@ -1,2 +1,5 @@
 /The-Panic-Store
 *.swp
+main.apib
+/build/
+foo.db

@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -12,9 +13,15 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// walkFiles is intended to quickly crawl the pebble application folder
+// in-order to re-build the application database.
 func walkFiles(root string) (<-chan string, <-chan error) {
+	// Create a couple of channels to communicate with the main process.
+	// (multi-threading FTW!)
 	paths := make(chan string)
 	errf := make(chan error, 1)
+
+	// Crawl the directory in the background.
 	go func() {
 		defer close(paths)
 		errf <- filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -30,34 +37,30 @@ func walkFiles(root string) (<-chan string, <-chan error) {
 			return nil
 		})
 	}()
+
+	// Return the channels so that our goroutine can communicate with the main
+	// thread.
 	return paths, errf
 }
 
-func strToDate(s string) int64 {
-	t, _ := time.Parse(time.RFC3339Nano, s)
-	return t.UnixNano()
-}
-
-type MyTime struct {
+// JSONTime is a dummy time object that is meant to allow Go's JSON module to
+// properly de-serialize the JSON time format.
+type JSONTime struct {
 	time.Time
 }
 
-func (self *MyTime) UnmarshalJSON(b []byte) (err error) {
+// UnmarshalJSON allows for the custom time format within the application JSON
+// to be decoded into Go's native time format.
+func (self *JSONTime) UnmarshalJSON(b []byte) (err error) {
 	s := string(b)
 
+	// Return an empty time.Time object if it didn't exist in the first place.
 	if s == "null" {
 		self.Time = time.Time{}
 		return
 	}
 
-	// Get rid of the quotes "" around the value.
-	// A second option would be to include them
-	// in the date format string instead, like so below:
-	//   time.Parse(`"`+time.RFC3339Nano+`"`, s)
-	s = s[1 : len(s)-1]
-
-	//t, err := time.Parse(time.RFC3339Nano, s)
-	t, err := time.Parse("2006-01-02T15:04:05.999Z", s)
+	t, err := time.Parse("\"2006-01-02T15:04:05.999Z\"", s)
 	if err != nil {
 		t = time.Time{}
 	}
@@ -65,7 +68,9 @@ func (self *MyTime) UnmarshalJSON(b []byte) (err error) {
 	return
 }
 
-func ARebuildDBHandler(w http.ResponseWriter, r *http.Request) {
+// AdminRebuildDBHandler allows an administrator to rebuild the database from
+// the application directory after hitting a single API end point.
+func AdminRebuildDBHandler(w http.ResponseWriter, r *http.Request) {
 	//w.WriteHeader(418)
 	//fmt.Fprintf(w, "I'm a teapot!")
 	/*
@@ -124,4 +129,13 @@ func ARebuildDBHandler(w http.ResponseWriter, r *http.Request) {
 	tx.Commit()
 
 	/**/
+}
+
+// AdminVersionHandler returns the latest build information from the host
+// in-which it was built on, such as: The current application version, the host
+// that built the binary, the date in-which the binary was built, and the
+// current git commit hash. Build information is populated during builds
+// triggered via the "make build" or "sup production deploy" commands.
+func AdminVersionHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Version %s\nBuild Host: %s\nBuild Date: %s\nBuild Hash: %s\n", Buildversionstring, Buildhost, Buildstamp, Buildgithash)
 }
