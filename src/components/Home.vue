@@ -1,15 +1,17 @@
 <template>
   <div>
     <home-slider></home-slider>
-      <main class="apps container text-xs-center">
-        <fresh-picks></fresh-picks>
-      </main>
+    <main class="apps container text-xs-center">
+      <fresh-picks></fresh-picks>
+    </main>
+    <page-footer></page-footer>
   </div>
 </template>
 
 <script>
 import FreshPicks from './FreshPicks'
 import HomeSlider from './HomeSlider'
+import PageFooter from './PageFooter'
 
 import RouterHome from './router/RouterHome'
 import RouterAppDetails from './router/RouterAppDetails'
@@ -26,6 +28,7 @@ export default {
   components: {
     FreshPicks,
     HomeSlider,
+    PageFooter,
     RouterAppDetails,
     RouterHome,
     RouterSearch,
