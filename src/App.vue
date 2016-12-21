@@ -7,11 +7,17 @@
 
 <script>
 import Hello from './components/Hello'
+import FreshPicks from './components/FreshPicks'
+import HomeSlider from './components/HomeSlider'
+import SingleCard from './components/SingleCard'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Hello,
+    FreshPicks,
+    HomeSlider,
+    SingleCard
   }
 }
 </script>
