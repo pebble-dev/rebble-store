@@ -1,7 +1,7 @@
 <template>
   <footer>
-     <p>© 2016 Rebble · <a href="#">Contact Us</a> · <a href="#">Terms</a></p>
-     <a class="pull-right" href="#">Developer Portal</a>
+   <p>© 2016 Rebble · <a href="#">Contact Us</a> · <a href="#">Terms</a></p>
+   <a class="pull-right" href="#">Developer Portal</a>
   </footer>
 </template>
 
@@ -10,3 +10,6 @@ export default {
   name: 'page-footer'
 }
 </script>
+
+<style lang="scss" scoped>
+</style>
