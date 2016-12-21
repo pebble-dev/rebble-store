@@ -69,3 +69,14 @@ func TestApps(t *testing.T) {
 		t.Fatalf("expected 200, got %v", r.StatusCode)
 	}
 }
+
+func TestBoot(t *testing.T) {
+	url := fmt.Sprintf("%s/boot/ios/v3/1/1?app_version=4.3&store_uri=https%3A%2F%2Fsantoku.adamfourney.com", server.URL)
+	r, err := http.Get(url)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if r.StatusCode == 404 {
+		t.Fatalf("expected non 404, got %v", r.StatusCode)
+	}
+}
