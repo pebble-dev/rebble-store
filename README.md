@@ -1,5 +1,7 @@
 # rebble-app-store
 
+## THIS REPO IS UNDER ACTIVE DEVELOPMENT, EVERYTHING IS SUBJECT TO CHANGE!
+
 > Rebble.io Appstore
 
 ## Build Setup
