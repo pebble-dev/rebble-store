@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'RouterError'
+  name: 'error'
 }
 </script>
 

@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'SingleCard'
+  name: 'single-card'
 }
 </script>
 

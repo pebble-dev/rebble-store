@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'RouterSearch'
+  name: 'search'
 }
 </script>
 

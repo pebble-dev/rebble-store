@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'RouterHome'
+  name: 'home'
 }
 </script>
 

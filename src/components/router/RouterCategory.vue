@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: 'RouterCategory'
+  name: 'category'
 }
 </script>
 
