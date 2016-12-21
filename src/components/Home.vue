@@ -3,7 +3,6 @@
     <home-slider></home-slider>
       <main class="apps container text-xs-center">
         <fresh-picks></fresh-picks>
-        <fresh-picks></fresh-picks>
       </main>
   </div>
 </template>
