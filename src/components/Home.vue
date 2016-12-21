@@ -1,5 +1,6 @@
 <template>
   <div>
+    <navbar></navbar>
     <home-slider></home-slider>
     <main class="apps container text-xs-center">
       <fresh-picks></fresh-picks>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import Navbar from './Navbar'
 import FreshPicks from './FreshPicks'
 import HomeSlider from './HomeSlider'
 import PageFooter from './PageFooter'
@@ -26,6 +28,7 @@ import RouterCategory from './router/RouterCategory'
 export default {
   name: 'Home',
   components: {
+    Navbar,
     FreshPicks,
     HomeSlider,
     PageFooter,
