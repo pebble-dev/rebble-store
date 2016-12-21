@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'RouterApps'
+  name: 'apps'
 }
 </script>
 

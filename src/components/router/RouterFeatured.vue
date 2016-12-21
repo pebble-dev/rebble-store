@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'RouterFeatured'
+  name: 'featured'
 }
 </script>
 

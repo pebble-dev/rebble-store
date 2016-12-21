@@ -105,7 +105,7 @@
 
 <script>
 export default {
-  name: 'RouterAppDetails'
+  name: 'app-details'
 }
 </script>
 

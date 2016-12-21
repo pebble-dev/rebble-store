@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'RouterAppVersion'
+  name: 'app-version'
 }
 </script>
 

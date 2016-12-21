@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'RouterAuthor'
+  name: 'author'
 }
 </script>
 
