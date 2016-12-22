@@ -13,7 +13,7 @@ done by running (for example) the following set of commands:
 
 		GOPATH=go/
     mkdir -p $GOPATH/src/pebble-dev
-		git clone https://github.com/pebble-dev/The-Panic-Store.git --branch dev/backend $GOPATH/src/pebble-dev/The-Panic-Store
+		git clone https://github.com/pebble-dev/The-Panic-Store.git --branch dev/Backend $GOPATH/src/pebble-dev/The-Panic-Store
 
 Please [go fmt your code](https://blog.golang.org/go-fmt-your-code) and run `go
 test` before committing your changes. Some editor plugins (such as vim-go)

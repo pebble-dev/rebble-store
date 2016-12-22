@@ -1,7 +1,7 @@
 
 DOCS=./header.apib
 DOCFINAL=./build/final.apib
-APPNAME=The-Panic-Store
+APPNAME=RebbleStore
 SOURCES=$(wildcard *.go) $(wildcard */*.go)
 
 all: build doc
