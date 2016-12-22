@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="card-columns">
-          <app-single_cards v-for="n in 18">></app-single_cards>
+          <single-card v-for="n in 18">></single-card>
         </div>
 
         <nav>
@@ -46,8 +46,13 @@
 </template>
 
 <script>
+import SingleCard from './widgets/SingleCard'
+
 export default {
-  name: 'category'
+  name: 'category',
+  components: {
+    SingleCard
+  }
 }
 </script>
 

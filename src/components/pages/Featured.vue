@@ -2,13 +2,13 @@
   <div>
     <header>
       <div class="title-card">
-        <h3>Fresh Picks</h3>
+        <h3>Featured</h3>
       </div>
     </header>
     <main class="apps container text-xs-center">
       <section>
         <div class="card-columns">
-            <app-single_cards v-for="n in 18">></app-single_cards>
+            <single-card v-for="n in 18">></single-card>
         </div>
 
         <nav>
@@ -40,8 +40,13 @@
 </template>
 
 <script>
+import SingleCard from './widgets/SingleCard'
+
 export default {
-  name: 'featured'
+  name: 'featured',
+  components: {
+    SingleCard
+  }
 }
 </script>
 
