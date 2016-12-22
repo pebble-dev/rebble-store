@@ -26,7 +26,7 @@ targets:
 commands:
   build:
     desc: Build Pebble App Store
-    local: go build -ldflags "-X main.buildhost=`hostname -f` -X main.buildstamp=`date -u '+%Y-%m-%d_%I:%M:%S%p'` -X main.githash=`git rev-parse HEAD`" -o $APPNAME .
+    local: go build -ldflags "-X main.Buildhost=`hostname -f` -X main.Buildstamp=`date -u '+%Y-%m-%d_%I:%M:%S%p'` -X main.Buildgithash=`git rev-parse HEAD`" -o $APPNAME .
   upload:
     desc: Upload Pebble App Store
     upload:
