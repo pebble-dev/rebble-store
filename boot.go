@@ -63,17 +63,17 @@ func BootHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Invalid store_uri parameter"))
 		return
 	}
-	
+
 	// Copying the URL Query to modify it later
 	urlquery := r.URL.Query()
-	
+
 	// If the user didn't specify a store_uri, use the pebble server
 	if store_uri == "" {
 		store_uri = STORE_URI
 	} else {
 		urlquery.Del("store_uri")
 	}
-	
+
 	// Build up the request URL
 	request_url := fmt.Sprintf("%s%s?%s", PEBBLE_BOOT_URL, mux.Vars(r)["path"], urlquery.Encode())
 
