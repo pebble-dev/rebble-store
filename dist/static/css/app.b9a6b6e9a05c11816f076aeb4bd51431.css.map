@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///webpack:///src/App.vue"],"names":[],"mappings":"AACA,KACE,mCACA,iCAAmC","file":"static/css/app.b9a6b6e9a05c11816f076aeb4bd51431.css","sourcesContent":["\n#app {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n\n\n// WEBPACK FOOTER //\n// webpack:///src/App.vue"],"sourceRoot":""}
