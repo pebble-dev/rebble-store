@@ -8,7 +8,7 @@
     <main class="apps container text-xs-center">
       <section>
         <div class="card-columns">
-          <app-single_cards v-for="n in 18">></app-single_cards>
+          <single-card v-for="n in 18">></single-card>
         </div>
           <nav>
             <ul class="pagination">
@@ -39,8 +39,13 @@
 </template>
 
 <script>
+import SingleCard from './widgets/SingleCard'
+
 export default {
-  name: 'author'
+  name: 'author',
+  components: {
+    SingleCard
+  }
 }
 </script>
 

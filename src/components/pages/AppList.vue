@@ -14,15 +14,19 @@
         <a href="#/category"><span class="tag tag-pill tag-pebble">Notifications</span></a>
         <a href="#/category"><span class="tag tag-pill tag-pebble">Remotes</span></a>
       </div>
-      <app-freshpicks></app-freshpicks>
-      <app-freshpicks></app-freshpicks>
+      <fresh-picks></fresh-picks>
     </main>
   </div>
 </template>
 
 <script>
+import FreshPicks from './widgets/FreshPicks'
+
 export default {
-  name: 'apps'
+  name: 'app-list',
+  components: {
+    FreshPicks
+  }
 }
 </script>
 

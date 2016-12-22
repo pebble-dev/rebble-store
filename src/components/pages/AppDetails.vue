@@ -95,10 +95,24 @@
           <td>4.4</td>
         </tr>
       </table>
-      <a href="#/app-versions" class="app-button"><div>Version information <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i></div></a>
-      <a href="#" class="app-button"><div>Website Link <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i></div></a>
-      <a href="#" class="app-button"><div>Support <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i></div></a>
-      <a href="#/author" class="app-button"><div>More From This Developer<i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i></div></a>
+      <a href="#/app-versions" class="app-button">
+        <div>
+          Version information <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        </div>
+      </a>
+      <a href="#" class="app-button">
+        <div>
+          Website Link <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        </div>
+      </a>
+      <a href="#" class="app-button">
+        <div>Support <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        </div>
+      </a>
+      <a href="#/author" class="app-button">
+        <div>More From This Developer<i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        </div>
+      </a>
     </div>
   </section>
 </template>

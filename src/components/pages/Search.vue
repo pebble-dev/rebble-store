@@ -8,7 +8,7 @@
     <main class="apps container text-xs-center">
       <section>
         <div class="card-columns">
-          <!-- <app-single-cards v-for="n in 18">></app-single-cards> -->
+          <single-card v-for="n in 18">></single-card>
         </div>
       </section>
     </main>
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import SingleCard from './widgets/SingleCard'
+
 export default {
-  name: 'search'
+  name: 'search',
+  components: {
+    SingleCard
+  }
 }
 </script>
 
