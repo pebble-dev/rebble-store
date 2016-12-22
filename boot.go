@@ -73,7 +73,7 @@ func BootHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		urlquery.Del("store_uri")
 	}
-
+	
 	// Build up the request URL
 	request_url := fmt.Sprintf("%s%s?%s", PEBBLE_BOOT_URL, mux.Vars(r)["path"], urlquery.Encode())
 
