@@ -66,13 +66,13 @@ func BootHandler(w http.ResponseWriter, r *http.Request) {
 
 	// If the user didn't specify a store_uri, use the pebble server
 	if store_uri == "" {
-		store_uri = PEBBLE_BOOT_URL
+		store_uri = STORE_URI
 	} else {
 		r.URL.Query().Del("store_uri")
 	}
 
 	// Build up the request URL
-	request_url := fmt.Sprintf("%s%s?%s", store_uri, mux.Vars(r)["path"], r.URL.RawQuery)
+	request_url := fmt.Sprintf("%s%s?%s", PEBBLE_BOOT_URL, mux.Vars(r)["path"], r.URL.RawQuery)
 
 	// Make a request to an external server then parse the request
 	req, err := http.Get(request_url)
