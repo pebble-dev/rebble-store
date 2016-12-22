@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <svg-container></svg-container>
     <navbar></navbar>
     <router-view></router-view>
     <page-footer></page-footer>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import SvgContainer from './components/SvgContainer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import PageFooter from './components/PageFooter'
@@ -14,6 +16,7 @@ import PageFooter from './components/PageFooter'
 export default {
   name: 'app',
   components: {
+    SvgContainer,
     Navbar,
     Home,
     PageFooter
