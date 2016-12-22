@@ -14,18 +14,19 @@
         <a href="#/category"><span class="tag tag-pill tag-pebble">Notifications</span></a>
         <a href="#/category"><span class="tag tag-pill tag-pebble">Remotes</span></a>
       </div>
-      <fresh-picks></fresh-picks>
+      <card-collection elTitle="Most Recent"></card-collection>
+      <card-collection elTitle="Fresh Picks"></card-collection>
     </main>
   </div>
 </template>
 
 <script>
-import FreshPicks from './widgets/FreshPicks'
+import CardCollection from './widgets/CardCollection'
 
 export default {
   name: 'app-list',
   components: {
-    FreshPicks
+    CardCollection
   }
 }
 </script>
