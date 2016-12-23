@@ -83,13 +83,15 @@
 </svg>
 </template>
 
-<script scoped>
+<script lang="scss">
 export default {
   name: 'svg-container'
 }
 </script>
 
 <style lang="scss">
+@import './static/css/_variables.scss';
+
   #svgContainer {
     display: none;
   }
@@ -113,7 +115,7 @@ export default {
   .btn-app.active svg,
   .btn-watchface:hover svg,
   .btn-app:hover svg {
-    fill: #858585;
+    fill: transparent;
     stroke: #FFF;
   }
 
@@ -146,4 +148,154 @@ export default {
     fill: #ff4700;
     stroke: #333;
   }
+  // _icons.scss
+// Set svg and icons rules in here
+// Remember that font-awesome is included in the projects
+
+// Select the dark translucent navbar
+.navbar-dark.bg-inverse.translucent {
+    // Search, magnifier icon
+    a.search {
+        svg {
+            height: 22px;
+            margin-top: 3px;
+        }
+    }
+    #categorySelector {
+
+        // Watchface/App Selecctor icon styles
+        .btn-group {
+            .btn-outline-secondary {
+                &.active, &:active,  &:hover {
+                    //Hover and active styles
+                    svg {
+                        &.watchface {
+                            // Watchface Icon
+                            #Clock {
+                                stroke: #fff;
+                            }
+                        }
+                        &.app {
+                            // App Icon
+                            #App {
+                                #use2, #Line {
+                                    stroke: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Default icon styles
+                svg {
+                    margin-bottom: -6px;
+                    position: relative;
+                    top: -0.6px;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+// App columns container
+.apps{
+    .card-columns {
+        // Modify bootstrap's default .card-columns stylse
+
+        // This isn't inside the "a" to avoid issue if it doesn't ends up being inside a "a"
+        .card {
+            // Make it smaller on small screens
+            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+                .card-text {
+                    svg.thumbs-up {
+                        height: 14px;
+                        top: 3px;
+                    }
+                }
+  			}
+            .card-text {
+                // Style thumbs up svg inside of app card
+                svg.thumbs-up {
+                    height: 16px;
+                    margin-right: -6px;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// Change the font-size of the arrow in the buttons that are located at the bottom of the app-details container
+.app-details{
+    a.app-button {
+        div {
+            i {
+                font-size: 25px
+            }
+        }
+    }
+}
+
+// Set styles of SVG in the app-button-container (app-details and app-versions page)
+.app-button-container{
+    .btn {
+        @media screen and (max-width: 430px) {
+            // Set SVG size and margin when screen smaller than 430px to avoid breaking all styles
+            svg {
+                height: 16px !important;
+                margin-right: -5px;
+                margin-bottom: -10px;
+                top:-6px !important;
+            }
+        }
+        // Set SVG size and margin
+        svg {
+            height: 20px;
+            position: relative;
+            top: 2px;
+        }
+
+        // Set thumbs up SVG styles
+        &.btn-thumbs-up {
+            // Default styles are set in the svg
+
+            // Thumbs up svg ivon hover styles
+            &:hover, &:focus, &.active {
+                svg #Thumbs-Up {
+                    stroke: #333;
+                    #Shape {
+                        fill: #ccc;
+                    }
+                }
+            }
+        }
+
+        // Download button styles
+        &.btn-download {
+            // Default styles are set in the svg
+
+            // Download svg icon hover styles
+            &:hover {
+                svg {
+                    #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
+                        stroke: #333
+                    }
+
+                    #Rectangle-10, #Rectangle-8 #use1 {
+                        fill: $pebble-color;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
 </style>

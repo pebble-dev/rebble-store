@@ -49,4 +49,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './static/css/_variables.scss';
+
+// _error.scss
+// Error page styles
+
+
+.page-error {
+  // Calculate top margin 58 px ar of the navbar
+  margin-top: 40px + 58px;
+  min-height: 400px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+
+  .pet-rock-pebble {
+      // Mascot svg
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .page-error_buttons {
+      // Minimal style changes to buttons
+      margin-top: 3rem;
+      .btn-outline-pebble {
+        &:hover {
+          color: #f4f3f4;
+        }
+      }
+    }
+}
+
 </style>
