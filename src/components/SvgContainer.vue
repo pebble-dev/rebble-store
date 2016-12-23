@@ -42,30 +42,20 @@
       </g>
     </svg>
 
-    <svg id="iconDownload" class="icon-download" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <rect id="b" width="21" height="8" y="15"/>
-        <rect id="c" width="15" height="19"/>
-        <polygon id="a" points="6 2 9 2 9 10 13 10 7.5 17 2 10 6 10"/>
-        <mask id="e" width="15" height="19" x="-2" y="-2">
-          <rect width="15" height="19" fill="white"/>
-          <use fill="black" xlink:href="#a"/>
-        </mask>
-      </defs>
-      <g fill="none" fill-rule="evenodd" transform="translate(1)">
-        <rect width="21" height="8" y="15" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
-        <g transform="translate(3)">
-          <mask id="d" fill="white">
-            <use xlink:href="#c"/>
+    <svg id="iconDownload" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <rect id="a" width="15" height="16" x="3"/>
+        </defs>
+        <g fill="none" fill-rule="evenodd" transform="translate(1)">
+          <rect width="21" height="8" y="14" fill="#333333" stroke="#FF4700" stroke-width="2"/>
+          <mask id="b" fill="white">
+            <use xlink:href="#a"/>
           </mask>
-          <g mask="url(#d)">
-            <use fill="#FFFFFF" xlink:href="#a"/>
-            <use stroke="#000000" stroke-width="4" mask="url(#e)" xlink:href="#a"/>
-          </g>
+          <polygon fill="#333333" stroke="#FF4700" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
+          <rect width="2" height="2" x="16" y="17" fill="#D8D8D8" stroke="#FF4700" stroke-width="2"/>
         </g>
-        <rect width="2" height="2" x="16" y="18" fill="#D8D8D8" stroke="#000000" stroke-width="2"/>
-      </g>
-    </svg>
+      </svg>
+
 
     <svg id="iconSearch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g fill="none" fill-rule="evenodd" stroke="#000000">
