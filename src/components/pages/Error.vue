@@ -6,28 +6,29 @@
 
           <h2>Our pet rock has lost your page, sorry about that</h2>
 
-          <svg class="pet-rock-pebble" width="407" height="200" viewBox="0 0 407 200">
-            <g fill="none" fill-rule="evenodd" transform="translate(-12 2)">
-              <polygon fill="#D8D8D8" stroke="#373A3C" stroke-width="4" points="161.431 192.763 244.065 174.619 257.893 139.929 242.619 102.586 210.226 86.935 180.964 64.881 138.691 59.331 90.527 71.943 59.395 73.073 32.412 90.054 13.673 129.878 37.428 168.39 100.959 188.597" transform="scale(-1 1) rotate(-15 0 1157.421)"/>
-              <polyline stroke="#373A3C" stroke-width="2" points="17.5 159.5 57 180 115 176.5 171.5 167 233 133 250 105.5" transform="matrix(-1 0 0 1 267.5 0)"/>
-              <g transform="translate(174 127)">
-                <circle cx="13.5" cy="13.5" r="13.5" fill="#FFFFFF" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 27 0)"/>
-                <circle cx="16.5" cy="17.5" r="9.5" fill="#373A3C" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 33 0)"/>
-                <circle cx="11" cy="16" r="2" fill="#FFFFFF" transform="matrix(-1 0 0 1 22 0)"/>
+          <svg class="pet-rock-pebble" width="406" height="201" viewBox="0 0 406 201">
+              <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+                <polygon fill="#D8D8D8" stroke="#373A3C" stroke-width="4" points="131.999 196.638 216.6 196.071 237.338 165.014 230.162 125.311 201.731 103.267 177.694 75.611 137.498 61.394 87.765 63.716 57.078 58.349 27.154 69.348 .545 104.406 15.774 147.016 73.715 179.99"/>
+                <polyline stroke="#373A3C" stroke-width="2" points="237.049 166.139 208.87 183.73 134.959 181.099 79.012 166.139 27.964 139.016 2.519 105.431"/>
+                <g transform="translate(159 127)">
+                  <circle cx="13.5" cy="13.5" r="13.5" fill="#FFFFFF" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 27 0)"/>
+                  <circle cx="16.5" cy="17.5" r="9.5" fill="#373A3C" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 33 0)"/>
+                  <circle cx="11" cy="16" r="2" fill="#FFFFFF" transform="matrix(-1 0 0 1 22 0)"/>
+                </g>
+                <g transform="translate(211 115)">
+                  <circle cx="13.5" cy="13.5" r="13.5" fill="#FFFFFF" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 27 0)"/>
+                  <circle cx="15.5" cy="16.5" r="9.5" fill="#373A3C" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 31 0)"/>
+                  <circle cx="11" cy="15" r="2" fill="#FFFFFF" transform="matrix(-1 0 0 1 22 0)"/>
+                </g>
+                <g transform="translate(256)">
+                  <polygon fill="#FFFFFF" stroke="#373A3C" stroke-width="4" points="25.576 0 120.886 0 146 22.464 146 91.623 120.886 111.304 37.5 111.304 11.089 128 11.089 100.5 0 91.623 0 22.464"/>
+                  <text fill="#000000" transform="translate(36 24)" font-size="44" font-family="OpenSans-Light, Open Sans" font-weight="300">
+                    <tspan x="0" y="47">404</tspan>
+                  </text>
+                </g>
               </g>
-              <g transform="translate(226 115)">
-                <circle cx="13.5" cy="13.5" r="13.5" fill="#FFFFFF" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 27 0)"/>
-                <circle cx="15.5" cy="16.5" r="9.5" fill="#373A3C" stroke="#373A3C" stroke-width="2" transform="matrix(-1 0 0 1 31 0)"/>
-                <circle cx="11" cy="15" r="2" fill="#FFFFFF" transform="matrix(-1 0 0 1 22 0)"/>
-              </g>
-              <g transform="translate(271)">
-                <polygon fill="#FFFFFF" stroke="#373A3C" stroke-width="4" points="25.576 0 120.886 0 146 22.464 146 91.623 120.886 111.304 37.5 111.304 11.089 128 11.089 100.5 0 91.623 0 22.464"/>
-                <text fill="#000000" font-family="OpenSans-Light, Open Sans" font-size="44" font-weight="300">
-                  <tspan x="36" y="71">404</tspan>
-                </text>
-              </g>
-            </g>
-          </svg>
+            </svg>
+
 
 
           <h4>We're getting the following message {{ 404 }}</h4>
