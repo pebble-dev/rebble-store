@@ -1,5 +1,5 @@
 <template>
-  <div id="svgContainer">
+  <svg id="svgContainer">
     <!-- <svg id="petRock" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <polygon id="a" points="160.865 162.763 243.499 144.619 257.327 109.929 242.053 72.586 209.66 56.935 180.398 34.881 138.125 29.331 89.961 41.943 58.829 43.073 31.846 60.054 13.107 99.878 36.862 138.39 100.393 158.597"/>
@@ -42,52 +42,37 @@
       </g>
     </svg>
 
-    <svg id="iconDownload" class="icon-download" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <rect id="b" width="21" height="8" y="15"/>
-        <rect id="c" width="15" height="19"/>
-        <polygon id="a" points="6 2 9 2 9 10 13 10 7.5 17 2 10 6 10"/>
-        <mask id="e" width="15" height="19" x="-2" y="-2">
-          <rect width="15" height="19" fill="white"/>
-          <use fill="black" xlink:href="#a"/>
-        </mask>
-      </defs>
-      <g fill="none" fill-rule="evenodd" transform="translate(1)">
-        <rect width="21" height="8" y="15" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
-        <g transform="translate(3)">
-          <mask id="d" fill="white">
-            <use xlink:href="#c"/>
+    <svg id="iconDownload" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <rect id="a" width="15" height="16" x="3"/>
+        </defs>
+        <g fill="none" fill-rule="evenodd" transform="translate(1)">
+          <rect width="21" height="8" y="14" fill="#333333" stroke="#FF4700" stroke-width="2"/>
+          <mask id="b" fill="white">
+            <use xlink:href="#a"/>
           </mask>
-          <g mask="url(#d)">
-            <use fill="#FFFFFF" xlink:href="#a"/>
-            <use stroke="#000000" stroke-width="4" mask="url(#e)" xlink:href="#a"/>
-          </g>
+          <polygon fill="#333333" stroke="#FF4700" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
+          <rect width="2" height="2" x="16" y="17" fill="#D8D8D8" stroke="#FF4700" stroke-width="2"/>
         </g>
-        <rect width="2" height="2" x="16" y="18" fill="#D8D8D8" stroke="#000000" stroke-width="2"/>
-      </g>
-    </svg>
+      </svg>
+
 
     <svg id="iconSearch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <g fill="none" fill-rule="evenodd" stroke="#000000">
-        <polygon fill="#FFFFFF" stroke-width="1.5" points="10 12 12 10 22 20 20 22"/>
-        <polygon fill="#FFFFFF" stroke-width="2" points="2 6.002 6 2 12 2 16 6.002 16 12.017 12 16 6 16 2 12.017" transform="rotate(-20 9 9)"/>
-        <polyline points="10.5 5 12.5 6 13.5 9"/>
-      </g>
-    </svg>
+          <g fill="none" fill-rule="evenodd" stroke="#000000">
+            <polygon stroke-width="1.5" points="13.157 15.645 15.157 13.645 22 20 20 22"/>
+            <polygon stroke-width="2" points="2 6.002 6 2 12 2 16 6.002 16 12.017 12 16 6 16 2 12.017" transform="rotate(-20 9 9)"/>
+            <polyline points="10.5 5 12.5 6 13.5 9"/>
+          </g>
+        </svg>
 
-    <svg id="iconApp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <polygon id="a" points="6 0 16 0 18 2 18 12 16 14 6 14 4 11.996 4 2"/>
-        <mask id="b" width="18" height="18" x="-2" y="-2">
-          <rect width="18" height="18" x="2" y="-2" fill="white"/>
-          <use fill="black" xlink:href="#a"/>
-        </mask>
-      </defs>
-      <g fill="none" fill-rule="evenodd" stroke="#000000" transform="translate(1 2)">
-        <use stroke-width="4" mask="url(#b)" xlink:href="#a"/>
-        <polyline stroke-width="2" points="14 18.001 4 18.001 0 14 0 4"/>
+
+    <symbol id="iconApp" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+      <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
+        <polygon points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
+        <polyline points="14 18.001 4 18.001 0 14 0 4"/>
       </g>
-    </svg>
+    </symbol>
+
 
     <svg id="iconWatchface" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
@@ -95,32 +80,34 @@
         <polyline points="13.563 12.758 10.041 10.15 10 4"/>
       </g>
     </svg>
-  </div>
+</svg>
 </template>
 
-<script>
+<script lang="scss">
 export default {
   name: 'svg-container'
 }
 </script>
 
 <style lang="scss">
+@import './static/css/_variables.scss';
+
   #svgContainer {
     display: none;
   }
 
-  svg * {
+  #svgContainer * {
     stroke: inherit;
     fill: inherit;
   }
 
   .icon-search {
-    fill: #333;
+    fill: transparent;
     stroke: #ccc;
   }
 
   .btn-watchface svg, .btn-app svg {
-    fill: #363a3d;
+    fill: transparent;
     stroke: #828682;
   }
 
@@ -128,7 +115,7 @@ export default {
   .btn-app.active svg,
   .btn-watchface:hover svg,
   .btn-app:hover svg {
-    fill: #858585;
+    fill: transparent;
     stroke: #FFF;
   }
 
@@ -161,4 +148,154 @@ export default {
     fill: #ff4700;
     stroke: #333;
   }
+  // _icons.scss
+// Set svg and icons rules in here
+// Remember that font-awesome is included in the projects
+
+// Select the dark translucent navbar
+.navbar-dark.bg-inverse.translucent {
+    // Search, magnifier icon
+    a.search {
+        svg {
+            height: 22px;
+            margin-top: 3px;
+        }
+    }
+    #categorySelector {
+
+        // Watchface/App Selecctor icon styles
+        .btn-group {
+            .btn-outline-secondary {
+                &.active, &:active,  &:hover {
+                    //Hover and active styles
+                    svg {
+                        &.watchface {
+                            // Watchface Icon
+                            #Clock {
+                                stroke: #fff;
+                            }
+                        }
+                        &.app {
+                            // App Icon
+                            #App {
+                                #use2, #Line {
+                                    stroke: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Default icon styles
+                svg {
+                    margin-bottom: -6px;
+                    position: relative;
+                    top: -0.6px;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+// App columns container
+.apps{
+    .card-columns {
+        // Modify bootstrap's default .card-columns stylse
+
+        // This isn't inside the "a" to avoid issue if it doesn't ends up being inside a "a"
+        .card {
+            // Make it smaller on small screens
+            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+                .card-text {
+                    svg.thumbs-up {
+                        height: 14px;
+                        top: 3px;
+                    }
+                }
+  			}
+            .card-text {
+                // Style thumbs up svg inside of app card
+                svg.thumbs-up {
+                    height: 16px;
+                    margin-right: -6px;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// Change the font-size of the arrow in the buttons that are located at the bottom of the app-details container
+.app-details{
+    a.app-button {
+        div {
+            i {
+                font-size: 25px
+            }
+        }
+    }
+}
+
+// Set styles of SVG in the app-button-container (app-details and app-versions page)
+.app-button-container{
+    .btn {
+        @media screen and (max-width: 430px) {
+            // Set SVG size and margin when screen smaller than 430px to avoid breaking all styles
+            svg {
+                height: 16px !important;
+                margin-right: -5px;
+                margin-bottom: -10px;
+                top:-6px !important;
+            }
+        }
+        // Set SVG size and margin
+        svg {
+            height: 20px;
+            position: relative;
+            top: 2px;
+        }
+
+        // Set thumbs up SVG styles
+        &.btn-thumbs-up {
+            // Default styles are set in the svg
+
+            // Thumbs up svg ivon hover styles
+            &:hover, &:focus, &.active {
+                svg #Thumbs-Up {
+                    stroke: #333;
+                    #Shape {
+                        fill: #ccc;
+                    }
+                }
+            }
+        }
+
+        // Download button styles
+        &.btn-download {
+            // Default styles are set in the svg
+
+            // Download svg icon hover styles
+            &:hover {
+                svg {
+                    #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
+                        stroke: #333
+                    }
+
+                    #Rectangle-10, #Rectangle-8 #use1 {
+                        fill: $pebble-color;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
 </style>

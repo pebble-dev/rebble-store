@@ -12,4 +12,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './static/css/_variables.scss';
+
+// _footer.scss
+// Footer styles
+
+// Make footer sticky
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  .flex-content {
+    flex: 1;
+  }
+}
+
+
+footer {
+    margin-top: 40px;
+    background-color: $pebble-color;
+    color: #fff;
+    padding: 5px 10px;
+    // Footer text styles
+    p {
+        display: inline;
+    }
+
+    // Prevent bootstrap default link color and text-decoration
+    a, a:hover, a:focus {
+        color: #ebebeb;
+        text-decoration: none;
+    }
+}
+
 </style>
