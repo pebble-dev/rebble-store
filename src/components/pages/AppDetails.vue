@@ -15,14 +15,14 @@
       <div class="app-button-container float-xs-right">
         <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
         <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
-          <use xlink:href="#ThumbsUp"></use>
+          <use xlink:href="#iconThumbsUp"></use>
         </svg>
 
         2.3K
         </button>
         <a href="pebble://appstore/57ef907a05e4b17e1c000186" class="btn btn-outline-pebble btn-download">
         <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
-          <use xlink:href="#Download"></use>
+          <use xlink:href="#iconDownload"></use>
         </svg>
         GET
         </a>
