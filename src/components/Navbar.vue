@@ -26,6 +26,7 @@
             </svg>
             Watchfaces
           </a>
+
           <a href="#/apps" class="btn btn-outline-secondary btn-app" role="button">
             <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconApp"></use>
