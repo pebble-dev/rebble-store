@@ -6,8 +6,8 @@
 
         <h2>Our pet rock has lost your page, sorry about that</h2>
 
-        <svg class="pet-rock-pebble" width="406" height="199" viewBox="0 0 406 199">
-           <use xlink:href="./static/svg/pet-rock.svg#svgPetRock"></use>
+        <svg class="pet-rock-pebble" width="408" height="203" viewBox="0 0 408 203">
+           <use xlink:href="#svgPetRock"></use>
         </svg>
 
         <h4>We're getting the following message {{ 404 }}</h4>
