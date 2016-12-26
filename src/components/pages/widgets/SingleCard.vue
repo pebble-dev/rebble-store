@@ -82,10 +82,12 @@ export default {
 
             // Remove gaps on smaller screens
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-                column-gap: 0;
+                column-gap: 5px;
+                display: inline-block;
             }
+
             column-count: 3;
-            column-gap: 1.25rem;
+            column-gap: calc(1.25rem + 5px);
 
 
             a {
@@ -103,7 +105,6 @@ export default {
             // This isn't inside the "a" to avoid issue if it doesn't ends up being inside a "a"
             .card {
                 max-width: 170px;
-                margin: 5px;
 
                 // Make it smaller on small screens
                 @media screen and (max-width: map-get($grid-breakpoints, sm)) {
