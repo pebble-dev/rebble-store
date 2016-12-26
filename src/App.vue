@@ -127,6 +127,10 @@ body {
   .flex-content {
     flex: 1;
   }
+  // App columns container
+  .apps{
+    margin-top: 40px;
+  }
 }
 
 .pull-right {
@@ -371,16 +375,8 @@ header {
 // _app-cards.scss
 // App Cards styles
 
-// App columns container
-.apps{
-
-    // Each group of cards is supposed to be a section
-    section {
-
-        // This header tool is for selecting between Top Apps and New Releases
-        .header-tool {
-            margin-bottom: 40px;
-        }
-    }
+// This header tool is for selecting between Top Apps and New Releases
+.header-tool {
+    margin-bottom: 40px;
 }
 </style>

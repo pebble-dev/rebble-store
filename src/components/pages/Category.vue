@@ -6,16 +6,14 @@
         </div>
     </header>
     <main class="apps container text-xs-center">
-      <section>
         <div class="text-xs-center header-tool">
           <div class="btn-group btn-group-sm" role="group">
             <a href="#" class="btn btn-outline-secondary active" role="button">Top Apps</a>
             <a href="#" class="btn btn-outline-secondary" role="button">New Releases</a>
           </div>
         </div>
-        <div class="card-columns">
-          <single-card v-for="n in 18">></single-card>
-        </div>
+
+        <card-collection :showTop="false"></card-collection>
 
         <nav>
           <ul class="pagination">
@@ -40,18 +38,17 @@
             </li>
           </ul>
         </nav>
-      </section>
     </main>
     </div>
 </template>
 
 <script>
-import SingleCard from './widgets/SingleCard'
+import CardCollection from './widgets/CardCollection'
 
 export default {
   name: 'category',
   components: {
-    SingleCard
+    CardCollection
   }
 }
 </script>
