@@ -22,11 +22,13 @@
 
 <script>
 import CardCollection from './widgets/CardCollection'
+import HomeSlider from '../HomeSlider'
 
 export default {
   name: 'app-list',
   components: {
-    CardCollection
+    CardCollection,
+    HomeSlider
   }
 }
 </script>
