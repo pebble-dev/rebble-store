@@ -129,6 +129,10 @@ body {
   }
 }
 
+.pull-right {
+    float: right;
+}
+
 // Pebble color helper class
 .pebble {
   color: $pebble-color !important;
