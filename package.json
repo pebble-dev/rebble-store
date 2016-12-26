@@ -60,6 +60,7 @@
     "lolex": "^1.4.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",
+    "node-macaddress": "git@github.com:TheBeastOfCaerbannog/node-macaddress.git#43238cd0569573837d4b48a27b3063d287d2968b",
     "node-sass": "^4.1.1",
     "opn": "^4.0.2",
     "ora": "^0.3.0",

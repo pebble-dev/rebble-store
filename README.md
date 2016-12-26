@@ -30,8 +30,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 
 ## Installing Dev Environment On Windows
-
 1. Make sure you have  [WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) installed.
 2. Run Ubuntu installation steps.
-3. Install node-macaddress (this version only): `npm install github:TheBeastOfCaerbannog/node-macaddress.git#43238cd0569573837d4b48a27b3063d287d2968b`
-4. Try running it with `npm run dev`. If it fails to find `node-sass/vendor` rebuild it `npm rebuild node-sass`.
+3. Try running it with `npm run dev`. If it fails to find `node-sass/vendor` rebuild it `npm rebuild node-sass`.
+
+A patched version of the node-macaddress package is included in the devDependencies section of the package.json to make the webpack dev environment work inside WSL. The patched package can be found [here](https://github.com/TheBeastOfCaerbannog/node-macaddress#43238cd0569573837d4b48a27b3063d287d2968b), and more information on the bug that requires it can be found [here](https://github.com/AngularClass/angular2-webpack-starter/issues/1273).
