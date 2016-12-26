@@ -119,6 +119,18 @@ b {
 
 body {
   background-color: $main-bg-color;
+
+  // Make footer sticky
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  .flex-content {
+    flex: 1;
+  }
+}
+
+.pull-right {
+    float: right;
 }
 
 // Pebble color helper class

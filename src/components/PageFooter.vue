@@ -17,16 +17,6 @@ export default {
 // _footer.scss
 // Footer styles
 
-// Make footer sticky
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  .flex-content {
-    flex: 1;
-  }
-}
-
 
 footer {
     margin-top: 40px;

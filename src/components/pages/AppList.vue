@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-home-slider></app-home-slider>
+    <home-slider></home-slider>
     <main class="apps container text-xs-center">
       <div class="card subsection-inverse card-inverse text-xs-center p-1">
         <a href="#/category"><span class="tag tag-pill tag-pebble">Daily</span></a>
