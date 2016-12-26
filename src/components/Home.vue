@@ -22,4 +22,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  // App columns container
+  .apps{
+    margin-top: 40px;
+  }
 </style>
