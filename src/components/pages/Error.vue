@@ -68,21 +68,27 @@ export default {
   align-items: center;
   justify-content: center;
 
+  h4 {
+    // Change font to make this page more interesting
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+  }
+
   .pet-rock-pebble {
       // Mascot svg
       margin-top: 3rem;
       margin-bottom: 3rem;
     }
 
-    .page-error_buttons {
-      // Minimal style changes to buttons
-      margin-top: 3rem;
-      .btn-outline-pebble {
-        &:hover {
-          color: #f4f3f4;
-        }
+  .page-error_buttons {
+    // Minimal style changes to buttons
+    margin-top: 3rem;
+    .btn-outline-pebble {
+      &:hover {
+        color: #f4f3f4;
       }
     }
+  }
 }
 
 </style>

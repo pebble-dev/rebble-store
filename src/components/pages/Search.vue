@@ -47,4 +47,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title-card {
+  padding: 0;
+}
+
+.search {
+  input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    width: 100%;
+    height: 70px;
+    font-size: 1.75rem;
+    padding: 20px;
+    border: 0;
+    background: none;
+    color: #373a3c;
+    &:focus {
+      outline: none;
+    }
+  }
+}
 </style>

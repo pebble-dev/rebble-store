@@ -62,61 +62,6 @@ b {
     font-weight: 700;
 }
 
-.page-error {
-  h4 {
-    // Change font to make this page more interesting
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-  }
-}
-
-// Change search input font-family
-.search {
-    input {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 400;
-    }
-}
-
-
-// Change fonts in the app-details page
-.app-details {
-    // Change app description font and weight
-    pre.description {
-        font-family: 'Raleway', sans-serif;
-        font-weight: 400;
-    }
-    // Change App extra-info table font (Author, Version, Release date, etc...)
-    table {
-        tr td {
-            font-family: 'Open Sans', sans-serif;
-        }
-        tr td:last-child {
-            // A second font to make it look different from the first column
-            font-family: 'Raleway', sans-serif;
-        }
-    }
-
-    // Change the fonts from the buttons at the bottom of the app-details container
-    a.app-button {
-        div {
-            font-family: 'Open Sans', sans-serif;
-        }
-    }
-}
-
-// Change the small "pebble" text in the navbar weight (it was to thin so I had to make it bigger)
-.navbar-dark.bg-inverse.translucent {
-    .navbar-brand {
-        small {
-            font-weight: 400;
-        }
-    }
-}
-
-// _helpers.scss
-// Mostly styles that doesnt fit anywhere else
-
 body {
   background-color: $main-bg-color;
 
@@ -189,194 +134,21 @@ ul.pagination {
     }
 }
 
-// Add new card style called subsection with inverse color
-.card.subsection {
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 0;
-    margin-bottom: 40px;
-}
-.card.subsection-inverse {
-    @extend .card.subsection;
-    background-color: #333;
-    border-color: #333;
-}
-// _header.scss
-// Header styles including carousel, navbar and app-banners
-
-// Select the dark translucent navbar
-.navbar-dark.bg-inverse.translucent {
-  .navbar-container {
-    // Fix navbar being smaller than 58px
-    min-height: 42px;
-
-      // Navbar brand (app logo or title) styles
-      .navbar-brand {
-          float: none;
-          margin: 0;
-          position: relative;
-          top: 5px;
-
-
-          // Make text smaller on small screens
-          @media screen and (max-width: 370px) {
-            margin-left: -10px;
-              top: 9px;
-              font-size: 1rem;
-          }
-      }
-
-      // Navbar items right container
-      .navbar__items {
-          position: absolute;
-
-          // Items in the right
-          &.right {
-            right: 16px;
-          }
-
-          // Items in the left
-          &.left {
-            left: 16px;
-
-            // Prevent brand from going on top of this
-            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-              position: static;
-            }
-
-            // Back arrow button
-            a.back {
-                font-size: 27px;
-                color: #a5a6a7;
-
-                // Add margin on breakpoint to prevent brand from being really close
-                @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-                  margin-right: 20px;
-                }
-
-            }
-
-          }
-
-          top: 8px;
-
-          // Hamburger icon
-          .navbar-toggler, .navbar-toggler:focus {
-              border: 0;
-              border-radius: 0;
-              outline: none;
-          }
-
-          > * {
-              display: inline-block;
-              vertical-align: middle;
-          }
-      }
-
-    }
-    background-color: rgba(55, 58, 60, 0.95)!important;
-
-
-    @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
-        // Styles that are in here will only apply if backdrop filters are supported by the browser
-         background-color: rgba(55, 58, 60, 0.88)!important;
-
-         // Make the navbar background blurry
-         backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-
-
-}
-
-
-// Collapsable menu (this may change in the future) in which you select to browse watchfaces or apps
-#categorySelector {
-    width: 100vw;
-    margin-left: -16px;
-    margin-right: -16px;
-
-    // Change default button group styles to ones that match the style
-    .btn-group {
-        .btn-outline-secondary {
-            border-color: rgba(204, 204, 204, 0.50);
-            color: rgba(204, 204, 204, 0.50);
-            &.active, &:active,  &:hover {
-                color: #fff;
-                background-color: rgba(204, 204, 204, 0.50);
-
-                // Overwrite bootstrap style
-                border-color: rgba(204, 204, 204, 0.50);
-            }
-            &:focus, &.focus {
-                // Overwrite bootstrap style
-                border-color: rgba(204, 204, 204, 0.50);
-            }
-        }
-
-    }
-}
-
-// This .carousel section is actualy the header with the dark grey color (maybe should be completely renamed)
 header {
   padding-top: 58px;
   background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
-
-  // Carousel container
-  .carousel {
+  .title-card {
+    width: 90vw;
+    padding: 20px;
+    background-color: #fff;
     max-width: 720px;
     max-height: 320px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    background-color: #000;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    h3 {
+      margin: 0;
     }
-
-    // Similar to carousel but only used when displaying only one image
-    .app-banner {
-        @extend .carousel;
-        img {
-            width: 100%;
-            max-width: 720px;
-        }
-    }
-
-    // Card that also goes in the header in which title text is displayed
-    .title-card {
-        @extend .carousel;
-        max-height: auto;
-        width: 90vw;
-        padding: 20px;
-        background-color: #fff;
-        h3 {
-            margin: 0;
-        }
-    }
-
-    // Similar to title card but with a search input
-    .search {
-        padding: 0;
-        input {
-            width: 100%;
-            height: 70px;
-            font-size: 1.75rem;
-            padding: 20px;
-            border: 0;
-            background: none;
-            color: #373a3c;
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-}
-// _app-cards.scss
-// App Cards styles
-
-// This header tool is for selecting between Top Apps and New Releases
-.header-tool {
-    margin-bottom: 40px;
+  }
 }
 </style>
