@@ -25,10 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 @import './static/css/_variables.scss';
-
-// _app-cards.scss
-// App Cards styles
-
     a {
 
         // Remove text decoration that comes from having the .card inside a "a"
@@ -65,5 +61,4 @@ export default {
             }
         }
     }
-
 </style>

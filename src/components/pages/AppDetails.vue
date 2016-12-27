@@ -156,6 +156,19 @@ export default {
     }
 }
 
+// Similar to carousel but only used when displaying only one image
+.app-banner {
+  max-width: 720px;
+  max-height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+      width: 100%;
+      max-width: 720px;
+  }
+}
+
 // Title bar displayed below app banner
 .app-title-bar {
     padding-left: 68px !important;
@@ -168,132 +181,153 @@ export default {
     }
     // Author name and app title text container
     .title-author {
-        height: 42px;
-        margin-top: -3px;
-        margin-bottom: 3px;
-        display: inline-block;
+      height: 42px;
+      margin-top: -3px;
+      margin-bottom: 3px;
+      display: inline-block;
+      h1 {
+        font-size: 19px;
+        line-height: 26px;
+        display: inline;
+        color: #fff;
+      }
+      h2 {
+        line-height: 16px;
+        font-size: 16px;
+        color: #c3c3c3;
+        margin: 0;
+      }
+
+      // Styles for small screens
+      @media screen and (max-width: 430px) {
         h1 {
-            font-size: 19px;
-            line-height: 26px;
-            display: inline;
-            color: #fff;
+          font-size: 15px;
         }
         h2 {
-            line-height: 16px;
-            font-size: 16px;
-            color: #c3c3c3;
-            margin: 0;
+          font-size: 12px;
         }
-
-        // Styles for small screens
-        @media screen and (max-width: 430px) {
-            h1 {
-                font-size: 15px;
-            }
-            h2 {
-                font-size: 12px;
-            }
+      }
+      @media screen and (max-width: 320px) {
+        h1 {
+          font-size: 12px;
         }
-        @media screen and (max-width: 320px) {
-            h1 {
-                font-size: 12px;
-            }
-            h2 {
-                font-size: 10px;
-            }
+        h2 {
+          font-size: 10px;
         }
+      }
     }
 
     // Set styles of buttons in the app-button-container (app-details and app-versions page)
-    .app-button-container{
-        margin-top: 2px;
-        margin-bottom: 2px;
-        .btn {
-            @media screen and (max-width: 430px) {
-                // styles for when screen smaller than 430px to avoid breaking all styles (they make things smaller)
-                margin-top: 3px;
-                font-size: 0.7rem;
-                padding: .5rem .5rem;
-            }
-
-            // Set thumbs up button styles
-            &.btn-thumbs-up {
-                // Styles for when it is in focus, hovered, or active
-                &:hover, &:focus, &.active {
-                    color: #333;
-                    outline: none;
-                }
-            }
+    .app-button-container {
+      margin-top: 2px;
+      margin-bottom: 2px;
+      .btn {
+        @media screen and (max-width: 430px) {
+          // styles for when screen smaller than 430px to avoid breaking all styles (they make things smaller)
+          margin-top: 3px;
+          font-size: 0.7rem;
+          padding: .5rem .5rem;
         }
+
+        // Set thumbs up button styles
+        &.btn-thumbs-up {
+          // Styles for when it is in focus, hovered, or active
+          &:hover, &:focus, &.active {
+            color: #333;
+            outline: none;
+          }
+        }
+      }
     }
 }
 
+// Add new card style called subsection with inverse color
+.card.subsection {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  margin-bottom: 40px;
+}
+.card.subsection-inverse {
+  @extend .card.subsection;
+  background-color: #333;
+  border-color: #333;
+}
 
 // App details container (below screenshots)
 .app-details {
-    // Main title
-    h1 {
-        font-size: 20px;
-        margin: none;
+  // Main title
+  h1 {
+    font-size: 20px;
+    margin: none;
+  }
+  // Separator
+  hr {
+    margin-top: 4px;
+  }
+
+  // H2 and H3 used in app-versions
+  h2 {
+    font-size: 16px;
+    display: inline;
+  }
+  h3 {
+    display: inline;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+
+  // App Description container
+  pre.description {
+    // Make sentences break and prevent scrollbars
+    word-wrap: break-word;
+    white-space: pre-wrap;
+
+    // Change app description font and weight
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+  }
+
+  // App extra-info table (Author, Version, Release date, etc...)
+  table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    tr td {
+      padding-right: 10px;
+      font-family: 'Open Sans', sans-serif;
     }
-    // Separator
-    hr {
-        margin-top: 4px;
+    tr td:last-child {
+      padding-right: 0;
+      // A second font to make it look different from the first column
+      font-family: 'Raleway', sans-serif;
+    }
+  }
+
+  // Buttons at the bottom of the app-details container
+  a.app-button {
+    div {
+      width: calc(100% + 2rem);
+      padding: 1rem;
+      margin-left: -16px;
+      margin-right: -16px;
+      border-top: 1px solid #e1e1e1;
+      // Change the fonts from the buttons at the bottom of the app-details container
+      font-family: 'Open Sans', sans-serif;
     }
 
-    // H2 and H3 used in app-versions
-    h2 {
-        font-size: 16px;
-        display: inline;
+    color: $pebble-color;
+    &:last-child {
+      div {
+        margin-bottom: -1rem;
+      }
     }
-    h3 {
-        display: inline;
-        font-size: 14px;
-        margin-bottom: 0;
-        margin-top: 4px;
+    &:hover, &:focus {
+      text-decoration: none;
+      outline: none;
     }
-
-    // App Description container
-    pre.description {
-        // Make sentences break and prevent scrollbars
-        word-wrap: break-word;
-        white-space: pre-wrap;
-        white-space: -moz-pre-wrap;
-        white-space: -pre-wrap;
-        white-space: -o-pre-wrap;
-    }
-
-    // App extra-info table (Author, Version, Release date, etc...)
-    table {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        tr td {
-            padding-right: 10px;
-        }
-        tr td:last-child {
-            padding-right: 0;
-        }
-    }
-    // Buttons at the bottom of the app-details container
-    a.app-button {
-        div {
-            width: calc(100% + 2rem);
-            padding: 1rem;
-            margin-left: -16px;
-            margin-right: -16px;
-            border-top: 1px solid #e1e1e1;
-        }
-        color: $pebble-color;
-        &:last-child {
-            div {
-            margin-bottom: -1rem;
-            }
-        }
-        &:hover, &:focus {
-            text-decoration: none;
-            outline: none;
-        }
-    }
+  }
 }
-
 </style>
