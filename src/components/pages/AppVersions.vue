@@ -89,6 +89,30 @@ export default {
     }
 }
 
+// Similar to carousel but only used when displaying only one image
+.app-banner {
+  max-width: 720px;
+  max-height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+      width: 100%;
+      max-width: 720px;
+  }
+}
+
+// App Description container
+pre.description {
+  // Make sentences break and prevent scrollbars
+  word-wrap: break-word;
+  white-space: pre-wrap;
+
+  // Change app description font and weight
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
 // Title bar displayed below app banner
 .app-title-bar {
     padding-left: 68px !important;
@@ -228,5 +252,4 @@ export default {
         }
     }
 }
-
 </style>
