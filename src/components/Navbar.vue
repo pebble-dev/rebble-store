@@ -4,7 +4,7 @@
       <div class="navbar__items left" v-show="showBackButton">
         <a class="float-xs-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
       </div>
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/#">
         Rebble Store
         <small>
           for&nbsp;
@@ -23,14 +23,14 @@
     <div class="collapse text-xs-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
-          <a href="#/" class="btn btn-outline-secondary active btn-watchface" role="button">
+          <a href="#/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
             <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconWatchface"></use>
             </svg>
             Watchfaces
           </a>
 
-          <a href="#/apps" class="btn btn-outline-secondary btn-app" role="button">
+          <a href="#/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
             <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconApp"></use>
             </svg>
@@ -48,23 +48,30 @@ export default {
 
   data () {
     return {
-      showBackButton: false
+      showBackButton: false,
+      currentRoute: '/'
     }
   },
 
   mounted () {
-    this.updateBackButton(this.$route.path)
+    // Update the route state on page load, in case we didn't start at home
+    this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
+    this.updateBackButton()
   },
 
   watch: {
     '$route' (to, from) {
-      this.updateBackButton(this.$route.path)
+      // Ternary operation makes sure the path is never an empty string when we go home
+      // This is for the class binding on the watchfaces button,
+      // since that is currently the home route
+      this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
+      this.updateBackButton()
     }
   },
 
   methods: {
-    updateBackButton (currentRoute) {
-      this.showBackButton = (currentRoute !== '/' && currentRoute !== '/apps')
+    updateBackButton () {
+      this.showBackButton = (this.currentRoute !== '/' && this.currentRoute !== '/apps')
     }
   }
 }
