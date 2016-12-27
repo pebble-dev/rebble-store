@@ -137,5 +137,18 @@ ul.pagination {
 header {
   padding-top: 58px;
   background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
+  .title-card {
+    width: 90vw;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 720px;
+    max-height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    h3 {
+      margin: 0;
+    }
+  }
 }
 </style>
