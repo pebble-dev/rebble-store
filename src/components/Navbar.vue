@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-sm-center translucent">
     <div class="navbar-container">
-      <div class="navbar__items left">
-        <a class="float-xs-left back" href="app-details.html"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      <div class="navbar__items left" v-show="showBackButton">
+        <a class="float-xs-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
       </div>
       <a class="navbar-brand" href="/">
         Rebble Store
@@ -44,19 +44,34 @@
 
 <script>
 export default {
-  name: 'navbar'
+  name: 'navbar',
+
+  data () {
+    return {
+      showBackButton: false
+    }
+  },
+
+  mounted () {
+    this.updateBackButton(this.$route.path)
+  },
+
+  watch: {
+    '$route' (to, from) {
+      this.updateBackButton(this.$route.path)
+    }
+  },
+
+  methods: {
+    updateBackButton (currentRoute) {
+      this.showBackButton = (currentRoute !== '/')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import './static/css/_variables.scss';
-
-
-.navbar-dark.bg-inverse.translucent {
-    .navbar-brand {
-
-    }
-}
 
 // Select the dark translucent navbar
 .navbar-dark.bg-inverse.translucent {
@@ -166,5 +181,4 @@ export default {
 
     }
 }
-
 </style>
