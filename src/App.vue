@@ -109,6 +109,21 @@ body {
     }
 }
 
+  // Add new card style called subsection with inverse color (reusable component)
+  .card.subsection {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+    margin-bottom: 40px;
+  }
+  .card.subsection-inverse {
+    @extend .card.subsection;
+    background-color: #333;
+    border-color: #333;
+ }
+
 // Modify default pagination styles, mostly color (not inside section because it may get reused)
 ul.pagination {
     .page-item {
