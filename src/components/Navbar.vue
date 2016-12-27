@@ -23,7 +23,7 @@
     <div class="collapse text-xs-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
-          <a href="/" class="btn btn-outline-secondary active btn-watchface" role="button">
+          <a href="#/" class="btn btn-outline-secondary active btn-watchface" role="button">
             <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconWatchface"></use>
             </svg>
@@ -64,7 +64,7 @@ export default {
 
   methods: {
     updateBackButton (currentRoute) {
-      this.showBackButton = (currentRoute !== '/')
+      this.showBackButton = (currentRoute !== '/' && currentRoute !== '/apps')
     }
   }
 }
