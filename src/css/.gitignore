@@ -1,2 +1,0 @@
-#We're using SASS. Don't keep the vestigial CSS files, shouldn't be edited anyways.
-*.css
