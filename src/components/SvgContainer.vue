@@ -189,7 +189,7 @@ export default {
                 svg {
                     margin-bottom: -6px;
                     position: relative;
-                    top: -0.6px;
+                    top: 1px;
                 }
             }
 

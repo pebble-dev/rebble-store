@@ -108,6 +108,11 @@ export default {
           // Items in the right
           &.right {
             right: 16px;
+            
+            // Search Icon
+            a.search {
+              padding-top: 5px; // Move it down
+            }
           }
 
           // Items in the left
