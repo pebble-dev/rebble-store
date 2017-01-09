@@ -5,7 +5,7 @@
         <img src="https://assets.getpebble.com/api/file/qaQdjUUrSOq0psR1XHDp/convert?cache=true&fit=crop&w=720&h=320" alt="App Banner">
       </div>
     </header>
-    <div class="card subsection-inverse card-inverse text-left p-1 app-title-bar">
+    <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
       <img class="app-icon" src="https://assets.getpebble.com/api/file/9AfKJDBBS72iAYR4WpgK/convert?cache=true&fit=crop&w=48&h=48" alt="My App">
       <div class="title-author">
         <h1 class="tile">Snowy</h1>
@@ -41,7 +41,7 @@
       <div class="screenshot-spacer"></div>
     </div>
 
-    <div class="card subsection text-left p-1 app-details">
+    <div class="card subsection text-left p-3 app-details">
       <h1>Description</h1> <hr>
       <pre class="description">Snowy is the most popular personal assistant for Pebble Time. Set reminders, translate sentences, control your home through IFTTT - you name it, and chances are Snowy can help you out.
 
@@ -75,7 +75,7 @@
           <td>Mathew Reiss</td>
         </tr>
         <tr>
-          <td>badges</td>
+          <td>Tags</td>
           <td><a href="#"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a></td>
         </tr>
         <tr>
