@@ -1,8 +1,8 @@
 <template>
   <div>
     <home-slider></home-slider>
-    <main class="apps container">
-      <div class="card subsection-inverse card-inverse text-center tags p-1">
+    <main class="apps container text-xs-center">
+      <div class="card subsection-inverse card-inverse text-xs-center p-1">
         <a href="#/category"><span class="badge badge-pill badge-pebble">Daily</span></a>
         <a href="#/category"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a>
         <a href="#/category"><span class="badge badge-pill badge-pebble">Notifications</span></a>
