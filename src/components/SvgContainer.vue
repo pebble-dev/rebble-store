@@ -58,7 +58,7 @@
 
 
     <svg id="iconSearch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g fill="none" fill-rule="evenodd" stroke="#000000">
+          <g fill="none" fill-rule="evenodd" stroke="#fffff">
             <polygon stroke-width="1.5" points="13.157 15.645 15.157 13.645 22 20 20 22"/>
             <polygon stroke-width="2" points="2 6.002 6 2 12 2 16 6.002 16 12.017 12 16 6 16 2 12.017" transform="rotate(-20 9 9)"/>
             <polyline points="10.5 5 12.5 6 13.5 9"/>
@@ -103,7 +103,7 @@ export default {
 
   .icon-search {
     fill: transparent;
-    stroke: #ccc;
+    stroke: rgba(255, 255, 255, 0.5);
   }
 
   .btn-watchface svg, .btn-app svg {
@@ -189,7 +189,7 @@ export default {
                 svg {
                     margin-bottom: -6px;
                     position: relative;
-                    top: -0.6px;
+                    top: 1px;
                 }
             }
 
