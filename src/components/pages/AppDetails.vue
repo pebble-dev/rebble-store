@@ -5,14 +5,14 @@
         <img src="https://assets.getpebble.com/api/file/qaQdjUUrSOq0psR1XHDp/convert?cache=true&fit=crop&w=720&h=320" alt="App Banner">
       </div>
     </header>
-    <div class="card subsection-inverse card-inverse text-xs-left p-1 app-title-bar">
+    <div class="card subsection-inverse card-inverse text-left p-1 app-title-bar">
       <img class="app-icon" src="https://assets.getpebble.com/api/file/9AfKJDBBS72iAYR4WpgK/convert?cache=true&fit=crop&w=48&h=48" alt="My App">
       <div class="title-author">
         <h1 class="tile">Snowy</h1>
         <h2 class="author">Mathew Reiss</h2>
       </div>
 
-      <div class="app-button-container float-xs-right">
+      <div class="app-button-container float-right">
         <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
         <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
           <use xlink:href="#iconThumbsUp"></use>
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <main class="text-xs-center">
+    <main class="text-center">
     <div class="screenshots dragscroll">
       <div class="screenshot-spacer"></div>
       <div class="screenshot"><img src="https://assets.getpebble.com/api/file/DldSOh50Q6u3wizbbkuh/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
@@ -41,7 +41,7 @@
       <div class="screenshot-spacer"></div>
     </div>
 
-    <div class="card subsection text-xs-left p-1 app-details">
+    <div class="card subsection text-left p-1 app-details">
       <h1>Description</h1> <hr>
       <pre class="description">Snowy is the most popular personal assistant for Pebble Time. Set reminders, translate sentences, control your home through IFTTT - you name it, and chances are Snowy can help you out.
 
@@ -67,7 +67,7 @@
 
       PORTUGUÊS (Beta): mydogsnowy.com/pt
 
-      Tags: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
+      badges: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
 
       <table class="extra-table">
         <tr>
@@ -75,8 +75,8 @@
           <td>Mathew Reiss</td>
         </tr>
         <tr>
-          <td>Tags</td>
-          <td><a href="#"><span class="tag tag-pill tag-pebble">Tools & Utilities</span></a></td>
+          <td>badges</td>
+          <td><a href="#"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a></td>
         </tr>
         <tr>
           <td>Updated</td>
@@ -89,20 +89,20 @@
       </table>
       <a href="#/app-versions" class="app-button">
         <div>
-          Version information <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+          Version information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
       <a href="#" class="app-button">
         <div>
-          Website Link <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+          Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
       <a href="#" class="app-button">
-        <div>Support <i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
       <a href="#/author" class="app-button">
-        <div>More From This Developer<i class="fa fa-angle-right float-xs-right" aria-hidden="true"></i>
+        <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
     </div>

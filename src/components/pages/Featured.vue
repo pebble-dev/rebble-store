@@ -5,10 +5,10 @@
         <h3>Featured</h3>
       </div>
     </header>
-    <main class="apps container text-xs-center">
+    <main class="apps container text-center">
       <card-collection :showTop="false"></card-collection>
 
-      <nav class="text-xs-center">
+      <nav class="text-center">
         <ul class="pagination">
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-label="Previous">

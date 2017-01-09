@@ -5,7 +5,7 @@
         <h3>Apps by: sGerli</h3>
       </div>
     </header>
-    <main class="apps container text-xs-center">
+    <main class="apps container text-center">
       <card-collection :showTop="false"></card-collection>
       <nav>
         <ul class="pagination">

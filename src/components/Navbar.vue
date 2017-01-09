@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse text-sm-center translucent">
+  <nav class="navbar fixed-top navbar-inverse bg-inverse text-sm-center translucent">
     <div class="navbar-container">
       <div class="navbar__items left" v-show="showBackButton">
-        <a class="float-xs-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        <a class="float-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
       </div>
       <a class="navbar-brand" href="/#">
         Rebble Store
@@ -12,7 +12,9 @@
         </small>
       </a>
       <div class="navbar__items right">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="search" href="#/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSearch"></use>
@@ -20,7 +22,7 @@
         </a>
       </div>
     </div>
-    <div class="collapse text-xs-center" id="categorySelector">
+    <div class="collapse text-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
           <a href="#/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
@@ -81,7 +83,7 @@ export default {
 @import './static/css/_variables.scss';
 
 // Select the dark translucent navbar
-.navbar-dark.bg-inverse.translucent {
+.navbar-inverse.bg-inverse.translucent {
   .navbar-container {
     // Fix navbar being smaller than 58px
     min-height: 42px;
@@ -108,7 +110,7 @@ export default {
           // Items in the right
           &.right {
             right: 16px;
-            
+
             // Search Icon
             a.search {
               padding-top: 5px; // Move it down

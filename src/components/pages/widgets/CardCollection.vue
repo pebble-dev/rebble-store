@@ -1,10 +1,10 @@
 <template>
   <section>
     <div class="header" v-if="showTop">
-      <h6 class="text-xs-left">
+      <h6 class="text-left">
         <div class="pebble">{{ elTitle }}</div>
       </h6>
-      <small><a class="text-xs-right" href="#/featured">See All ></a></small>
+      <small><a class="text-right" href="#/featured">See All ></a></small>
     </div>
     <div class="card-columns">
       <single-card v-for="n in 8"></single-card>
