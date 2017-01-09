@@ -5,8 +5,8 @@
             <h3>Games</h3>
         </div>
     </header>
-    <main class="apps container text-xs-center">
-        <div class="text-xs-center header-tool">
+    <main class="apps container text-center">
+        <div class="text-center header-tool">
           <div class="btn-group btn-group-sm" role="group">
             <a href="#" class="btn btn-outline-secondary active" role="button">Top Apps</a>
             <a href="#" class="btn btn-outline-secondary" role="button">New Releases</a>

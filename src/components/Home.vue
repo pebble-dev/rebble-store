@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-slider></home-slider>
-    <main class="apps container text-xs-center">
+    <main class="apps container text-center">
       <card-collection elTitle="Most Recent"></card-collection>
       <card-collection elTitle="Fresh Picks"></card-collection>
     </main>

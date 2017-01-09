@@ -5,14 +5,14 @@
         <img src="https://assets.getpebble.com/api/file/qaQdjUUrSOq0psR1XHDp/convert?cache=true&fit=crop&w=720&h=320" alt="App Banner">
     </div>
     </header>
-    <div class="card subsection-inverse card-inverse text-xs-left p-1 app-title-bar">
+    <div class="card subsection-inverse card-inverse text-left p-1 app-title-bar">
       <img class="app-icon" src="https://assets.getpebble.com/api/file/9AfKJDBBS72iAYR4WpgK/convert?cache=true&fit=crop&w=48&h=48" alt="My App">
       <div class="title-author">
         <h1 class="tile">Snowy</h1>
         <h2 class="author">Mathew Reiss</h2>
       </div>
 
-      <div class="app-button-container float-xs-right">
+      <div class="app-button-container float-right">
         <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
         <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
           <use xlink:href="#iconThumbsUp"></use>
@@ -29,13 +29,13 @@
       </div>
     </div>
 
-    <main class="text-xs-center">
-      <div class="card subsection text-xs-left p-1 app-details">
-        <h2>Version 4.4</h2> <h3 class="float-xs-right">Dec 7, 2016</h3><hr>
+    <main class="text-center">
+      <div class="card subsection text-left p-1 app-details">
+        <h2>Version 4.4</h2> <h3 class="float-right">Dec 7, 2016</h3><hr>
         <pre class="description">Pre-apocalyptic release with some new features and bug-fixes (change log coming post-apocalypse). This has been a wild ride y'all. Not sure if anyone even reads these, but it's been an honor and a privilege to work with such a great community over the last few years. Stay awesome, Pebblers.</pre>
       </div>
-      <div class="card subsection text-xs-left p-1 app-details">
-        <h2>Version 4.3</h2> <h3 class="float-xs-right">Oct 20, 2016</h3><hr>
+      <div class="card subsection text-left p-1 app-details">
+        <h2>Version 4.3</h2> <h3 class="float-right">Oct 20, 2016</h3><hr>
         <pre class="description">No information available</pre>
       </div>
     </main>
