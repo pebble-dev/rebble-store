@@ -122,7 +122,7 @@ export default {
             // Back arrow button
             a.back {
                 font-size: 27px;
-                color: #a5a6a7;
+                color: rgba(255, 255, 255, 0.5);
 
                 // Add margin on breakpoint to prevent brand from being really close
                 @media screen and (max-width: map-get($grid-breakpoints, sm)) {
