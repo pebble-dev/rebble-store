@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="text-center">
     <div class="header" v-if="showTop">
       <h6 class="text-left">
         <div class="pebble">{{ elTitle }}</div>
