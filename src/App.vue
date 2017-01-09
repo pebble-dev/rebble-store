@@ -88,8 +88,8 @@ body {
   display: inline;
 }
 
-// Pebble colored tag
-.tag-pebble {
+// Pebble colored badge
+.badge-pebble {
     background-color: $pebble-color;
     //color: #333;
 }

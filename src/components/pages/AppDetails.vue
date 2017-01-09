@@ -67,7 +67,7 @@
 
       PORTUGUÊS (Beta): mydogsnowy.com/pt
 
-      Tags: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
+      badges: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
 
       <table class="extra-table">
         <tr>
@@ -75,8 +75,8 @@
           <td>Mathew Reiss</td>
         </tr>
         <tr>
-          <td>Tags</td>
-          <td><a href="#"><span class="tag tag-pill tag-pebble">Tools & Utilities</span></a></td>
+          <td>badges</td>
+          <td><a href="#"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a></td>
         </tr>
         <tr>
           <td>Updated</td>
