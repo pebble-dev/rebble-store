@@ -149,7 +149,12 @@ export default {
       }
 
     }
-    background-color: rgba(55, 58, 60, 0.95)!important;
+
+    @supports (not (backdrop-filter: blur(10px))) and (not (-webkit-backdrop-filter: blur(10px))) {
+      // Only if doesn't supports backdrop filters
+      background-color: rgba(55, 58, 60, 0.95) !important;
+
+    }
 
 
     @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
@@ -158,7 +163,6 @@ export default {
 
          // Make the navbar background blurry
          backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
     }
 }
 
