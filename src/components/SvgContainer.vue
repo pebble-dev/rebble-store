@@ -103,7 +103,9 @@ export default {
 
   .icon-search {
     fill: transparent;
-    stroke: rgba(255, 255, 255, 0.5);
+    stroke: #9b9d9e;
+    // This should be the color but the overlapping paths make it not ideal because it is 50% translucent
+    // stroke: rgba(255, 255, 255, 0.5);
   }
 
   .btn-watchface svg, .btn-app svg {
