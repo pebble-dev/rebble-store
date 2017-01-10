@@ -35,6 +35,11 @@ export default {
             outline: none;
             text-decoration: none;
         }
+        @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+          &:last-child, &:nth-last-child(2) {
+            display: none;
+          }
+        }
 
         .card {
             max-width: 170px;
