@@ -90,7 +90,7 @@ export default {
 
       // Navbar brand (app logo or title) styles
       .navbar-brand {
-          float: none;
+          display: initial;
           margin: 0;
           position: relative;
           top: 5px;
