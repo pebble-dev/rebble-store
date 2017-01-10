@@ -139,9 +139,13 @@ export default {
   /*
     We're triggering the hover on the parent button instead of the SVG.
    */
-  .btn-thumbs-up:hover .icon-thumbs-up {
-    fill: #ccc;
-    stroke: #333;
+  .btn-thumbs-up{
+    &:hover, &.active, &:active{
+       .icon-thumbs-up {
+        fill: #ccc;
+        stroke: #333;
+      }
+    }
   }
 
   .btn-download:hover svg {

@@ -232,7 +232,7 @@ export default {
         // Set thumbs up button styles
         &.btn-thumbs-up {
           // Styles for when it is in focus, hovered, or active
-          &:hover, &:focus, &.active {
+          &:hover, &:active, &.active {
             color: #333;
             outline: none;
           }

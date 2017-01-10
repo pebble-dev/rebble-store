@@ -115,6 +115,11 @@ body {
         background-color: $pebble-color;
         color: #333;
     }
+
+    &:focus {
+      // Override some bootstrap styles
+      color: $pebble-color;
+    }
 }
 
   // Add new card style called subsection with inverse color (reusable component)
