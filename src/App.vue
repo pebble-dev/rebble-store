@@ -62,6 +62,14 @@ b {
     font-weight: 700;
 }
 
+.btn {
+  // Remove transitions from .btn
+  transition: none;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 body {
   background-color: $main-bg-color;
 
