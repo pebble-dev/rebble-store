@@ -48,6 +48,7 @@ export default {
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {
                 max-width: 32vw;
                 display: inline-block;
+                margin-bottom: .75rem;
 
                 .card-block {
                     padding-left: 0.2rem;
