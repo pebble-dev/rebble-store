@@ -11,12 +11,12 @@
         <div class="carousel-item"><img class="d-block img-fluid" src="https:/assets.getpebble.com/api/file/kionqG5sSACzS3au4yZo/convert?cache=true&fit=crop&w=720&h=320" alt="Second slide"></div>
         <div class="carousel-item"><img class="d-block img-fluid" src="https:/assets.getpebble.com/api/file/3HYkoCo7SzIaEyYlizBA/convert?cache=true&fit=crop&w=720&h=320" alt="Third slide"></div>
       </div>
-      <a class="carousel-control-prev" href="#featured-carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <a class="carousel-control carousel-control-prev" href="#featured-carousel" role="button" data-slide="prev">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#featured-carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <a class="carousel-control carousel-control-next" href="#featured-carousel" role="button" data-slide="next">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
         <span class="sr-only">Next</span>
       </a>
     </div>
@@ -37,6 +37,22 @@ export default {
     margin-right: auto;
     background-color: #000;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+
+    .carousel-indicators {
+      // Slide indicators, make them smaller with browser resize
+      margin-bottom: 0;
+      margin-left: 30%;
+      margin-right: 30%;
+
+    }
+
+    .carousel-control {
+      i {
+        // carousel control < > icons
+        font-size: 30px;
+      }
+    }
+
     .carousel-item.active {
       display: block;
     }
