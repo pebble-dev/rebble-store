@@ -8,11 +8,11 @@
     <main class="apps container text-center">
       <card-collection :showTop="false"></card-collection>
 
-      <nav class="text-center">
+      <nav>
         <ul class="pagination">
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
               <span class="sr-only">Previous</span>
             </a>
           </li>
@@ -25,7 +25,7 @@
           <li class="page-item"><a class="page-link" href="#">5</a></li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
+              <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
               <span class="sr-only">Next</span>
             </a>
           </li>
