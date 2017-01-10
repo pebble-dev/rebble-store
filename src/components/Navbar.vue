@@ -115,6 +115,13 @@ export default {
             a.search {
               padding-top: 5px; // Move it down
             }
+
+            // Hamburger icon
+            .navbar-toggler {
+              cursor: pointer;
+              padding: .25rem .5rem;
+              margin-right: .25rem;
+            }
           }
 
           // Items in the left
