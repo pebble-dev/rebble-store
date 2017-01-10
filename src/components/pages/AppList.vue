@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-slider></home-slider>
+    <slider></slider>
     <main class="apps container">
       <div class="card subsection-inverse card-inverse text-center tags p-1">
         <a href="#/category"><span class="badge badge-pill badge-pebble">Daily</span></a>
@@ -22,13 +22,13 @@
 
 <script>
 import CardCollection from './widgets/CardCollection'
-import HomeSlider from '../HomeSlider'
+import Slider from '../Slider'
 
 export default {
   name: 'app-list',
   components: {
     CardCollection,
-    HomeSlider
+    Slider
   }
 }
 </script>

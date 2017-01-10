@@ -90,7 +90,7 @@ export default {
 
       // Navbar brand (app logo or title) styles
       .navbar-brand {
-          float: none;
+          display: initial;
           margin: 0;
           position: relative;
           top: 5px;
@@ -114,6 +114,13 @@ export default {
             // Search Icon
             a.search {
               padding-top: 5px; // Move it down
+            }
+
+            // Hamburger icon
+            .navbar-toggler {
+              cursor: pointer;
+              padding: .25rem .5rem;
+              margin-right: .25rem;
             }
           }
 

@@ -62,6 +62,14 @@ b {
     font-weight: 700;
 }
 
+.btn {
+  // Remove transitions from .btn
+  transition: none;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 body {
   background-color: $main-bg-color;
 
@@ -106,6 +114,11 @@ body {
     &:hover {
         background-color: $pebble-color;
         color: #333;
+    }
+
+    &:focus {
+      // Override some bootstrap styles
+      color: $pebble-color;
     }
 }
 
