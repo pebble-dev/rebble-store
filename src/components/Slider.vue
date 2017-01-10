@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'home-slider'
+  name: 'slider'
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-slider></home-slider>
+    <slider></slider>
     <main class="apps container text-center">
       <card-collection elTitle="Most Recent"></card-collection>
       <card-collection elTitle="Fresh Picks"></card-collection>
@@ -10,13 +10,13 @@
 
 <script>
 import CardCollection from './pages/widgets/CardCollection'
-import HomeSlider from './HomeSlider'
+import Slider from './Slider'
 
 export default {
   name: 'Home',
   components: {
     CardCollection,
-    HomeSlider
+    Slider
   }
 }
 </script>
