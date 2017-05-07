@@ -1,7 +1,7 @@
 {
 	"name": "Rebble App Store",
   "short_name": "Rebble Store",
-  "description": "Browse rebble apps on the rebble app store.",
+  "description": "Browse Pebble apps on the Pebble app store.",
   "lang":"en",
   "dir":"ltr",
 	"icons": [
