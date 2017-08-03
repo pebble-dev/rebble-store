@@ -30,82 +30,83 @@
     </div>
 
     <main class="text-center">
-    <div class="screenshots dragscroll">
-      <div class="screenshot-spacer"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/DldSOh50Q6u3wizbbkuh/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/Wg9B2VfHSZecpH12rGBc/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/iZ2JfX8ERDq7RosEBLDp/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/ZehJwnicQjmPRHcoAWzn/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/tfA108w2QBiqT3YIBbdY/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot"><img src="https://assets.getpebble.com/api/file/tfA108w2QBiqT3YIBbdY/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
-      <div class="screenshot-spacer"></div>
-    </div>
+      <div class="screenshots dragscroll">
+        <div class="screenshot-spacer"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/DldSOh50Q6u3wizbbkuh/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/Wg9B2VfHSZecpH12rGBc/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/iZ2JfX8ERDq7RosEBLDp/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/ZehJwnicQjmPRHcoAWzn/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/tfA108w2QBiqT3YIBbdY/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot"><img src="https://assets.getpebble.com/api/file/tfA108w2QBiqT3YIBbdY/convert?cache=true&fit=crop&w=144&h=168" alt="screenshot"></div>
+        <div class="screenshot-spacer"></div>
+      </div>
 
-    <div class="card subsection text-left p-3 app-details">
-      <h1>Description</h1> <hr>
-      <pre class="description">Snowy is the most popular personal assistant for Pebble Time. Set reminders, translate sentences, control your home through IFTTT - you name it, and chances are Snowy can help you out.
+      <div class="card subsection text-left p-3 app-details">
+        <h1>Description</h1> <hr>
+        <pre class="description">Snowy is the most popular personal assistant for Pebble Time. Set reminders, translate sentences, control your home through IFTTT - you name it, and chances are Snowy can help you out.
 
-      For just $2.99 through KiezelPay, you can have the app voted "Most Creative Project" at the 2015 Pebble Developer Retreat, and one of Eric Migicovsky's (Founder and CEO of Pebble) favorite apps! Download Snowy and follow the onscreen instructions for obtaining a license. No companion app, no hassle, all awesome.
+        For just $2.99 through KiezelPay, you can have the app voted "Most Creative Project" at the 2015 Pebble Developer Retreat, and one of Eric Migicovsky's (Founder and CEO of Pebble) favorite apps! Download Snowy and follow the onscreen instructions for obtaining a license. No companion app, no hassle, all awesome.
 
-      The Pebble smartwatch just got a little smarter...
+        The Pebble smartwatch just got a little smarter...
 
-      ---
+        ---
 
-      For more information, visit MyDogSnowy.com, and if you love Snowy, remember to give him a ❤️!
+        For more information, visit MyDogSnowy.com, and if you love Snowy, remember to give him a ❤️!
 
-      ===
+        ===
 
-      DANSK (Beta): mydogsnowy.com/da
+        DANSK (Beta): mydogsnowy.com/da
 
-      DEUTSCH: mydogsnowy.com/de
+        DEUTSCH: mydogsnowy.com/de
 
-      ESPAÑOL: mydogsnowy.com/es
+        ESPAÑOL: mydogsnowy.com/es
 
-      FRANÇAIS: mydogsnowy.com/fr
+        FRANÇAIS: mydogsnowy.com/fr
 
-      ITALIANO: mydogsnowy.com/it
+        ITALIANO: mydogsnowy.com/it
 
-      PORTUGUÊS (Beta): mydogsnowy.com/pt
+        PORTUGUÊS (Beta): mydogsnowy.com/pt
 
-      badges: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
+        badges: Siri, Cortana, Google Now, Personal Assistant, Voice, Dog, pmkey.xyz</pre>
 
-      <table class="extra-table">
-        <tr>
-          <td>Developer</td>
-          <td>Mathew Reiss</td>
-        </tr>
-        <tr>
-          <td>Tags</td>
-          <td><a href="#"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a></td>
-        </tr>
-        <tr>
-          <td>Updated</td>
-          <td>Dec 7, 2016</td>
-        </tr>
-        <tr>
-          <td>Version</td>
-          <td>4.4</td>
-        </tr>
-      </table>
-      <a href="#/app-versions" class="app-button">
-        <div>
-          Version information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
-      </a>
-      <a href="#" class="app-button">
-        <div>
-          Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
-      </a>
-      <a href="#" class="app-button">
-        <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
-      </a>
-      <a href="#/author" class="app-button">
-        <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
-      </a>
-    </div>
+        <table class="extra-table">
+          <tr>
+            <td>Developer</td>
+            <td>Mathew Reiss</td>
+          </tr>
+          <tr>
+            <td>Tags</td>
+            <td><a href="#"><span class="badge badge-pill badge-pebble">Tools & Utilities</span></a></td>
+          </tr>
+          <tr>
+            <td>Updated</td>
+            <td>Dec 7, 2016</td>
+          </tr>
+          <tr>
+            <td>Version</td>
+            <td>4.4</td>
+          </tr>
+        </table>
+        <a href="#/app-versions" class="app-button">
+          <div>
+            Version information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a href="#" class="app-button">
+          <div>
+            Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a href="#" class="app-button">
+          <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a href="#/author" class="app-button">
+          <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </main>
   </section>
 </template>
 
