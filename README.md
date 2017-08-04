@@ -1,10 +1,16 @@
 # Rebble Store for pebble
-Rebble Store is a Pebble App store.
-If you want to contribute send us a PM.
+The Rebble Store is a Pebble Appstore replacement.
+
+If you want to contribute join us on the [Pebble Dev Discord server](http://discord.gg/aRUAYFN), then head to `#appstore`.
 
 This is the Rebble replacement for the Pebble app store. This project is under active development, though the eventual goal is to reach feature parity with the current Pebble smartwatch app store.
 
 This project is built with [VueJS 2](https://vuejs.org/), with webpack scripts included for debugging, hot-reload, and production builds. More information on the Vue webpack build scripts can be found [here](https://github.com/vuejs-templates/webpack).
+
+## Backend/API
+This project has a separate backend/api with a Python option and a GoLang option, for now the main one with all the issues is Golang.
+- **GoLang:** https://github.com/pebble-dev/rebblestore-api
+- **Python:** https://github.com/pebble-dev/rebblestore-api-python
 
 ## Installing
 
