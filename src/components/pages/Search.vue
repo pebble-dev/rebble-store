@@ -62,7 +62,6 @@ export default {
         window.$.getJSON(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText), function (j, s) {
           if (s === 'success') {
             that.searchResults = j
-            console.log(that.searchResults)
           } else {
             console.error(s)
             console.error(j)

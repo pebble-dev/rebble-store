@@ -160,6 +160,7 @@ ul.pagination {
          .page-link {
             // Change text colot
             color: $pebble-color;
+            cursor: pointer;
             &:hover, &:focus  {
                 // Overwrite hover and focus states
                 text-decoration: none;

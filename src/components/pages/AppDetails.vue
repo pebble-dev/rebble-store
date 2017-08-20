@@ -22,7 +22,7 @@
           <tr>
             <td>Tags</td>
             <td v-for="tag in app.appInfo.tags">
-              <a href="#"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></a>
+              <a v-bind:href="'/collection/' + tag.id"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></a>
             </td>
           </tr>
           <tr>

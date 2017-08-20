@@ -12,6 +12,7 @@ import AppDetails from './components/pages/AppDetails'
 import AppVersions from './components/pages/AppVersions'
 import Author from './components/pages/Author'
 import Search from './components/pages/Search'
+import Collection from './components/pages/Collection'
 import Settings from './components/pages/Settings'
 import Error from './components/pages/Error'
 
@@ -33,6 +34,7 @@ const routes = [
   {path: '/app-versions/:id', component: AppVersions},
   {path: '/author', component: Author},
   {path: '/search', component: Search},
+  {path: '/collection/:id', component: Collection},
   {path: '/settings', component: Settings},
   {path: '*', component: Error}
 ]
