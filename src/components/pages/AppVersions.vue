@@ -2,49 +2,92 @@
   <div>
     <header>
       <div class="app-banner">
-        <img src="https://assets.getpebble.com/api/file/qaQdjUUrSOq0psR1XHDp/convert?cache=true&fit=crop&w=720&h=320" alt="App Banner">
-    </div>
+        <img v-if="app.assets.appBanner != ''" v-bind:src="app.assets.appBanner" alt="App Banner">
+      </div>
     </header>
-    <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
-      <img class="app-icon" src="https://assets.getpebble.com/api/file/9AfKJDBBS72iAYR4WpgK/convert?cache=true&fit=crop&w=48&h=48" alt="My App">
-      <div class="title-author">
-        <h1 class="tile">Snowy</h1>
-        <h2 class="author">Mathew Reiss</h2>
-      </div>
-
-      <div class="app-button-container float-right">
-        <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
-        <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
-          <use xlink:href="#iconThumbsUp"></use>
-        </svg>
-
-        2.3K
-        </button>
-        <a href="pebble://appstore/57ef907a05e4b17e1c000186" class="btn btn-outline-pebble btn-download">
-        <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
-          <use xlink:href="#iconDownload"></use>
-        </svg>
-        GET
-        </a>
-      </div>
-    </div>
+    <app-title-bar v-bind:app="app"></app-title-bar>
 
     <main class="text-center">
-      <div class="card subsection text-left p-3 app-details">
-        <h2>Version 4.4</h2> <h3 class="float-right">Dec 7, 2016</h3><hr>
-        <pre class="description">Pre-apocalyptic release with some new features and bug-fixes (change log coming post-apocalypse). This has been a wild ride y'all. Not sure if anyone even reads these, but it's been an honor and a privilege to work with such a great community over the last few years. Stay awesome, Pebblers.</pre>
-      </div>
-      <div class="card subsection text-left p-3 app-details">
-        <h2>Version 4.3</h2> <h3 class="float-right">Oct 20, 2016</h3><hr>
-        <pre class="description">No information available</pre>
+      <div class="card subsection text-left p-3 app-details" v-for="version in versions.versions">
+        <h2>Version {{ version.number }}</h2> <h3 class="float-right">{{ version.release_date | formatDate }}</h3><hr>
+        <pre class="description">{{ version.description }}</pre>
       </div>
     </main>
   </div>
 </template>
 
 <script>
+import AppTitleBar from './widgets/AppTitleBar'
+
 export default {
-  name: 'app-version'
+  name: 'app-version',
+  components: {
+    AppTitleBar
+  },
+  data: function () {
+    return {
+      app: {
+        'id': '',
+        'title': '',
+        'author': {
+          'id': -1,
+          'name': ''
+        },
+        'description': '',
+        'thumbs_up': 0,
+        'type': '',
+        'supported_platforms': [],
+        'published_date': '2000-01-01T00:00:00.000+00:00',
+        'appInfo': {
+          'pbwUrl': '',
+          'rebbleReady': false,
+          'tags': [],
+          'updated': '2000-01-01T00:00:00.000+00:00',
+          'version': '',
+          'supportUrl': '',
+          'authorUrl': '',
+          'sourceUrl': ''
+        },
+        'assets': {
+          'appBanner': '',
+          'appIcon': '',
+          'screenshots': []
+        },
+        'doomsday_backup': false
+      },
+      versions: {
+        'versions': []
+      }
+    }
+  },
+  methods: {
+    get_versions: function (id) {
+      var that = this
+      window.$.getJSON('http://localhost:8080/dev/apps/get_versions/id/' + id, function (j, s) {
+        if (s === 'success') {
+          that.versions = j
+        } else {
+          console.error(s)
+          console.error(j)
+        }
+      })
+    },
+    get_app: function (id) {
+      var that = this
+      window.$.getJSON('http://localhost:8080/dev/apps/get_app/id/' + id, function (j, s) {
+        if (s === 'success') {
+          that.app = j
+        } else {
+          console.error(s)
+          console.error(j)
+        }
+      })
+    }
+  },
+  beforeMount: function () {
+    this.get_app(this.$route.params.id)
+    this.get_versions(this.$route.params.id)
+  }
 }
 </script>
 

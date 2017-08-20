@@ -12,7 +12,15 @@ import AppDetails from './components/pages/AppDetails'
 import AppVersions from './components/pages/AppVersions'
 import Author from './components/pages/Author'
 import Search from './components/pages/Search'
+import Settings from './components/pages/Settings'
 import Error from './components/pages/Error'
+
+Vue.filter('formatDate', function (d) {
+  var date = new Date(d)
+  if (date) {
+    return date.getFullYear() + '-' + ((date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + (date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate()))
+  }
+})
 
 Vue.use(VueRouter)
 
@@ -21,16 +29,17 @@ const routes = [
   {path: '/apps', component: AppList},
   {path: '/featured', component: Featured},
   {path: '/category', component: Category},
-  {path: '/app-details', component: AppDetails},
-  {path: '/app-versions', component: AppVersions},
+  {path: '/app-details/:id', component: AppDetails},
+  {path: '/app-versions/:id', component: AppVersions},
   {path: '/author', component: Author},
   {path: '/search', component: Search},
-  {path: '/error', component: Error}
+  {path: '/settings', component: Settings},
+  {path: '*', component: Error}
 ]
 
 const router = new VueRouter({
-  routes
-  // mode: 'history'
+  routes,
+  mode: 'history'
 })
 
 new Vue({

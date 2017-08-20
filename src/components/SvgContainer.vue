@@ -65,6 +65,25 @@
           </g>
         </svg>
 
+    <svg id="iconSettings" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g fill="none" fill-rule="evenodd">
+            <circle r="7" cx="12.5" cy="12.5" stroke-width="4"/>
+            <!-- bottom -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5"/>
+            <!-- top -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5" transform="rotate(180 12.5 12.5)"/>
+            <!-- left bottom -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5" transform="rotate(60 12.5 12.5)"/>
+            <!-- left top -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5" transform="rotate(120 12.5 12.5)"/>
+            <!-- right bottom -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5" transform="rotate(-60 12.5 12.5)"/>
+            <!-- right top -->
+            <polygon stroke-width="4" points="10.5,19.5 14.5,19.5 14,21.5 11,21.5" transform="rotate(-120 12.5 12.5)"/>
+            <!-- <polygon stroke-width="4" points="9,4.4 16,4.4 15.5,0.5 9.5,0.5"/> -->
+          </g>
+        </svg>
+
 
     <symbol id="iconApp" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
@@ -106,6 +125,11 @@ export default {
     stroke: #9b9d9e;
     // This should be the color but the overlapping paths make it not ideal because it is 50% translucent
     // stroke: rgba(255, 255, 255, 0.5);
+  }
+
+  .icon-settings {
+      fill: transparent;
+      stroke: #9b9d9e;
   }
 
   .btn-watchface svg, .btn-app svg {
