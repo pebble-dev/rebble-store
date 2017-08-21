@@ -6,10 +6,15 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <form>
-			  <input type="radio" id="sort-new" value="new" v-model="sort"> <label for="sort-new">Sort by New</label><br />
-			  <input type="radio" id="sort-popular" value="popular" v-model="sort"> <label for="sort-popular">Sort by popular</label><br />
-      </form>
+      <div class="btn-group" role="group">
+        <a v-bind:class="{ active: sort == 'new'}" v-on:click="sort = 'new'" class="btn btn-outline-secondary" role="button">
+          Sort by New
+        </a>
+
+        <a v-bind:class="{ active: sort == 'popular'}" v-on:click="sort = 'popular'" class="btn btn-outline-secondary" role="button">
+          Sort by Popular
+        </a>
+      </div>
 
       <card-collection :showTop="false" v-bind:cards="collection"></card-collection>
 
@@ -94,4 +99,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .btn-group {
+    margin-bottom: 25px;
+  }
 </style>
