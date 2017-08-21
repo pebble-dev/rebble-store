@@ -1,15 +1,15 @@
 <template>
-  <a href="#/app-details">
+  <a v-bind:href="'/app-details/' + card.id">
   <div class="card">
-    <img class="card-img-top" src="https://assets.getpebble.com/api/file/SAPbwhJzShmep72rvxTQ/convert?cache=true&fit=crop&w=144&h=168" alt="My Watchface">
+    <img class="card-img-top" v-bind:src="card.image_url" alt="App Icon">
     <div class="card-block text-xs-center">
-      <h4 class="card-title">My Watchface</h4>
+      <h6 class="card-title">{{ card.title }}</h6>
       <p class="card-text">
         <small class="text-muted">
           <svg class="svg-icon icon-inverted-thumbs-up" width="16px" height="16px" viewBox="0 0 25 25">
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
-          14.5K
+          {{ card.thumbs_up }}
         </small>
       </p>
     </div>
@@ -19,7 +19,16 @@
 
 <script>
 export default {
-  name: 'single-card'
+  name: 'single-card',
+  props: {
+    card: {
+      id: '',
+      title: '',
+      type: '',
+      image_url: '',
+      thumbs_up: 0
+    }
+  }
 }
 </script>
 
@@ -43,6 +52,10 @@ export default {
 
         .card {
             max-width: 170px;
+
+            .card-title {
+              word-wrap: break-word;
+            }
 
             // Make it smaller on small screens
             @media screen and (max-width: map-get($grid-breakpoints, sm)) {

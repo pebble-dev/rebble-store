@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar></navbar>
-      <router-view></router-view>
+      <router-view v-bind:backendUrl="backendUrl"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -22,6 +22,11 @@ export default {
     Navbar,
     Home,
     PageFooter
+  },
+  data: function () {
+    return {
+      backendUrl: 'http://localhost:8080'
+    }
   }
 }
 </script>
@@ -155,6 +160,7 @@ ul.pagination {
          .page-link {
             // Change text colot
             color: $pebble-color;
+            cursor: pointer;
             &:hover, &:focus  {
                 // Overwrite hover and focus states
                 text-decoration: none;

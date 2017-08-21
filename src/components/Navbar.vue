@@ -15,9 +15,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="search" href="#/search">
+        <a class="search" href="/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSearch"></use>
+          </svg>
+        </a>
+        <a class="settings" href="/settings">
+          <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <use xlink:href="#iconSettings"></use>
           </svg>
         </a>
       </div>
@@ -25,14 +30,14 @@
     <div class="collapse text-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
-          <a href="#/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
+          <a href="/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
             <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconWatchface"></use>
             </svg>
             Watchfaces
           </a>
 
-          <a href="#/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
+          <a href="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
             <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconApp"></use>
             </svg>
@@ -114,6 +119,11 @@ export default {
             // Search Icon
             a.search {
               padding-top: 5px; // Move it down
+            }
+
+            // Settings Icon
+            a.settings {
+              padding-top: 5px;
             }
 
             // Hamburger icon

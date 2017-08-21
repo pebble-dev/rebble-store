@@ -2,11 +2,11 @@
   <div>
     <header>
       <div class=" title-card search">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" v-model="searchText" v-on:keyup.enter="search">
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="searchResults"></card-collection>
 
       <nav>
         <ul class="pagination">
@@ -42,6 +42,33 @@ export default {
   name: 'search',
   components: {
     CardCollection
+  },
+  props: {
+    backendUrl: ''
+  },
+  data: function () {
+    return {
+      searchText: '',
+      searchResults: {
+        cards: []
+      }
+    }
+  },
+  methods: {
+    search: function () {
+      if (this.searchText !== '') {
+        var that = this
+
+        window.$.getJSON(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText), function (j, s) {
+          if (s === 'success') {
+            that.searchResults = j
+          } else {
+            console.error(s)
+            console.error(j)
+          }
+        })
+      }
+    }
   }
 }
 </script>
