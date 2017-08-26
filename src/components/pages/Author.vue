@@ -2,16 +2,17 @@
   <div>
     <header>
       <div class="title-card">
-        <h3>Apps by: sGerli</h3>
+        <h3>Apps by: {{ author.name }}</h3>
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:urlArguments="urlArguments"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="author" v-bind:urlArguments="urlArguments"></card-collection>
+
       <nav>
         <ul class="pagination">
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
               <span class="sr-only">Previous</span>
             </a>
           </li>
@@ -24,7 +25,7 @@
           <li class="page-item"><a class="page-link" href="#">5</a></li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
+              <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
               <span class="sr-only">Next</span>
             </a>
           </li>
@@ -43,16 +44,37 @@ export default {
     CardCollection
   },
   props: {
+    backendUrl: '',
     platform: ''
   },
   data: function () {
     return {
-      'urlArguments': ''
+      'urlArguments': '',
+      author: {
+        'id': 0,
+        'name': '',
+        'cards': []
+      }
+    }
+  },
+  methods: {
+    get_author: function (id) {
+      var that = this
+      window.$.getJSON(this.backendUrl + '/dev/author/id/' + id, function (j, s) {
+        if (s === 'success') {
+          that.author = j
+        } else {
+          console.error(s)
+          console.error(j)
+        }
+      })
     }
   },
   beforeMount: function () {
     // Set url arguments if exist
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
+
+    this.get_author(this.$route.params.id)
   }
 }
 </script>
