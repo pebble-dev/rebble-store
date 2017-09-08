@@ -25,7 +25,7 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'http://localhost:8080'
+      backendUrl: 'https://localhost:8080'
     }
   }
 }

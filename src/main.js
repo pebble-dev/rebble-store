@@ -14,6 +14,7 @@ import Author from './components/pages/Author'
 import Search from './components/pages/Search'
 import Collection from './components/pages/Collection'
 import Settings from './components/pages/Settings'
+import AccountRegister from './components/pages/AccountRegister'
 import Error from './components/pages/Error'
 
 Vue.filter('formatDate', function (d) {
@@ -36,6 +37,7 @@ const routes = [
   {path: '/search', component: Search},
   {path: '/collection/:id', component: Collection},
   {path: '/settings', component: Settings},
+  {path: '/user/register', component: AccountRegister},
   {path: '*', component: Error}
 ]
 

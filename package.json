@@ -15,7 +15,9 @@
   "dependencies": {
     "node-sass": "^4.1.1",
     "vue": "^2.1.0",
-    "vue-router": "^2.1.1"
+    "vue-recaptcha": "^0.4.0",
+    "vue-router": "^2.1.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
