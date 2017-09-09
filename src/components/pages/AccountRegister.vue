@@ -16,7 +16,7 @@
             <tr>
               <td><label for="password">Password</label></td>
               <td><input type="password" id="password" v-model="password" placeholder="Password" required /></td>
-              <td><span v-bind:style="'color: ' + password_color(password)">Time to crack: {{ zxcvbn(password).crack_times_display.online_no_throttling_10_per_second }}</span></td>
+              <td><span v-bind:style="'color: ' + password_color">Time to crack: {{ zxcvbn(password).crack_times_display.online_no_throttling_10_per_second }}</span></td>
             </tr>
             <tr>
               <td><label for="realName">Real Name (optional)</label></td>
@@ -28,7 +28,7 @@
                 </vue-recaptcha>
               </td>
               <td>
-                <input type="submit" value="Register" v-bind:disabled="captchaResponse == '' || !validUsername() || !validPassword() || registering" />
+                <input type="submit" value="Register" v-bind:disabled="captchaResponse == '' || !validUsername || !validPassword || registering" />
               </td>
             </tr>
           </table>
@@ -37,10 +37,10 @@
         <ul class="errors">
           <li class="importantError" v-show="registerErrorMessage !== ''">{{ registerErrorMessage }}</li>
           <li v-show="username === ''">Username required</li>
-          <li v-show="username !== '' && !validUsername()">Invalid username</li>
+          <li v-show="username !== '' && !validUsername">Invalid username</li>
           <li v-show="password === ''">Password required</li>
-          <li v-show="password !== '' && !validPassword() && password.length <= 255">Password too simple or too common</li>
-          <li v-show="password !== '' && !validPassword() && password.length > 255">Password too long (max. 255 characters)</li>
+          <li v-show="password !== '' && !validPassword && password.length <= 255">Password too simple or too common</li>
+          <li v-show="password !== '' && !validPassword && password.length > 255">Password too long (max. 255 characters)</li>
           <li v-show="captchaResponse === ''">Please complete the captcha</li>
         </ul>
       </div>
@@ -85,7 +85,7 @@ export default {
       this.captchaResponse = ''
     },
     register: function () {
-      if (!this.validUsername() || !this.validPassword() || this.captchaResponse === '') {
+      if (!this.validUsername || !this.validPassword || this.captchaResponse === '') {
         return
       }
 
@@ -118,6 +118,11 @@ export default {
       this.captchaResponse = ''
       this.$refs.recaptcha.reset()
     },
+    zxcvbn: function (password) {
+      return _zxcvbn(password)
+    }
+  },
+  computed: {
     validUsername: function () {
       if (this.username.length > 3 && /^[A-Za-z0-9_]+$/.test(this.username)) {
         return true
@@ -136,14 +141,10 @@ export default {
 
       return true
     },
-    password_color: function (password) {
-      var guesses = _zxcvbn(password).guesses_log10
+    password_color: function () {
+      var guesses = _zxcvbn(this.password).guesses_log10
 
       return 'rgb(' + Math.pow(2.7, -guesses / 20) * 255 + ', ' + (1 - Math.pow(2.7, -guesses / 20)) * 255 + ', 0)'
-    },
-    zxcvbn: function (password) {
-      console.log(Math.pow(2.7, -_zxcvbn(password).guesses_log10 / 10) * 255)
-      return _zxcvbn(password)
     }
   }
 }
