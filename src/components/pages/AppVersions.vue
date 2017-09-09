@@ -24,6 +24,9 @@ export default {
   components: {
     AppTitleBar
   },
+  props: {
+    backendUrl: ''
+  },
   data: function () {
     return {
       app: {
@@ -63,7 +66,7 @@ export default {
   methods: {
     get_versions: function (id) {
       var that = this
-      window.$.getJSON('http://localhost:8080/dev/apps/get_versions/id/' + id, function (j, s) {
+      window.$.getJSON(this.backendUrl + '/dev/apps/get_versions/id/' + id, function (j, s) {
         if (s === 'success') {
           that.versions = j
         } else {
@@ -74,7 +77,7 @@ export default {
     },
     get_app: function (id) {
       var that = this
-      window.$.getJSON('http://localhost:8080/dev/apps/get_app/id/' + id, function (j, s) {
+      window.$.getJSON(this.backendUrl + '/dev/apps/get_app/id/' + id, function (j, s) {
         if (s === 'success') {
           that.app = j
         } else {
