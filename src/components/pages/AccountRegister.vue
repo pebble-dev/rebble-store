@@ -24,7 +24,7 @@
             </tr>
             <tr>
               <td>
-                <vue-recaptcha ref="recaptcha" v-on:verify="onVerify" v-on:expired="onExpired" sitekey="6LfmYS8UAAAAAI1ecROp0s2Ym_TQq5OgRNLKDKYV">
+                <vue-recaptcha ref="recaptcha" v-on:verify="onVerify" v-on:expired="onExpired" sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
                 </vue-recaptcha>
               </td>
               <td>
