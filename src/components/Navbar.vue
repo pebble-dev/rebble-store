@@ -12,6 +12,9 @@
         </small>
       </a>
       <div class="navbar__items right">
+        <div class="account">
+          <a v-bind:href="accountInformation.loggedIn ? '#' : '/user/login'">{{ accountInformation.displayName }}</a>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,6 +55,15 @@
 <script>
 export default {
   name: 'navbar',
+
+  props: {
+    accountInformation: {
+      loggedIn: false,
+      displayName: 'Guest',
+      username: 'guest',
+      realName: 'guest'
+    }
+  },
 
   data () {
     return {
@@ -131,6 +143,14 @@ export default {
               cursor: pointer;
               padding: .25rem .5rem;
               margin-right: .25rem;
+            }
+
+            .account {
+              height: 25px;
+
+              a {
+                color: rgba(255, 255, 255, 0.5);
+              }
             }
           }
 

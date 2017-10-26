@@ -2,12 +2,19 @@
   <div>
     <header>
       <div class="title-card">
-        <h3>Register an account</h3>
+        <h3>Login</h3>
       </div>
     </header>
     <main class="apps container text-center">
-      <div v-show="!registerSuccess && !this.accountInformation.loggedIn">
-        <form v-on:submit.prevent="register">
+      <div v-show="this.accountInformation.loggedIn">
+        <p>
+          You are logged in.
+        </p>
+      </div>
+      <div v-show="!this.accountInformation.loggedIn">
+        Please complete this form to login.<br />
+        Want to <a href="/user/register">register</a> instead?
+        <form v-on:submit.prevent="login">
           <table>
             <tr>
               <td><label for="username">Username</label></td>
@@ -16,43 +23,26 @@
             <tr>
               <td><label for="password">Password</label></td>
               <td><input type="password" id="password" v-model="password" placeholder="Password" required /></td>
-              <td><span v-bind:style="'color: ' + password_color">Time to crack: {{ zxcvbn(password).crack_times_display.online_no_throttling_10_per_second }}</span></td>
             </tr>
             <tr>
-              <td><label for="realName">Real Name (optional)</label></td>
-              <td><input type="text" id="realName" v-model="realName" placeholder="John Smith" /></td>
-            </tr>
-            <tr>
-              <td>
+              <td v-show="rateLimited" max-width="5em;">
                 <vue-recaptcha ref="recaptcha" v-on:verify="onVerify" v-on:expired="onExpired" sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
                 </vue-recaptcha>
               </td>
               <td>
-                <input type="submit" value="Register" v-bind:disabled="captchaResponse == '' || !validUsername || !validPassword || registering" />
+                <input type="submit" value="Login" v-bind:disabled="(rateLimited && captchaResponse === '') || !validUsername || !validPassword || logingIn" />
               </td>
             </tr>
           </table>
         </form>
 
         <ul class="errors">
-          <li class="importantError" v-show="registerErrorMessage !== ''">{{ registerErrorMessage }}</li>
+          <li class="importantError" v-show="loginErrorMessage !== ''">{{ loginErrorMessage }}</li>
           <li v-show="username === ''">Username required</li>
           <li v-show="username !== '' && !validUsername">Invalid username</li>
           <li v-show="password === ''">Password required</li>
-          <li v-show="password !== '' && !validPassword && password.length <= 255">Password too simple or too common</li>
-          <li v-show="password !== '' && !validPassword && password.length > 255">Password too long (max. 255 characters)</li>
-          <li v-show="captchaResponse === ''">Please complete the captcha</li>
+          <li v-show="rateLimited && captchaResponse === ''">Please complete the captcha</li>
         </ul>
-      </div>
-      <div v-show="registerSuccess">
-        <p>
-          You have successfully registered your account.
-        </p>
-      </div>
-      <div v-show="this.accountInformation.loggedIn">
-        <p>
-          You are already logged in. <a href="/user/disconnect">Disconnect</a>?
-        </p>
       </div>
     </main>
   </div>
@@ -81,11 +71,10 @@ export default {
     return {
       username: '',
       password: '',
-      realName: '',
       captchaResponse: '',
-      registerErrorMessage: '',
-      registering: false,
-      registerSuccess: false
+      loginErrorMessage: '',
+      rateLimited: false,
+      logingIn: false
     }
   },
   methods: {
@@ -95,43 +84,47 @@ export default {
     onExpired: function () {
       this.captchaResponse = ''
     },
-    register: function () {
-      if (!this.validUsername || !this.validPassword || this.captchaResponse === '') {
+    login: function () {
+      if (!this.validUsername || !this.validPassword || (this.rateLimited && this.captchaResponse === '')) {
         return
       }
 
-      this.registering = true
-      this.registerErrorMessage = ''
+      this.logingIn = true
+      this.loginErrorMessage = ''
 
       var data = JSON.stringify({
         username: this.username,
         password: this.password,
-        realName: this.realName,
         captchaResponse: this.captchaResponse
       })
 
       var that = this
-      window.$.post(this.backendUrl + '/user/register', data, function (data) {
-        that.registering = false
+      window.$.post(this.backendUrl + '/user/login', data, function (data) {
+        that.logingIn = false
         if (typeof data !== 'object') {
-          that.registerError('Internal server error')
+          that.loginError('Internal server error')
         } else {
           if (data.success) {
             window.localStorage.setItem('sessionKey', data.sessionKey)
-            that.registerSuccess = true
+            that.accountInformation = {
+              loggedIn: true,
+              displayName: (data.displayName === '' ? data.username : data.realName),
+              username: data.username,
+              realName: data.realName
+            }
           } else {
-            that.registerError(data.errorMessage)
+            that.loginError(data.errorMessage)
+            if (data.rateLimited) {
+              that.rateLimited = true
+            }
           }
         }
       })
     },
-    registerError: function (message) {
-      this.registerErrorMessage = message
+    loginError: function (message) {
+      this.loginErrorMessage = message
       this.captchaResponse = ''
       this.$refs.recaptcha.reset()
-    },
-    zxcvbn: function (password) {
-      return _zxcvbn(password)
     }
   },
   computed: {

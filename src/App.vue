@@ -2,8 +2,8 @@
   <div id="app">
     <div class="flex-content">
       <svg-container></svg-container>
-      <navbar></navbar>
-      <router-view v-bind:backendUrl="backendUrl"></router-view>
+      <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -25,8 +25,47 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'https://localhost:8080'
+      backendUrl: 'https://localhost:8080',
+      sessionKey: window.localStorage.getItem('sessionKey'),
+      accountInformation: {
+        loggedIn: false,
+        displayName: 'Guest',
+        username: 'guest',
+        realName: 'guest'
+      }
     }
+  },
+  methods: {
+    getAccountInformation: function () {
+      console.log(this.sessionKey)
+      if (this.sessionKey != null) {
+        var that = this
+
+        var data = JSON.stringify({
+          sessionKey: this.sessionKey
+        })
+
+        window.$.post(this.backendUrl + '/user/status', data, function (data) {
+          if (typeof data !== 'object') {
+            that.registerError('Internal server error')
+          } else {
+            if (data.loggedIn) {
+              console.log('YAY')
+              that.accountInformation.loggedIn = true
+              that.accountInformation.username = data.username
+              that.accountInformation.realName = data.realName
+              that.accountInformation.displayName = (data.realName === '' ? data.username : data.realName)
+            } else {
+              window.localStorage.removeItem('sessionKey')
+              that.sessionKey = null
+            }
+          }
+        })
+      }
+    }
+  },
+  beforeMount: function () {
+    this.getAccountInformation()
   }
 }
 </script>
