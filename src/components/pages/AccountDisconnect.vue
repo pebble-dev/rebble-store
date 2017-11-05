@@ -6,12 +6,12 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <div v-show="!this.accountInformation.loggedIn">
+      <div v-show="!this.accountInformation.loggedIn || this.disconnected">
         <p>
           You are disconnected!
         </p>
       </div>
-      <div v-show="this.accountInformation.loggedIn">
+      <div v-show="this.accountInformation.loggedIn && !this.disconnected">
         <p>
           Are you sure you want to disconnect?
         </p>
@@ -22,14 +22,9 @@
 </template>
 
 <script>
-import VueRecaptcha from 'vue-recaptcha'
-
-var _zxcvbn = require('zxcvbn')
-
 export default {
-  name: 'search',
+  name: 'accountDisconnect',
   components: {
-    VueRecaptcha
   },
   props: {
     accountInformation: {
@@ -39,40 +34,15 @@ export default {
       realName: 'guest'
     }
   },
+  data: function () {
+    return {
+      disconnected: false
+    }
+  },
   methods: {
     disconnect: function () {
       window.localStorage.removeItem('sessionKey')
-      this.accountInformation = {
-        loggedIn: false,
-        displayName: 'Guest',
-        username: 'guest',
-        realName: 'guest'
-      }
-    }
-  },
-  computed: {
-    validUsername: function () {
-      if (this.username.length > 3 && /^[A-Za-z0-9_]+$/.test(this.username)) {
-        return true
-      } else {
-        return false
-      }
-    },
-    validPassword: function () {
-      if (this.password.length > 255) {
-        return false
-      }
-
-      if (_zxcvbn(this.password).guesses_log10 < 6) {
-        return false
-      }
-
-      return true
-    },
-    password_color: function () {
-      var guesses = _zxcvbn(this.password).guesses_log10
-
-      return 'rgb(' + Math.pow(2.7, -guesses / 20) * 255 + ', ' + (1 - Math.pow(2.7, -guesses / 20)) * 255 + ', 0)'
+      this.disconnected = true
     }
   }
 }

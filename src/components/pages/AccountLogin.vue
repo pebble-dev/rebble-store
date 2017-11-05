@@ -6,12 +6,12 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <div v-show="this.accountInformation.loggedIn">
+      <div v-show="this.accountInformation.loggedIn || this.loginSuccess">
         <p>
           You are logged in.
         </p>
       </div>
-      <div v-show="!this.accountInformation.loggedIn">
+      <div v-show="!this.accountInformation.loggedIn && !this.loginSuccess">
         Please complete this form to login.<br />
         Want to <a href="/user/register">register</a> instead?
         <form v-on:submit.prevent="login">
@@ -51,10 +51,8 @@
 <script>
 import VueRecaptcha from 'vue-recaptcha'
 
-var _zxcvbn = require('zxcvbn')
-
 export default {
-  name: 'search',
+  name: 'accountLogin',
   components: {
     VueRecaptcha
   },
@@ -74,7 +72,8 @@ export default {
       captchaResponse: '',
       loginErrorMessage: '',
       rateLimited: false,
-      logingIn: false
+      logingIn: false,
+      loginSuccess: false
     }
   },
   methods: {
@@ -106,12 +105,7 @@ export default {
         } else {
           if (data.success) {
             window.localStorage.setItem('sessionKey', data.sessionKey)
-            that.accountInformation = {
-              loggedIn: true,
-              displayName: (data.displayName === '' ? data.username : data.realName),
-              username: data.username,
-              realName: data.realName
-            }
+            that.loginSuccess = true
           } else {
             that.loginError(data.errorMessage)
             if (data.rateLimited) {
@@ -140,16 +134,7 @@ export default {
         return false
       }
 
-      if (_zxcvbn(this.password).guesses_log10 < 6) {
-        return false
-      }
-
       return true
-    },
-    password_color: function () {
-      var guesses = _zxcvbn(this.password).guesses_log10
-
-      return 'rgb(' + Math.pow(2.7, -guesses / 20) * 255 + ', ' + (1 - Math.pow(2.7, -guesses / 20)) * 255 + ', 0)'
     }
   }
 }

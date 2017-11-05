@@ -12,11 +12,17 @@
             <tr>
               <td><label for="username">Username</label></td>
               <td><input type="text" id="username" v-model="username" placeholder="Username" required /></td>
+              <td v-show="!validUsername" style="color:red">Invalid username</td>
             </tr>
             <tr>
               <td><label for="password">Password</label></td>
               <td><input type="password" id="password" v-model="password" placeholder="Password" required /></td>
               <td><span v-bind:style="'color: ' + password_color">Time to crack: {{ zxcvbn(password).crack_times_display.online_no_throttling_10_per_second }}</span></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password verification</label></td>
+              <td><input type="password" id="password" v-model="passwordCheck" placeholder="Password" required /></td>
+              <td v-show="password !== passwordCheck" style="color:red">The passwords don't match</td>
             </tr>
             <tr>
               <td><label for="realName">Real Name (optional)</label></td>
@@ -28,7 +34,7 @@
                 </vue-recaptcha>
               </td>
               <td>
-                <input type="submit" value="Register" v-bind:disabled="captchaResponse == '' || !validUsername || !validPassword || registering" />
+                <input type="submit" value="Register" v-bind:disabled="captchaResponse == '' || password != passwordCheck || !validUsername || !validPassword || registering" />
               </td>
             </tr>
           </table>
@@ -39,6 +45,7 @@
           <li v-show="username === ''">Username required</li>
           <li v-show="username !== '' && !validUsername">Invalid username</li>
           <li v-show="password === ''">Password required</li>
+          <li v-show="password !== passwordCheck">The passwords don't match</li>
           <li v-show="password !== '' && !validPassword && password.length <= 255">Password too simple or too common</li>
           <li v-show="password !== '' && !validPassword && password.length > 255">Password too long (max. 255 characters)</li>
           <li v-show="captchaResponse === ''">Please complete the captcha</li>
@@ -64,7 +71,7 @@ import VueRecaptcha from 'vue-recaptcha'
 var _zxcvbn = require('zxcvbn')
 
 export default {
-  name: 'search',
+  name: 'accountRegister',
   components: {
     VueRecaptcha
   },
@@ -81,6 +88,7 @@ export default {
     return {
       username: '',
       password: '',
+      passwordCheck: '',
       realName: '',
       captchaResponse: '',
       registerErrorMessage: '',

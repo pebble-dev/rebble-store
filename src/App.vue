@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     getAccountInformation: function () {
-      console.log(this.sessionKey)
       if (this.sessionKey != null) {
         var that = this
 
@@ -50,7 +49,6 @@ export default {
             that.registerError('Internal server error')
           } else {
             if (data.loggedIn) {
-              console.log('YAY')
               that.accountInformation.loggedIn = true
               that.accountInformation.username = data.username
               that.accountInformation.realName = data.realName
