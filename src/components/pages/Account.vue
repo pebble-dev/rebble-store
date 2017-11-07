@@ -114,14 +114,14 @@ export default {
       window.$.post(this.backendUrl + '/user/update/password', data, function (data) {
         that.updating = false
         if (typeof data !== 'object') {
-          this.updatePasswordErrorMessage = 'Internal Server Error'
+          that.updatePasswordErrorMessage = 'Internal Server Error'
         } else {
           if (data.success) {
             that.updatePasswordSuccess = true
             that.password = ''
             that.passwordCheck = ''
           } else {
-            this.updatePasswordErrorMessage = data.errorMessage
+            that.updatePasswordErrorMessage = data.errorMessage
           }
         }
       })
@@ -139,13 +139,13 @@ export default {
       window.$.post(this.backendUrl + '/user/update/realName', data, function (data) {
         that.updating = false
         if (typeof data !== 'object') {
-          this.updatePasswordErrorMessage = 'Internal Server Error'
+          that.updatePasswordErrorMessage = 'Internal Server Error'
         } else {
           if (data.success) {
             that.updateRealNameSuccess = true
             that.realName = ''
           } else {
-            this.updateRealNameErrorMessage = data.errorMessage
+            that.updateRealNameErrorMessage = data.errorMessage
           }
         }
       })
