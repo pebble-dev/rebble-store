@@ -183,7 +183,7 @@ export default {
 // Remember that font-awesome is included in the projects
 
 // Select the dark translucent navbar
-.navbar-inverse.bg-inverse.translucent {
+.navbar-dark.bg-dark.translucent {
     // Search, magnifier icon
     a.search {
         svg {
