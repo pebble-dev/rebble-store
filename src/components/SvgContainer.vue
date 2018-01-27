@@ -34,8 +34,8 @@
     </svg> -->
 
     <svg id="iconThumbsUp" class="icon-thumbs-up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <g fill="none" fill-rule="evenodd" stroke="#000000" transform="translate(-4 -2)">
-        <polygon fill="#FFFFFF" stroke-width="2" points="6.269 9.971 14.201 9.721 17.191 6.189 18.046 3.839 20.696 4.804 21.001 7.043 18.104 11.926 23.643 13.942 23.951 15.622 22.473 17.157 22.772 18.862 21.375 20.174 19.927 21.999 17.664 24.984 14.832 25.224 10.797 23.756 5.763 19.98 3.461 17.686" transform="rotate(-20 13.706 14.532)"/>
+      <g fill="none" fill-rule="evenodd" stroke="currentColor" transform="translate(-4 -2)">
+        <polygon stroke-width="2" points="6.269 9.971 14.201 9.721 17.191 6.189 18.046 3.839 20.696 4.804 21.001 7.043 18.104 11.926 23.643 13.942 23.951 15.622 22.473 17.157 22.772 18.862 21.375 20.174 19.927 21.999 17.664 24.984 14.832 25.224 10.797 23.756 5.763 19.98 3.461 17.686" transform="rotate(-20 13.706 14.532)"/>
         <path d="M22.5,14.5 L15.5,14.5"/>
         <polyline points="16.5 11 14.5 12.5 15.5 14.5 14.5 15.5 14.5 17 14 19 14.5 20.5 14 21.5 14.5 23.5"/>
         <path d="M15 17.5L21.5 17.5M14.5 20.5L20.5 20.5"/>
@@ -46,13 +46,13 @@
         <defs>
           <rect id="a" width="15" height="16" x="3"/>
         </defs>
-        <g fill="none" fill-rule="evenodd" transform="translate(1)">
-          <rect width="21" height="8" y="14" fill="#333333" stroke="#FF4700" stroke-width="2"/>
+        <g fill-rule="evenodd" transform="translate(1)">
+          <rect width="21" height="8" y="14" stroke="currentColor" stroke-width="2"/>
           <mask id="b" fill="white">
             <use xlink:href="#a"/>
           </mask>
-          <polygon fill="#333333" stroke="#FF4700" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
-          <rect width="2" height="2" x="16" y="17" fill="#D8D8D8" stroke="#FF4700" stroke-width="2"/>
+          <polygon stroke="currentColor" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
+          <rect width="2" height="2" x="16" y="17" stroke="currentColor" stroke-width="2"/>
         </g>
       </svg>
 
@@ -87,16 +87,16 @@
 
     <symbol id="iconApp" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
-        <polygon points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
-        <polyline points="14 18.001 4 18.001 0 14 0 4"/>
+        <polygon stroke="currentColor" points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
+        <polyline stroke="currentColor" points="14 18.001 4 18.001 0 14 0 4"/>
       </g>
     </symbol>
 
 
     <svg id="iconWatchface" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
-        <polygon fill="#FFFFFF" points="0 6.003 6 0 15 0 21 6.003 21 15.026 15 21 6 21 0 15.026"/>
-        <polyline points="13.563 12.758 10.041 10.15 10 4"/>
+        <polygon stroke="currentColor" points="0 6.003 6 0 15 0 21 6.003 21 15.026 15 21 6 21 0 15.026"/>
+        <polyline stroke="currentColor" points="13.563 12.758 10.041 10.15 10 4"/>
       </g>
     </svg>
 </svg>
@@ -132,17 +132,22 @@ export default {
       stroke: #9b9d9e;
   }
 
-  .btn-watchface svg, .btn-app svg {
-    fill: transparent;
-    stroke: #828682;
+  svg.icon-watchface, svg.icon-app {
+    use {
+        fill: transparent;
+    color: #828682;
+    }
+    
   }
 
-  .btn-watchface.active svg,
-  .btn-app.active svg,
-  .btn-watchface:hover svg,
-  .btn-app:hover svg {
-    fill: transparent;
-    stroke: #FFF;
+  svg.icon-watchface, svg.icon-app {
+    &:hover, &:active {
+        use {
+            fill: transparent;
+            color: #FFF;
+        }
+    }
+    
   }
 
   .btn-download .icon-download {
@@ -183,7 +188,7 @@ export default {
 // Remember that font-awesome is included in the projects
 
 // Select the dark translucent navbar
-.navbar-inverse.bg-inverse.translucent {
+.navbar-dark.bg-dark.translucent {
     // Search, magnifier icon
     a.search {
         svg {
@@ -198,20 +203,10 @@ export default {
             .btn-outline-secondary {
                 &.active, &:active,  &:hover {
                     //Hover and active styles
-                    svg {
-                        &.watchface {
-                            // Watchface Icon
-                            #Clock {
-                                stroke: #fff;
-                            }
-                        }
-                        &.app {
-                            // App Icon
-                            #App {
-                                #use2, #Line {
-                                    stroke: #fff;
-                                }
-                            }
+                    svg.icon-watchface, svg.icon-app  {
+                        // Watchface Icon
+                        use {
+                            color: #fff;
                         }
                     }
                 }

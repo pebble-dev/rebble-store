@@ -208,6 +208,11 @@ body {
   color: $pebble-color !important;
   display: inline;
 }
+a {
+  .badge-pebble {
+    color: #fff;
+  }
+}
 
 // Pebble colored badge
 .badge-pebble {
