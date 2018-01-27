@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-inverse bg-inverse text-sm-center translucent">
+  <nav class="navbar fixed-top navbar-dark bg-dark text-sm-center translucent">
     <div class="navbar-container">
       <div class="navbar__items left" v-show="showBackButton">
         <a class="float-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
@@ -88,10 +88,11 @@ export default {
 @import './static/css/_variables.scss';
 
 // Select the dark translucent navbar
-.navbar-inverse.bg-inverse.translucent {
+.navbar-dark.bg-dark.translucent {
   .navbar-container {
     // Fix navbar being smaller than 58px
     min-height: 42px;
+    width: 100%;
 
       // Navbar brand (app logo or title) styles
       .navbar-brand {

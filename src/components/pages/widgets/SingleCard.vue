@@ -44,7 +44,9 @@ export default {
             outline: none;
             text-decoration: none;
         }
+
         @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+          // Remove 2 extra cards
           &:last-child, &:nth-last-child(2) {
             display: none;
           }
