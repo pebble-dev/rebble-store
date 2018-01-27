@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation" v-bind:authProviders="authProviders"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -26,33 +26,45 @@ export default {
   data: function () {
     return {
       backendUrl: 'https://localhost:8080',
-      sessionKey: window.localStorage.getItem('sessionKey'),
+      authProvider: window.localStorage.getItem('authProvider'),
       accountInformation: {
         loggedIn: false,
-        displayName: 'Guest',
-        username: 'guest',
-        realName: 'guest'
+        name: 'Guest'
+      },
+      authProviders: {
+        google: {
+          name: 'google',
+          scopes: 'profile email',
+          client_id: '', // Insert client ID here
+          discovery: {},
+          redirect_uri: 'http://localhost:8081/user/login' // Change for production
+        },
+        yahoo: {
+          name: 'yahoo',
+          scopes: 'sdps-r',
+          client_id: '', // Insert client ID here
+          discovery: {},
+          redirect_uri: 'http://example.com/user/login' // It is impossible to redirect to add a `localhost` callback URI when creating a yahoo app... Workaround is to copy the url manually while changing the domain
+        }
       }
     }
   },
   methods: {
     getAccountInformation: function () {
-      if (this.sessionKey != null) {
+      if (window.localStorage.getItem('sessionKey') !== null) {
         var that = this
 
         var data = JSON.stringify({
-          sessionKey: this.sessionKey
+          sessionKey: window.localStorage.getItem('sessionKey')
         })
 
-        window.$.post(this.backendUrl + '/user/status', data, function (data) {
+        window.$.post(this.backendUrl + '/user/info', data, function (data) {
           if (typeof data !== 'object') {
-            that.registerError('Internal server error')
+            console.log('Got non-JSON object from {backend}/usr/info: ' + data)
           } else {
             if (data.loggedIn) {
               that.accountInformation.loggedIn = true
-              that.accountInformation.username = data.username
-              that.accountInformation.realName = data.realName
-              that.accountInformation.displayName = (data.realName === '' ? data.username : data.realName)
+              that.accountInformation.name = data.name
             } else {
               window.localStorage.removeItem('sessionKey')
               that.sessionKey = null
@@ -60,9 +72,68 @@ export default {
           }
         })
       }
+    },
+    authProvidersDiscovery: function () {
+      var that = this
+      window.$.get('https://accounts.google.com/.well-known/openid-configuration', function (data) {
+        if (typeof data !== 'object') {
+          console.log('Received non-object data: ' + data)
+          return
+        }
+
+        that.authProviders.google.discovery = data
+      })
+
+      // Yahoo does not set any CORS headers, so the discovery isn't doable from a Web Browser. What the f*ck, yahoo?
+      that.authProviders.yahoo.discovery = {
+        issuer: 'https://api.login.yahoo.com',
+        authorization_endpoint: 'https://api.login.yahoo.com/oauth2/request_auth',
+        token_endpoint: 'https://api.login.yahoo.com/oauth2/get_token',
+        token_revocation_endpoint: 'https://api.login.yahoo.com/oauth2/revoke',
+        jwks_uri: 'https://api.login.yahoo.com/openid/v1/certs',
+        response_types_supported: [
+          'code',
+          'token',
+          'id_token',
+          'code token',
+          'code id_token',
+          'token id_token',
+          'code token id_token'
+        ],
+        subject_types_supported: [
+          'public'
+        ],
+        id_token_signing_alg_values_supported: [
+          'ES256',
+          'RS256'
+        ],
+        scopes_supported: [
+          'openid'
+        ],
+        token_endpoint_auth_methods_supported: [
+          'client_secret_basic',
+          'client_secret_post'
+        ],
+        claims_supported: [
+          'aud',
+          'email',
+          'email_verified',
+          'birthdate',
+          'exp',
+          'family_name',
+          'given_name',
+          'iat',
+          'iss',
+          'locale',
+          'name',
+          'sub',
+          'auth_time'
+        ]
+      }
     }
   },
   beforeMount: function () {
+    this.authProvidersDiscovery()
     this.getAccountInformation()
   }
 }

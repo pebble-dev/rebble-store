@@ -13,7 +13,7 @@
       </a>
       <div class="navbar__items right">
         <div class="account">
-          <a v-bind:href="accountInformation.loggedIn ? '/user/account' : '/user/login'">{{ accountInformation.displayName }}</a>
+          <a v-bind:href="accountInformation.loggedIn ? '/user/account' : '/user/login'">{{ accountInformation.name }}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -59,9 +59,7 @@ export default {
   props: {
     accountInformation: {
       loggedIn: false,
-      displayName: 'Guest',
-      username: 'guest',
-      realName: 'guest'
+      name: 'guest'
     }
   },
 

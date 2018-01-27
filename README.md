@@ -12,6 +12,15 @@ This project has a separate backend/api with a Python option and a GoLang option
 - **GoLang:** https://github.com/pebble-dev/rebblestore-api
 - **Python:** https://github.com/pebble-dev/rebblestore-api-python
 
+## Setting up OpenID keys
+
+To use the account login functionality, you need OpenID identifiers for supported providers.  
+Look at `src/App.vue` and update the `client_id` fields for all the auth providers you want to work.
+
+Here are the links to generate these keys:
+* [Google](https://console.developers.google.com/apis/credentials);
+* [Yahoo](https://developer.yahoo.com/apps/create/).
+
 ## Installing
 
 ``` bash

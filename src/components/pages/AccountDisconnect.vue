@@ -29,9 +29,7 @@ export default {
   props: {
     accountInformation: {
       loggedIn: false,
-      displayName: 'Guest',
-      username: 'guest',
-      realName: 'guest'
+      name: 'Guest'
     }
   },
   data: function () {
@@ -42,6 +40,7 @@ export default {
   methods: {
     disconnect: function () {
       window.localStorage.removeItem('sessionKey')
+      window.localStorage.removeItem('authProvider')
       this.disconnected = true
     }
   }

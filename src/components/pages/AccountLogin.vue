@@ -6,43 +6,41 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <div v-show="this.accountInformation.loggedIn || this.loginSuccess">
-        <p>
-          You are logged in.
-        </p>
-      </div>
-      <div v-show="!this.accountInformation.loggedIn && !this.loginSuccess">
-        Please complete this form to login.<br />
-        Want to <a href="/user/register">register</a> instead?
-        <form v-on:submit.prevent="login">
-          <table>
-            <tr>
-              <td><label for="username">Username</label></td>
-              <td><input type="text" id="username" v-model="username" placeholder="Username" required /></td>
-            </tr>
-            <tr>
-              <td><label for="password">Password</label></td>
-              <td><input type="password" id="password" v-model="password" placeholder="Password" required /></td>
-            </tr>
-            <tr>
-              <td v-show="rateLimited" max-width="5em;">
-                <vue-recaptcha ref="recaptcha" v-on:verify="onVerify" v-on:expired="onExpired" sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
-                </vue-recaptcha>
-              </td>
-              <td>
-                <input type="submit" value="Login" v-bind:disabled="(rateLimited && captchaResponse === '') || !validUsername || !validPassword || logingIn" />
-              </td>
-            </tr>
-          </table>
-        </form>
-
-        <ul class="errors">
-          <li class="importantError" v-show="loginErrorMessage !== ''">{{ loginErrorMessage }}</li>
-          <li v-show="username === ''">Username required</li>
-          <li v-show="username !== '' && !validUsername">Invalid username</li>
-          <li v-show="password === ''">Password required</li>
-          <li v-show="rateLimited && captchaResponse === ''">Please complete the captcha</li>
+      <div class="error" v-if="errors.length !== 0">
+        <ul>
+          <li v-for="error in errors.list" v-bind:key="error.id" >
+            Error: {{ error.value }}
+          </li>
         </ul>
+      </div>
+
+      <form method="GET" v-bind:action="authProviders.google.discovery.authorization_endpoint" v-if="$route.query.code === undefined" >
+        <input type="hidden" name="client_id" v-bind:value="authProviders.google.client_id" />
+        <input type="hidden" name="redirect_uri" v-bind:value="authProviders.google.redirect_uri" />
+        <input type="hidden" name="response_type" value="code" />
+        <input type="hidden" name="scope" v-bind:value="authProviders.google.scopes" />
+        <input type="hidden" name="nonce" v-bind:value="nonce" />
+        <input type="hidden" name="state" v-bind:value="state" />
+        <button type="submit" v-on:click="setAuthProvider('google');">Connect using your Google account</button>
+      </form>
+
+      <form method="GET" v-bind:action="authProviders.yahoo.discovery.authorization_endpoint" v-if="$route.query.code === undefined" >
+        <input type="hidden" name="client_id" v-bind:value="authProviders.yahoo.client_id" />
+        <input type="hidden" name="redirect_uri" v-bind:value="authProviders.yahoo.redirect_uri" />
+        <input type="hidden" name="response_type" value="code" />
+        <input type="hidden" name="scope" v-bind:value="authProviders.yahoo.scopes" />
+        <input type="hidden" name="nonce" v-bind:value="nonce" />
+        <input type="hidden" name="state" v-bind:value="state" />
+        <button type="submit" v-on:click="setAuthProvider('yahoo');">Connect using your Yahoo account</button>
+      </form>
+
+      <div v-if="$route.query.code !== undefined">
+        <template v-if="loggedIn">
+          Logged in successfully!
+        </template>
+        <template v-else-if="errors.n === 0">
+          Logging in...
+        </template>
       </div>
     </main>
   </div>
@@ -60,107 +58,108 @@ export default {
     backendUrl: '',
     accountInformation: {
       loggedIn: false,
-      displayName: 'Guest',
-      username: 'guest',
-      realName: 'guest'
+      name: 'guest'
+    },
+    authProviders: {
+      google: {
+        name: '',
+        scopes: '',
+        client_id: '',
+        discovery: '',
+        redirect_uri: ''
+      }
     }
   },
   data: function () {
     return {
-      username: '',
-      password: '',
-      captchaResponse: '',
-      loginErrorMessage: '',
-      rateLimited: false,
-      logingIn: false,
-      loginSuccess: false
+      state: undefined,
+      nonce: undefined,
+      loggedIn: false,
+      errors: {
+        n: 0,
+        list: []
+      }
     }
   },
   methods: {
-    onVerify: function (r) {
-      this.captchaResponse = r
+    error: function (e) {
+      this.errors.list.push({
+        id: this.errors.n++,
+        value: e
+      })
+      console.log('Error: ' + e)
     },
-    onExpired: function () {
-      this.captchaResponse = ''
+
+    setAuthProvider: function (provider) {
+      window.localStorage.setItem('authProvider', provider)
     },
-    login: function () {
-      if (!this.validUsername || !this.validPassword || (this.rateLimited && this.captchaResponse === '')) {
-        return
+
+    getAuthProvider: function () {
+      let provider = window.localStorage.getItem('authProvider')
+      if (provider === null) {
+        return undefined
       }
 
-      this.logingIn = true
-      this.loginErrorMessage = ''
-
-      var data = JSON.stringify({
-        username: this.username,
-        password: this.password,
-        captchaResponse: this.captchaResponse
-      })
-
-      var that = this
-      window.$.post(this.backendUrl + '/user/login', data, function (data) {
-        that.logingIn = false
-        if (typeof data !== 'object') {
-          that.loginError('Internal server error')
-        } else {
-          if (data.success) {
-            window.localStorage.setItem('sessionKey', data.sessionKey)
-            that.loginSuccess = true
-          } else {
-            that.loginError(data.errorMessage)
-            if (data.rateLimited) {
-              that.rateLimited = true
-            }
-          }
-        }
-      })
+      return this.authProviders[provider]
     },
-    loginError: function (message) {
-      this.loginErrorMessage = message
-      this.captchaResponse = ''
-      this.$refs.recaptcha.reset()
+
+    genRandomString: function () {
+      const charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'
+      const o = []
+
+      window.crypto.getRandomValues(new Uint32Array(64)).forEach(c => o.push(charset[c % charset.length]))
+
+      return o.join('')
     }
   },
-  computed: {
-    validUsername: function () {
-      if (this.username.length > 3 && /^[A-Za-z0-9_]+$/.test(this.username)) {
-        return true
-      } else {
-        return false
-      }
-    },
-    validPassword: function () {
-      if (this.password.length > 255) {
-        return false
-      }
+  mounted: function () {
+    this.nonce = this.genRandomString()
 
-      return true
+    if (window.localStorage.getItem('state') === null) {
+      window.localStorage.setItem('state', this.genRandomString())
+    }
+    this.state = window.localStorage.getItem('state')
+
+    if (this.$route.query.error !== undefined) {
+      this.error(this.$route.query.error)
+    }
+
+    let code = this.$route.query.code
+    if (code !== undefined) {
+      if (this.$route.query.state !== window.localStorage.getItem('state')) {
+        this.error('Invalid state! If you legitimately requested a login, please contact a developer.')
+      } else {
+        let data = JSON.stringify({
+          code: code,
+          authProvider: this.getAuthProvider().name
+        })
+
+        var that = this
+        window.$.post(this.backendUrl + '/user/login', data, function (data) {
+          if (typeof data !== 'object') {
+            that.error('Received non-object data from SSO provider: ' + data)
+            that.validToken = false
+            return
+          }
+
+          if (!data.success) {
+            that.error(data.errorMessage)
+          } else {
+            window.localStorage.setItem('sessionKey', data.sessionKey)
+
+            that.loggedIn = true
+          }
+        })
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
-  }
 
-  vue-recaptcha {
-    margin-left: auto;
-    margin-right: auto;
-  }
+.error {
+  color: red;
+}
 
-  td {
-    padding: 5px;
-  }
-
-  .errors {
-    color: red;
-  }
-
-  .importantError {
-    font-weight: bold;
-  }
 </style>
