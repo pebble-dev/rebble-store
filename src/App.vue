@@ -41,10 +41,17 @@ export default {
         },
         yahoo: {
           name: 'yahoo',
-          scopes: 'sdps-r',
+          scopes: 'openid sdps-r',
           client_id: '', // Insert client ID here
           discovery: {},
           redirect_uri: 'http://example.com/user/login' // It is impossible to redirect to add a `localhost` callback URI when creating a yahoo app... Workaround is to copy the url manually while changing the domain
+        },
+        auth0: {
+          name: 'auth0',
+          scopes: 'openid profile email',
+          client_id: '',
+          discovery: {},
+          redirect_uri: 'http://localhost:8081/user/login'
         }
       }
     }
@@ -82,6 +89,14 @@ export default {
         }
 
         that.authProviders.google.discovery = data
+      })
+      window.$.get('https://rebbletest-localhost.auth0.com/.well-known/openid-configuration', function (data) {
+        if (typeof data !== 'object') {
+          console.log('Received non-object data: ' + data)
+          return
+        }
+
+        that.authProviders.auth0.discovery = data
       })
 
       // Yahoo does not set any CORS headers, so the discovery isn't doable from a Web Browser. What the f*ck, yahoo?

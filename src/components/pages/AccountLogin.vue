@@ -34,6 +34,16 @@
         <button type="submit" v-on:click="setAuthProvider('yahoo');">Connect using your Yahoo account</button>
       </form>
 
+      <form method="GET" v-bind:action="authProviders.auth0.discovery.authorization_endpoint" v-if="$route.query.code === undefined" >
+        <input type="hidden" name="client_id" v-bind:value="authProviders.auth0.client_id" />
+        <input type="hidden" name="redirect_uri" v-bind:value="authProviders.auth0.redirect_uri" />
+        <input type="hidden" name="response_type" value="code" />
+        <input type="hidden" name="scope" v-bind:value="authProviders.auth0.scopes" />
+        <input type="hidden" name="nonce" v-bind:value="nonce" />
+        <input type="hidden" name="state" v-bind:value="state" />
+        <button type="submit" v-on:click="setAuthProvider('auth0');">Connect using Auth0</button>
+      </form>
+
       <div v-if="$route.query.code !== undefined">
         <template v-if="loggedIn">
           Logged in successfully!
@@ -62,6 +72,20 @@ export default {
     },
     authProviders: {
       google: {
+        name: '',
+        scopes: '',
+        client_id: '',
+        discovery: '',
+        redirect_uri: ''
+      },
+      yahoo: {
+        name: '',
+        scopes: '',
+        client_id: '',
+        discovery: '',
+        redirect_uri: ''
+      },
+      auth0: {
         name: '',
         scopes: '',
         client_id: '',
