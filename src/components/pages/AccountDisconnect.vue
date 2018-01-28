@@ -54,11 +54,6 @@ export default {
     margin-bottom: 25px;
   }
 
-  vue-recaptcha {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   td {
     padding: 5px;
   }

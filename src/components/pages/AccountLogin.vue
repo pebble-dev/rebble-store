@@ -57,13 +57,8 @@
 </template>
 
 <script>
-import VueRecaptcha from 'vue-recaptcha'
-
 export default {
   name: 'accountLogin',
-  components: {
-    VueRecaptcha
-  },
   props: {
     backendUrl: '',
     accountInformation: {
