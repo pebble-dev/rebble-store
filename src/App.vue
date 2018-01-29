@@ -83,7 +83,7 @@ export default {
     },
     authProvidersDiscovery: function () {
       var that = this
-      window.$.get(this.authUrl + '/user/client_ids', function (data) {
+      window.$.get(this.authUrl + '/client_ids', function (data) {
         if (typeof data !== 'object') {
           console.log('Received non-object data: ' + data)
           return
