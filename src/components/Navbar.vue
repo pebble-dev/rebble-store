@@ -2,47 +2,47 @@
   <nav class="navbar fixed-top navbar-dark bg-dark text-sm-center translucent">
     <div class="navbar-container">
       <div class="navbar__items left" v-show="showBackButton">
-        <a class="float-left back" href="/#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        <button class="float-left back" v-on:click="goBack()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
       </div>
-      <a class="navbar-brand" href="/#">
+      <router-link class="navbar-brand" to="/">
         Rebble Store
         <small>
           for&nbsp;
           <div class="pebble">pebble</div>
         </small>
-      </a>
+      </router-link>
       <div class="navbar__items right">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="search" href="/search">
+        <router-link class="search" to="/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <use xlink:href="#iconSearch"></use>
+            <use xlink:to="#iconSearch"></use>
           </svg>
-        </a>
-        <a class="settings" href="/settings">
+        </router-link>
+        <router-link class="settings" to="/settings">
           <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <use xlink:href="#iconSettings"></use>
+            <use xlink:to="#iconSettings"></use>
           </svg>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="collapse text-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
-          <a href="/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
+          <router-link to="/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
             <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconWatchface"></use>
             </svg>
             Watchfaces
-          </a>
+          </router-link>
 
-          <a href="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
+          <router-link to="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
             <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconApp"></use>
             </svg>
             Apps
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -56,7 +56,10 @@ export default {
   data () {
     return {
       showBackButton: false,
-      currentRoute: '/'
+      currentRoute: '/',
+      goBack () {
+        this.$router.go(-1)
+      }
     }
   },
 
@@ -145,10 +148,12 @@ export default {
             }
 
             // Back arrow button
-            a.back {
+            button.back {
                 font-size: 27px;
                 color: rgba(255, 255, 255, 0.5);
-
+                background: none;
+                border: none;
+                cursor: pointer;
                 // Add margin on breakpoint to prevent brand from being really close
                 @media screen and (max-width: map-get($grid-breakpoints, sm)) {
                   margin-right: 20px;
