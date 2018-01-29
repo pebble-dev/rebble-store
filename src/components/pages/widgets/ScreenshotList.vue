@@ -1,6 +1,5 @@
 <template>
   <div class="screenshots dragscroll">
-    <div class="screenshot-spacer"></div>
       <div class="screenshot" v-for="screenshot in getPlatform().screenshots">
         <img v-bind:src="screenshot" alt="Screenshot" />
       </div>
@@ -47,6 +46,7 @@ export default {
     margin-bottom: 40px;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
+    padding-left: calc(50vw - 92px);
     &::-webkit-scrollbar {
         background: transparent;
         width: 0 !important;
