@@ -15,6 +15,8 @@ The Python backend has been deprecated.
 
 ## Installing
 
+If you want torun a local version you will also need to run the backend.
+
 ``` bash
 # install dependencies
 npm install
