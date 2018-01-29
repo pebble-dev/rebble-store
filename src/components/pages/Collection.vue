@@ -48,7 +48,8 @@ export default {
     CardCollection
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    authUrl: ''
   },
   data: function () {
     return {

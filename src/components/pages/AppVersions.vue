@@ -25,7 +25,8 @@ export default {
     AppTitleBar
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    authUrl: ''
   },
   data: function () {
     return {

@@ -46,6 +46,7 @@ export default {
   },
   props: {
     backendUrl: '',
+    authUrl: '',
     accountInformation: {
       loggedIn: false,
       name: 'Guest'
@@ -65,12 +66,12 @@ export default {
       this.updateNameErrorMessage = ''
 
       var data = JSON.stringify({
-        sessionKey: window.localStorage.getItem('sessionKey'),
+        accessToken: window.localStorage.getItem('accessToken'),
         name: this.name
       })
 
       var that = this
-      window.$.post(this.backendUrl + '/user/update/name', data, function (data) {
+      window.$.post(this.authUrl + '/user/update/name', data, function (data) {
         that.updating = false
         if (typeof data !== 'object') {
           that.updatePasswordErrorMessage = 'Internal Server Error'

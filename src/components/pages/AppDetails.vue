@@ -76,7 +76,8 @@ export default {
     ScreenshotList
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    authUrl: ''
   },
   data: function () {
     return {

@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation" v-bind:authProviders="authProviders"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:accountInformation="accountInformation" v-bind:authProviders="authProviders"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -26,6 +26,7 @@ export default {
   data: function () {
     return {
       backendUrl: 'https://localhost:8080',
+      authUrl: 'https://localhost:8082',
       authProvider: window.localStorage.getItem('authProvider'),
       accountInformation: {
         loggedIn: false,
@@ -58,23 +59,23 @@ export default {
   },
   methods: {
     getAccountInformation: function () {
-      if (window.localStorage.getItem('sessionKey') !== null) {
+      if (window.localStorage.getItem('accessToken') !== null) {
         var that = this
 
         var data = JSON.stringify({
-          sessionKey: window.localStorage.getItem('sessionKey')
+          accessToken: window.localStorage.getItem('accessToken')
         })
 
-        window.$.post(this.backendUrl + '/user/info', data, function (data) {
+        window.$.post(this.authUrl + '/user/info', data, function (data) {
           if (typeof data !== 'object') {
-            console.log('Got non-JSON object from {backend}/usr/info: ' + data)
+            console.log('Got non-JSON object from {auth}/usr/info: ' + data)
           } else {
             if (data.loggedIn) {
               that.accountInformation.loggedIn = true
               that.accountInformation.name = data.name
             } else {
-              window.localStorage.removeItem('sessionKey')
-              that.sessionKey = null
+              window.localStorage.removeItem('accessToken')
+              that.accessToken = null
             }
           }
         })
@@ -82,7 +83,7 @@ export default {
     },
     authProvidersDiscovery: function () {
       var that = this
-      window.$.get(this.backendUrl + '/user/client_ids', function (data) {
+      window.$.get(this.authUrl + '/user/client_ids', function (data) {
         if (typeof data !== 'object') {
           console.log('Received non-object data: ' + data)
           return

@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     disconnect: function () {
-      window.localStorage.removeItem('sessionKey')
+      window.localStorage.removeItem('accessToken')
       window.localStorage.removeItem('authProvider')
       this.disconnected = true
     }

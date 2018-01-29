@@ -61,6 +61,7 @@ export default {
   name: 'accountLogin',
   props: {
     backendUrl: '',
+    authUrl: '',
     accountInformation: {
       loggedIn: false,
       name: 'guest'
@@ -154,7 +155,7 @@ export default {
         })
 
         var that = this
-        window.$.post(this.backendUrl + '/user/login', data, function (data) {
+        window.$.post(this.authUrl + '/user/login', data, function (data) {
           if (typeof data !== 'object') {
             that.error('Received non-object data from SSO provider: ' + data)
             that.validToken = false
@@ -164,7 +165,7 @@ export default {
           if (!data.success) {
             that.error(data.errorMessage)
           } else {
-            window.localStorage.setItem('sessionKey', data.sessionKey)
+            window.localStorage.setItem('accessToken', data.accessToken)
 
             that.loggedIn = true
           }
