@@ -36,7 +36,6 @@ export default {
 
 // Title bar displayed below app banner
 .app-title-bar {
-    padding-left: 68px !important;
     img {
         position: absolute;
         border-radius: 4px;
@@ -107,5 +106,11 @@ export default {
         }
       }
     }
+}
+// Add space for icon if watchapp
+section.watchapp {
+  .app-title-bar {
+    padding-left: 68px !important;
+  }
 }
 </style>
