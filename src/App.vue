@@ -26,7 +26,7 @@ export default {
   data: function () {
     return {
       backendUrl: 'https://localhost:8080',
-      authUrl: 'https://localhost:8082',
+      authUrl: 'http://localhost:8082',
       authProvider: window.localStorage.getItem('authProvider'),
       accountInformation: {
         loggedIn: false,
