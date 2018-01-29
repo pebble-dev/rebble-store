@@ -96,10 +96,13 @@ export default {
 
         // Set thumbs up button styles
         &.btn-thumbs-up {
+          color: #ccc;
+          border-color: #ccc;
           // Styles for when it is in focus, hovered, or active
           &:hover, &:active, &.active {
             color: #333;
             outline: none;
+            background: #ccc;
           }
         }
       }
