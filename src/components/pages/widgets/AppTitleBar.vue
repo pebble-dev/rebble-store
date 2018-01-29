@@ -36,7 +36,6 @@ export default {
 
 // Title bar displayed below app banner
 .app-title-bar {
-    padding-left: 68px !important;
     img {
         position: absolute;
         border-radius: 4px;
@@ -96,13 +95,22 @@ export default {
 
         // Set thumbs up button styles
         &.btn-thumbs-up {
+          color: #ccc;
+          border-color: #ccc;
           // Styles for when it is in focus, hovered, or active
           &:hover, &:active, &.active {
             color: #333;
             outline: none;
+            background: #ccc;
           }
         }
       }
     }
+}
+// Add space for icon if watchapp
+section.watchapp {
+  .app-title-bar {
+    padding-left: 68px !important;
+  }
 }
 </style>

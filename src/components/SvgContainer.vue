@@ -110,6 +110,7 @@ export default {
 
 <style lang="scss">
 @import './static/css/_variables.scss';
+// Remember that font-awesome is included in the projects
 
   #svgContainer {
     display: none;
@@ -132,27 +133,15 @@ export default {
       stroke: #9b9d9e;
   }
 
-  svg.icon-watchface, svg.icon-app {
-    use {
-        fill: transparent;
-    color: #828682;
-    }
-    
-  }
-
-  svg.icon-watchface, svg.icon-app {
-    &:hover, &:active {
+  .btn-watchface, .btn-app {
+    svg.icon-watchface, svg.icon-app {
+        fill: transparent; 
+        stroke: #828682;
         use {
             fill: transparent;
-            color: #FFF;
+            color: #828682;
         }
     }
-    
-  }
-
-  .btn-download .icon-download {
-    fill: #333;
-    stroke: #ff4700;
   }
 
   .icon-inverted-thumbs-up {
@@ -162,30 +151,6 @@ export default {
     top: 2px;
   }
 
-  .btn-thumbs-up .icon-thumbs-up {
-    fill: #333;
-    stroke: #ccc;
-  }
-
-  /*
-    We're triggering the hover on the parent button instead of the SVG.
-   */
-  .btn-thumbs-up{
-    &:hover, &.active, &:active{
-       .icon-thumbs-up {
-        fill: #ccc;
-        stroke: #333;
-      }
-    }
-  }
-
-  .btn-download:hover svg {
-    fill: #ff4700;
-    stroke: #333;
-  }
-  // _icons.scss
-// Set svg and icons rules in here
-// Remember that font-awesome is included in the projects
 
 // Select the dark translucent navbar
 .navbar-dark.bg-dark.translucent {
@@ -204,6 +169,8 @@ export default {
                 &.active, &:active,  &:hover {
                     //Hover and active styles
                     svg.icon-watchface, svg.icon-app  {
+                        fill: transparent; 
+                        stroke: #FFF; 
                         // Watchface Icon
                         use {
                             color: #fff;
@@ -292,12 +259,17 @@ export default {
             // Default styles are set in the svg
 
             // Thumbs up svg ivon hover styles
+            .icon-thumbs-up {
+                fill: #333;
+                stroke: #ccc;
+            }
+            /*
+            We're triggering the hover on the parent button instead of the SVG.
+            */
             &:hover, &:focus, &.active {
-                svg #Thumbs-Up {
+                svg {
+                    fill: #ccc;
                     stroke: #333;
-                    #Shape {
-                        fill: #ccc;
-                    }
                 }
             }
         }
@@ -307,16 +279,14 @@ export default {
             // Default styles are set in the svg
 
             // Download svg icon hover styles
+            .icon-download {
+                fill: #333;
+                stroke: #ff4700;
+            }
             &:hover {
                 svg {
-                    #Rectangle-10, #Rectangle-11, #Rectangle-8 #use2 {
-                        stroke: #333
-                    }
-
-                    #Rectangle-10, #Rectangle-8 #use1 {
-                        fill: $pebble-color;
-                    }
-
+                    fill: #ff4700;
+                    stroke: #333;
                 }
             }
         }

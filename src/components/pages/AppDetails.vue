@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-bind:class="app.type" >
     <header>
       <div class="app-banner">
         <img v-if="app.assets.appBanner != ''" v-bind:src="app.assets.appBanner" alt="App Banner">
@@ -146,6 +146,7 @@ export default {
   max-height: 320px;
   margin-left: auto;
   margin-right: auto;
+  min-height: 30px;
 
   img {
       width: 100%;
