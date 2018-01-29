@@ -1,8 +1,8 @@
 {
   "name": "rebble-app-store",
   "version": "1.0.0",
-  "description": "Rebble.io Appstore",
-  "author": "Gary Daigle <zetaphor@gmail.com>",
+  "description": "Rebble Store, a pebble app store replacement.",
+  "author": "Rebble Web Services Team",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
