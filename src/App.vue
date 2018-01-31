@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:accountInformation="accountInformation" v-bind:authProviders="authProviders"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:accountInformation="accountInformation"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -27,33 +27,10 @@ export default {
     return {
       backendUrl: 'https://localhost:8080',
       authUrl: 'http://localhost:8082',
-      authProvider: window.localStorage.getItem('authProvider'),
+      loginCallback: 'http://localhost:8081/user/login',
       accountInformation: {
         loggedIn: false,
         name: 'Guest'
-      },
-      authProviders: {
-        google: {
-          name: 'google',
-          scopes: 'profile email',
-          client_id: '',
-          discovery: {},
-          redirect_uri: 'http://localhost:8081/user/login' // Change for production
-        },
-        yahoo: {
-          name: 'yahoo',
-          scopes: 'openid sdps-r',
-          client_id: '',
-          discovery: {},
-          redirect_uri: 'http://example.com/user/login' // It is impossible to redirect to add a `localhost` callback URI when creating a yahoo app... Workaround is to copy the url manually while changing the domain
-        },
-        auth0: {
-          name: 'auth0',
-          scopes: 'openid profile email',
-          client_id: '',
-          discovery: {},
-          redirect_uri: 'http://localhost:8081/user/login'
-        }
       }
     }
   },
@@ -80,34 +57,9 @@ export default {
           }
         })
       }
-    },
-    authProvidersDiscovery: function () {
-      var that = this
-      window.$.get(this.authUrl + '/client_ids', function (data) {
-        if (typeof data !== 'object') {
-          console.log('Received non-object data: ' + data)
-          return
-        }
-
-        for (let sso of data.ssos) {
-          that.authProviders[sso.name].client_id = sso.client_id
-
-          window.$.get(sso.discover_uri, function (data) {
-            if (typeof data !== 'object') {
-              console.log('Received non-object data: ' + data)
-              return
-            }
-
-            that.authProviders[sso.name].discovery = data
-          })
-        }
-
-        that.authProviders.google.discovery = data
-      })
     }
   },
   beforeMount: function () {
-    this.authProvidersDiscovery()
     this.getAccountInformation()
   }
 }
