@@ -17,12 +17,12 @@
         </button>
         <router-link class="search" to="/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <use xlink:to="#iconSearch"></use>
+            <use xlink:href="#iconSearch"></use>
           </svg>
         </router-link>
         <router-link class="settings" to="/settings">
           <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <use xlink:to="#iconSettings"></use>
+            <use xlink:href="#iconSettings"></use>
           </svg>
         </router-link>
       </div>
