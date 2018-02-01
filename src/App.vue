@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:accountInformation="accountInformation"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:addProviderCallback="addProviderCallback" v-bind:accountInformation="accountInformation"></router-view>
     </div>
     <page-footer></page-footer>
   </div>
@@ -28,6 +28,7 @@ export default {
       backendUrl: 'https://localhost:8080',
       authUrl: 'http://localhost:8082',
       loginCallback: 'http://localhost:8081/user/login',
+      addProviderCallback: 'http://localhost:8081/user/account',
       accountInformation: {
         loggedIn: false,
         name: 'Guest'

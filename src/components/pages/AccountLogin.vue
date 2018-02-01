@@ -83,6 +83,7 @@ export default {
         this.error('Invalid state! If you legitimately requested a login, please contact a developer.')
       } else {
         window.localStorage.setItem('accessToken', accessToken)
+        window.localStorage.setItem('state', this.genRandomString())
         this.loggedIn = true
       }
     }

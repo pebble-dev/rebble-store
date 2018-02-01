@@ -30,8 +30,30 @@
             </tr>
           </table>
         </form>
+
         <ul class="errors">
           <li class="importantError" v-show="updateNameErrorMessage !== ''">{{ updateNameErrorMessage }}</li>
+        </ul>
+
+        <form method="GET" v-bind:action="authUrl + '/authorize'">
+          <table>
+            <tr>
+              <td>
+                <input type="hidden" name="addProvider" />
+                <input type="hidden" name="access_token" v-bind:value="accessToken" />
+                <input type="hidden" name="state" v-bind:value="state" />
+                <input type="hidden" name="redirect_uri" v-bind:value="addProviderCallback" />
+                <input type="submit" value="Link another identity provider to your account" v-bind:disabled="updating" />
+              </td>
+              <td class="success" v-show="addProviderSuccess">
+                Success!
+              </td>
+            </tr>
+          </table>
+        </form>
+
+        <ul class="errors">
+          <li class="importantError" v-show="addProviderErrorMessage !== ''">{{ addProviderErrorMessage }}</li>
         </ul>
 
       </div>
@@ -47,6 +69,7 @@ export default {
   props: {
     backendUrl: '',
     authUrl: '',
+    addProviderCallback: '',
     accountInformation: {
       loggedIn: false,
       name: 'Guest'
@@ -56,8 +79,12 @@ export default {
     return {
       name: '',
       updateNameErrorMessage: '',
+      addProviderErrorMessage: '',
       updating: false,
-      updateNameSuccess: false
+      updateNameSuccess: false,
+      addProviderSuccess: false,
+      accessToken: undefined,
+      state: undefined
     }
   },
   methods: {
@@ -95,6 +122,21 @@ export default {
   },
   mounted: function () {
     this.updateDataWhenAvailable()
+    this.accessToken = window.localStorage.getItem('accessToken')
+
+    if (window.localStorage.getItem('state') === null) {
+      window.localStorage.setItem('state', this.genRandomString())
+    }
+    this.state = window.localStorage.getItem('state')
+
+    if (this.$route.query.success !== undefined || this.$route.query.error !== undefined) {
+      if (this.$route.query.success !== undefined) {
+        this.addProviderSuccess = true
+      }
+      if (this.$route.query.error !== undefined) {
+        this.addProviderErrorMessage = 'Error: ' + this.$route.query.error
+      }
+    }
   }
 }
 </script>
