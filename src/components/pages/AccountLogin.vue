@@ -78,13 +78,11 @@ export default {
     }
 
     let accessToken = this.$route.query.access_token
-    let refreshToken = this.$route.query.refresh_token
-    if (accessToken !== undefined && refreshToken !== undefined) {
+    if (accessToken !== undefined) {
       if (this.$route.query.state !== window.localStorage.getItem('state')) {
         this.error('Invalid state! If you legitimately requested a login, please contact a developer.')
       } else {
         window.localStorage.setItem('accessToken', accessToken)
-        window.localStorage.setItem('refreshToken', refreshToken)
         this.loggedIn = true
       }
     }
