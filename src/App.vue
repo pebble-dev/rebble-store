@@ -2,10 +2,10 @@
   <div id="app">
     <div class="flex-content">
       <svg-container></svg-container>
-      <navbar></navbar>
+      <navbar v-if="!inApp"></navbar>
       <router-view v-bind:backendUrl="backendUrl"></router-view>
     </div>
-    <page-footer></page-footer>
+    <page-footer v-if="!inApp"></page-footer>
   </div>
 </template>
 
@@ -25,10 +25,23 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'http://localhost:8080'
+      backendUrl: 'http://localhost:8080',
+      inApp: false,
+      routeParameters: {
+        platform: ''
+      }
+    }
+  },
+  beforeMount () {
+    let routeParameters = this.$route.query
+    console.log(routeParameters)
+    if (routeParameters.platform) {
+      this.inApp = true
+      this.routeParameters.platform = routeParameters.platform
     }
   }
 }
+
 </script>
 
 <style lang="scss">
