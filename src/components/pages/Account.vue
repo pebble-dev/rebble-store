@@ -10,9 +10,13 @@
         You are disconnected. <a href="/user/login">Login</a>?
       </div>
       <div v-show="this.accountInformation.loggedIn">
+        <h4>Disconnect</h4>
+
         <p>
           <a href="/user/disconnect">Disconnect</a>
         </p>
+
+        <h4>Name</h4>
 
         <form v-on:submit.prevent="updateName">
           <table>
@@ -33,6 +37,20 @@
 
         <ul class="errors">
           <li class="importantError" v-show="updateNameErrorMessage !== ''">{{ updateNameErrorMessage }}</li>
+        </ul>
+
+        <h4>Identity providers</h4>
+        <div>
+          <table>
+            <tr v-for="provider in accountInformation.linkedProviders" v-bind:key="provider">
+              <td>{{ provider }}</td>
+              <td><button v-on:click="removeProvider(provider)" v-bind:disabled="accountInformation.linkedProviders.length < 2">Remove</button></td>
+            </tr>
+          </table>
+        </div>
+
+        <ul class="errors">
+          <li class="importantError" v-show="removeProviderErrorMessage !== ''">{{ removeProviderErrorMessage }}</li>
         </ul>
 
         <form method="GET" v-bind:action="authUrl + '/authorize'">
@@ -72,7 +90,8 @@ export default {
     addProviderCallback: '',
     accountInformation: {
       loggedIn: false,
-      name: 'Guest'
+      name: 'Guest',
+      linkedProviders: []
     }
   },
   data: function () {
@@ -80,6 +99,7 @@ export default {
       name: '',
       updateNameErrorMessage: '',
       addProviderErrorMessage: '',
+      removeProviderErrorMessage: '',
       updating: false,
       updateNameSuccess: false,
       addProviderSuccess: false,
@@ -106,6 +126,28 @@ export default {
           if (data.success) {
             that.updateNameSuccess = true
             that.name = ''
+          } else {
+            that.updateNameErrorMessage = data.errorMessage
+          }
+        }
+      })
+    },
+    removeProvider: function (provider) {
+      this.updating = true
+
+      var data = JSON.stringify({
+        accessToken: window.localStorage.getItem('accessToken'),
+        provider: provider
+      })
+
+      var that = this
+      window.$.post(this.authUrl + '/user/update/removeLinkedProvider', data, function (data) {
+        that.updating = false
+        if (typeof data !== 'object') {
+          that.updatePasswordErrorMessage = 'Internal Server Error'
+        } else {
+          if (data.success) {
+            that.accountInformation.linkedProviders.splice(that.accountInformation.linkedProviders.indexOf(provider))
           } else {
             that.updateNameErrorMessage = data.errorMessage
           }

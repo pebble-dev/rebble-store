@@ -31,7 +31,8 @@ export default {
       addProviderCallback: 'http://localhost:8081/user/account',
       accountInformation: {
         loggedIn: false,
-        name: 'Guest'
+        name: 'Guest',
+        linkedProviders: []
       }
     }
   },
@@ -51,6 +52,7 @@ export default {
             if (data.loggedIn) {
               that.accountInformation.loggedIn = true
               that.accountInformation.name = data.name
+              that.accountInformation.linkedProviders = data.linkedProviders
             } else {
               window.localStorage.removeItem('accessToken')
               that.accessToken = null
