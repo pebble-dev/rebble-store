@@ -2,8 +2,8 @@
   <div>
     <slider></slider>
     <main class="apps container text-center">
-      <card-collection elTitle="Most Recent" v-bind:cards="mostRecentCards"></card-collection>
-      <card-collection elTitle="Fresh Picks" v-bind:cards="freshPicksCards"></card-collection>
+      <card-collection elTitle="Most Recent" v-bind:cards="mostRecentCards" v-bind:urlArguments="urlArguments"></card-collection>
+      <card-collection elTitle="Fresh Picks" v-bind:cards="freshPicksCards" v-bind:urlArguments="urlArguments"></card-collection>
     </main>
   </div>
 </template>
@@ -18,6 +18,9 @@ export default {
   components: {
     CardCollection,
     Slider
+  },
+  props: {
+    platform: ''
   },
   data: function () {
     return {
@@ -196,8 +199,13 @@ export default {
             'thumbs_up': 184
           }
         ]
-      }
+      },
+      urlArguments: ''
     }
+  },
+  beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
   }
 }
 </script>

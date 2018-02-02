@@ -7,7 +7,7 @@
       <small><a class="text-right" href="/featured">See All ></a></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="card in cards.cards" v-bind:card="card"></single-card>
+      <single-card v-for="card in cards.cards" v-bind:card="card" v-bind:urlArguments='urlArguments'></single-card>
     </div>
   </section>
 </template>
@@ -28,6 +28,10 @@ export default {
     },
     cards: {
       cards: []
+    },
+    urlArguments: {
+      type: String,
+      default: ''
     }
   },
   components: {

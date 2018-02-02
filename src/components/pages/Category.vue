@@ -13,7 +13,7 @@
           </div>
         </div>
 
-        <card-collection :showTop="false"></card-collection>
+        <card-collection :showTop="false" v-bind:urlArguments='urlArguments'></card-collection>
 
         <nav>
           <ul class="pagination">
@@ -49,6 +49,18 @@ export default {
   name: 'category',
   components: {
     CardCollection
+  },
+  props: {
+    platform: ''
+  },
+  data: function () {
+    return {
+      'urlArguments': ''
+    }
+  },
+  beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
   }
 }
 </script>

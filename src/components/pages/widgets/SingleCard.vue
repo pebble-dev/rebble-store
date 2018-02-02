@@ -1,5 +1,5 @@
 <template>
-  <router-link v-bind:to="'/app-details/' + card.id">
+  <router-link v-bind:to="'/app-details/' + card.id + urlArguments">
   <div class="card">
     <img class="card-img-top" v-bind:src="card.image_url" alt="App Icon">
     <div class="card-block text-xs-center">
@@ -27,6 +27,10 @@ export default {
       type: '',
       image_url: '',
       thumbs_up: 0
+    },
+    urlArguments: {
+      type: String,
+      default: ''
     }
   }
 }

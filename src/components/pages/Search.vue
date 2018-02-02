@@ -6,7 +6,7 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:cards="searchResults"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="searchResults" v-bind:urlArguments="urlArguments"></card-collection>
 
       <nav>
         <ul class="pagination">
@@ -44,14 +44,16 @@ export default {
     CardCollection
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    platform: ''
   },
   data: function () {
     return {
       searchText: '',
       searchResults: {
         cards: []
-      }
+      },
+      urlArguments: ''
     }
   },
   methods: {
@@ -69,7 +71,12 @@ export default {
         })
       }
     }
+  },
+  beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
   }
+
 }
 </script>
 

@@ -3,7 +3,7 @@
     <div class="flex-content">
       <svg-container></svg-container>
       <navbar v-if="!inApp"></navbar>
-      <router-view v-bind:backendUrl="backendUrl"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform"></router-view>
     </div>
     <page-footer v-bind:brand="inApp"></page-footer>
   </div>
@@ -28,16 +28,25 @@ export default {
       backendUrl: 'http://localhost:8080',
       inApp: false,
       routeParameters: {
-        platform: ''
+        platform: '',
+        watchPlatform: ''
       }
     }
   },
   beforeMount () {
     let routeParameters = this.$route.query
     console.log(routeParameters)
+    // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
       this.inApp = true
       this.routeParameters.platform = routeParameters.platform
+    }
+    // watchPlatform refers to the watch. basalt, chalk, aplite, etc.
+    if (routeParameters.watchPlatform) {
+      this.inApp = true
+      this.routeParameters.watchPlatform = routeParameters.watchPlatform
+      // Set it to local storage for it to be used in other sessions
+      window.localStorage.setItem('platform', routeParameters.watchPlatform)
     }
   }
 }

@@ -48,7 +48,8 @@ export default {
     CardCollection
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    platform: ''
   },
   data: function () {
     return {
@@ -60,7 +61,8 @@ export default {
       },
       sort: 'new',
       currentPage: 1,
-      clientPlatform: window.localStorage.getItem('platform')
+      clientPlatform: window.localStorage.getItem('platform'),
+      urlArguments: ''
     }
   },
   methods: {
@@ -81,6 +83,9 @@ export default {
     }
   },
   beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
+
     if (this.clientPlatform == null) {
       this.clientPlatform = 'basalt'
     }

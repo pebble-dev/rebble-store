@@ -22,7 +22,7 @@
           <tr>
             <td>Tags</td>
             <td v-for="tag in app.appInfo.tags">
-              <router-link v-bind:to="'/collection/' + tag.id"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
+              <router-link v-bind:to="'/collection/' + tag.id + urlArguments"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
             </td>
           </tr>
           <tr>
@@ -34,7 +34,7 @@
             <td>{{ app.appInfo.version }}</td>
           </tr>
         </table>
-        <router-link v-bind:to="'/app-versions/' + $route.params.id" class="app-button">
+        <router-link v-bind:to="'/app-versions/' + $route.params.id + urlArguments" class="app-button">
           <div>
             Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
@@ -48,11 +48,11 @@
           <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
         </a>
-        <router-link v-if="app.appInfo.sourceUrl != ''" v-bind:to="app.appInfo.sourceUrl" class="app-button">
+        <a v-if="app.appInfo.sourceUrl != ''" v-bind:href="app.appInfo.sourceUrl" class="app-button">
           <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
-        </router-link>
-        <router-link v-bind:to="'/author/' + app.author.id" class="app-button">
+        </a>
+        <router-link v-bind:to="'/author/' + app.author.id + urlArguments" class="app-button">
           <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
         </router-link>
@@ -76,7 +76,8 @@ export default {
     ScreenshotList
   },
   props: {
-    backendUrl: ''
+    backendUrl: '',
+    platform: ''
   },
   data: function () {
     return {
@@ -107,7 +108,8 @@ export default {
           'appIcon': '',
           'screenshots': []
         },
-        'doomsday_backup': false
+        'doomsday_backup': false,
+        'urlArguments': ''
       },
       clientPlatform: window.localStorage.getItem('platform')
     }
@@ -126,6 +128,9 @@ export default {
     }
   },
   beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
+
     this.get_app(this.$route.params.id)
     if (this.clientPlatform == null) {
       this.clientPlatform = 'basalt'
