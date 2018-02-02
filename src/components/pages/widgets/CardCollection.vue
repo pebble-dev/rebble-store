@@ -78,6 +78,7 @@ export default {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: -12px;
 
             // Add more columns on large screens
             @media screen and (min-width: map-get($grid-breakpoints, lg)) {

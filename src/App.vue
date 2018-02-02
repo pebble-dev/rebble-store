@@ -173,6 +173,7 @@ a {
 // Modify default pagination styles, mostly color (not inside section because it may get reused)
 ul.pagination {
   display: inline-flex;
+  margin-bottom: 0;
     .page-item {
         &.active .page-link {
             // Button is active
