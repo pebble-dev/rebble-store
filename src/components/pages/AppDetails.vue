@@ -1,11 +1,11 @@
 <template>
   <section v-bind:class="app.type" >
-    <header>
+    <header v-bind:class="(platform && !app.assets.appBanner) ? 'inApp no-banner': ''">
       <div class="app-banner">
         <img v-if="app.assets.appBanner != ''" v-bind:src="app.assets.appBanner" alt="App Banner">
       </div>
     </header>
-    <app-title-bar v-bind:app="app"></app-title-bar>
+    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.assets.appBanner) ? 'title-bar extra-margin': ''"></app-title-bar>
 
     <main class="text-center">
       <screenshot-list v-bind:platforms="app.assets.screenshots" v-bind:clientPlatform="clientPlatform"></screenshot-list>
@@ -146,21 +146,37 @@ export default {
 // App details page styles
 
 // Similar to carousel but only used when displaying only one image
-.app-banner {
-  max-width: 720px;
-  max-height: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 30px;
+header {
+  &.inApp.no-banner {
+    padding: 0;
+    display: none;
+    .app-banner {
+      min-height: 0;
+    }
+  }
+  .app-banner {
+    margin-bottom: -15px;
+    max-width: 720px;
+    max-height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 30px;
 
-  img {
-      width: 100%;
-      max-width: 720px;
+    img {
+        width: 100%;
+        max-width: 720px;
+    }
   }
 }
 
+.title-bar.extra-margin {
+  margin-top: 43px;
+}
+
+
 // App details container (below screenshots)
 .app-details {
+  margin-bottom: 0;
   // Main title
   h1 {
     font-size: 20px;

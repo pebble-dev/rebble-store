@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <header>
+  <section v-bind:class="app.type">
+    <header v-bind:class="(platform && !app.assets.appBanner) ? 'inApp no-banner': ''">
       <div class="app-banner">
         <img v-if="app.assets.appBanner != ''" v-bind:src="app.assets.appBanner" alt="App Banner">
       </div>
     </header>
-    <app-title-bar v-bind:app="app"></app-title-bar>
+    <app-title-bar v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:class="(platform && !app.assets.appBanner) ? 'title-bar extra-margin': ''"></app-title-bar>
 
     <main class="text-center">
       <div class="card subsection text-left p-3 app-details" v-for="version in versions.versions">
@@ -13,7 +13,7 @@
         <pre class="description">{{ version.description }}</pre>
       </div>
     </main>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -23,6 +23,10 @@ export default {
   name: 'app-version',
   components: {
     AppTitleBar
+  },
+  props: {
+    backendUrl: '',
+    platform: ''
   },
   data: function () {
     return {
@@ -53,7 +57,8 @@ export default {
           'appIcon': '',
           'screenshots': []
         },
-        'doomsday_backup': false
+        'doomsday_backup': false,
+        'urlArguments': ''
       },
       versions: {
         'versions': []
@@ -63,7 +68,7 @@ export default {
   methods: {
     get_versions: function (id) {
       var that = this
-      window.$.getJSON('http://localhost:8080/dev/apps/get_versions/id/' + id, function (j, s) {
+      window.$.getJSON(this.backendUrl + '/dev/apps/get_versions/id/' + id, function (j, s) {
         if (s === 'success') {
           that.versions = j
         } else {
@@ -74,7 +79,7 @@ export default {
     },
     get_app: function (id) {
       var that = this
-      window.$.getJSON('http://localhost:8080/dev/apps/get_app/id/' + id, function (j, s) {
+      window.$.getJSON(this.backendUrl + '/dev/apps/get_app/id/' + id, function (j, s) {
         if (s === 'success') {
           that.app = j
         } else {
@@ -85,6 +90,9 @@ export default {
     }
   },
   beforeMount: function () {
+    // Set url arguments if exist
+    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
+
     this.get_app(this.$route.params.id)
     this.get_versions(this.$route.params.id)
   }
@@ -133,17 +141,31 @@ export default {
 }
 
 // Similar to carousel but only used when displaying only one image
-.app-banner {
-  max-width: 720px;
-  max-height: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 30px;
-
-  img {
-      width: 100%;
-      max-width: 720px;
+header {
+  &.inApp.no-banner {
+    padding: 0;
+    display: none;
+    .app-banner {
+      min-height: 0;
+    }
   }
+  .app-banner {
+    margin-bottom: -15px;
+    max-width: 720px;
+    max-height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 30px;
+
+    img {
+        width: 100%;
+        max-width: 720px;
+    }
+  }
+}
+
+.title-bar.extra-margin {
+  margin-top: 43px;
 }
 
 // App Description container
