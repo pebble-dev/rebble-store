@@ -8,6 +8,7 @@ import Home from './components/Home'
 import AppList from './components/pages/AppList'
 import Featured from './components/pages/Featured'
 import Category from './components/pages/Category'
+import AppView from './components/pages/AppView'
 import AppDetails from './components/pages/AppDetails'
 import AppVersions from './components/pages/AppVersions'
 import Author from './components/pages/Author'
@@ -30,8 +31,20 @@ const routes = [
   {path: '/apps', component: AppList},
   {path: '/featured', component: Featured},
   {path: '/category', component: Category},
-  {path: '/app-details/:id', component: AppDetails},
-  {path: '/app-versions/:id', component: AppVersions},
+  {
+    path: '/app/:id',
+    component: AppView,
+    children: [
+      {
+        path: '',
+        component: AppDetails
+      },
+      {
+        path: 'versions',
+        component: AppVersions
+      }
+    ]
+  },
   {path: '/author', component: Author},
   {path: '/search', component: Search},
   {path: '/collection/:id', component: Collection},

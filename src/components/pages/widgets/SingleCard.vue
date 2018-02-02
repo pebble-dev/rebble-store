@@ -1,5 +1,5 @@
 <template>
-  <router-link v-bind:to="'/app-details/' + card.id + urlArguments">
+  <router-link v-bind:to="'/app/' + card.id + urlArguments">
   <div class="card">
     <img class="card-img-top" v-bind:src="card.image_url" alt="App Icon">
     <div class="card-block text-xs-center">
