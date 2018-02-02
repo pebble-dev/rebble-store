@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="flex-content">
+    <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
       <navbar v-if="!inApp"></navbar>
       <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform"></router-view>
@@ -61,6 +61,11 @@ export default {
   min-height: 100vh;
   flex-direction: column;
 }
+
+.main-in-app {
+  margin-top: -43px;
+}
+
 // _fonts.scss
 // Set font-family and font-weight in here
 
