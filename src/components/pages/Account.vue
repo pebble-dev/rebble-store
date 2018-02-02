@@ -22,7 +22,7 @@
             </tr>
             <tr>
               <td>
-                <input type="submit" value="Update information" v-bind:disabled="updating" />
+                <input type="submit" value="Update information" v-bind:disabled="updating || name === ''" />
               </td>
               <td class="success" v-show="updateNameSuccess">
                 Success!
