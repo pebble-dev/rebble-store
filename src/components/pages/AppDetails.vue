@@ -1,6 +1,6 @@
 <template>
   <main class="text-center">
-    <screenshot-list v-bind:platforms="app.assets.screenshots" v-bind:clientPlatform="clientPlatform"></screenshot-list>
+    <screenshot-list v-bind:platforms="app.assets.screenshots" v-bind:clientWatchPlatform="clientWatchPlatform"></screenshot-list>
 
     <div class="card subsection text-left p-3 app-details">
       <h1>Description</h1> <hr>
@@ -67,7 +67,7 @@ export default {
   props: {
     urlArguments: '',
     app: {},
-    clientPlatform: ''
+    clientWatchPlatform: ''
   }
 }
 </script>

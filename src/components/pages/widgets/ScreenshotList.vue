@@ -11,12 +11,12 @@
 <script>
 export default {
   name: 'ScreenshotList',
-  props: ['platforms', 'clientPlatform'],
+  props: ['platforms', 'clientWatchPlatform'],
   methods: {
     getPlatform: function () {
       var that = this
       for (var i = 0; i < this.platforms.length; ++i) {
-        if (this.platforms[i].platform === that.clientPlatform && this.platforms[i].screenshots.length > 0) {
+        if (this.platforms[i].platform === that.clientWatchPlatform && this.platforms[i].screenshots.length > 0) {
           return this.platforms[i]
         }
       }

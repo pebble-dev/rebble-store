@@ -35,7 +35,6 @@ export default {
   },
   beforeMount () {
     let routeParameters = this.$route.query
-    console.log(routeParameters)
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
       this.inApp = true
@@ -43,10 +42,9 @@ export default {
     }
     // watchPlatform refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.watchPlatform) {
-      this.inApp = true
       this.routeParameters.watchPlatform = routeParameters.watchPlatform
       // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('platform', routeParameters.watchPlatform)
+      window.localStorage.setItem('watchPlatform', routeParameters.watchPlatform)
     }
   }
 }

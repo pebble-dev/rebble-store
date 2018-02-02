@@ -21,13 +21,13 @@ export default {
   name: 'settings',
   data: function () {
     return {
-      platform: window.localStorage.getItem('platform')
+      platform: window.localStorage.getItem('watchPlatform')
     }
   },
   watch: {
     platform: function (p) {
       this.platform = p
-      window.localStorage.setItem('platform', p)
+      window.localStorage.setItem('watchPlatform', p)
     }
   },
   beforeMount: function () {

@@ -7,7 +7,7 @@
     </header>
     <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.assets.appBanner) ? 'title-bar extra-margin': ''"></app-title-bar>
 
-    <router-view v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:backendUrl="backendUrl"></router-view>
+    <router-view v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:backendUrl="backendUrl" v-bind:clientWatchPlatform="clientWatchPlatform"></router-view>
   </section>
 </template>
 
@@ -57,7 +57,7 @@ export default {
         'doomsday_backup': false
       },
       'urlArguments': '',
-      clientPlatform: window.localStorage.getItem('platform')
+      clientWatchPlatform: window.localStorage.getItem('watchPlatform')
     }
   },
   methods: {
@@ -78,8 +78,8 @@ export default {
     this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
 
     this.get_app(this.$route.params.id)
-    if (this.clientPlatform == null) {
-      this.clientPlatform = 'basalt'
+    if (this.clientWatchPlatform == null) {
+      this.clientWatchPlatform = 'basalt'
     }
   }
 }
