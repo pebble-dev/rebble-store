@@ -22,7 +22,7 @@
           <tr>
             <td>Tags</td>
             <td v-for="tag in app.appInfo.tags">
-              <a v-bind:href="'/collection/' + tag.id"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></a>
+              <router-link v-bind:to="'/collection/' + tag.id"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
             </td>
           </tr>
           <tr>
@@ -34,11 +34,11 @@
             <td>{{ app.appInfo.version }}</td>
           </tr>
         </table>
-        <a v-bind:href="'/app-versions/' + $route.params.id" class="app-button">
+        <router-link v-bind:to="'/app-versions/' + $route.params.id" class="app-button">
           <div>
             Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
-        </a>
+        </router-link>
         <a v-if="app.appInfo.authorUrl != ''" v-bind:href="app.appInfo.authorUrl" class="app-button">
           <div>
             Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
@@ -48,14 +48,14 @@
           <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
         </a>
-        <a v-if="app.appInfo.sourceUrl != ''" v-bind:href="app.appInfo.sourceUrl" class="app-button">
+        <router-link v-if="app.appInfo.sourceUrl != ''" v-bind:to="app.appInfo.sourceUrl" class="app-button">
           <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
-        </a>
-        <a v-bind:href="'/author/' + app.author.id" class="app-button">
+        </router-link>
+        <router-link v-bind:to="'/author/' + app.author.id" class="app-button">
           <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>
-        </a>
+        </router-link>
         <a v-if="app.appInfo.pbwUrl != ''" v-bind:href="app.appInfo.pbwUrl" class="app-button">
           <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
           </div>

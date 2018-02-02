@@ -33,8 +33,8 @@
 
           <h4>We're getting the following message {{ 404 }}</h4>
           <div class="page-error_buttons">
-            <a href="javascript:history.go(0)" class="btn btn-outline-secondary">Try again</a>
-            <a href="/" class="btn btn-outline-pebble">Back to home</a>
+            <button v-on:click="reload()" class="btn btn-outline-secondary">Try again</button>
+            <router-link to="/" class="btn btn-outline-pebble">Back to home</router-link>
           </div>
         </div>
       </section>
@@ -44,7 +44,14 @@
 
 <script>
 export default {
-  name: 'error'
+  name: 'error',
+  data: function () {
+    return {
+      reload () {
+        this.$router.go(0)
+      }
+    }
+  }
 }
 </script>
 
