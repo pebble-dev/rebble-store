@@ -254,6 +254,9 @@ pre.description {
 
 // App details container (below screenshots)
 .app-details {
+    &:last-of-type {
+        margin-bottom: 0;
+    }
     // Main title
     h1 {
         font-size: 20px;
