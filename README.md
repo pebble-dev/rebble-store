@@ -10,7 +10,8 @@ This project is built with [VueJS 2](https://vuejs.org/), with webpack scripts i
 ## Backend/API
 This project has a separate backend/api with a Python option and a GoLang option, for now the main one with all the issues is Golang.
 - **GoLang:** https://github.com/pebble-dev/rebblestore-api
-- **Python:** https://github.com/pebble-dev/rebblestore-api-python
+
+The Python backend has been deprecated.
 
 ## Setting up OpenID keys
 
@@ -22,6 +23,8 @@ Here are the links to generate these keys:
 * [Yahoo](https://developer.yahoo.com/apps/create/).
 
 ## Installing
+
+If you want torun a local version you will also need to run the backend.
 
 ``` bash
 # install dependencies
@@ -42,10 +45,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-## Installing Dev Environment On Windows 10
-First make sure you have [WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) installed and enabled.
-
-Try running `npm run dev`. If it fails to find `node-sass/vendor` the package must be rebuilt. This can be done with `npm rebuild node-sass`.
-
-A patched version of the `node-macaddress` package is included in the `devDependencies` section of the `package.json` to make the webpack dev environment work inside WSL. The patched package can be found [here](https://github.com/TheBeastOfCaerbannog/node-macaddress#43238cd0569573837d4b48a27b3063d287d2968b), and more information on the bug that requires it can be found [here](https://github.com/AngularClass/angular2-webpack-starter/issues/1273).

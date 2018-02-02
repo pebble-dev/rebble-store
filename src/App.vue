@@ -229,4 +229,9 @@ header {
     }
   }
 }
+
+// Remove nasty outlines from buttons
+button:focus {
+  outline: none;
+}
 </style>

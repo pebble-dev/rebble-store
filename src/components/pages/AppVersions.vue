@@ -142,6 +142,7 @@ export default {
   max-height: 320px;
   margin-left: auto;
   margin-right: auto;
+  min-height: 30px;
 
   img {
       width: 100%;

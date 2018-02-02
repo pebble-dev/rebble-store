@@ -1,5 +1,5 @@
 <template>
-  <a v-bind:href="'/app-details/' + card.id">
+  <router-link v-bind:to="'/app-details/' + card.id">
   <div class="card">
     <img class="card-img-top" v-bind:src="card.image_url" alt="App Icon">
     <div class="card-block text-xs-center">
@@ -14,7 +14,7 @@
       </p>
     </div>
   </div>
-  </a>
+  </router-link>
 </template>
 
 <script>
