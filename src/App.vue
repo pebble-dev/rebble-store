@@ -5,7 +5,7 @@
       <navbar v-if="!inApp"></navbar>
       <router-view v-bind:backendUrl="backendUrl"></router-view>
     </div>
-    <page-footer v-if="!inApp"></page-footer>
+    <page-footer v-bind:brand="inApp"></page-footer>
   </div>
 </template>
 
