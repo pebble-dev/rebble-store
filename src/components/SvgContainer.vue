@@ -186,7 +186,7 @@ export default {
 }
 
 // App columns container
-.apps{
+.apps {
     .card-columns {
         // Modify bootstrap's default .card-columns stylse
 
@@ -200,7 +200,7 @@ export default {
                         top: 3px;
                     }
                 }
-  			}
+            }
             .card-text {
                 // Style thumbs up svg inside of app card
                 svg.thumbs-up {

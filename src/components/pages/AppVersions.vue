@@ -8,7 +8,7 @@
     <app-title-bar v-bind:app="app"></app-title-bar>
 
     <main class="text-center">
-      <div class="card subsection text-left p-3 app-details" v-for="version in versions.versions">
+      <div class="card subsection text-left p-3 app-details" v-for="(version, index) in versions.versions" v-bind:key="index">
         <h2>Version {{ version.number }}</h2> <h3 class="float-right">{{ version.release_date | formatDate }}</h3><hr>
         <pre class="description">{{ version.description }}</pre>
       </div>
