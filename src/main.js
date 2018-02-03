@@ -2,6 +2,7 @@
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 
 import App from './App'
 import Home from './components/Home'
@@ -25,6 +26,7 @@ Vue.filter('formatDate', function (d) {
 })
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 const routes = [
   {path: '/', component: Home},

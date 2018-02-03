@@ -61,13 +61,10 @@ export default {
       if (this.searchText !== '') {
         var that = this
 
-        window.$.getJSON(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText), function (j, s) {
-          if (s === 'success') {
-            that.searchResults = j
-          } else {
-            console.error(s)
-            console.error(j)
-          }
+        this.$http.get(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText)).then(response => {
+          that.searchResults = response.body
+        }, response => {
+          console.error(response)
         })
       }
     }

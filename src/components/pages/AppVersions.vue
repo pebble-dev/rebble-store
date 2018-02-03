@@ -30,13 +30,13 @@ export default {
   methods: {
     get_versions: function (id) {
       var that = this
-      window.$.getJSON(this.backendUrl + '/dev/apps/get_versions/id/' + id, function (j, s) {
-        if (s === 'success') {
-          that.versions = j
-        } else {
-          console.error(s)
-          console.error(j)
-        }
+      console.log(id)
+      let requestUrl = this.backendUrl + '/dev/apps/get_versions/id/' + id
+      console.log(requestUrl)
+      this.$http.get(requestUrl).then(response => {
+        that.versions = response.body
+      }, response => {
+        console.error(response)
       })
     }
   },

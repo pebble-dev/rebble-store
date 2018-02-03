@@ -63,13 +63,10 @@ export default {
   methods: {
     get_app: function (id) {
       var that = this
-      window.$.getJSON(this.backendUrl + '/dev/apps/get_app/id/' + id, function (j, s) {
-        if (s === 'success') {
-          that.app = j
-        } else {
-          console.error(s)
-          console.error(j)
-        }
+      this.$http.get(this.backendUrl + '/dev/apps/get_app/id/' + id).then(response => {
+        that.app = response.body
+      }, response => {
+        console.error(response)
       })
     }
   },
