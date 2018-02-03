@@ -106,7 +106,10 @@ export default {
             max-width: 170px;
 
             .card-title {
-              word-wrap: break-word;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              margin: 7px 6px 5px 6px; 
             }
 
             // Make it smaller on small screens
