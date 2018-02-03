@@ -88,8 +88,6 @@ export default {
             column-count: 3;
             column-gap: calc(1.25rem + 5px);
 
-
-
         }
     }
 

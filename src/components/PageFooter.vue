@@ -17,7 +17,6 @@ export default {
 // _footer.scss
 // Footer styles
 
-
 footer {
     margin-top: 40px;
     background-color: $pebble-color;

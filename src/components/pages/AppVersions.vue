@@ -229,7 +229,6 @@ pre.description {
     }
 }
 
-
 // App details container (below screenshots)
 .app-details {
     // Main title

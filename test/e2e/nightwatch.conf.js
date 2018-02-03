@@ -1,7 +1,7 @@
 require('babel-register')
 var config = require('../../config')
 
-// http://nightwatchjs.org/guide#settings-file
+// http://nightwatchjs.org/gettingstarted#settings-file
 module.exports = {
   src_folders: ['test/e2e/specs'],
   output_folder: 'test/e2e/reports',
@@ -9,7 +9,7 @@ module.exports = {
 
   selenium: {
     start_process: true,
-    server_path: 'node_modules/selenium-server/lib/runner/selenium-server-standalone-2.53.1.jar',
+    server_path: require('selenium-server').path,
     host: '127.0.0.1',
     port: 4444,
     cli_args: {

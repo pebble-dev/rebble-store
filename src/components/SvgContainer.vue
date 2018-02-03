@@ -56,7 +56,6 @@
         </g>
       </svg>
 
-
     <svg id="iconSearch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g fill="none" fill-rule="evenodd" stroke="#fffff">
             <polygon stroke-width="1.5" points="13.157 15.645 15.157 13.645 22 20 20 22"/>
@@ -84,14 +83,12 @@
           </g>
         </svg>
 
-
     <symbol id="iconApp" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
         <polygon stroke="currentColor" points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
         <polyline stroke="currentColor" points="14 18.001 4 18.001 0 14 0 4"/>
       </g>
     </symbol>
-
 
     <svg id="iconWatchface" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
@@ -135,7 +132,7 @@ export default {
 
   .btn-watchface, .btn-app {
     svg.icon-watchface, svg.icon-app {
-        fill: transparent; 
+        fill: transparent;
         stroke: #828682;
         use {
             fill: transparent;
@@ -150,7 +147,6 @@ export default {
     position: relative;
     top: 2px;
   }
-
 
 // Select the dark translucent navbar
 .navbar-dark.bg-dark.translucent {
@@ -169,8 +165,8 @@ export default {
                 &.active, &:active,  &:hover {
                     //Hover and active styles
                     svg.icon-watchface, svg.icon-app  {
-                        fill: transparent; 
-                        stroke: #FFF; 
+                        fill: transparent;
+                        stroke: #FFF;
                         // Watchface Icon
                         use {
                             color: #fff;
@@ -188,9 +184,6 @@ export default {
         }
     }
 }
-
-
-
 
 // App columns container
 .apps{
@@ -220,9 +213,6 @@ export default {
         }
     }
 }
-
-
-
 
 // Change the font-size of the arrow in the buttons that are located at the bottom of the app-details container
 .app-details{
