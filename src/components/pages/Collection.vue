@@ -70,7 +70,57 @@ export default {
       var that = this
 
       // Remove card to provide user input that something has changed while we wait for the backend
-      this.collection.cards = []
+      this.collection.cards = [
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        }
+      ]
 
       this.$http.get(this.backendUrl + '/dev/apps/get_collection/id/' + encodeURIComponent(id) + '?platform=' + this.clientWatchPlatform + '&order=' + this.sort + '&page=' + this.currentPage).then(response => {
         that.collection = response.body
