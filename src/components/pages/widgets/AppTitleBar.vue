@@ -2,7 +2,7 @@
   <div v-bind:class="(urlArguments) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.assets.appIcon != ''" v-bind:src="app.assets.appIcon" alt="My App">
-        <div class="title-author">
+        <div v-bind:class="app.assets.appIcon ? 'title-author app' :  'title-author face'">
           <h1 class="tile">{{ app.title }}</h1>
           <h2 class="author">{{ app.author.name }}</h2>
         </div>
@@ -51,15 +51,32 @@ export default {
     }
     // Author name and app title text container
     .title-author {
-      height: 42px;
+      height: 45px;
       margin-top: -3px;
-      margin-bottom: 3px;
+      margin-bottom: 0;
       display: inline-block;
+      max-width: 493px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      &.face {
+        @media screen and (max-width: 430px) {
+          width: calc(100vw - 195px);
+        }
+        width: calc(100vw - 246px);
+      }
+      &.app {
+        @media screen and (max-width: 430px) {
+          width: calc(100vw - 247px);
+        }
+        width: calc(100vw - 298px);
+      }
       h1 {
         font-size: 19px;
         line-height: 26px;
-        display: inline;
+        display: inline-block;
         color: #fff;
+        margin-bottom: 0;
       }
       h2 {
         line-height: 16px;
