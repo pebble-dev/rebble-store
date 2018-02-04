@@ -109,7 +109,7 @@ export default {
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
-              margin: 7px 6px 5px 6px; 
+              margin: 7px 6px 5px 6px;
             }
 
             // Make it smaller on small screens

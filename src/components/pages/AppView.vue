@@ -72,7 +72,7 @@ export default {
   },
   beforeMount: function () {
     // Set url arguments if exist
-    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
+    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
 
     this.get_app(this.$route.params.id)
     if (this.clientWatchPlatform == null) {
@@ -115,7 +115,6 @@ header {
 .title-bar.extra-margin {
   margin-top: 43px;
 }
-
 
 // App details container (below screenshots)
 .app-details {

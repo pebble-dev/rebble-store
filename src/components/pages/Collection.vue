@@ -131,7 +131,7 @@ export default {
   },
   beforeMount: function () {
     // Set url arguments if exist
-    this.platform ? (this.urlArguments = '?platform=' + this.platform) : ''
+    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
 
     if (this.clientWatchPlatform == null) {
       this.clientWatchPlatform = 'basalt'

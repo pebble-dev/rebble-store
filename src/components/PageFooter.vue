@@ -28,7 +28,6 @@ export default {
 // _footer.scss
 // Footer styles
 
-
 footer.main {
     .main {
         display: block;
