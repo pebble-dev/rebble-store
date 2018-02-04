@@ -83,6 +83,7 @@ export default {
       margin-bottom: .75rem;
       margin-left: auto;
       margin-right: auto;
+      width: 100%;
     }
     a {
 
