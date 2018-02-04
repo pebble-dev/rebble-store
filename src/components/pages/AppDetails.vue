@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <td>Tags</td>
-            <td v-for="tag in app.appInfo.tags">
+            <td v-for="(tag, index) in app.appInfo.tags" v-bind:key="index">
               <router-link v-bind:to="'/collection/' + tag.id"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
             </td>
           </tr>
