@@ -117,6 +117,7 @@ export default {
                 max-width: 32vw;
                 display: inline-block;
                 margin-bottom: .75rem;
+                width: 100%;
 
                 .card-block {
                     padding-left: 0.2rem;
