@@ -186,7 +186,6 @@ export default {
 
     }
 
-
     @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
         // Styles that are in here will only apply if backdrop filters are supported by the browser
          background-color: rgba(55, 58, 60, 0.88)!important;

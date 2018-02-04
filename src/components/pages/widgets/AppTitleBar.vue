@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<<style lang="scss">
+<style lang="scss">
 @import './static/css/_variables.scss';
 
 // Title bar displayed below app banner

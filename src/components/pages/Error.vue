@@ -29,8 +29,6 @@
               </g>
             </svg>
 
-
-
           <h4>We're getting the following message {{ 404 }}</h4>
           <div class="page-error_buttons">
             <button v-on:click="reload()" class="btn btn-outline-secondary">Try again</button>
@@ -68,7 +66,6 @@ export default {
 
 // _error.scss
 // Error page styles
-
 
 .page-error {
   // Calculate top margin 58 px ar of the navbar

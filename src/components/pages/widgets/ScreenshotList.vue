@@ -1,6 +1,6 @@
 <template>
   <div class="screenshots dragscroll">
-      <div class="screenshot" v-for="screenshot in getPlatform().screenshots">
+      <div class="screenshot" v-for="(screenshot, index) in getPlatform().screenshots" v-bind:key="index">
         <img v-bind:src="screenshot" alt="Screenshot" />
       </div>
       <!-- Screenshots -->

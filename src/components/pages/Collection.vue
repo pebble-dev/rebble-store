@@ -26,7 +26,7 @@
               <span class="sr-only">Previous</span>
             </a>
           </li>
-          <li v-for="page in collection.pages" v-bind:class="'page-item' + (currentPage == page ? ' active' : '')"><a class="page-link" v-on:click="currentPage = page">{{ page }}</a></li>
+          <li v-for="(page, index) in collection.pages" v-bind:key="index" v-bind:class="'page-item' + (currentPage == page ? ' active' : '')"><a class="page-link" v-on:click="currentPage = page">{{ page }}</a></li>
           <li v-bind:class="'page-item' + (currentPage == collection.pages ? ' disabled' : '')">
             <a class="page-link" aria-label="Next" v-on:click="currentPage++">
               <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>

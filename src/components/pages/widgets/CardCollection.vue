@@ -7,7 +7,7 @@
       <small><a class="text-right" href="/featured">See All ></a></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="card in cards.cards" v-bind:card="card" v-bind:urlArguments='urlArguments'></single-card>
+      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
     </div>
   </section>
 </template>
@@ -92,8 +92,6 @@ export default {
 
             column-count: 3;
             column-gap: calc(1.25rem + 5px);
-
-
 
         }
     }

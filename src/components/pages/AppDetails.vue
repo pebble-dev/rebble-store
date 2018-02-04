@@ -6,6 +6,7 @@
       <h1>Description</h1> <hr>
       <pre class="description">{{ app.description }}</pre>
 
+            <td v-for="(tag, index) in app.appInfo.tags" v-bind:key="index">
       <table class="extra-table">
         <tr>
           <td>Developer</td>
@@ -13,7 +14,6 @@
         </tr>
         <tr>
           <td>Tags</td>
-          <td v-for="tag in app.appInfo.tags">
             <router-link v-bind:to="'/collection/' + tag.id + urlArguments"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
           </td>
         </tr>
