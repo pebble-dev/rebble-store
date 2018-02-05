@@ -60,13 +60,10 @@ export default {
   methods: {
     get_author: function (id) {
       var that = this
-      window.$.getJSON(this.backendUrl + '/dev/author/id/' + id, function (j, s) {
-        if (s === 'success') {
-          that.author = j
-        } else {
-          console.error(s)
-          console.error(j)
-        }
+      this.$http.get(this.backendUrl + '/dev/author/id/' + id).then(response => {
+        that.author = response.body
+      }, response => {
+        console.error(response)
       })
     }
   },
