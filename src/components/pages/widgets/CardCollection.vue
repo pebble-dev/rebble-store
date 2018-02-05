@@ -7,7 +7,7 @@
       <small><a class="text-right" href="/featured">See All ></a></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index"></single-card>
+      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
     </div>
   </section>
 </template>
@@ -28,6 +28,10 @@ export default {
     },
     cards: {
       cards: []
+    },
+    urlArguments: {
+      type: String,
+      default: ''
     }
   },
   components: {
@@ -74,6 +78,7 @@ export default {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: -12px;
 
             // Add more columns on large screens
             @media screen and (min-width: map-get($grid-breakpoints, lg)) {

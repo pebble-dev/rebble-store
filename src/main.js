@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+
 import App from './App'
 import router from './router'
 
@@ -8,6 +10,7 @@ Vue.filter('formatDate', function (d) {
     return date.getFullYear() + '-' + ((date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + (date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate()))
   }
 })
+Vue.use(VueResource)
 
 /* eslint-disable no-new */
 new Vue({

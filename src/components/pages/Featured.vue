@@ -6,7 +6,7 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:cards="featuredCards"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="featuredCards" v-bind:urlArguments='urlArguments'></card-collection>
 
       <nav>
         <ul class="pagination">
@@ -43,6 +43,9 @@ export default {
   name: 'featured',
   components: {
     CardCollection
+  },
+  props: {
+    platform: ''
   },
   data: function () {
     return {
@@ -133,8 +136,13 @@ export default {
             'thumbs_up': 1796
           }
         ]
-      }
+      },
+      'urlArguments': ''
     }
+  },
+  beforeMount: function () {
+    // Set url arguments if exist
+    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
   }
 }
 </script>
