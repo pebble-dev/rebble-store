@@ -12,7 +12,7 @@
         </a>
 
         <a v-bind:class="{ active: sort == 'popular'}" v-on:click="sort = 'popular'" class="btn btn-outline-secondary" role="button">
-          Sort by Popular
+          Sort by Popularity
         </a>
       </div>
 
@@ -26,7 +26,7 @@
               <span class="sr-only">Previous</span>
             </a>
           </li>
-          <li v-for="page in collection.pages" v-bind:class="'page-item' + (currentPage == page ? ' active' : '')"><a class="page-link" v-on:click="currentPage = page">{{ page }}</a></li>
+          <li v-for="(page, index) in collection.pages" v-bind:key="index" v-bind:class="'page-item' + (currentPage == page ? ' active' : '')"><a class="page-link" v-on:click="currentPage = page">{{ page }}</a></li>
           <li v-bind:class="'page-item' + (currentPage == collection.pages ? ' disabled' : '')">
             <a class="page-link" aria-label="Next" v-on:click="currentPage++">
               <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -49,7 +49,8 @@ export default {
   },
   props: {
     backendUrl: '',
-    authUrl: ''
+    authUrl: '',
+    platform: ''
   },
   data: function () {
     return {
@@ -61,7 +62,8 @@ export default {
       },
       sort: 'new',
       currentPage: 1,
-      clientPlatform: window.localStorage.getItem('platform')
+      clientWatchPlatform: window.localStorage.getItem('watchPlatform'),
+      urlArguments: ''
     }
   },
   methods: {
@@ -69,21 +71,71 @@ export default {
       var that = this
 
       // Remove card to provide user input that something has changed while we wait for the backend
-      this.collection.cards = []
-
-      window.$.getJSON(this.backendUrl + '/dev/apps/get_collection/id/' + encodeURIComponent(id) + '?platform=' + this.clientPlatform + '&order=' + this.sort + '&page=' + this.currentPage, function (j, s) {
-        if (s === 'success') {
-          that.collection = j
-        } else {
-          console.error(s)
-          console.error(j)
+      this.collection.cards = [
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
+        },
+        {
+          id: '',
+          title: '',
+          type: '',
+          image_url: '',
+          thumbs_up: 0
         }
+      ]
+
+      this.$http.get(this.backendUrl + '/dev/apps/get_collection/id/' + encodeURIComponent(id) + '?platform=' + this.clientWatchPlatform + '&order=' + this.sort + '&page=' + this.currentPage).then(response => {
+        that.collection = response.body
+      }, response => {
+        console.error(response)
       })
     }
   },
   beforeMount: function () {
-    if (this.clientPlatform == null) {
-      this.clientPlatform = 'basalt'
+    // Set url arguments if exist
+    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
+
+    if (this.clientWatchPlatform == null) {
+      this.clientWatchPlatform = 'basalt'
     }
 
     this.getCollection(this.$route.params.id)
@@ -102,5 +154,10 @@ export default {
 <style lang="scss" scoped>
   .btn-group {
     margin-bottom: 25px;
+    .btn.btn-outline-secondary {
+      &:hover {
+        color: #fff;
+      }
+    }
   }
 </style>

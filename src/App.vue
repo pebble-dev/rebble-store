@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div class="flex-content">
+    <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
-      <navbar v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:addProviderCallback="addProviderCallback" v-bind:accountInformation="accountInformation"></router-view>
+      <navbar v-if="!inApp" v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:addProviderCallback="addProviderCallback" v-bind:accountInformation="accountInformation"></router-view>
     </div>
-    <page-footer></page-footer>
+    <page-footer v-bind:brand="inApp"></page-footer>
   </div>
 </template>
 
@@ -26,6 +26,11 @@ export default {
   data: function () {
     return {
       backendUrl: 'https://localhost:8080',
+      inApp: false,
+      routeParameters: {
+        platform: '',
+        watchPlatform: ''
+      },
       authUrl: 'http://localhost:8082',
       loginCallback: 'http://localhost:8081/user/login',
       addProviderCallback: 'http://localhost:8081/user/account',
@@ -35,6 +40,22 @@ export default {
         linkedProviders: []
       }
     }
+  },
+  beforeMount () {
+    let routeParameters = this.$route.query
+    // Platform refers to phone. Android or iOS.
+    if (routeParameters.platform) {
+      this.inApp = true
+      this.routeParameters.platform = routeParameters.platform
+    }
+    // watchPlatform refers to the watch. basalt, chalk, aplite, etc.
+    if (routeParameters.watchPlatform) {
+      this.routeParameters.watchPlatform = routeParameters.watchPlatform
+      // Set it to local storage for it to be used in other sessions
+      window.localStorage.setItem('watchPlatform', routeParameters.watchPlatform)
+    }
+
+    this.getAccountInformation()
   },
   methods: {
     getAccountInformation: function () {
@@ -61,11 +82,9 @@ export default {
         })
       }
     }
-  },
-  beforeMount: function () {
-    this.getAccountInformation()
   }
 }
+
 </script>
 
 <style lang="scss">
@@ -78,6 +97,11 @@ export default {
   min-height: 100vh;
   flex-direction: column;
 }
+
+.main-in-app {
+  margin-top: -43px;
+}
+
 // _fonts.scss
 // Set font-family and font-weight in here
 
@@ -188,6 +212,7 @@ a {
 // Modify default pagination styles, mostly color (not inside section because it may get reused)
 ul.pagination {
   display: inline-flex;
+  margin-bottom: 0;
     .page-item {
         &.active .page-link {
             // Button is active

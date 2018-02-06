@@ -29,12 +29,10 @@
               </g>
             </svg>
 
-
-
           <h4>We're getting the following message {{ 404 }}</h4>
           <div class="page-error_buttons">
             <button v-on:click="reload()" class="btn btn-outline-secondary">Try again</button>
-            <router-link to="/" class="btn btn-outline-pebble">Back to home</router-link>
+            <router-link v-bind:to="'/'  + urlArguments" class="btn btn-outline-pebble">Back to home</router-link>
           </div>
         </div>
       </section>
@@ -45,22 +43,27 @@
 <script>
 export default {
   name: 'error',
+  props: {
+    platform: ''
+  },
   data: function () {
     return {
       reload () {
         this.$router.go(0)
-      }
+      },
+      'urlArguments': ''
     }
+  },
+  beforeMount: function () {
+    // Set url arguments if exist
+    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
 // _error.scss
 // Error page styles
-
 
 .page-error {
   // Calculate top margin 58 px ar of the navbar

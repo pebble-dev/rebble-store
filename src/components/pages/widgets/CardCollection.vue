@@ -7,7 +7,7 @@
       <small><a class="text-right" href="/featured">See All ></a></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="card in cards.cards" v-bind:card="card"></single-card>
+      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
     </div>
   </section>
 </template>
@@ -28,6 +28,10 @@ export default {
     },
     cards: {
       cards: []
+    },
+    urlArguments: {
+      type: String,
+      default: ''
     }
   },
   components: {
@@ -37,8 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
     // Each group of cards is supposed to be a section
     section {
         // Add a margin to the bottom of each section
@@ -74,6 +76,7 @@ export default {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: -12px;
 
             // Add more columns on large screens
             @media screen and (min-width: map-get($grid-breakpoints, lg)) {
@@ -87,8 +90,6 @@ export default {
 
             column-count: 3;
             column-gap: calc(1.25rem + 5px);
-
-
 
         }
     }

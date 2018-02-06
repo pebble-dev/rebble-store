@@ -98,8 +98,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
 // Select the dark translucent navbar
 .navbar-dark.bg-dark.translucent {
   .navbar-container {
@@ -203,7 +201,6 @@ export default {
       background-color: rgba(55, 58, 60, 0.95) !important;
 
     }
-
 
     @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
         // Styles that are in here will only apply if backdrop filters are supported by the browser
