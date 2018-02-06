@@ -45,7 +45,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './static/css/_variables.scss';
 // Remember that font-awesome is included in the projects
 
   #svgContainer {

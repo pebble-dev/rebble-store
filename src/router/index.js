@@ -34,7 +34,7 @@ const routes = [
       }
     ]
   },
-  {path: '/author', component: Author},
+  {path: '/author/:id', component: Author},
   {path: '/search', component: Search},
   {path: '/collection/:id', component: Collection},
   {path: '/settings', component: Settings},

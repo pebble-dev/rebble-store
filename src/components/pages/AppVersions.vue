@@ -47,8 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
 // App details container (below screenshots)
 .app-details {
     &:last-of-type {
