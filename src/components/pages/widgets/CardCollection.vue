@@ -41,8 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
     // Each group of cards is supposed to be a section
     section {
         // Add a margin to the bottom of each section

@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './static/css/_variables.scss';
-
   div.loading {
     .loader {
       display: block;
