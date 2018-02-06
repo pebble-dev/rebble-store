@@ -1,5 +1,5 @@
 <template>
-  <svg id="svgContainer">
+  <div id="svgContainer">
     <!-- <svg id="petRock" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <polygon id="a" points="160.865 162.763 243.499 144.619 257.327 109.929 242.053 72.586 209.66 56.935 180.398 34.881 138.125 29.331 89.961 41.943 58.829 43.073 31.846 60.054 13.107 99.878 36.862 138.39 100.393 158.597"/>
@@ -32,7 +32,7 @@
         </text>
       </g>
     </svg> -->
-</svg>
+</div>
 </template>
 
 <script>

@@ -72,6 +72,7 @@ module.exports = {
         include: [resolve('src/assets/svg')],
         options: {
           symbolId: 'icon[name]',
+          spriteModule: resolve('build/sprite_module.conf.js')
         }
       },
       {
