@@ -83,6 +83,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import './static/css/_variables.scss';
+
 // _app-details.scss
 // App details page styles
 

@@ -88,6 +88,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './static/css/_variables.scss';
+
 // Select the dark translucent navbar
 .navbar-dark.bg-dark.translucent {
   .navbar-container {

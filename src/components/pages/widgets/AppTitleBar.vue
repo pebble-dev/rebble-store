@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import './static/css/_variables.scss';
+
 // Title bar displayed below app banner
 .app-title-bar-cont {
   padding-top: 15px;
