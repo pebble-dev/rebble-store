@@ -113,21 +113,30 @@ export default {
       this.updateNameErrorMessage = ''
 
       var data = JSON.stringify({
-        accessToken: window.localStorage.getItem('accessToken'),
         name: this.name
       })
 
+      var accessToken = window.localStorage.getItem('accessToken')
+
       var that = this
-      window.$.post(this.authUrl + '/user/update/name', data, function (data) {
-        that.updating = false
-        if (typeof data !== 'object') {
-          that.updatePasswordErrorMessage = 'Internal Server Error'
-        } else {
-          if (data.success) {
-            that.updateNameSuccess = true
-            that.name = ''
+      window.$.ajax({
+        url: this.authUrl + '/user/update/name',
+        type: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + accessToken
+        },
+        data: data,
+        success: function (data) {
+          that.updating = false
+          if (typeof data !== 'object') {
+            that.updatePasswordErrorMessage = 'Internal Server Error'
           } else {
-            that.updateNameErrorMessage = data.errorMessage
+            if (data.success) {
+              that.updateNameSuccess = true
+              that.name = ''
+            } else {
+              that.updateNameErrorMessage = data.errorMessage
+            }
           }
         }
       })
@@ -136,20 +145,29 @@ export default {
       this.updating = true
 
       var data = JSON.stringify({
-        accessToken: window.localStorage.getItem('accessToken'),
         provider: provider
       })
 
+      var accessToken = window.localStorage.getItem('accessToken')
+
       var that = this
-      window.$.post(this.authUrl + '/user/update/removeLinkedProvider', data, function (data) {
-        that.updating = false
-        if (typeof data !== 'object') {
-          that.updatePasswordErrorMessage = 'Internal Server Error'
-        } else {
-          if (data.success) {
-            that.accountInformation.linkedProviders.splice(that.accountInformation.linkedProviders.indexOf(provider))
+      window.$.ajax({
+        url: this.authUrl + '/user/update/removeLinkedProvider',
+        type: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + accessToken
+        },
+        data: data,
+        success: function (data) {
+          that.updating = false
+          if (typeof data !== 'object') {
+            that.updatePasswordErrorMessage = 'Internal Server Error'
           } else {
-            that.updateNameErrorMessage = data.errorMessage
+            if (data.success) {
+              that.accountInformation.linkedProviders.splice(that.accountInformation.linkedProviders.indexOf(provider))
+            } else {
+              that.updateNameErrorMessage = data.errorMessage
+            }
           }
         }
       })

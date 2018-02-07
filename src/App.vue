@@ -62,21 +62,26 @@ export default {
       if (window.localStorage.getItem('accessToken') !== null) {
         var that = this
 
-        var data = JSON.stringify({
-          accessToken: window.localStorage.getItem('accessToken')
-        })
+        var accessToken = window.localStorage.getItem('accessToken')
 
-        window.$.post(this.authUrl + '/user/info', data, function (data) {
-          if (typeof data !== 'object') {
-            console.log('Got non-JSON object from {auth}/usr/info: ' + data)
-          } else {
-            if (data.loggedIn) {
-              that.accountInformation.loggedIn = true
-              that.accountInformation.name = data.name
-              that.accountInformation.linkedProviders = data.linkedProviders
+        window.$.ajax({
+          url: this.authUrl + '/user/info',
+          type: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          },
+          success: function (data) {
+            if (typeof data !== 'object') {
+              console.log('Got non-JSON object from {auth}/usr/info: ' + data)
             } else {
-              window.localStorage.removeItem('accessToken')
-              that.accessToken = null
+              if (data.loggedIn) {
+                that.accountInformation.loggedIn = true
+                that.accountInformation.name = data.name
+                that.accountInformation.linkedProviders = data.linkedProviders
+              } else {
+                window.localStorage.removeItem('accessToken')
+                that.accessToken = null
+              }
             }
           }
         })
