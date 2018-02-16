@@ -2,12 +2,12 @@
   <defs>
     <rect id="a" width="15" height="16" x="3"/>
   </defs>
-  <g fill="none" fill-rule="evenodd" transform="translate(1)">
-    <rect width="21" height="8" y="14" fill="#333333" stroke="#FF4700" stroke-width="2"/>
+  <g fill-rule="evenodd" transform="translate(1)">
+    <rect width="21" height="8" y="14" stroke="currentColor" stroke-width="2"/>
     <mask id="b" fill="white">
       <use xlink:href="#a"/>
     </mask>
-    <polygon fill="#333333" stroke="#FF4700" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
-    <rect width="2" height="2" x="16" y="17" fill="#D8D8D8" stroke="#FF4700" stroke-width="2"/>
+    <polygon stroke="currentColor" stroke-width="2" points="8.727 1 12.273 1 12.273 9 17 9 10.5 16 4 9 8.727 9" mask="url(#b)"/>
+    <rect width="2" height="2" x="16" y="17" stroke="currentColor" stroke-width="2"/>
   </g>
 </svg>
