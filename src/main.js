@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import VueDragscroll from 'vue-dragscroll'
 
 import App from './App'
 import router from './router'
@@ -11,7 +12,7 @@ Vue.filter('formatDate', function (d) {
   }
 })
 Vue.use(VueResource)
-
+Vue.use(VueDragscroll)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

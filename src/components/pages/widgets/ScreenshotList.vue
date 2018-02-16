@@ -1,17 +1,23 @@
 <template>
-  <div class="screenshots dragscroll">
-      <single-screenshot v-for="(screenshot, index) in getPlatform().screenshots" v-bind:key="index" v-bind:screenshotSrc="screenshot"></single-screenshot>
-      <!-- Screenshots -->
-    <div class="screenshot-spacer"></div>
+  <div v-dragscroll.x="true" class="screenshots">
+      <div id="scrollbar">
+          <single-screenshot v-for="(screenshot, index) in getPlatform().screenshots" v-bind:key="index" v-bind:screenshotSrc="screenshot"></single-screenshot>
+          <!-- Screenshots -->
+          <div style="width: 184px;height: 100px; background-color: #006600;  margin-right: 40px;display: table;position: absolute"></div>
+          <div class="screenshot-spacer" style="background-color: cadetblue"></div>
+      </div>
   </div>
 </template>
 
 <script>
-
+import {dragscroll} from 'vue-dragscroll'
 import SingleScreenshot from './SingleScreenshot'
 
 export default {
   name: 'ScreenshotList',
+  directives: {
+    dragscroll
+  },
   components: {
     SingleScreenshot
   },
@@ -48,7 +54,7 @@ export default {
     margin-bottom: 40px;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
-    padding-left: calc(50vw - 92px);
+
     &::-webkit-scrollbar {
         background: transparent;
         width: 0 !important;
@@ -58,7 +64,15 @@ export default {
         width: calc(50vw - 92px);
         height: 168px;
         display: table;
+
     }
+}
+
+#scrollbar {
+    display: inline-block;
+    padding-left: 50vw;
+    padding-right: 50vw;
+    background-color: #9b9d9e;
 }
 
 </style>
