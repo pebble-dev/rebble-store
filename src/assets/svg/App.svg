@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
   <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="2" transform="translate(1 1)">
-    <polygon points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
-    <polyline points="14 18.001 4 18.001 0 14 0 4"/>
+    <polygon stroke="currentColor" points="5.143 0 15.857 0 18 2.143 18 12.857 15.857 15 5.143 15 3 12.853 3 2.143"/>
+    <polyline stroke="currentColor" points="14 18.001 4 18.001 0 14 0 4"/>
   </g>
 </svg>

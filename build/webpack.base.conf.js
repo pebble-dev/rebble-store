@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -66,12 +67,20 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(svg)$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/assets/svg')],
         options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          symbolId: 'icon[name]',
+          spriteModule: resolve('build/sprite_module.conf.js')
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        exclude: [resolve('src/assets/svg')],
+        use:[
+          'file-loader',
+        ]
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
