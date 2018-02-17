@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     scrollStyle: function () {
-      return {'padding-right': 'calc(50% - 72px + ' + this.screenshotsCount + ' * 144px)'}
+      return {'padding-right': 'calc(50% - 92px + ' + this.screenshotsCount + ' * 184px)'}
     }
   }
 }
@@ -71,13 +71,13 @@ export default {
 }
 
 #imageDiv {
-    // -72px for centering first screenshot
-    padding-left: calc(50% - 72px);
+    // -92px for centering first screenshot
+    padding-left: calc(50% - 92px);
 }
 
 #scrollbar {
     display: inline-block;
-    padding-left: calc(50% - 72px);
+    padding-left: calc(50% - 92px);
     background-color: #9b9d9e;
 }
 
