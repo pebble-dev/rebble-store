@@ -1,9 +1,8 @@
 <template>
   <div v-dragscroll.x="true" class="screenshots">
-      <div id="imageDiv">
+      <div id="scrollbar" v-bind:style="scrollStyle">
           <single-screenshot v-for="(screenshot, index) in getPlatform().screenshots" v-bind:key="index" v-bind:screenshotSrc="screenshot"></single-screenshot>
       </div>
-      <div id="scrollbar" v-bind:style="scrollStyle"> </div>
   </div>
 </template>
 
@@ -47,7 +46,7 @@ export default {
   },
   computed: {
     scrollStyle: function () {
-      return {'padding-right': 'calc(50% - 92px + ' + this.screenshotsCount + ' * 184px)'}
+      return {'width': 'calc(100% + (' + this.screenshotsCount + ' - 1) * 184px)'}
     }
   }
 }
@@ -59,7 +58,6 @@ export default {
     max-width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
     margin-bottom: 40px;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
@@ -70,15 +68,13 @@ export default {
     }
 }
 
-#imageDiv {
-    // -92px for centering first screenshot
-    padding-left: calc(50% - 92px);
-}
-
 #scrollbar {
     display: inline-block;
     padding-left: calc(50% - 92px);
-    background-color: #9b9d9e;
+}
+
+#scrollbar .screenshot {
+    float: left;
 }
 
 </style>
