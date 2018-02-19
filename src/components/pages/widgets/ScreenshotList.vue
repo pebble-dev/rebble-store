@@ -58,6 +58,7 @@ export default {
     max-width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     margin-bottom: 40px;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
