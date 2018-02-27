@@ -57,18 +57,11 @@ export default {
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      &.face {
-        @media screen and (max-width: 430px) {
-          width: calc(100vw - 195px);
-        }
-        width: calc(100vw - 246px);
+      @media screen and (max-width: 430px) {
+        width: calc(100% - 146px);
       }
-      &.app {
-        @media screen and (max-width: 430px) {
-          width: calc(100vw - 247px);
-        }
-        width: calc(100vw - 298px);
-      }
+      width: calc(100% - 195px);
+
       h1 {
         font-size: 19px;
         line-height: 26px;
