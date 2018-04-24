@@ -1,9 +1,7 @@
 <template>
   <section v-bind:class="app.type" >
     <header v-bind:class="(platform && !app.assets.appBanner) ? 'inApp no-banner': ''">
-      <div class="app-banner">
-        <img v-if="app.assets.appBanner != ''" v-bind:src="app.assets.appBanner" alt="App Banner">
-      </div>
+      <single-banner v-if="app.assets.appBanner != ''" v-bind:bannerSrc="app.assets.appBanner"></single-banner>
     </header>
     <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.assets.appBanner) ? 'title-bar extra-margin': ''"></app-title-bar>
 
@@ -13,13 +11,15 @@
 
 <script>
 import AppTitleBar from './widgets/AppTitleBar'
+import SingleBanner from './widgets/SingleBanner'
 import ScreenshotList from './widgets/ScreenshotList'
 
 export default {
   name: 'app-view',
   components: {
     AppTitleBar,
-    ScreenshotList
+    ScreenshotList,
+    SingleBanner
   },
   props: {
     backendUrl: '',
@@ -91,17 +91,15 @@ header {
   &.inApp.no-banner {
     padding: 0;
     display: none;
-    .app-banner {
-      min-height: 0;
-    }
+    min-height: 0;
   }
+  min-height: 90px;
   .app-banner {
     margin-bottom: -15px;
     max-width: 720px;
     max-height: 320px;
     margin-left: auto;
     margin-right: auto;
-    min-height: 30px;
 
     img {
         width: 100%;
