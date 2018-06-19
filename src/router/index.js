@@ -11,6 +11,9 @@ import Author from '@/components/pages/Author'
 import Search from '@/components/pages/Search'
 import Collection from '@/components/pages/Collection'
 import Settings from '@/components/pages/Settings'
+import Account from '@/components/pages/Account'
+import AccountLogin from '@/components/pages/AccountLogin'
+import AccountDisconnect from '@/components/pages/AccountDisconnect'
 import Error from '@/components/pages/Error'
 
 Vue.use(Router)
@@ -38,6 +41,9 @@ const routes = [
   {path: '/search', component: Search},
   {path: '/collection/:id', component: Collection},
   {path: '/settings', component: Settings},
+  {path: '/user/account', component: Account},
+  {path: '/user/login', component: AccountLogin},
+  {path: '/user/disconnect', component: AccountDisconnect},
   {path: '*', component: Error}
 ]
 

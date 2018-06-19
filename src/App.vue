@@ -2,8 +2,8 @@
   <div id="app">
     <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
-      <navbar v-if="!inApp"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform"></router-view>
+      <navbar v-if="!inApp" v-bind:backendUrl="backendUrl" v-bind:accountInformation="accountInformation"></navbar>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform" v-bind:authUrl="authUrl" v-bind:loginCallback="loginCallback" v-bind:addProviderCallback="addProviderCallback" v-bind:accountInformation="accountInformation"></router-view>
     </div>
     <page-footer v-bind:brand="inApp"></page-footer>
   </div>
@@ -25,11 +25,19 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'http://localhost:8080',
+      backendUrl: 'https://localhost:8080',
       inApp: false,
       routeParameters: {
         platform: '',
         watchPlatform: ''
+      },
+      authUrl: 'http://localhost:8082',
+      loginCallback: 'http://localhost:8081/user/login',
+      addProviderCallback: 'http://localhost:8081/user/account',
+      accountInformation: {
+        loggedIn: false,
+        name: 'Guest',
+        linkedProviders: []
       }
     }
   },
@@ -45,6 +53,39 @@ export default {
       this.routeParameters.watchPlatform = routeParameters.watchPlatform
       // Set it to local storage for it to be used in other sessions
       window.localStorage.setItem('watchPlatform', routeParameters.watchPlatform)
+    }
+
+    this.getAccountInformation()
+  },
+  methods: {
+    getAccountInformation: function () {
+      if (window.localStorage.getItem('accessToken') !== null) {
+        var that = this
+
+        var accessToken = window.localStorage.getItem('accessToken')
+
+        window.$.ajax({
+          url: this.authUrl + '/user/info',
+          type: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          },
+          success: function (data) {
+            if (typeof data !== 'object') {
+              console.log('Got non-JSON object from {auth}/usr/info: ' + data)
+            } else {
+              if (data.loggedIn) {
+                that.accountInformation.loggedIn = true
+                that.accountInformation.name = data.name
+                that.accountInformation.linkedProviders = data.linkedProviders
+              } else {
+                window.localStorage.removeItem('accessToken')
+                that.accessToken = null
+              }
+            }
+          }
+        })
+      }
     }
   }
 }

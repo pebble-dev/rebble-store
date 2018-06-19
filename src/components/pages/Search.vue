@@ -45,7 +45,8 @@ export default {
   },
   props: {
     backendUrl: '',
-    platform: ''
+    platform: '',
+    authUrl: ''
   },
   data: function () {
     return {

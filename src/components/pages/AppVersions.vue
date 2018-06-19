@@ -17,6 +17,7 @@ export default {
   },
   props: {
     backendUrl: '',
+    authUrl: '',
     urlArguments: '',
     app: {}
   },
