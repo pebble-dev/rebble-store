@@ -1,9 +1,9 @@
 <template>
   <section v-bind:class="app.type" >
-    <header v-bind:class="(platform && !app.assets.appBanner) ? 'inApp no-banner': ''">
-      <single-banner v-if="app.assets.appBanner != ''" v-bind:bannerSrc="app.assets.appBanner"></single-banner>
+    <header v-bind:class="(platform && !app.header_images) ? 'inApp no-banner': ''">
+      <single-banner v-if="app.header_images != ''" v-bind:bannerSrc="app.header_images[0].orig"></single-banner>
     </header>
-    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.assets.appBanner) ? 'title-bar extra-margin': ''"></app-title-bar>
+    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
 
     <router-view v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:backendUrl="backendUrl" v-bind:clientWatchPlatform="clientWatchPlatform"></router-view>
   </section>
@@ -27,35 +27,7 @@ export default {
   },
   data: function () {
     return {
-      app: {
-        'id': '',
-        'title': '',
-        'author': {
-          'id': -1,
-          'name': ''
-        },
-        'description': '',
-        'thumbs_up': 0,
-        'type': '',
-        'supported_platforms': [],
-        'published_date': '2000-01-01T00:00:00.000+00:00',
-        'appInfo': {
-          'pbwUrl': '',
-          'rebbleReady': false,
-          'tags': [],
-          'updated': '2000-01-01T00:00:00.000+00:00',
-          'version': '',
-          'supportUrl': '',
-          'authorUrl': '',
-          'sourceUrl': ''
-        },
-        'assets': {
-          'appBanner': '',
-          'appIcon': '',
-          'screenshots': []
-        },
-        'doomsday_backup': false
-      },
+      app: {},
       'urlArguments': '',
       clientWatchPlatform: window.localStorage.getItem('watchPlatform')
     }
@@ -63,8 +35,10 @@ export default {
   methods: {
     get_app: function (id) {
       var that = this
-      this.$http.get(this.backendUrl + '/dev/apps/get_app/id/' + id).then(response => {
-        that.app = response.body
+      this.$http.get(this.backendUrl + '/apps/id/' + id).then(response => {
+        that.app = response.body.data[0]
+        console.log(that.app)
+        console.log(JSON.stringify(that.app))
       }, response => {
         console.error(response)
       })

@@ -25,7 +25,7 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'http://localhost:8080',
+      backendUrl: 'https://appstore-api.rebble.io/api/v1',
       inApp: false,
       routeParameters: {
         platform: '',

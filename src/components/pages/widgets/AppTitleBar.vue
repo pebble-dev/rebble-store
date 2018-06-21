@@ -1,10 +1,10 @@
 <template>
   <div v-bind:class="(urlArguments) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
-        <img class="app-icon" v-if="app.assets.appIcon != ''" v-bind:src="app.assets.appIcon" alt="My App">
-        <div v-bind:class="app.assets.appIcon ? 'title-author app' :  'title-author face'">
+        <img class="app-icon" v-if="app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
+        <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
           <h1 class="tile">{{ app.title }}</h1>
-          <h2 class="author">{{ app.author.name }}</h2>
+          <h2 class="author">{{ app.author }}</h2>
         </div>
 
         <div class="app-button-container float-right">
@@ -13,7 +13,7 @@
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
 
-          {{ app.thumbs_up }}
+          {{ app.hearts }}
           </button>
           <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download">
           <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
