@@ -2,11 +2,11 @@
   <div>
     <header>
       <div class="title-card">
-        <h3>Apps by: {{ author.name }}</h3>
+        <h3>Apps by: {{ page.data[0].author }}</h3>
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:cards="author" v-bind:urlArguments="urlArguments"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="page.data" v-bind:urlArguments="urlArguments"></card-collection>
 
       <nav>
         <ul class="pagination">
@@ -50,18 +50,15 @@ export default {
   data: function () {
     return {
       'urlArguments': '',
-      author: {
-        'id': 0,
-        'name': '',
-        'cards': []
-      }
+      page: {}
     }
   },
   methods: {
     get_author: function (id) {
       var that = this
-      this.$http.get(this.backendUrl + '/dev/author/id/' + id).then(response => {
-        that.author = response.body
+      this.$http.get(this.backendUrl + '/apps/dev/' + id).then(response => {
+        that.page = response.body
+        console.log(that.page)
       }, response => {
         console.error(response)
       })
