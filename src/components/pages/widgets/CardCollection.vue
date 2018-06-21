@@ -7,7 +7,7 @@
       <small><a class="text-right" href="/featured">See All ></a></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
+      <single-card v-for="(card, index) in cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
     </div>
   </section>
 </template>
