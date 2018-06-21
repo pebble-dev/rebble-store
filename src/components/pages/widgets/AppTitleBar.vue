@@ -58,9 +58,9 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       @media screen and (max-width: 430px) {
-        width: calc(100% - 146px);
+        width: calc(100% - 160px);
       }
-      width: calc(100% - 195px);
+      width: calc(100% - 220px);
 
       h1 {
         font-size: 19px;
