@@ -8,8 +8,8 @@
     <main class="apps container text-center">
         <div class="text-center header-tool">
           <div class="btn-group btn-group-sm" role="group">
-            <router-link v-bind:to="'/category/' + id + '/hearts/' + offsetPage" v-bind:class="sort == 'hearts' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Most Liked</router-link>
-            <router-link v-bind:to="'/category/' + id + '/updated/' + offsetPage" v-bind:class="sort == 'updated' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Recently Added</router-link>
+            <router-link v-bind:to="'/category/' + id + '/hearts/1'" v-bind:class="sort == 'hearts' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Most Liked</router-link>
+            <router-link v-bind:to="'/category/' + id + '/updated/1'" v-bind:class="sort == 'updated' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Recently Added</router-link>
           </div>
         </div>
 
@@ -17,17 +17,17 @@
 
         <nav>
           <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+            <li v-bind:class="offsetPage > 1 ? 'page-item': 'page-item disabled'">
+              <router-link class="page-link" v-bind:to="get_page_link(false)" tabindex="-1" aria-label="Previous">
                 <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> Previous
                 <span class="sr-only">Previous</span>
-              </a>
+              </router-link>
             </li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
+            <li class="page-item" v-bind:class="page.links.nextPage != null ? 'page-item': 'page-item disabled'">
+              <router-link class="page-link" v-bind:to="get_page_link(true)" aria-label="Next">
                 Next <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                 <span class="sr-only">Next</span>
-              </a>
+              </router-link>
             </li>
           </ul>
         </nav>
@@ -82,6 +82,15 @@ export default {
       this.offsetPage = routeParams.page
 
       this.get_category()
+    },
+    get_page_link: function (nextPage) {
+      var thisPage = this.offsetPage
+      if (nextPage) {
+        thisPage++
+      } else {
+        thisPage--
+      }
+      return '/category/' + this.id + '/' + this.sort + '/' + thisPage
     }
   },
   beforeMount: function () {
