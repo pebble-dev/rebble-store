@@ -45,6 +45,11 @@ export default {
       default: ''
     }
   },
+  watch: {
+    card: function () {
+      this.imageLoaded = false
+    }
+  },
   data: function () {
     return {
       'imageLoaded': false
