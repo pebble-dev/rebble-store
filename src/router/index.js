@@ -19,7 +19,18 @@ const routes = [
   {path: '/', component: Home},
   {path: '/apps', component: AppList},
   {path: '/featured', component: Featured},
-  {path: '/category', component: Category},
+  {
+    path: '/category/:id/:sort/:page',
+    component: Category
+  },
+  {
+    path: '/category/:id',
+    redirect: '/category/:id/hearts/1'
+  },
+  {
+    path: '/category/:id/:sort',
+    redirect: '/category/:id/:sort/1'
+  },
   {
     path: '/app/:id',
     component: AppView,
