@@ -5,7 +5,7 @@
         <li v-for="(banner, index) in banners" v-bind:key="index" data-target="#banner-carousel" v-bind:data-slide-to="index" v-bind:class="index == 0 ? 'active' : ''"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div v-bind:class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(banner, index) in banners" v-bind:key="index"><a href="/featured"><single-banner v-bind:bannerSrc="banner.image['720x320']"></single-banner></a></div>
+        <div v-bind:class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(banner, index) in banners" v-bind:key="index"><router-link v-bind:alt="banner.title" v-bind:to="'/app/' + banner.application_id"><single-banner v-bind:bannerSrc="banner.image['720x320']"></single-banner></router-link></div>
       </div>
       <a class="carousel-control carousel-control-prev" href="#banner-carousel" role="button" data-slide="prev">
         <i class="fa fa-angle-left" aria-hidden="true"></i>
