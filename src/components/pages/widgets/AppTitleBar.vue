@@ -1,7 +1,7 @@
 <template>
   <div v-bind:class="(urlArguments) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
-        <img class="app-icon" v-if="app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
+        <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
           <h1 class="tile">{{ app.title }}</h1>
           <h2 class="author">{{ app.author }}</h2>
