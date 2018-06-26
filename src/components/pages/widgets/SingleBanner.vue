@@ -21,6 +21,11 @@ export default {
   props: [
     'bannerSrc'
   ],
+  watch: {
+    'bannerSrc': function () {
+      this.imageLoaded = false
+    }
+  },
   data: function () {
     return {
       'imageLoaded': false

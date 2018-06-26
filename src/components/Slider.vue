@@ -1,21 +1,17 @@
 <template>
   <header>
-    <div id="featured-carousel" class="carousel slide" data-ride="carousel">
+    <div id="banner-carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#featured-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#featured-carousel" data-slide-to="1"></li>
-        <li data-target="#featured-carousel" data-slide-to="2"></li>
+        <li v-for="(banner, index) in banners" v-bind:key="index" data-target="#banner-carousel" v-bind:data-slide-to="index" v-bind:class="index == 0 ? 'active' : ''"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active"><a href="/featured"><img class="d-block img-fluid" src="https:/assets.getpebble.com/api/file/mzxYxZmWTbSSyDBG6spA/convert?cache=true&fit=crop&w=720&h=320" alt="First slide"></a></div>
-        <div class="carousel-item"><a href="/featured"><img class="d-block img-fluid" src="https:/assets.getpebble.com/api/file/kionqG5sSACzS3au4yZo/convert?cache=true&fit=crop&w=720&h=320" alt="Second slide"></a></div>
-        <div class="carousel-item"><a href="/featured"><img class="d-block img-fluid" src="https:/assets.getpebble.com/api/file/3HYkoCo7SzIaEyYlizBA/convert?cache=true&fit=crop&w=720&h=320" alt="Third slide"></a></div>
+        <div v-bind:class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(banner, index) in banners" v-bind:key="index"><a href="/featured"><single-banner v-bind:bannerSrc="banner.image['720x320']"></single-banner></a></div>
       </div>
-      <a class="carousel-control carousel-control-prev" href="#featured-carousel" role="button" data-slide="prev">
+      <a class="carousel-control carousel-control-prev" href="#banner-carousel" role="button" data-slide="prev">
         <i class="fa fa-angle-left" aria-hidden="true"></i>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control carousel-control-next" href="#featured-carousel" role="button" data-slide="next">
+      <a class="carousel-control carousel-control-next" href="#banner-carousel" role="button" data-slide="next">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
         <span class="sr-only">Next</span>
       </a>
@@ -24,8 +20,16 @@
 </template>
 
 <script>
+import SingleBanner from './pages/widgets/SingleBanner'
+
 export default {
-  name: 'slider'
+  name: 'slider',
+  components: {
+    SingleBanner
+  },
+  props: {
+    banners: null
+  },
 }
 </script>
 
