@@ -81,7 +81,7 @@ export default {
 
   methods: {
     updateBackButton () {
-      this.showBackButton = (this.currentRoute !== '/' && this.currentRoute !== '/apps')
+      this.showBackButton = (this.currentRoute !== '/faces' && this.currentRoute !== '/apps')
     }
   }
 }
