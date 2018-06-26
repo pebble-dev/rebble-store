@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import AppList from '@/components/pages/AppList'
 import Featured from '@/components/pages/Featured'
 import Category from '@/components/pages/Category'
 import AppView from '@/components/pages/AppView'
@@ -16,8 +15,7 @@ import Error from '@/components/pages/Error'
 Vue.use(Router)
 
 const routes = [
-  {path: '/', component: Home},
-  {path: '/apps', component: AppList},
+  {path: '', redirect: '/faces'},
   {path: '/featured', component: Featured},
   {
     path: '/category/:id/:sort/:page',
@@ -47,8 +45,10 @@ const routes = [
   },
   {path: '/author/:id', component: Author},
   {path: '/search', component: Search},
-  {path: '/collection/:id', component: Collection},
   {path: '/settings', component: Settings},
+  {path: '/:type', component: Home},
+  {path: '/:type/:slug', redirect: '/:type/:slug/1'},
+  {path: '/:type/:slug/:page', component: Collection},
   {path: '*', component: Error}
 ]
 
