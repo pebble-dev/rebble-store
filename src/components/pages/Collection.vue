@@ -61,7 +61,7 @@ export default {
     get_collection: function () {
       var that = this
       var offset = this.pageLimit * (this.offsetPage - 1)
-      this.$http.get(this.backendUrl + '/apps/collection/' + this.slug + '/' + this.type).then(response => {
+      this.$http.get(this.backendUrl + '/apps/collection/' + this.slug + '/' + this.type + '?offset=' + this.offsetPage + '&limit=' + this.pageLimit).then(response => {
         that.page = response.body
         console.log(that.page)
       }, response => {
