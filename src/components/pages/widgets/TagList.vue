@@ -9,7 +9,7 @@
 export default {
   name: 'tag-list',
   props: {
-    backendUrl: '',
+    urlArguments: '',
     tags: {}
   }
 }
