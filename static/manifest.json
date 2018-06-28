@@ -1,5 +1,9 @@
 {
-	"name": "Rebble Store",
+	"name": "Rebble App Store",
+  "short_name": "Rebble Store",
+  "description": "Browse Pebble apps on the Rebble store.",
+  "lang":"en",
+  "dir":"ltr",
 	"icons": [
 		{
 			"src": "\/static\/android-chrome-192x192.png",
