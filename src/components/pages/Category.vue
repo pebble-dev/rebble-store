@@ -68,7 +68,6 @@ export default {
       var offset = this.pageLimit * (this.offsetPage - 1)
       this.$http.get(this.backendUrl + '/apps/category/' + this.id + '?sort=' + this.sort + '&limit=' + this.pageLimit + '&offset=' + offset).then(response => {
         that.page = response.body
-        console.log(that.page)
       }, response => {
         console.error(response)
       })

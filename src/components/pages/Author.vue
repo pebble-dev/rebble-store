@@ -58,7 +58,6 @@ export default {
       var that = this
       this.$http.get(this.backendUrl + '/apps/dev/' + id).then(response => {
         that.page = response.body
-        console.log(that.page)
       }, response => {
         console.error(response)
       })

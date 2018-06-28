@@ -37,8 +37,6 @@ export default {
       var that = this
       this.$http.get(this.backendUrl + '/apps/id/' + id).then(response => {
         that.app = response.body.data[0]
-        console.log(that.app)
-        console.log(JSON.stringify(that.app))
       }, response => {
         console.error(response)
       })

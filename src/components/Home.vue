@@ -44,7 +44,6 @@ export default {
       this.$http.get(this.backendUrl + '/home/' + this.type).then(response => {
         that.page = response.body
         this.build_collections()
-        console.log(that.page)
       }, response => {
         console.error(response)
       })
