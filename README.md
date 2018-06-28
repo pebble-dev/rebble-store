@@ -1,3 +1,3 @@
-## Demo site 
+## Rebble Store Demo site 
 
-[http://pebble-dev.github.io/The-Panic-Store](http://pebble-dev.github.io/The-Panic-Store)
+[store.rebble.io](http://store.rebble.io)
