@@ -4,6 +4,8 @@ import VueResource from 'vue-resource'
 import App from './App'
 import router from './router'
 
+import InstantSearch from 'vue-instantsearch'
+
 Vue.filter('formatDate', function (d) {
   let date = new Date(d)
   if (date) {
@@ -18,6 +20,9 @@ Vue.filter('capitalize', function (value) {
 })
 
 Vue.use(VueResource)
+
+Vue.use(InstantSearch)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
