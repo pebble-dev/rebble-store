@@ -8,7 +8,7 @@
         </div>
 
         <div class="app-button-container float-right">
-          <button type="button" v-bind:class="heartClass">
+          <button type="button" v-bind:class="heartClass" v-on:click="toggle_heart_button_state">
           <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
@@ -56,6 +56,27 @@ export default {
           console.error(response)
         })
       }
+    },
+    change_heart: function (operation) {
+      this.$http.post(this.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.accessToken}}).then(response => {
+      }, response => {
+        console.error(response)
+        if (operation === 'add') {
+          this.hearted = false
+        } else {
+          this.hearted = true
+        }
+      })
+    },
+    toggle_heart_button_state: function () {
+      if (this.hearted) {
+        this.change_heart('remove')
+        this.hearted = false
+      } else {
+        this.change_heart('add')
+        this.hearted = true
+      }
+      this.build_hearts_class()
     },
     build_hearts_class: function () {
       if (this.accessToken !== '' && this.accessToken != null) {
