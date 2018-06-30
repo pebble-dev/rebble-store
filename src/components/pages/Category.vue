@@ -54,7 +54,7 @@ export default {
       id: '',
       sort: '',
       offsetPage: 1,
-      pageLimit: 20
+      pageLimit: 24
     }
   },
   watch: {
