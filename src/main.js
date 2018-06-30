@@ -4,6 +4,8 @@ import VueResource from 'vue-resource'
 import App from './App'
 import router from './router'
 
+import VueCookie from 'vue-cookie'
+
 Vue.filter('formatDate', function (d) {
   let date = new Date(d)
   if (date) {
@@ -18,6 +20,8 @@ Vue.filter('capitalize', function (value) {
 })
 
 Vue.use(VueResource)
+
+Vue.use(VueCookie)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
