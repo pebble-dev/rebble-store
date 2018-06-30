@@ -1,8 +1,8 @@
 <template>
     <main class="text-center">
-      <div class="card subsection text-left p-3 app-details" v-for="(version, index) in versions.versions" v-bind:key="index">
-        <h2>Version {{ version.number }}</h2> <h3 class="float-right">{{ version.release_date | formatDate }}</h3><hr>
-        <pre class="description">{{ version.description }}</pre>
+      <div class="card subsection text-left p-3 app-details" v-for="(changelog, index) in app.changelog" v-bind:key="index">
+        <h2>Version {{ changelog.version }}</h2> <h3 class="float-right">{{ changelog.published_date | formatDate }}</h3><hr>
+        <pre class="description">{{ changelog.release_notes }}</pre>
         </div>
     </main>
 </template>
@@ -25,19 +25,6 @@ export default {
       versions: {
         'versions': []
       }
-    }
-  },
-  methods: {
-    get_versions: function (id) {
-      var that = this
-      console.log(id)
-      let requestUrl = this.backendUrl + '/dev/apps/get_versions/id/' + id
-      console.log(requestUrl)
-      this.$http.get(requestUrl).then(response => {
-        that.versions = response.body
-      }, response => {
-        console.error(response)
-      })
     }
   },
   beforeMount: function () {

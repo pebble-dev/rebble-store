@@ -30,7 +30,7 @@
     <div class="collapse text-center" id="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
-          <router-link to="/" v-bind:class="{ active: currentRoute == '/'}" class="btn btn-outline-secondary btn-watchface" role="button">
+          <router-link to="/" v-bind:class="{ active: currentRoute == '/faces'}" class="btn btn-outline-secondary btn-watchface" role="button">
             <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use xlink:href="#iconWatchface"></use>
             </svg>
@@ -81,7 +81,7 @@ export default {
 
   methods: {
     updateBackButton () {
-      this.showBackButton = (this.currentRoute !== '/' && this.currentRoute !== '/apps')
+      this.showBackButton = (this.currentRoute !== '/faces' && this.currentRoute !== '/apps')
     }
   }
 }

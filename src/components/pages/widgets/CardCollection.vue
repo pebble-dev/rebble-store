@@ -4,10 +4,10 @@
       <h6 class="text-left">
         <div class="pebble">{{ elTitle }}</div>
       </h6>
-      <small><a class="text-right" href="/featured">See All ></a></small>
+      <small><router-link v-bind:to="allUrl + urlArguments" class="text-right">See All ></router-link></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="(card, index) in cards.cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
+      <single-card v-for="(card, index) in cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments"></single-card>
     </div>
   </section>
 </template>
@@ -28,6 +28,10 @@ export default {
     },
     cards: {
       cards: []
+    },
+    allUrl: {
+      type: String,
+      default: ''
     },
     urlArguments: {
       type: String,

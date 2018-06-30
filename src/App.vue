@@ -3,7 +3,7 @@
     <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
       <navbar v-if="!inApp"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:platform="routeParameters.platform"></router-view>
+      <router-view v-bind:backendUrl="backendUrl" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:storeParameters="storeParameters"></router-view>
     </div>
     <page-footer v-bind:brand="inApp"></page-footer>
   </div>
@@ -25,11 +25,13 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'http://localhost:8080',
+      backendUrl: 'https://appstore-api.rebble.io/api/v1',
+      devPortalBackendUrl: 'https://appstore-api.rebble.io/api/v0',
       inApp: false,
-      routeParameters: {
+      storeParameters: {
         platform: '',
-        watchPlatform: ''
+        hardware: '',
+        accessToken: ''
       }
     }
   },
@@ -38,13 +40,22 @@ export default {
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
       this.inApp = true
-      this.routeParameters.platform = routeParameters.platform
+      this.storeParameters.platform = routeParameters.platform
     }
-    // watchPlatform refers to the watch. basalt, chalk, aplite, etc.
-    if (routeParameters.watchPlatform) {
-      this.routeParameters.watchPlatform = routeParameters.watchPlatform
+    // hardware refers to the watch. basalt, chalk, aplite, etc.
+    if (routeParameters.hardware) {
+      this.storeParameters.harware = routeParameters.hardware
       // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('watchPlatform', routeParameters.watchPlatform)
+      window.localStorage.setItem('hardware', routeParameters.watchPlatform)
+    }
+
+    // Bearer token provided by the mobile app, needed to fetch and set app hearts
+    const accessTokenCookie = this.$cookie.get('access_token')
+    if (accessTokenCookie != null && accessTokenCookie !== '') {
+      this.storeParameters.accessToken = accessTokenCookie
+    } else if (routeParameters.access_token) {
+      this.storeParameters.accessToken = routeParameters.access_token
+      this.$cookie.set('access_token', this.storeParameters.accessToken, 1)
     }
   }
 }

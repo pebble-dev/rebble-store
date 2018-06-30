@@ -1,6 +1,6 @@
 <template>
   <main class="text-center">
-    <screenshot-list v-bind:platforms="app.assets.screenshots" v-bind:clientWatchPlatform="clientWatchPlatform"></screenshot-list>
+    <screenshot-list v-bind:screenshots="app.screenshot_images" v-bind:clientWatchPlatform="clientWatchPlatform"></screenshot-list>
 
     <div class="card subsection text-left p-3 app-details">
       <h1>Description</h1> <hr>
@@ -8,21 +8,21 @@
       <table class="extra-table">
         <tr>
           <td>Developer</td>
-          <td>{{ app.author.name }}</td>
+          <td>{{ app.author }}</td>
         </tr>
         <tr>
-          <td>Tags</td>
-          <td v-for="(tag, index) in app.appInfo.tags" v-bind:key="index">
-            <router-link v-bind:to="'/collection/' + tag.id + urlArguments"><span class="badge badge-pill badge-pebble">{{ tag.name }}</span></router-link>
+          <td>Category</td>
+          <td>
+            <router-link v-bind:to="'/collection/' + app.category_id + urlArguments"><span class="badge badge-pill badge-pebble">{{ app.category }}</span></router-link>
           </td>
         </tr>
         <tr>
           <td>Updated</td>
-          <td>{{ app.appInfo.updated | formatDate }}</td>
+          <td>{{ app["latest_release"].published_date | formatDate }}</td>
         </tr>
         <tr>
           <td>Version</td>
-          <td>{{ app.appInfo.version }}</td>
+          <td>{{ app.latest_release.version }}</td>
         </tr>
       </table>
       <router-link v-bind:to="'/app/' + $route.params.id + '/versions/' + urlArguments" class="app-button">
@@ -30,24 +30,24 @@
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.appInfo.authorUrl != ''" v-bind:href="app.appInfo.authorUrl" class="app-button">
+      <a v-if="app.website != ''" v-bind:href="app.website" class="app-button">
         <div>
           Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
-      <a v-if="app.appInfo.supportUrl != ''" v-bind:href="app.appInfo.supportUrl" class="app-button">
+      <!--a v-if="app.appInfo.supportUrl != ''" v-bind:href="app.appInfo.supportUrl" class="app-button">
         <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
-      </a>
-      <a v-if="app.appInfo.sourceUrl != ''" v-bind:href="app.appInfo.sourceUrl" class="app-button">
+      </a-->
+      <a v-if="app.source != null" v-bind:href="app.source" class="app-button">
         <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
-      <router-link v-bind:to="'/author/' + app.author.id + urlArguments" class="app-button">
+      <router-link v-bind:to="'/author/' + app.developer_id + urlArguments" class="app-button">
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.appInfo.pbwUrl != ''" v-bind:href="app.appInfo.pbwUrl" class="app-button">
+      <a v-if="app.latest_release.pbw_file != ''" v-bind:href="app.latest_release.pbw_file" class="app-button">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
@@ -63,11 +63,11 @@ export default {
   components: {
     ScreenshotList
   },
-  props: {
-    urlArguments: '',
-    app: {},
-    clientWatchPlatform: ''
-  }
+  props: [
+    'urlArguments',
+    'app',
+    'clientWatchPlatform'
+  ]
 }
 </script>
 

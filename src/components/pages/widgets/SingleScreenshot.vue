@@ -1,6 +1,6 @@
 <template>
     <div class="screenshot" v-images-loaded:on.done="loaded">
-        <img v-show="screenshotSrc && imageLoaded" v-bind:src="screenshotSrc" alt="Screenshot" />
+        <img v-show="screenshotSrc['144x168'] && imageLoaded" v-bind:src="screenshotSrc['144x168']" alt="Screenshot" />
         <vcl-screenshot v-show="!screenshotSrc || !imageLoaded" class="loader"></vcl-screenshot>
     </div>
 </template>

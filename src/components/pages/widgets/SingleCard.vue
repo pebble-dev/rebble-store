@@ -3,7 +3,7 @@
     <vcl-card class="loader"></vcl-card>
     <router-link class="real-card" v-bind:to="'/app/' + card.id + urlArguments" v-images-loaded:on.done="loaded">
       <div class="card">
-        <img class="card-img-top" v-bind:src="card.image_url" alt="App Icon">
+        <img class="card-img-top" v-bind:src="card.screenshot_images[0]['144x168']" alt="App Icon">
         <div class="card-block text-xs-center">
           <h6 class="card-title">{{ card.title }}</h6>
           <p class="card-text">
@@ -11,7 +11,7 @@
               <svg class="svg-icon icon-inverted-thumbs-up" width="16px" height="16px" viewBox="0 0 25 25">
                 <use xlink:href="#iconThumbsUp"></use>
               </svg>
-              {{ card.thumbs_up }}
+              {{ card.hearts }}
             </small>
           </p>
         </div>
@@ -43,6 +43,11 @@ export default {
     urlArguments: {
       type: String,
       default: ''
+    }
+  },
+  watch: {
+    card: function () {
+      this.imageLoaded = false
     }
   },
   data: function () {

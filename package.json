@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
+    "vue-cookie": "^1.1.4",
     "vue-dragscroll": "^1.3.1",
     "vue-router": "^3.0.1"
   },
@@ -65,7 +66,7 @@
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.14",
