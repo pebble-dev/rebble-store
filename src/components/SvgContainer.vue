@@ -200,6 +200,16 @@ export default {
                     stroke: #333;
                 }
             }
+
+            &.disabled {
+                // Don't change any style if disabled
+                &:hover, &:focus, &.active {
+                    svg {
+                        fill: #333;
+                        stroke: #ccc;
+                    }
+                }
+            }
         }
 
         // Download button styles

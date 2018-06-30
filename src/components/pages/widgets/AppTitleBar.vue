@@ -8,7 +8,7 @@
         </div>
 
         <div class="app-button-container float-right">
-          <button type="button" class="btn btn-outline-secondary btn-thumbs-up">
+          <button type="button" v-bind:class="heartClass">
           <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
@@ -29,7 +29,49 @@
 <script>
 export default {
   name: 'ScreenshotList',
-  props: ['app', 'urlArguments']
+  props: ['app', 'urlArguments', 'devPortalBackendUrl', 'accessToken'],
+  data: function () {
+    return {
+      heartClass: 'btn btn-outline-secondary btn-thumbs-up disabled',
+      hearted: false
+    }
+  },
+  methods: {
+    get_hearts: function (id) {
+      if (this.accessToken !== '' && this.accessToken != null) {
+        var that = this
+        this.$http.get(this.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.accessToken}}).then(response => {
+          console.log(response.body)
+          let foundApp = response.body.users[0].voted_ids.find(function (appId) {
+            return id === appId
+          })
+
+          if (foundApp != null) {
+            that.hearted = true
+          } else {
+            that.hearted = false
+          }
+          that.build_hearts_class()
+        }, response => {
+          console.error(response)
+        })
+      }
+    },
+    build_hearts_class: function () {
+      if (this.accessToken !== '' && this.accessToken != null) {
+        if (this.hearted) {
+          this.heartClass = 'btn btn-outline-secondary btn-thumbs-up active'
+        } else {
+          this.heartClass = 'btn btn-outline-secondary btn-thumbs-up'
+        }
+      } else {
+        this.heartClass = 'btn btn-outline-secondary btn-thumbs-up disabled'
+      }
+    }
+  },
+  beforeMount: function () {
+    this.get_hearts(this.$route.params.id)
+  }
 }
 </script>
 
@@ -116,6 +158,12 @@ export default {
             color: #333;
             outline: none;
             background: #ccc;
+          }
+
+          &.disabled:hover {
+            // Don't change any style if disabled
+            color: #ccc;
+            background: none;
           }
         }
       }

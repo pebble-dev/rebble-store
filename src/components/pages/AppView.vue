@@ -3,7 +3,7 @@
     <header v-bind:class="(platform && !app.header_images) ? 'inApp no-banner': ''">
       <single-banner v-if="app.header_images != ''" v-bind:bannerSrc="app.header_images[0].orig"></single-banner>
     </header>
-    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
+    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:accessToken="storeParameters.accessToken"></app-title-bar>
 
     <router-view v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:backendUrl="backendUrl" v-bind:clientWatchPlatform="clientWatchPlatform"></router-view>
   </section>
@@ -23,7 +23,8 @@ export default {
   },
   props: {
     backendUrl: '',
-    platform: ''
+    devPortalBackendUrl: '',
+    storeParameters: ''
   },
   data: function () {
     return {
