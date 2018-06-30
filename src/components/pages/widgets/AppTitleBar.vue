@@ -66,6 +66,7 @@ export default {
         } else {
           this.hearted = true
         }
+        this.build_hearts_class()
       })
     },
     toggle_heart_button_state: function () {
