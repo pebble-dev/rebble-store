@@ -1,6 +1,6 @@
 <template>
-  <header v-if="banners != null">
-    <div id="banner-carousel" class="carousel slide" data-ride="carousel">
+  <header>
+    <div id="banner-carousel" class="carousel slide" data-ride="carousel"  v-if="banners != null && banners[0] != null">
       <ol class="carousel-indicators">
         <li v-for="(banner, index) in banners" v-bind:key="index" data-target="#banner-carousel" v-bind:data-slide-to="index" v-bind:class="index == 0 ? 'active' : ''"></li>
       </ol>
