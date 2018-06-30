@@ -1,7 +1,7 @@
 <template>
   <section v-bind:class="app.type" >
     <header v-bind:class="(platform && !app.header_images) ? 'inApp no-banner': ''">
-      <single-banner v-if="app.header_images != ''" v-bind:bannerSrc="app.header_images[0].orig"></single-banner>
+      <slider v-if="app.header_images != ''" v-bind:banners="app.header_images"></slider>
     </header>
     <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:accessToken="storeParameters.accessToken"></app-title-bar>
 
@@ -11,7 +11,7 @@
 
 <script>
 import AppTitleBar from './widgets/AppTitleBar'
-import SingleBanner from './widgets/SingleBanner'
+import Slider from './widgets/AppSlider'
 import ScreenshotList from './widgets/ScreenshotList'
 
 export default {
@@ -19,7 +19,7 @@ export default {
   components: {
     AppTitleBar,
     ScreenshotList,
-    SingleBanner
+    Slider
   },
   props: {
     backendUrl: '',

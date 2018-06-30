@@ -11,7 +11,7 @@
 <script>
 import CardCollection from './pages/widgets/CardCollection'
 import TagList from './pages/widgets/TagList'
-import Slider from './Slider'
+import Slider from './pages/widgets/HomeSlider'
 
 // mostRecentCards and freshPicksCards are placeholders. Todo: actually fetch those from the server.
 export default {

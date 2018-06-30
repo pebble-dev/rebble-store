@@ -99,9 +99,6 @@ export default {
 
 <style lang="scss">
 // Title bar displayed below app banner
-.app-title-bar-cont {
-  padding-top: 15px;
-}
 
 .app-title-bar {
     img {

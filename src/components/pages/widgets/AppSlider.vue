@@ -1,26 +1,26 @@
 <template>
-  <header>
+  <section v-if="banners != null">
     <div id="banner-carousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
+      <ol class="carousel-indicators" v-if="banners[1] != null">
         <li v-for="(banner, index) in banners" v-bind:key="index" data-target="#banner-carousel" v-bind:data-slide-to="index" v-bind:class="index == 0 ? 'active' : ''"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div v-bind:class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(banner, index) in banners" v-bind:key="index"><router-link v-bind:alt="banner.title" v-bind:to="'/app/' + banner.application_id"><single-banner v-bind:bannerSrc="banner.image['720x320']"></single-banner></router-link></div>
+        <div v-bind:class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(banner, index) in banners" v-bind:key="index"><single-banner v-bind:bannerSrc="banner['720x320']"></single-banner></div>
       </div>
-      <a class="carousel-control carousel-control-prev" href="#banner-carousel" role="button" data-slide="prev">
+      <a  v-if="banners[1] != null" class="carousel-control carousel-control-prev" href="#banner-carousel" role="button" data-slide="prev">
         <i class="fa fa-angle-left" aria-hidden="true"></i>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control carousel-control-next" href="#banner-carousel" role="button" data-slide="next">
+      <a  v-if="banners[1] != null" class="carousel-control carousel-control-next" href="#banner-carousel" role="button" data-slide="next">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </header>
+  </section>
 </template>
 
 <script>
-import SingleBanner from './pages/widgets/SingleBanner'
+import SingleBanner from './SingleBanner'
 
 export default {
   name: 'slider',
