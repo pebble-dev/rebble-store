@@ -27,7 +27,7 @@
         </router-link>
       </div>
     </div>
-    <div class="collapse text-center" id="categorySelector">
+    <div class="collapse text-center" id="categorySelector" ref="categorySelector">
       <div class="text-muted p-1">
         <div class="btn-group btn-group-lg" role="group">
           <router-link to="/" v-bind:class="{ active: currentRoute == '/faces'}" class="btn btn-outline-secondary btn-watchface" role="button">
@@ -67,6 +67,7 @@ export default {
     // Update the route state on page load, in case we didn't start at home
     this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
     this.updateBackButton()
+    this.updateMenu()
   },
 
   watch: {
@@ -76,12 +77,16 @@ export default {
       // since that is currently the home route
       this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
       this.updateBackButton()
+      this.updateMenu()
     }
   },
 
   methods: {
     updateBackButton () {
       this.showBackButton = (this.currentRoute !== '/faces' && this.currentRoute !== '/apps')
+    },
+    updateMenu () {
+      this.$refs.categorySelector.classList.remove('show')
     }
   }
 }
