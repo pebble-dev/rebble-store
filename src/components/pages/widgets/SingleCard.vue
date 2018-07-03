@@ -37,17 +37,24 @@ export default {
       id: '',
       title: '',
       type: '',
-      image_url: '',
+      screenshot_images: [],
       thumbs_up: 0
     },
+    searchData: false,
     urlArguments: {
       type: String,
       default: ''
+    },
+    hardware: {
+      type: String
     }
   },
   watch: {
     card: function () {
       this.imageLoaded = false
+      if (this.searchData) {
+        this.build_from_search()
+      }
     }
   },
   data: function () {
@@ -58,6 +65,23 @@ export default {
   methods: {
     loaded: function (instance) {
       this.imageLoaded = true
+    },
+    build_from_search: function () {
+      // Identify platform and assign one screenshot in the right format
+      let hardware = this.hardware
+      console.log(hardware)
+      let thisAssetCollection = this.card.asset_collections.find(function (assetCollection) {
+        return assetCollection.hardware_platform === hardware
+      })
+      if (thisAssetCollection == null) {
+        thisAssetCollection = this.card.asset_collections[0]
+      }
+      this.card.screenshot_images = [{'144x168': thisAssetCollection.screenshots[0]}]
+    }
+  },
+  beforeMount: function () {
+    if (this.searchData) {
+      this.build_from_search()
     }
   }
 }

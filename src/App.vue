@@ -30,7 +30,7 @@ export default {
       inApp: false,
       storeParameters: {
         platform: '',
-        hardware: '',
+        hardware: 'basalt',
         accessToken: ''
       }
     }
@@ -44,9 +44,11 @@ export default {
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
-      this.storeParameters.harware = routeParameters.hardware
+      this.storeParameters.hardware = routeParameters.hardware
       // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('hardware', routeParameters.watchPlatform)
+      window.localStorage.setItem('hardware', routeParameters.hardware)
+    } else if (window.localStorage.getItem('hardware') !== null) {
+      this.storeParameters.hardware = window.localStorage.getItem('hardware')
     }
 
     // Bearer token provided by the mobile app, needed to fetch and set app hearts

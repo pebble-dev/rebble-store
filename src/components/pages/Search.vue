@@ -1,19 +1,17 @@
 <template>
-  <ais-index
-      app-id="7683OW76EQ"
-      api-key="252f4938082b8693a8a9fc0157d1d24f"
-      index-name="rebble-appstore-production"
-    >
+  <ais-index :search-store="rebbleSearch" :query="query" :queryParameters="queryParameters">
     <div>
       <header>
         <div class=" title-card search">
-          <input type="text" placeholder="Search" v-model="searchText" v-on:keyup.enter="search">
-          <ais-search-box></ais-search-box>
+          <ais-input inline-template>
+            <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" v-model="query">
+          </ais-input>
         </div>
       </header>
       <main class="apps container text-center">
-        <card-collection :showTop="false" v-bind:cards="searchResults" v-bind:urlArguments="urlArguments"></card-collection>
-        <ais-results>
+        <ais-tree-menu :attributes="['type']"></ais-tree-menu>
+        <ais-results v-if="rebbleSearch.query != ''" inline-template>
+          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true" v-bind:storeParameters="{hardware:hardware}"></card-collection>
         </ais-results>
 
         <nav>
@@ -45,42 +43,83 @@
 </template>
 
 <script>
-import CardCollection from './widgets/CardCollection'
+import { createFromAlgoliaCredentials } from 'vue-instantsearch'
+const rebbleSearch = createFromAlgoliaCredentials(
+  '7683OW76EQ',
+  '252f4938082b8693a8a9fc0157d1d24f'
+)
+rebbleSearch.indexName = 'rebble-appstore-production'
 
 export default {
   name: 'search',
-  components: {
-    CardCollection
-  },
   props: {
     backendUrl: '',
-    platform: ''
+    storeParameters: {
+      type: Object
+    },
+    type: {
+      type: String,
+      default: 'faces'
+    },
+    query: {
+      type: String,
+      default: ''
+    },
+    page: {
+      type: String,
+      default: '1'
+    }
   },
   data: function () {
     return {
-      searchText: '',
-      searchResults: {
-        cards: []
+      rebbleSearch,
+      'queryParameters': {
+        tagFilters: ''
       },
-      urlArguments: ''
+      urlArguments: '',
+      hardware: ''
     }
   },
   methods: {
-    search: function () {
-      if (this.searchText !== '') {
-        var that = this
-
-        this.$http.get(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText)).then(response => {
-          that.searchResults = response.body
-        }, response => {
-          console.error(response)
-        })
+    build_filter_list: function () {
+      var filterList = []
+      console.log(this.storeParameters.hardware)
+      if (this.storeParameters.platform !== '') {
+        filterList.push(this.storeParameters.platform)
       }
+      if (this.storeParameters.hardware !== '') {
+        filterList.push(this.storeParameters.hardware)
+      }
+      if (this.type === 'faces') {
+        filterList.push('(watchface)')
+      } else if (this.type === 'apps') {
+        filterList.push('(watchapp,companion-app)')
+      }
+      return filterList.join(',')
     }
+
   },
   beforeMount: function () {
     // Set url arguments if exist
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
+    console.log(this.page)
+
+    this.queryParameters.tagFilters = this.build_filter_list()
+
+    this.hardware = this.storeParameters.hardware
+  },
+  watch: {
+    'rebbleSearch.query' (value) {
+      console.log(rebbleSearch)
+      if (this.$router.params === undefined) {
+        this.$router.push({ path: `/${this.type}/search/${value}` })
+      } else {
+        this.$router.push({
+          path: `/${this.type}/search`,
+          params: { query: value }
+        })
+      }
+    }
   }
 
 }
