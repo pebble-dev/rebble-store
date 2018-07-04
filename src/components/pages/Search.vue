@@ -9,33 +9,24 @@
         </div>
       </header>
       <main class="apps container text-center">
-        <ais-tree-menu :attributes="['type']"></ais-tree-menu>
+        <div class="text-center header-tool">
+          <div class="btn-group btn-group-sm" role="group">
+            <router-link v-bind:to="`/faces/search/${query}/${page}`" v-bind:class="type == 'faces' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Watchfaces</router-link>
+            <router-link v-bind:to="`/apps/search/${query}/${page}`" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
+          </div>
+        </div>
         <ais-results v-if="rebbleSearch.query != ''" inline-template>
           <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
         </ais-results>
-
         <nav>
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-                <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
+          <ais-pagination class="pagination" :classNames="{
+              'ais-pagination': 'pagination',
+              'ais-pagination__item': 'page-item',
+              'ais-pagination__link': 'page-link',
+              'ais-pagination__item--active': 'active',
+              'ais-pagination__item--disabled': 'disabled'
+
+              }" v-on:page-change="onPageChange"/>
         </nav>
       </main>
     </div>
@@ -79,7 +70,6 @@ export default {
   methods: {
     build_filter_list: function () {
       var filterList = []
-      console.log(this.$store.state.storeParameters.hardware)
       if (this.$store.state.storeParameters.platform !== '') {
         filterList.push(this.$store.state.storeParameters.platform)
       }
@@ -97,15 +87,12 @@ export default {
   },
   beforeMount: function () {
     // Set url arguments if exist
-    console.log(this.$store.state.storeParameters.hardware)
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-    console.log(this.page)
 
     this.queryParameters.tagFilters = this.build_filter_list()
   },
   watch: {
     'rebbleSearch.query' (value) {
-      console.log(rebbleSearch)
       if (this.$router.params === undefined) {
         this.$router.push({ path: `/${this.type}/search/${value}` })
       } else {
@@ -114,6 +101,10 @@ export default {
           params: { query: value }
         })
       }
+    },
+    'type' () {
+      this.queryParameters.tagFilters = this.build_filter_list()
+      console.log(this.queryParameters.tagFilters)
     }
   }
 
@@ -140,5 +131,8 @@ export default {
       outline: none;
     }
   }
+}
+.header-tool {
+  margin-bottom: 40px;
 }
 </style>
