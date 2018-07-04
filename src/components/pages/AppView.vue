@@ -1,11 +1,11 @@
 <template>
   <section v-bind:class="app.type" >
-    <header v-bind:class="(platform && !app.header_images) ? 'inApp no-banner': ''">
+    <header v-bind:class="($store.state.platform && !app.header_images) ? 'inApp no-banner': ''">
       <slider v-if="app.header_images != ''" v-bind:banners="app.header_images"></slider>
     </header>
-    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:accessToken="storeParameters.accessToken"></app-title-bar>
+    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
 
-    <router-view v-bind:app="app" v-bind:urlArguments="urlArguments" v-bind:backendUrl="backendUrl" v-bind:clientWatchPlatform="clientWatchPlatform"></router-view>
+    <router-view v-bind:app="app" ></router-view>
   </section>
 </template>
 
@@ -21,22 +21,16 @@ export default {
     ScreenshotList,
     Slider
   },
-  props: {
-    backendUrl: '',
-    devPortalBackendUrl: '',
-    storeParameters: ''
-  },
   data: function () {
     return {
       app: {},
-      'urlArguments': '',
-      clientWatchPlatform: window.localStorage.getItem('watchPlatform')
+      'urlArguments': ''
     }
   },
   methods: {
     get_app: function (id) {
       var that = this
-      this.$http.get(this.backendUrl + '/apps/id/' + id).then(response => {
+      this.$http.get(this.$store.state.backendUrl + '/apps/id/' + id).then(response => {
         that.app = response.body.data[0]
       }, response => {
         console.error(response)
@@ -48,9 +42,6 @@ export default {
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
 
     this.get_app(this.$route.params.id)
-    if (this.clientWatchPlatform == null) {
-      this.clientWatchPlatform = 'basalt'
-    }
   }
 }
 </script>

@@ -43,10 +43,6 @@ export default {
   components: {
     CardCollection
   },
-  props: {
-    backendUrl: '',
-    platform: ''
-  },
   data: function () {
     return {
       'urlArguments': '',
@@ -56,7 +52,7 @@ export default {
   methods: {
     get_author: function (id) {
       var that = this
-      this.$http.get(this.backendUrl + '/apps/dev/' + id).then(response => {
+      this.$http.get(this.$store.state.backendUrl + '/apps/dev/' + id).then(response => {
         that.page = response.body
       }, response => {
         console.error(response)

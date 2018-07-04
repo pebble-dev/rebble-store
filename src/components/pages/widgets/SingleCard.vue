@@ -44,9 +44,6 @@ export default {
     urlArguments: {
       type: String,
       default: ''
-    },
-    storeParameters: {
-      type: Object
     }
   },
   watch: {

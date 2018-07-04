@@ -53,10 +53,6 @@ rebbleSearch.indexName = 'rebble-appstore-production'
 export default {
   name: 'search',
   props: {
-    backendUrl: '',
-    storeParameters: {
-      type: Object
-    },
     type: {
       type: String,
       default: 'faces'
@@ -83,12 +79,12 @@ export default {
   methods: {
     build_filter_list: function () {
       var filterList = []
-      console.log(this.storeParameters.hardware)
-      if (this.storeParameters.platform !== '') {
-        filterList.push(this.storeParameters.platform)
+      console.log(this.$store.state.storeParameters.hardware)
+      if (this.$store.state.storeParameters.platform !== '') {
+        filterList.push(this.$store.state.storeParameters.platform)
       }
-      if (this.storeParameters.hardware !== '') {
-        filterList.push(this.storeParameters.hardware)
+      if (this.$store.state.storeParameters.hardware !== '') {
+        filterList.push(this.$store.state.storeParameters.hardware)
       }
       if (this.type === 'faces') {
         filterList.push('(watchface)')
@@ -101,7 +97,7 @@ export default {
   },
   beforeMount: function () {
     // Set url arguments if exist
-    console.log(this.storeParameters.hardware)
+    console.log(this.$store.state.storeParameters.hardware)
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
     console.log(this.page)
 
