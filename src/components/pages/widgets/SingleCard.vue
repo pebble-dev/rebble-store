@@ -66,7 +66,6 @@ export default {
     build_from_search: function () {
       // Identify platform and assign one screenshot in the right format
       let hardware = this.$store.state.storeParameters.hardware
-      console.log(hardware)
       let thisAssetCollection = this.card.asset_collections.find(function (assetCollection) {
         return assetCollection.hardware_platform === hardware
       })

@@ -15,7 +15,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <router-link class="search" to="/search">
+        <router-link class="search" to="/faces/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSearch"></use>
           </svg>

@@ -44,9 +44,6 @@ export default {
   },
   components: {
     SingleCard
-  },
-  beforeMount: function () {
-    console.log(this.$store.state.storeParameters)
   }
 }
 </script>
