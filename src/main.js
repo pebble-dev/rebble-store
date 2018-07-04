@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 
 import App from './App'
 import router from './router'
+import store from './store'
 
 import InstantSearch from 'vue-instantsearch'
 import VueCookie from 'vue-cookie'
@@ -33,5 +34,6 @@ Vue.component('card-collection', CardCollection)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

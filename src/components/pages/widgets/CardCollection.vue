@@ -7,7 +7,7 @@
       <small><router-link v-bind:to="allUrl + urlArguments" class="text-right">See All ></router-link></small>
     </div>
     <div class="card-columns">
-      <single-card v-for="(card, index) in cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments" v-bind:searchData="searchData" v-bind:hardware="storeParameters.hardware"></single-card>
+      <single-card v-for="(card, index) in cards" v-bind:card="card" v-bind:key="index" v-bind:urlArguments="urlArguments" v-bind:searchData="searchData" v-bind:store-parameters="storeParameters"></single-card>
     </div>
   </section>
 </template>
@@ -37,7 +37,9 @@ export default {
       type: String,
       default: ''
     },
-    storeParameters: {},
+    storeParameters: {
+      type: Object
+    },
     searchData: {
       type: Boolean,
       default: false
@@ -45,6 +47,9 @@ export default {
   },
   components: {
     SingleCard
+  },
+  beforeMount: function () {
+    console.log(this.$store.state.storeParameters)
   }
 }
 </script>

@@ -11,7 +11,7 @@
       <main class="apps container text-center">
         <ais-tree-menu :attributes="['type']"></ais-tree-menu>
         <ais-results v-if="rebbleSearch.query != ''" inline-template>
-          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true" v-bind:storeParameters="{hardware:hardware}"></card-collection>
+          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true" v-bind:store-parameters="storeParameters"></card-collection>
         </ais-results>
 
         <nav>
@@ -77,7 +77,7 @@ export default {
         tagFilters: ''
       },
       urlArguments: '',
-      hardware: ''
+      hardware: 'chalk'
     }
   },
   methods: {
@@ -101,12 +101,11 @@ export default {
   },
   beforeMount: function () {
     // Set url arguments if exist
+    console.log(this.storeParameters.hardware)
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
     console.log(this.page)
 
     this.queryParameters.tagFilters = this.build_filter_list()
-
-    this.hardware = this.storeParameters.hardware
   },
   watch: {
     'rebbleSearch.query' (value) {
