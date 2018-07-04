@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Featured from '@/components/pages/Featured'
 import Category from '@/components/pages/Category'
 import AppView from '@/components/pages/AppView'
 import AppDetails from '@/components/pages/AppDetails'
@@ -16,7 +15,6 @@ Vue.use(Router)
 
 const routes = [
   {path: '', redirect: '/faces'},
-  {path: '/featured', component: Featured},
   {
     path: '/category/:id/:sort/:page',
     component: Category
