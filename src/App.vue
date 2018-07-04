@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
+    <div v-bind:class="$store.state.inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
-      <navbar v-if="!inApp"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:store-parameters="$store.state.storeParameters"></router-view>
+      <navbar v-if="!$store.state.inApp"></navbar>
+      <router-view ></router-view>
     </div>
-    <page-footer v-bind:brand="inApp"></page-footer>
+    <page-footer v-bind:brand="$store.state.inApp"></page-footer>
   </div>
 </template>
 
@@ -25,14 +25,6 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'https://appstore-api.rebble.io/api/v1',
-      devPortalBackendUrl: 'https://appstore-api.rebble.io/api/v0',
-      inApp: false,
-      storeParameters: {
-        platform: '',
-        hardware: 'basalt',
-        accessToken: ''
-      }
     }
   },
   beforeMount () {

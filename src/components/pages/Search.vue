@@ -11,7 +11,7 @@
       <main class="apps container text-center">
         <ais-tree-menu :attributes="['type']"></ais-tree-menu>
         <ais-results v-if="rebbleSearch.query != ''" inline-template>
-          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true" v-bind:store-parameters="storeParameters"></card-collection>
+          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
         </ais-results>
 
         <nav>
