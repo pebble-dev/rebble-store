@@ -26,7 +26,7 @@
               'ais-pagination__item--active': 'active',
               'ais-pagination__item--disabled': 'disabled'
 
-              }" v-on:page-change="onPageChange"/>
+              }" v-on:page-change="on_page_change"/>
         </nav>
       </main>
     </div>
@@ -82,6 +82,12 @@ export default {
         filterList.push('(watchapp,companion-app)')
       }
       return filterList.join(',')
+    },
+    on_page_change: function (page) {
+      this.page = page
+      this.$router.push({
+          path: `/${this.type}/search/${this.query}/${this.page}`
+        })
     }
 
   },
