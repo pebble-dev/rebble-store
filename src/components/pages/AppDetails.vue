@@ -1,6 +1,6 @@
 <template>
   <main class="text-center">
-    <screenshot-list v-bind:screenshots="app.screenshot_images" v-bind:clientWatchPlatform="clientWatchPlatform"></screenshot-list>
+    <screenshot-list v-bind:screenshots="app.screenshot_images"></screenshot-list>
 
     <div class="card subsection text-left p-3 app-details">
       <h1>Description</h1> <hr>

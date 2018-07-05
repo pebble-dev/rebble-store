@@ -1,77 +1,119 @@
 <template>
-  <div>
-    <header>
-      <div class=" title-card search">
-        <input type="text" placeholder="Search" v-model="searchText" v-on:keyup.enter="search">
-      </div>
-    </header>
-    <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:cards="searchResults" v-bind:urlArguments="urlArguments"></card-collection>
+  <ais-index :search-store="rebbleSearch" :query="query" :query-parameters="queryParameters">
+    <div>
+      <header>
+        <div class=" title-card search">
+          <ais-input inline-template>
+            <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" v-model="query">
+          </ais-input>
+        </div>
+      </header>
+      <main class="apps container text-center">
+        <div class="text-center header-tool">
+          <div class="btn-group btn-group-sm" role="group">
+            <router-link v-bind:to="`/faces/search/${query}/${page}`" v-bind:class="type == 'faces' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Watchfaces</router-link>
+            <router-link v-bind:to="`/apps/search/${query}/${page}`" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
+          </div>
+        </div>
+        <ais-results v-if="rebbleSearch.query != ''" :results-per-page="24" inline-template>
+          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
+        </ais-results>
+        <ais-no-results></ais-no-results>
+        <nav>
+          <ais-pagination class="pagination" :classNames="{
+              'ais-pagination': 'pagination',
+              'ais-pagination__item': 'page-item',
+              'ais-pagination__link': 'page-link',
+              'ais-pagination__item--active': 'active',
+              'ais-pagination__item--disabled': 'disabled'
 
-      <nav>
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-              <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item active">
-            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </main>
-  </div>
+              }" v-on:page-change="on_page_change"/>
+        </nav>
+      </main>
+    </div>
+  </ais-index>
 </template>
 
 <script>
-import CardCollection from './widgets/CardCollection'
+import { createFromAlgoliaCredentials } from 'vue-instantsearch'
+const rebbleSearch = createFromAlgoliaCredentials(
+  '7683OW76EQ',
+  '252f4938082b8693a8a9fc0157d1d24f'
+)
+rebbleSearch.indexName = 'rebble-appstore-production'
 
 export default {
   name: 'search',
-  components: {
-    CardCollection
-  },
   props: {
-    backendUrl: '',
-    platform: ''
+    type: {
+      type: String,
+      default: 'faces'
+    },
+    query: {
+      type: String,
+      default: ''
+    },
+    page: {
+      type: String,
+      default: '1'
+    }
   },
   data: function () {
     return {
-      searchText: '',
-      searchResults: {
-        cards: []
+      rebbleSearch,
+      'queryParameters': {
+        'tagFilters': '',
+        'page': 3
       },
-      urlArguments: ''
+      urlArguments: '',
+      hardware: 'chalk'
     }
   },
   methods: {
-    search: function () {
-      if (this.searchText !== '') {
-        var that = this
-
-        this.$http.get(this.backendUrl + '/dev/apps/search/' + encodeURIComponent(this.searchText)).then(response => {
-          that.searchResults = response.body
-        }, response => {
-          console.error(response)
-        })
+    build_filter_list: function () {
+      var filterList = []
+      if (this.$store.state.storeParameters.platform !== '') {
+        filterList.push(this.$store.state.storeParameters.platform)
       }
+      if (this.$store.state.storeParameters.hardware !== '') {
+        filterList.push(this.$store.state.storeParameters.hardware)
+      }
+      if (this.type === 'faces') {
+        filterList.push('(watchface)')
+      } else if (this.type === 'apps') {
+        filterList.push('(watchapp,companion-app)')
+      }
+      return filterList.join(',')
+    },
+    on_page_change: function (page) {
+      this.page = page
+      this.$router.push({
+        path: `/${this.type}/search/${this.query}/${this.page}`
+      })
     }
+
   },
   beforeMount: function () {
     // Set url arguments if exist
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
+
+    this.queryParameters.tagFilters = this.build_filter_list()
+    this.queryParameters.page = Number(this.page)
+  },
+  watch: {
+    'rebbleSearch.query' (value) {
+      if (this.$router.params === undefined) {
+        this.$router.push({ path: `/${this.type}/search/${value}/${this.page}` })
+      } else {
+        this.$router.push({
+          path: `/${this.type}/search`,
+          params: { query: value, page: this.page }
+        })
+      }
+    },
+    'type' () {
+      this.queryParameters.tagFilters = this.build_filter_list()
+    }
   }
 
 }
@@ -97,5 +139,8 @@ export default {
       outline: none;
     }
   }
+}
+.header-tool {
+  margin-bottom: 40px;
 }
 </style>

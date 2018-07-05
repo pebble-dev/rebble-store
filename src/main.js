@@ -3,8 +3,12 @@ import VueResource from 'vue-resource'
 
 import App from './App'
 import router from './router'
+import store from './store'
 
+import InstantSearch from 'vue-instantsearch'
 import VueCookie from 'vue-cookie'
+
+import CardCollection from './components/pages/widgets/CardCollection'
 
 Vue.filter('formatDate', function (d) {
   let date = new Date(d)
@@ -21,10 +25,15 @@ Vue.filter('capitalize', function (value) {
 
 Vue.use(VueResource)
 
+Vue.use(InstantSearch)
 Vue.use(VueCookie)
+
+Vue.component('card-collection', CardCollection)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

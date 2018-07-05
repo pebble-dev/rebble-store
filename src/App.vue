@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div v-bind:class="inApp ? 'flex-content main-in-app' : 'flex-content'">
+    <div v-bind:class="$store.state.inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
-      <navbar v-if="!inApp"></navbar>
-      <router-view v-bind:backendUrl="backendUrl" v-bind:devPortalBackendUrl="devPortalBackendUrl" v-bind:storeParameters="storeParameters"></router-view>
+      <navbar v-if="!$store.state.inApp"></navbar>
+      <router-view ></router-view>
     </div>
-    <page-footer v-bind:brand="inApp"></page-footer>
+    <page-footer v-bind:brand="$store.state.inApp"></page-footer>
   </div>
 </template>
 
@@ -25,37 +25,31 @@ export default {
   },
   data: function () {
     return {
-      backendUrl: 'https://appstore-api.rebble.io/api/v1',
-      devPortalBackendUrl: 'https://appstore-api.rebble.io/api/v0',
-      inApp: false,
-      storeParameters: {
-        platform: '',
-        hardware: '',
-        accessToken: ''
-      }
     }
   },
   beforeMount () {
     let routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
-      this.inApp = true
-      this.storeParameters.platform = routeParameters.platform
+      this.$store.state.inApp = true
+      this.$store.state.storeParameters.platform = routeParameters.platform
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
-      this.storeParameters.harware = routeParameters.hardware
+      this.$store.state.storeParameters.hardware = routeParameters.hardware
       // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('hardware', routeParameters.watchPlatform)
+      window.localStorage.setItem('hardware', routeParameters.hardware)
+    } else if (window.localStorage.getItem('hardware') !== null) {
+      this.$store.state.storeParameters.hardware = window.localStorage.getItem('hardware')
     }
 
     // Bearer token provided by the mobile app, needed to fetch and set app hearts
     const accessTokenCookie = this.$cookie.get('access_token')
     if (accessTokenCookie != null && accessTokenCookie !== '') {
-      this.storeParameters.accessToken = accessTokenCookie
+      this.$store.state.storeParameters.accessToken = accessTokenCookie
     } else if (routeParameters.access_token) {
-      this.storeParameters.accessToken = routeParameters.access_token
-      this.$cookie.set('access_token', this.storeParameters.accessToken, 1)
+      this.$store.state.storeParameters.accessToken = routeParameters.access_token
+      this.$cookie.set('access_token', this.$store.state.storeParameters.accessToken, 1)
     }
   }
 }

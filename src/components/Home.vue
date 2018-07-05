@@ -21,10 +21,6 @@ export default {
     Slider,
     TagList
   },
-  props: {
-    backendUrl: '',
-    platform: ''
-  },
   data: function () {
     return {
       urlArguments: '',
@@ -41,7 +37,7 @@ export default {
     get_data: function (routeParams) {
       var that = this
       this.type = routeParams.type
-      this.$http.get(this.backendUrl + '/home/' + this.type).then(response => {
+      this.$http.get(this.$store.state.backendUrl + '/home/' + this.type).then(response => {
         that.page = response.body
         this.build_collections()
       }, response => {

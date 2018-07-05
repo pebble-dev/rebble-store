@@ -43,9 +43,6 @@
 <script>
 export default {
   name: 'error',
-  props: {
-    platform: ''
-  },
   data: function () {
     return {
       reload () {
