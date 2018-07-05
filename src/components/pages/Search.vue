@@ -1,5 +1,5 @@
 <template>
-  <ais-index :search-store="rebbleSearch" :query="query" :queryParameters="queryParameters">
+  <ais-index :search-store="rebbleSearch" :query="query" :query-parameters="queryParameters">
     <div>
       <header>
         <div class=" title-card search">
@@ -15,7 +15,7 @@
             <router-link v-bind:to="`/apps/search/${query}/${page}`" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
           </div>
         </div>
-        <ais-results v-if="rebbleSearch.query != ''" inline-template>
+        <ais-results v-if="rebbleSearch.query != ''" :results-per-page="24" inline-template>
           <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
         </ais-results>
         <nav>
@@ -61,7 +61,8 @@ export default {
     return {
       rebbleSearch,
       'queryParameters': {
-        tagFilters: ''
+        'tagFilters': '',
+        'page': 3
       },
       urlArguments: '',
       hardware: 'chalk'
@@ -86,8 +87,8 @@ export default {
     on_page_change: function (page) {
       this.page = page
       this.$router.push({
-          path: `/${this.type}/search/${this.query}/${this.page}`
-        })
+        path: `/${this.type}/search/${this.query}/${this.page}`
+      })
     }
 
   },
@@ -96,21 +97,21 @@ export default {
     this.urlArguments = this.platform ? '?platform=' + this.platform : ''
 
     this.queryParameters.tagFilters = this.build_filter_list()
+    this.queryParameters.page = Number(this.page)
   },
   watch: {
     'rebbleSearch.query' (value) {
       if (this.$router.params === undefined) {
-        this.$router.push({ path: `/${this.type}/search/${value}` })
+        this.$router.push({ path: `/${this.type}/search/${value}/${this.page}` })
       } else {
         this.$router.push({
           path: `/${this.type}/search`,
-          params: { query: value }
+          params: { query: value, page: this.page }
         })
       }
     },
     'type' () {
       this.queryParameters.tagFilters = this.build_filter_list()
-      console.log(this.queryParameters.tagFilters)
     }
   }
 
