@@ -18,6 +18,7 @@
         <ais-results v-if="rebbleSearch.query != ''" :results-per-page="24" inline-template>
           <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
         </ais-results>
+        <ais-no-results></ais-no-results>
         <nav>
           <ais-pagination class="pagination" :classNames="{
               'ais-pagination': 'pagination',
