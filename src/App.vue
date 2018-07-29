@@ -177,6 +177,12 @@ a {
     background-color: #333;
     border-color: #333;
  }
+ .card.subsection-extra {
+   @extend .card.subsection;
+   margin-top: -40px;
+   background-color: #dcdcdc;
+   border-color: #dcdcdc;
+ }
 
 // Modify default pagination styles, mostly color (not inside section because it may get reused)
 ul.pagination {

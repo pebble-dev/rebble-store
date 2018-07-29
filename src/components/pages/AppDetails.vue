@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td>Updated</td>
-          <td>{{ app["latest_release"].published_date | formatDate }}</td>
+          <td>{{ app.latest_release.published_date | formatDate }}</td>
         </tr>
         <tr>
           <td>Version</td>
