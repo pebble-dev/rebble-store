@@ -103,6 +103,10 @@ export default {
   watch: {
     'rebbleSearch.query' (value) {
       if (this.$router.params === undefined) {
+        if (value === '') {
+          this.$router.push({path: `/${this.type}/search`})
+          return
+        }
         this.$router.push({ path: `/${this.type}/search/${value}/${this.page}` })
       } else {
         this.$router.push({
