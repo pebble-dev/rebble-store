@@ -33,6 +33,10 @@ export default {
     if (routeParameters.platform) {
       this.$store.state.inApp = true
       this.$store.state.storeParameters.platform = routeParameters.platform
+      // Set it to local storage for it to be used in other sessions
+      window.localStorage.setItem('platform', routeParameters.platform)
+    } else if (window.localStorage.getItem('platform') !== null) {
+      this.$store.state.storeParameters.platform = window.localStorage.getItem('platform')
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
