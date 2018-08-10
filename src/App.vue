@@ -180,8 +180,8 @@ a {
  .card.subsection-extra {
    @extend .card.subsection;
    margin-top: -40px;
-   background-color: #dcdcdc;
-   border-color: #dcdcdc;
+   background-color: #ccc;
+   border-color: #ccc;
  }
 
 // Modify default pagination styles, mostly color (not inside section because it may get reused)
