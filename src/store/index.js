@@ -9,7 +9,7 @@ export default new Vuex.Store({
     devPortalBackendUrl: 'https://appstore-api.rebble.io/api/v0',
     inApp: false,
     storeParameters: {
-      platform: '',
+      platform: '', // either 'android' or 'ios'
       hardware: 'basalt',
       accessToken: ''
     }
