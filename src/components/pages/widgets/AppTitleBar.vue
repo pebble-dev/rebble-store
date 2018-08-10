@@ -58,7 +58,7 @@ export default {
     get_hearts: function (id) {
       if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
         var that = this
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.accessToken}}).then(response => {
+        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
           console.log(response.body)
           let foundApp = response.body.users[0].voted_ids.find(function (appId) {
             return id === appId
@@ -76,7 +76,7 @@ export default {
       }
     },
     change_heart: function (operation) {
-      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.accessToken}}).then(response => {
+      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
       }, response => {
         console.error(response)
         if (operation === 'add') {
@@ -98,7 +98,7 @@ export default {
       this.build_hearts_class()
     },
     build_hearts_class: function () {
-      if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
+      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
         if (this.hearted) {
           this.heartClass = 'btn btn-outline-secondary btn-thumbs-up active'
         } else {
