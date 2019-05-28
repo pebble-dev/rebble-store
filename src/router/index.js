@@ -49,15 +49,6 @@ const routes = [
     component: Search,
     props: true
   },
-  {
-    path: '/:type/search/:query',
-    redirect: '/:type/search/:query/1'
-  },
-  {
-    path: '/:type/search/:query/:page',
-    component: Search,
-    props: true
-  },
   {path: '/:type/:slug', redirect: '/:type/:slug/1'},
   {path: '/:type/:slug/:page', component: Collection},
   {path: '*', component: Error}
