@@ -1,5 +1,6 @@
 <template>
-  <div v-bind:class="(urlArguments) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
+<!-- Fix url args -->
+  <div v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
@@ -23,7 +24,7 @@
           </a>
         </div>
       </div>
-      <div class="card subsection-extra card-inverse text-left p-2" v-if="(app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
+      <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
         <h2>Requires Companion</h2>
         <div class="pull-right">
           <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url">

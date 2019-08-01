@@ -7,9 +7,9 @@
     </header>
     <main class="apps container text-center">
 
-        <card-collection :showTop="false" v-bind:cards="page.data" v-bind:urlArguments='urlArguments'></card-collection>
+        <card-collection :showTop="false" v-bind:cards="page.data"></card-collection>
 
-        <nav>
+        <nav v-if="page != undefined && page.links != undefined">
           <ul class="pagination">
             <li v-bind:class="offsetPage > 1 ? 'page-item': 'page-item disabled'">
               <router-link class="page-link" v-bind:to="get_page_link(false)" tabindex="-1" aria-label="Previous">
@@ -39,7 +39,6 @@ export default {
   },
   data: function () {
     return {
-      'urlArguments': '',
       page: {},
       slug: '',
       sort: '',
@@ -64,9 +63,6 @@ export default {
       })
     },
     get_data: function (routeParams) {
-      // Set url arguments if exist
-      this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-
       this.slug = routeParams.slug
       this.offsetPage = routeParams.page
       this.type = routeParams.type

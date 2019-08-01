@@ -16,12 +16,12 @@
   "dependencies": {
     "algoliasearch": "^3.33.0",
     "es6-promise": "^4.2.5",
-    "vue": "^2.5.21",
+    "vue": "^2.6.10",
     "vue-cookie": "^1.1.4",
-    "vue-dragscroll": "^1.8.1",
-    "vue-instantsearch": "^2.2.1",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.0.1"
+    "vue-dragscroll": "^1.10.0",
+    "vue-instantsearch": "^2.3.0",
+    "vue-router": "^3.0.7",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -1,7 +1,7 @@
 <template>
   <div v-bind:class="imageLoaded ? 'loaded' : 'loading'">
     <vcl-card class="loader"></vcl-card>
-    <router-link class="real-card" v-bind:to="'/app/' + card.id + urlArguments" v-images-loaded:on.done="loaded">
+    <router-link class="real-card" v-bind:to="'/app/' + card.id" v-images-loaded="loaded">
       <div class="card">
         <img class="card-img-top" v-bind:src="card.screenshot_images[0]['144x168']" alt="App Icon">
         <div class="card-block text-xs-center">
@@ -40,11 +40,7 @@ export default {
       screenshot_images: [],
       thumbs_up: 0
     },
-    searchData: false,
-    urlArguments: {
-      type: String,
-      default: ''
-    }
+    searchData: false
   },
   watch: {
     card: function () {

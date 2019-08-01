@@ -6,7 +6,7 @@
       </div>
     </header>
     <main class="apps container text-center">
-      <card-collection :showTop="false" v-bind:cards="page.data" v-bind:urlArguments="urlArguments"></card-collection>
+      <card-collection :showTop="false" v-bind:cards="page.data"></card-collection>
 
       <nav>
         <ul class="pagination">
@@ -45,7 +45,6 @@ export default {
   },
   data: function () {
     return {
-      'urlArguments': '',
       page: {}
     }
   },
@@ -60,9 +59,6 @@ export default {
     }
   },
   beforeMount: function () {
-    // Set url arguments if exist
-    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-
     this.get_author(this.$route.params.id)
   }
 }

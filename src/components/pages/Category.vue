@@ -13,7 +13,7 @@
           </div>
         </div>
 
-        <card-collection :showTop="false" v-bind:cards="page.data" v-bind:urlArguments='urlArguments'></card-collection>
+        <card-collection :showTop="false" v-bind:cards="page.data"></card-collection>
 
         <nav>
           <ul class="pagination">
@@ -45,7 +45,6 @@ export default {
   },
   data: function () {
     return {
-      'urlArguments': '',
       page: {},
       id: '',
       sort: '',
@@ -69,9 +68,6 @@ export default {
       })
     },
     get_data: function (routeParams) {
-      // Set url arguments if exist
-      this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-
       this.id = routeParams.id
       this.sort = routeParams.sort
       this.offsetPage = routeParams.page

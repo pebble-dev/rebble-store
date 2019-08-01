@@ -17,7 +17,7 @@
           </div>
         </div>
         <ais-hits>
-          <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
+          <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
         </ais-hits>
         <nav>
           <ais-pagination :classNames="{
@@ -36,8 +36,8 @@
 
 <script>
 import algoliasearch from 'algoliasearch/lite'
-import { history as historyRouter } from 'instantsearch.js/es/lib/routers';
-import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings';
+import { history as historyRouter } from 'instantsearch.js/es/lib/routers'
+import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings'
 
 export default {
   name: 'search',
@@ -55,9 +55,8 @@ export default {
       ),
       routing: {
         router: historyRouter(),
-        stateMapping: simpleMapping(),
-      },
-      urlArguments: ''
+        stateMapping: simpleMapping()
+      }
     }
   },
   methods: {

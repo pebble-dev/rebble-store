@@ -1,5 +1,5 @@
 <template>
-  <main class="text-center">
+  <main v-if="app != null" class="text-center">
     <screenshot-list v-bind:screenshots="app.screenshot_images"></screenshot-list>
 
     <div class="card subsection text-left p-3 app-details">
@@ -13,7 +13,7 @@
         <tr>
           <td>Category</td>
           <td>
-            <router-link v-bind:to="'/collection/' + app.category_id + urlArguments"><span class="badge badge-pill badge-pebble">{{ app.category }}</span></router-link>
+            <router-link v-bind:to="'/collection/' + app.category_id"><span class="badge badge-pill badge-pebble">{{ app.category }}</span></router-link>
           </td>
         </tr>
         <tr>
@@ -25,7 +25,7 @@
           <td>{{ app.latest_release.version }}</td>
         </tr>
       </table>
-      <router-link v-bind:to="'/app/' + $route.params.id + '/versions/' + urlArguments" class="app-button">
+      <router-link v-bind:to="'/app/' + $route.params.id + '/versions/'" class="app-button">
         <div>
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
@@ -43,7 +43,7 @@
         <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
-      <router-link v-bind:to="'/author/' + app.developer_id + urlArguments" class="app-button">
+      <router-link v-bind:to="'/author/' + app.developer_id" class="app-button">
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
@@ -63,11 +63,14 @@ export default {
   components: {
     ScreenshotList
   },
-  props: [
-    'urlArguments',
-    'app',
-    'clientWatchPlatform'
-  ]
+  props: {
+    app: {
+      default: null
+    },
+    clientWatchPlatform: {
+      default: null
+    }
+  }
 }
 </script>
 

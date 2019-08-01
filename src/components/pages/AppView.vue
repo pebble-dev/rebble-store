@@ -1,9 +1,9 @@
 <template>
   <section v-bind:class="app.type" >
-    <header v-bind:class="($store.state.platform && !app.header_images) ? 'inApp no-banner': ''">
+    <header v-bind:class="($store.state.inApp && !app.header_images) ? 'inApp no-banner': ''">
       <slider v-if="app.header_images != ''" v-bind:banners="app.header_images"></slider>
     </header>
-    <app-title-bar v-bind:urlArguments="urlArguments" v-bind:app="app" v-bind:class="(platform && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
+    <app-title-bar v-bind:app="app" v-bind:class="($store.state.inApp && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
 
     <router-view v-bind:app="app" ></router-view>
   </section>
@@ -23,8 +23,7 @@ export default {
   },
   data: function () {
     return {
-      app: {},
-      'urlArguments': ''
+      app: null
     }
   },
   methods: {
@@ -38,9 +37,7 @@ export default {
     }
   },
   beforeMount: function () {
-    // Set url arguments if exist
-    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-
+    console.log(this.app)
     this.get_app(this.$route.params.id)
   }
 }

@@ -28,15 +28,24 @@ export default {
     }
   },
   beforeMount () {
+    // PARAM LIST
+    // platform = 'ios' || 'android
+    // inApp: boolean
+    // hardware = 'aplite' || 'basalt' || 'chalk' ...
+    // accessToken: string = rebble access token
+
     let routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
-      this.$store.state.inApp = true
       this.$store.state.storeParameters.platform = routeParameters.platform
       // Set it to local storage for it to be used in other sessions
       window.localStorage.setItem('platform', routeParameters.platform)
     } else if (window.localStorage.getItem('platform') !== null) {
       this.$store.state.storeParameters.platform = window.localStorage.getItem('platform')
+    }
+
+    if (routeParameters.inApp != null) {
+      this.$store.state.inApp = routeParameters.inApp !== 'false' && routeParameters.inApp !== '0'
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
@@ -51,8 +60,8 @@ export default {
     const accessTokenCookie = this.$cookie.get('access_token')
     if (accessTokenCookie != null && accessTokenCookie !== '') {
       this.$store.state.storeParameters.accessToken = accessTokenCookie
-    } else if (routeParameters.access_token) {
-      this.$store.state.storeParameters.accessToken = routeParameters.access_token
+    } else if (routeParameters.accessToken) {
+      this.$store.state.storeParameters.accessToken = routeParameters.accessToken
       this.$cookie.set('access_token', this.$store.state.storeParameters.accessToken, 1)
     }
   }
