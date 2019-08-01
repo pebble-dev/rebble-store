@@ -27,7 +27,7 @@
       <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
         <h2>Requires Companion</h2>
         <div class="pull-right">
-          <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url">
+          <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url" target="_blank">
             <svg class="app-icon" width="22px" height="22px">
               <use xlink:href="#iconApple"></use>
             </svg>
@@ -35,7 +35,7 @@
           <h2 v-if="app.companions.ios && app.companions.android">
             +
           </h2>
-          <a v-if="app.companions.android" v-bind:href="app.companions.android.url">
+          <a v-if="app.companions.android" v-bind:href="app.companions.android.url" target="_blank">
             <svg class="app-icon" width="22px" height="22px">
               <use xlink:href="#iconAndroid"></use>
             </svg>
@@ -89,14 +89,16 @@ export default {
       })
     },
     toggle_heart_button_state: function () {
-      if (this.hearted) {
-        this.change_heart('remove')
-        this.hearted = false
-      } else {
-        this.change_heart('add')
-        this.hearted = true
+      if (this.$store.state.storeParameters.accessToken !== null) {
+        if (this.hearted) {
+          this.change_heart('remove')
+          this.hearted = false
+        } else {
+          this.change_heart('add')
+          this.hearted = true
+        }
+        this.build_hearts_class()
       }
-      this.build_hearts_class()
     },
     build_hearts_class: function () {
       if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {

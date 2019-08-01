@@ -1,5 +1,5 @@
 <template>
-  <main v-if="app != null" class="text-center">
+  <main v-if="Object.entries(app).length !== 0" class="text-center">
     <screenshot-list v-bind:screenshots="app.screenshot_images"></screenshot-list>
 
     <div class="card subsection text-left p-3 app-details">
@@ -13,7 +13,8 @@
         <tr>
           <td>Category</td>
           <td>
-            <router-link v-bind:to="'/collection/' + app.category_id"><span class="badge badge-pill badge-pebble">{{ app.category }}</span></router-link>
+            <router-link v-if="app.type !== 'watchapp'" v-bind:to="'/collection/' + app.category_id"><span class="badge badge-pill badge-pebble">{{ app.category }}</span></router-link>
+            <span v-if="app.type === 'watchapp'" class="badge badge-pill badge-pebble">{{ app.category }}</span>
           </td>
         </tr>
         <tr>
@@ -30,7 +31,7 @@
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.website != ''" v-bind:href="app.website" class="app-button">
+      <a v-if="app.website != ''" v-bind:href="app.website" class="app-button" target="_blank">
         <div>
           Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
@@ -39,15 +40,14 @@
         <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a-->
-      <a v-if="app.source != null" v-bind:href="app.source" class="app-button">
-        <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
+      <a v-if="app.source != null" v-bind:href="app.source" class="app-button" target="_blank">
+        <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i></div>
       </a>
       <router-link v-bind:to="'/author/' + app.developer_id" class="app-button">
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.latest_release.pbw_file != ''" v-bind:href="app.latest_release.pbw_file" class="app-button">
+      <a v-if="app.latest_release.pbw_file != '' && !$store.state.inApp" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>

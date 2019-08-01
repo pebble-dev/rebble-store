@@ -23,7 +23,7 @@ export default {
   },
   data: function () {
     return {
-      app: null
+      app: {}
     }
   },
   methods: {
@@ -37,7 +37,6 @@ export default {
     }
   },
   beforeMount: function () {
-    console.log(this.app)
     this.get_app(this.$route.params.id)
   }
 }

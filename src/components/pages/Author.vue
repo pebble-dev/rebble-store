@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <div class="title-card">
+      <div v-if="page.data !== undefined" class="title-card">
         <h3>Apps by: {{ page.data[0].author }}</h3>
       </div>
     </header>
