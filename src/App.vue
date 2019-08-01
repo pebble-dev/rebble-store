@@ -31,6 +31,7 @@ export default {
     // PARAM LIST
     // platform = 'ios' || 'android
     // inApp: boolean
+    // devMode: boolean
     // hardware = 'aplite' || 'basalt' || 'chalk' ...
     // accessToken: string = rebble access token
 
@@ -46,6 +47,13 @@ export default {
 
     if (routeParameters.inApp != null) {
       this.$store.state.inApp = routeParameters.inApp !== 'false' && routeParameters.inApp !== '0'
+    }
+
+    if (routeParameters.devMode != null) {
+      this.$store.state.devMode = routeParameters.devMode !== 'false' && routeParameters.devMode !== '0'
+      window.localStorage.setItem('devMode', this.$store.state.devMode)
+    } else if (window.localStorage.getItem('devMode') !== null) {
+      this.$store.state.devMode = window.localStorage.getItem('devMode')
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {

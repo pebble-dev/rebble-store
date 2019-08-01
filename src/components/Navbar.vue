@@ -20,7 +20,7 @@
             <use xlink:href="#iconSearch"></use>
           </svg>
         </router-link>
-        <router-link class="settings" to="/settings">
+        <router-link v-if="$store.state.devMode" class="settings" to="/settings">
           <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSettings"></use>
           </svg>
@@ -185,13 +185,13 @@ export default {
 
     @supports (not (backdrop-filter: blur(10px))) and (not (-webkit-backdrop-filter: blur(10px))) {
       // Only if doesn't supports backdrop filters
-      background-color: rgba(55, 58, 60, 0.95) !important;
+      background-color: rgb(55, 58, 60) !important;
 
     }
 
     @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
         // Styles that are in here will only apply if backdrop filters are supported by the browser
-         background-color: rgba(55, 58, 60, 0.88)!important;
+         background-color: rgba(55, 58, 60, 0.96)!important;
 
          // Make the navbar background blurry
          backdrop-filter: blur(10px);

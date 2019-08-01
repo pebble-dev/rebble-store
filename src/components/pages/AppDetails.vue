@@ -47,7 +47,7 @@
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.latest_release.pbw_file != '' && !$store.state.inApp" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
+      <a v-if="app.latest_release.pbw_file != '' && $store.state.devMode" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
