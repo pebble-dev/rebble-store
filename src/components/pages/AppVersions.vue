@@ -26,7 +26,6 @@ export default {
     }
   },
   beforeMount: function () {
-    this.get_versions(this.$route.params.id)
   }
 }
 </script>

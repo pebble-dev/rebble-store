@@ -32,7 +32,7 @@
           <h4>We're getting the following message {{ 404 }}</h4>
           <div class="page-error_buttons">
             <button v-on:click="reload()" class="btn btn-outline-secondary">Try again</button>
-            <router-link v-bind:to="'/'  + urlArguments" class="btn btn-outline-pebble">Back to home</router-link>
+            <router-link v-bind:to="'/'" class="btn btn-outline-pebble">Back to home</router-link>
           </div>
         </div>
       </section>
@@ -47,13 +47,11 @@ export default {
     return {
       reload () {
         this.$router.go(0)
-      },
-      'urlArguments': ''
+      }
     }
   },
   beforeMount: function () {
-    // Set url arguments if exist
-    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
+
   }
 }
 </script>

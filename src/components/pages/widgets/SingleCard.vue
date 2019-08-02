@@ -1,9 +1,9 @@
 <template>
   <div v-bind:class="imageLoaded ? 'loaded' : 'loading'">
     <vcl-card class="loader"></vcl-card>
-    <router-link class="real-card" v-bind:to="'/app/' + card.id + urlArguments" v-images-loaded:on.done="loaded">
-      <div class="card">
-        <img class="card-img-top" v-bind:src="card.screenshot_images[0]['144x168']" alt="App Icon">
+    <router-link class="real-card" v-bind:to="'/app/' + card.id" v-images-loaded="loaded">
+      <div class="card" :class="$store.state.storeParameters.hardware == 'chalk' ? 'round' : ''">
+        <img class="card-img-top" v-bind:src="card.screenshot_images[0][Object.keys(card.screenshot_images[0])[0]]" alt="App Icon">
         <div class="card-block text-xs-center">
           <h6 class="card-title">{{ card.title }}</h6>
           <p class="card-text">
@@ -40,11 +40,7 @@ export default {
       screenshot_images: [],
       thumbs_up: 0
     },
-    searchData: false,
-    urlArguments: {
-      type: String,
-      default: ''
-    }
+    searchData: false
   },
   watch: {
     card: function () {
@@ -128,6 +124,13 @@ export default {
 
         .card {
             max-width: 170px;
+            &.round {
+              border-top-left-radius: 50%;
+              border-top-right-radius: 50%;
+              .card-img-top {
+                border-radius: 50%;
+              }
+            }
 
             .card-title {
               text-overflow: ellipsis;

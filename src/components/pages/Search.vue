@@ -1,46 +1,43 @@
 <template>
-  <ais-index :search-store="rebbleSearch" :query="query" :query-parameters="queryParameters">
+  <ais-instant-search :search-client="rebbleSearch" index-name="rebble-appstore-production" :routing="routing">
+    <ais-configure :hits-per-page.camel="24" :tag-filters.camel="build_filter_list()" />
     <div>
       <header>
         <div class=" title-card search">
-          <ais-input inline-template>
-            <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" v-model="query">
-          </ais-input>
+          <ais-search-box>
+            <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" slot-scope="{ currentRefinement, refine }" :value="currentRefinement" @input="refine($event.currentTarget.value)">
+          </ais-search-box>
         </div>
       </header>
       <main class="apps container text-center">
         <div class="text-center header-tool">
           <div class="btn-group btn-group-sm" role="group">
-            <router-link v-bind:to="`/faces/search/${query}/${page}`" v-bind:class="type == 'faces' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Watchfaces</router-link>
-            <router-link v-bind:to="`/apps/search/${query}/${page}`" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
+            <router-link v-bind:to="'/faces/search'" v-bind:class="type == 'faces' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Watchfaces</router-link>
+            <router-link v-bind:to="'/apps/search'" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
           </div>
         </div>
-        <ais-results v-if="rebbleSearch.query != ''" :results-per-page="24" inline-template>
-          <card-collection :showTop="false" v-bind:cards="results" v-bind:urlArguments="urlArguments" v-bind:searchData="true"></card-collection>
-        </ais-results>
-        <ais-no-results></ais-no-results>
+        <ais-hits>
+          <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
+        </ais-hits>
         <nav>
-          <ais-pagination class="pagination" :classNames="{
-              'ais-pagination': 'pagination',
-              'ais-pagination__item': 'page-item',
-              'ais-pagination__link': 'page-link',
-              'ais-pagination__item--active': 'active',
-              'ais-pagination__item--disabled': 'disabled'
+          <ais-pagination :classNames="{
+              'ais-Pagination-list': 'pagination',
+              'ais-Pagination-item': 'page-item',
+              'ais-Pagination-link': 'page-link',
+              'ais-Pagination-item--selected': 'active',
+              'ais-Pagination-item--disabled': 'disabled'
 
-              }" v-on:page-change="on_page_change"/>
+              }" />
         </nav>
       </main>
     </div>
-  </ais-index>
+  </ais-instant-search>
 </template>
 
 <script>
-import { createFromAlgoliaCredentials } from 'vue-instantsearch'
-const rebbleSearch = createFromAlgoliaCredentials(
-  '7683OW76EQ',
-  '252f4938082b8693a8a9fc0157d1d24f'
-)
-rebbleSearch.indexName = 'rebble-appstore-production'
+import algoliasearch from 'algoliasearch/lite'
+import { history as historyRouter } from 'instantsearch.js/es/lib/routers'
+import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings'
 
 export default {
   name: 'search',
@@ -48,25 +45,18 @@ export default {
     type: {
       type: String,
       default: 'faces'
-    },
-    query: {
-      type: String,
-      default: ''
-    },
-    page: {
-      type: String,
-      default: '1'
     }
   },
-  data: function () {
+  data () {
     return {
-      rebbleSearch,
-      'queryParameters': {
-        'tagFilters': '',
-        'page': 3
-      },
-      urlArguments: '',
-      hardware: 'chalk'
+      rebbleSearch: algoliasearch(
+        '7683OW76EQ',
+        '252f4938082b8693a8a9fc0157d1d24f'
+      ),
+      routing: {
+        router: historyRouter(),
+        stateMapping: simpleMapping()
+      }
     }
   },
   methods: {
@@ -84,39 +74,6 @@ export default {
         filterList.push('(watchapp,companion-app)')
       }
       return filterList.join(',')
-    },
-    on_page_change: function (page) {
-      this.page = page
-      this.$router.push({
-        path: `/${this.type}/search/${this.query}/${this.page}`
-      })
-    }
-
-  },
-  beforeMount: function () {
-    // Set url arguments if exist
-    this.urlArguments = this.platform ? '?platform=' + this.platform : ''
-
-    this.queryParameters.tagFilters = this.build_filter_list()
-    this.queryParameters.page = Number(this.page)
-  },
-  watch: {
-    'rebbleSearch.query' (value) {
-      if (this.$router.params === undefined) {
-        if (value === '') {
-          this.$router.push({path: `/${this.type}/search`})
-          return
-        }
-        this.$router.push({ path: `/${this.type}/search/${value}/${this.page}` })
-      } else {
-        this.$router.push({
-          path: `/${this.type}/search`,
-          params: { query: value, page: this.page }
-        })
-      }
-    },
-    'type' () {
-      this.queryParameters.tagFilters = this.build_filter_list()
     }
   }
 
@@ -146,5 +103,9 @@ export default {
 }
 .header-tool {
   margin-bottom: 40px;
+}
+
+.ais-Pagination {
+  margin-top: 40px
 }
 </style>

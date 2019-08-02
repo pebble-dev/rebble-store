@@ -41,20 +41,12 @@ const routes = [
       }
     ]
   },
-  {path: '/author/:id', component: Author},
+  {path: '/author/:id', redirect: '/author/:id/1'},
+  {path: '/author/:id/:page', component: Author},
   {path: '/settings', component: Settings},
   {path: '/:type', component: Home},
   {
     path: '/:type/search',
-    component: Search,
-    props: true
-  },
-  {
-    path: '/:type/search/:query',
-    redirect: '/:type/search/:query/1'
-  },
-  {
-    path: '/:type/search/:query/:page',
     component: Search,
     props: true
   },

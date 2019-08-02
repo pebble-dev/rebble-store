@@ -9,11 +9,13 @@
 export default {
   name: 'tag-list',
   props: {
-    urlArguments: '',
     tags: {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
+a {
+  margin-right: 5px;
+}
 </style>

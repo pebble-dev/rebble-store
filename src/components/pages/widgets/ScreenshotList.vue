@@ -31,13 +31,11 @@ export default {
 <style lang="scss">
 // Screenshots slider
 .screenshots {
-    max-width: 100%;
+    width: 100%;
+    margin-bottom: 40px;
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 40px;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
 
     &::-webkit-scrollbar {
         background: transparent;

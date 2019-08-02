@@ -7,13 +7,13 @@
         </header>
         <main class="text-center">
             <form>
-                <input type="radio" id="aplite" value="aplite" v-model="platform"> <label for="aplite">Pebble
+                <input type="radio" id="aplite" value="aplite" v-model="hardware"> <label for="aplite">Pebble
                 Original/Steel (aplite)</label><br/>
-                <input type="radio" id="basalt" value="basalt" v-model="platform"> <label for="basalt">Pebble Time Steel
+                <input type="radio" id="basalt" value="basalt" v-model="hardware"> <label for="basalt">Pebble Time and Time Steel
                 (basalt)</label><br/>
-                <input type="radio" id="chalk" value="chalk" v-model="platform"> <label for="chalk">Pebble Time Round
+                <input type="radio" id="chalk" value="chalk" v-model="hardware"> <label for="chalk">Pebble Time Round
                 (chalk)</label><br/>
-                <input type="radio" id="diorite" value="diorite" v-model="platform"> <label for="diorite">Pebble 2
+                <input type="radio" id="diorite" value="diorite" v-model="hardware"> <label for="diorite">Pebble 2
                 (diorite)</label><br/>
             </form>
         </main>
@@ -25,19 +25,18 @@ export default {
   name: 'settings',
   data: function () {
     return {
-      platform: window.localStorage.getItem('watchPlatform')
+      hardware: this.$store.state.storeParameters.hardware
     }
   },
   watch: {
-    platform: function (p) {
-      this.platform = p
-      window.localStorage.setItem('watchPlatform', p)
+    hardware: function (p) {
+      this.hardware = p
+      this.$store.state.storeParameters.hardware = p
+      window.localStorage.setItem('hardware', p)
     }
   },
   beforeMount: function () {
-    if (this.platform == null) {
-      this.platform = 'aplite'
-    }
+
   }
 }
 </script>

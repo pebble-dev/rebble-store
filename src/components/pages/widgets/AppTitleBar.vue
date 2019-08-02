@@ -1,5 +1,6 @@
 <template>
-  <div v-bind:class="(urlArguments) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
+<!-- Fix url args -->
+  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
@@ -15,7 +16,7 @@
 
           {{ app.hearts }}
           </button>
-          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download">
+          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.storeParameters.platform === 'all' || app.compatibility[$store.state.storeParameters.platform].supported === true">
           <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
             <use xlink:href="#iconDownload"></use>
           </svg>
@@ -23,10 +24,10 @@
           </a>
         </div>
       </div>
-      <div class="card subsection-extra card-inverse text-left p-2" v-if="(app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
+      <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
         <h2>Requires Companion</h2>
         <div class="pull-right">
-          <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url">
+          <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url" target="_blank">
             <svg class="app-icon" width="22px" height="22px">
               <use xlink:href="#iconApple"></use>
             </svg>
@@ -34,7 +35,7 @@
           <h2 v-if="app.companions.ios && app.companions.android">
             +
           </h2>
-          <a v-if="app.companions.android" v-bind:href="app.companions.android.url">
+          <a v-if="app.companions.android" v-bind:href="app.companions.android.url" target="_blank">
             <svg class="app-icon" width="22px" height="22px">
               <use xlink:href="#iconAndroid"></use>
             </svg>
@@ -58,7 +59,7 @@ export default {
     get_hearts: function (id) {
       if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
         var that = this
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.accessToken}}).then(response => {
+        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
           console.log(response.body)
           let foundApp = response.body.users[0].voted_ids.find(function (appId) {
             return id === appId
@@ -76,7 +77,7 @@ export default {
       }
     },
     change_heart: function (operation) {
-      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.accessToken}}).then(response => {
+      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
       }, response => {
         console.error(response)
         if (operation === 'add') {
@@ -88,17 +89,19 @@ export default {
       })
     },
     toggle_heart_button_state: function () {
-      if (this.hearted) {
-        this.change_heart('remove')
-        this.hearted = false
-      } else {
-        this.change_heart('add')
-        this.hearted = true
+      if (this.$store.state.storeParameters.accessToken !== null) {
+        if (this.hearted) {
+          this.change_heart('remove')
+          this.hearted = false
+        } else {
+          this.change_heart('add')
+          this.hearted = true
+        }
+        this.build_hearts_class()
       }
-      this.build_hearts_class()
     },
     build_hearts_class: function () {
-      if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
+      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
         if (this.hearted) {
           this.heartClass = 'btn btn-outline-secondary btn-thumbs-up active'
         } else {
