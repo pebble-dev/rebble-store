@@ -41,7 +41,8 @@ const routes = [
       }
     ]
   },
-  {path: '/author/:id', component: Author},
+  {path: '/author/:id', redirect: '/author/:id/1'},
+  {path: '/author/:id/:page', component: Author},
   {path: '/settings', component: Settings},
   {path: '/:type', component: Home},
   {

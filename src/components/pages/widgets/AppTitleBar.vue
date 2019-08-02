@@ -1,6 +1,6 @@
 <template>
 <!-- Fix url args -->
-  <div v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
+  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
@@ -16,7 +16,7 @@
 
           {{ app.hearts }}
           </button>
-          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download">
+          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.storeParameters.platform === 'all' || app.compatibility[$store.state.storeParameters.platform].supported === true">
           <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
             <use xlink:href="#iconDownload"></use>
           </svg>
