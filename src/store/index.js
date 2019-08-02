@@ -10,7 +10,7 @@ export default new Vuex.Store({
     inApp: false,
     devMode: false,
     storeParameters: {
-      platform: null, // either 'android' or 'ios'
+      platform: 'all', // either 'android', 'ios', or 'all'
       hardware: 'basalt',
       accessToken: null
     }

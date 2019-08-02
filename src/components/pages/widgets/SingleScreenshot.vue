@@ -1,13 +1,15 @@
 <template>
-    <div class="screenshot" v-images-loaded:on.done="loaded">
-        <img v-show="screenshotSrc['144x168'] && imageLoaded" v-bind:src="screenshotSrc['144x168']" alt="Screenshot" />
-        <vcl-screenshot v-show="!screenshotSrc || !imageLoaded" class="loader"></vcl-screenshot>
+    <div v-if="imageSize !== ''" class="screenshot" :class="$store.state.storeParameters.hardware === 'chalk' ? 'round' : ''" v-images-loaded:on.done="loaded">
+        <img v-show="screenshotSrc[imageSize] && imageLoaded" v-bind:src="screenshotSrc[imageSize]" alt="Screenshot" />
+        <vcl-screenshot-square v-if="$store.state.storeParameters.hardware !== 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader square"></vcl-screenshot-square>
+        <vcl-screenshot-round v-if="$store.state.storeParameters.hardware === 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader round"></vcl-screenshot-round>
     </div>
 </template>
 
 <script>
 
-import VclScreenshot from './content-loaders/SingleScreenshot'
+import VclScreenshotSquare from './content-loaders/SingleScreenshotSquare'
+import VclScreenshotRound from './content-loaders/SingleScreenshotRound'
 import imagesLoaded from 'vue-images-loaded'
 
 export default {
@@ -16,31 +18,49 @@ export default {
     imagesLoaded
   },
   components: {
-    VclScreenshot
+    VclScreenshotSquare,
+    VclScreenshotRound
   },
   props: [
     'screenshotSrc'
   ],
   data: function () {
     return {
-      'imageLoaded': false
+      'imageLoaded': false,
+      'imageSize': ''
     }
   },
   methods: {
     loaded: function (instance) {
       this.imageLoaded = true
     }
+  },
+  beforeMount: function () {
+    this.imageSize = Object.keys(this.screenshotSrc)[0]
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .loader {
-  width: 144px;
-  height: 168px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   margin-left: 20px;
   margin-right: 20px;
+  &.square {
+    width: 144px;
+    height: 168px;
+  }
+  &.round {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%
+  }
+}
+
+.round {
+  img {
+    border-radius: 50%;
+  }
 }
 
 img {

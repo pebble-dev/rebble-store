@@ -15,7 +15,7 @@
 
         <card-collection :showTop="false" v-bind:cards="page.data"></card-collection>
 
-        <nav>
+        <nav v-if="page.links != undefined">
           <ul class="pagination">
             <li v-bind:class="offsetPage > 1 ? 'page-item': 'page-item disabled'">
               <router-link class="page-link" v-bind:to="get_page_link(false)" tabindex="-1" aria-label="Previous">
@@ -61,7 +61,7 @@ export default {
     get_category: function () {
       var that = this
       var offset = this.pageLimit * (this.offsetPage - 1)
-      this.$http.get(this.$store.state.backendUrl + '/apps/category/' + this.id + '?sort=' + this.sort + '&limit=' + this.pageLimit + '&offset=' + offset).then(response => {
+      this.$http.get(`${this.buildResourceUrl(`apps/category/${this.id}`)}&sort=${this.sort}&offset=${offset}&limit=${this.pageLimit}`).then(response => {
         that.page = response.body
       }, response => {
         console.error(response)

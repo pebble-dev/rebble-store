@@ -29,7 +29,7 @@ export default {
   methods: {
     get_app: function (id) {
       var that = this
-      this.$http.get(this.$store.state.backendUrl + '/apps/id/' + id).then(response => {
+      this.$http.get(this.buildResourceUrl(`apps/id/${id}`)).then(response => {
         that.app = response.body.data[0]
       }, response => {
         console.error(response)

@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import App from './App'
 import router from './router'
 import store from './store'
+import mixin from './mixin'
 
 import InstantSearch from 'vue-instantsearch'
 import VueCookie from 'vue-cookie'
@@ -21,6 +22,12 @@ Vue.filter('capitalize', function (value) {
   if (!value) return ''
   value = value.toString()
   return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+Vue.mixin({
+  methods: {
+    buildResourceUrl: mixin
+  }
 })
 
 Vue.use(VueResource)
