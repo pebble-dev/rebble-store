@@ -1,10 +1,12 @@
 import store from '../store'
+import router from '../router'
 
 class NativeService {
   constructor () {
     this.callbacks = []
     this.callbackId = 0
     this.methods = ['setNavBarTitle', 'openURL', 'addToLocker', 'loadAppToDeviceAndLocker', 'promptUserForAddToLockerOrLoad', 'getAppsFromLocker', 'removeFromLocker', 'isAppInLocker', 'unloadAppFromPebble', 'getLoadedAppsFromPebble', 'tryWatchface', 'isConnected', 'closeScreen', 'skipStep', 'bulkLoadAndClose', 'setVisibleApp', 'refreshAccessToken']
+    window.PebbleBridge = this
   }
 
   send (methodName, args, responseCallback, sendCallback) {
@@ -45,7 +47,6 @@ class NativeService {
   }
 
   _buildURI (methodName, callbackId, args) {
-    console.log(store.state)
     let msg = this._encodeMsg(methodName, callbackId, args)
     let protocol = 'pebble-method-call-js-frame://'
     let queryCharacter = store.state.storeParameters.platform === 'ios' ? '?' : ''
@@ -72,6 +73,44 @@ class NativeService {
       return void console.error('Native: msg cannot be URI encoded', e)
     }
     return msgURIEncoded
+  }
+
+  handleResponse (args) {
+    if (typeof args !== 'object' && args !== null) return void console.error('Native: args.methodName is not an object')
+    if (typeof args.data !== 'object') return void console.error('Native: args.data is not an object')
+    if (typeof args.callbackId !== 'number') return void console.error('Native: args.callbackId is not a number')
+    if (args.callbackId < 0) return
+    let callback = this.callbacks[args.callbackId]
+    delete this.callbacks[args.callbackId]
+    if (callback && typeof callback === 'function') {
+      callback(args.data)
+    } else {
+      console.error('Native: callback is not a function', callback)
+    }
+  }
+  _reload () {
+    window.location.reload(true)
+  }
+
+  handleRequest (args) {
+    if (typeof args !== 'object') return void console.error('Native: args.methodName is not an object')
+    if (typeof args.methodName !== 'string') return void console.error('Native: args.methodName is not an object')
+    switch (args.methodName) {
+      case 'search':
+        // let section = args.section || Storage.get('activeSection') || 'watchapps'
+        // let query = args.query || (Storage.get('searchData-' + section) || {}).query || ''
+        let section = args.section || 'apps'
+        let query = args.query || ''
+        let isNative = !(!args.query && !args.section)
+        let url = `/${section}/search?page=1&query=${encodeURIComponent(query)}${(isNative ? '&inApp=true' : '')}`
+        router.push(url)
+        break
+      case 'navigate':
+        router.push(args.url || '/')
+        break
+      case 'refresh':
+        this._reload()
+    }
   }
 }
 
