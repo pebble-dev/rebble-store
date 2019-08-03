@@ -167,7 +167,7 @@ body {
     background-color: transparent;
 
     // Pebble button button hover styles
-    &:hover {
+    &:hover, &.active, &:hover:focus {
         background-color: $pebble-color;
         color: #333;
     }
@@ -222,7 +222,6 @@ ul.pagination {
             &:hover, &:focus  {
                 // Overwrite hover and focus states
                 text-decoration: none;
-                outline: none;
             }
         }
     }
@@ -244,10 +243,5 @@ header {
       margin: 0;
     }
   }
-}
-
-// Remove nasty outlines from buttons
-button:focus {
-  outline: none;
 }
 </style>

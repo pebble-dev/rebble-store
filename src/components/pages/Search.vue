@@ -3,8 +3,8 @@
     <ais-configure :hits-per-page.camel="24" :tag-filters.camel="build_filter_list()" />
     <div>
       <header>
-        <div class=" title-card search">
-          <ais-search-box>
+        <div class="title-card search">
+          <ais-search-box autofocus>
             <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" slot-scope="{ currentRefinement, refine }" :value="currentRefinement" @input="refine($event.currentTarget.value)">
           </ais-search-box>
         </div>
@@ -68,9 +68,9 @@ export default {
       if (this.$store.state.storeParameters.hardware !== '') {
         filterList.push(this.$store.state.storeParameters.hardware)
       }
-      if (this.type === 'faces') {
+      if (this.type === 'faces' || this.type === 'watchfaces') {
         filterList.push('(watchface)')
-      } else if (this.type === 'apps') {
+      } else if (this.type === 'apps' || this.type === 'watchapps') {
         filterList.push('(watchapp,companion-app)')
       }
       return filterList.join(',')

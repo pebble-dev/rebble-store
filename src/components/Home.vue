@@ -2,7 +2,7 @@
   <div>
     <slider v-bind:banners="page.banners"></slider>
     <main class="home apps container">
-      <tag-list v-if="type != 'faces'" v-bind:tags="page.categories"></tag-list>
+      <tag-list v-if="type != 'faces' && page.categories !== undefined" v-bind:tags="page.categories"></tag-list>
       <card-collection v-for="(collection, index) in page.collections"  v-bind:key="index" v-bind:elTitle="collection.name" v-bind:cards="collection.data" v-bind:allUrl="`/${type}/${collection.slug}`"></card-collection>
     </main>
   </div>

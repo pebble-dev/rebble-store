@@ -6,11 +6,11 @@
       </svg>
       GET
     </a>
-    <button v-on:click="add_app" class="btn btn-outline-pebble btn-download" :class="state || loading ? 'disabled': ''" v-if="$store.state.inApp === true">
+    <button v-on:click="add_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| added === null?'disabled':''" v-if="$store.state.inApp === true">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
-      GET
+      {{(loading)?'...':'GET'}}
     </button>
   </span>
 </template>
@@ -28,17 +28,18 @@ export default {
       default: null
     },
     state: {
-      default: false
+      default: null
     }
   },
   data: function () {
     return {
-      loading: false
+      loading: false,
+      added: false
     }
   },
   methods: {
     add_app () {
-      if (this.state || this.loading) return
+      if (this.added === null || this.added === true || this.loading) return
       this.loading = true
       Native.send('loadAppToDeviceAndLocker', {
         id: this.app.id,
@@ -54,16 +55,22 @@ export default {
           remove: this.$store.state.backendUrl + '/applications/' + this.app.id + '/remove',
           share: 'http://apps.rebble.io/app/' + this.app.id
         }
-      }, function (res) {
+      }, (res) => {
         if (res.added_to_locker) {
           this.loading = false
-          this.state = true
+          this.added = true
         }
       })
     }
 
   },
+  watch: {
+    'state' (to, from) {
+      this.added = this.state
+    }
+  },
   beforeMount: function () {
+    this.added = this.state
   }
 }
 </script>

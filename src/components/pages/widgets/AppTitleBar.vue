@@ -14,7 +14,7 @@
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
 
-          {{ app.hearts }}
+          {{ hearts }}
           </button>
           <get-app-button v-bind:app="app" v-bind:state="added"></get-app-button>
         </div>
@@ -52,6 +52,7 @@ export default {
   data: function () {
     return {
       heartClass: 'btn btn-outline-secondary btn-thumbs-up disabled',
+      hearts: 0,
       hearted: false,
       added: false,
       flagged: false
@@ -59,13 +60,14 @@ export default {
   },
   methods: {
     get_user_data: function (id) {
-      if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
-        var that = this
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(userInfo => {
-          that.added = !(!userInfo || !~userInfo.added_ids.indexOf(self.id))
-          that.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
-          that.flagged = !(!userInfo || !~userInfo.flagged_ids.indexOf(id))
-          that.build_hearts_class()
+      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
+        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+          let userInfo = response.body.users[0]
+          this.added = !(!userInfo || !~userInfo.added_ids.indexOf(id))
+          this.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
+          this.flagged = !(!userInfo || !~userInfo.flagged_ids.indexOf(id))
+          console.log(this.added)
+          this.build_hearts_class()
         }, response => {
           console.error(response)
         })
@@ -73,6 +75,14 @@ export default {
     },
     change_heart: function (operation) {
       this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+        if (operation === 'add') {
+          this.hearts++
+          this.hearted = true
+        } else {
+          this.hearts--
+          this.hearted = false
+        }
+        this.build_hearts_class()
       }, response => {
         console.error(response)
         if (operation === 'add') {
@@ -87,10 +97,8 @@ export default {
       if (this.$store.state.storeParameters.accessToken !== null) {
         if (this.hearted) {
           this.change_heart('remove')
-          this.hearted = false
         } else {
           this.change_heart('add')
-          this.hearted = true
         }
         this.build_hearts_class()
       }
@@ -107,7 +115,15 @@ export default {
       }
     }
   },
+  watch: {
+    'app' (to, from) {
+      this.hearts = this.app.hearts
+    }
+  },
   beforeMount: function () {
+    if (this.app.hearts !== undefined) {
+      this.hearts = this.app.hearts
+    }
     this.get_user_data(this.$route.params.id)
   }
 }
@@ -188,8 +204,14 @@ export default {
         &.btn-thumbs-up {
           color: #ccc;
           border-color: #ccc;
+          cursor: hand;
           // Styles for when it is in focus, hovered, or active
-          &:hover, &:active, &.active {
+          &:hover, &:active {
+            color: #ccc;
+            border-color: #ccc;
+            background: none;
+          }
+          &.active {
             color: #333;
             outline: none;
             background: #ccc;

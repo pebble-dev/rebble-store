@@ -194,7 +194,7 @@ export default {
             /*
             We're triggering the hover on the parent button instead of the SVG.
             */
-            &:hover, &.active {
+            &.active {
                 svg {
                     fill: #ccc;
                     stroke: #333;
@@ -221,7 +221,7 @@ export default {
                 fill: #333;
                 stroke: #ff4700;
             }
-            &:hover {
+            &:hover, &.active {
                 svg {
                     fill: #ff4700;
                     stroke: #333;
