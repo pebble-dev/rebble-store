@@ -16,12 +16,7 @@
 
           {{ app.hearts }}
           </button>
-          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.storeParameters.platform === 'all' || app.compatibility[$store.state.storeParameters.platform].supported === true">
-          <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
-            <use xlink:href="#iconDownload"></use>
-          </svg>
-          GET
-          </a>
+          <get-app-button v-bind:app="app" v-bind:state="added"></get-app-button>
         </div>
       </div>
       <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
@@ -46,30 +41,30 @@
 </template>
 
 <script>
+import GetAppButton from './GetAppButton'
+
 export default {
   name: 'ScreenshotList',
+  components: {
+    GetAppButton
+  },
   props: ['app', 'urlArguments'],
   data: function () {
     return {
       heartClass: 'btn btn-outline-secondary btn-thumbs-up disabled',
-      hearted: false
+      hearted: false,
+      added: false,
+      flagged: false
     }
   },
   methods: {
-    get_hearts: function (id) {
+    get_user_data: function (id) {
       if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
         var that = this
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
-          console.log(response.body)
-          let foundApp = response.body.users[0].voted_ids.find(function (appId) {
-            return id === appId
-          })
-
-          if (foundApp != null) {
-            that.hearted = true
-          } else {
-            that.hearted = false
-          }
+        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(userInfo => {
+          that.added = !(!userInfo || !~userInfo.added_ids.indexOf(self.id))
+          that.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
+          that.flagged = !(!userInfo || !~userInfo.flagged_ids.indexOf(id))
           that.build_hearts_class()
         }, response => {
           console.error(response)
@@ -113,7 +108,7 @@ export default {
     }
   },
   beforeMount: function () {
-    this.get_hearts(this.$route.params.id)
+    this.get_user_data(this.$route.params.id)
   }
 }
 </script>
