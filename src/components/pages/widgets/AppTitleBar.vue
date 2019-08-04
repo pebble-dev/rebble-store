@@ -20,8 +20,9 @@
         </div>
       </div>
       <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
-        <h2>Requires Companion</h2>
-        <div class="pull-right">
+        <h2 v-if="app.type === 'companion-app'">Requires Companion</h2>
+        <h2 v-if="app.type !== 'companion-app'">Companion</h2>
+        <div class="ml-auto">
           <a v-if="app.companions.ios" v-bind:href="app.companions.ios.url" target="_blank">
             <svg class="app-icon" width="22px" height="22px">
               <use xlink:href="#iconApple"></use>
@@ -133,12 +134,14 @@ export default {
 // Title bar displayed below app banner
 
 .app-title-bar {
+    display: flex !important;
+    flex-direction: row;
+
     img {
-        position: absolute;
         border-radius: 4px;
         width: 42px;
         height: 42px;
-        left: 16px;
+        margin-right: 5px;
     }
     // Author name and app title text container
     .title-author {
@@ -150,10 +153,11 @@ export default {
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      @media screen and (max-width: 430px) {
+      /*@media screen and (max-width: 430px) {
         width: calc(100% - 160px);
-      }
-      width: calc(100% - 220px);
+      }*/
+      //width: calc(100% - 220px);
+      width: 100%;
 
       h1 {
         font-size: 19px;
@@ -190,14 +194,23 @@ export default {
 
     // Set styles of buttons in the app-button-container (app-details and app-versions page)
     .app-button-container {
+      margin-left: auto;
+      padding-left: 5px;
       margin-top: 2px;
       margin-bottom: 2px;
+      min-width: 196px;
+      @media screen and (max-width: 430px) {
+        min-width: 146px;
+      }
       .btn {
         @media screen and (max-width: 430px) {
           // styles for when screen smaller than 430px to avoid breaking all styles (they make things smaller)
           margin-top: 3px;
           font-size: 0.7rem;
           padding: .5rem .5rem;
+        }
+        &.btn-download {
+          margin-left: 2px;
         }
 
         // Set thumbs up button styles
@@ -230,6 +243,8 @@ export default {
 .card.subsection-extra {
   padding-left: 30px !important;
   padding-right: 30px !important;
+  display: flex;
+  flex-direction: row;
   h2 {
     font-size: 16px;
     line-height: 26px;

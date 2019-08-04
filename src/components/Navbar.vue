@@ -101,9 +101,9 @@ export default {
         top: 2px;
 
         // Make text smaller on small screens
-        @media screen and (max-width: 370px) {
-          margin-left: -10px;
-            top: 9px;
+        @media screen and (max-width: 430px) {
+            margin-left: -10px;
+            top: 2px;
             font-size: 1rem;
         }
     }
