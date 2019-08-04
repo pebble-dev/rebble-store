@@ -74,13 +74,7 @@ export default {
       })
     },
     get_companion () {
-      if (this.$store.state.inApp) {
-        Native.send('openURL', {
-          url: this.app.companions[this.$store.state.storeParameters.platform].url
-        })
-      } else {
-        window.open(this.app.companions[this.$store.state.storeParameters.platform].url, '_blank')
-      }
+      this.openExternal(this.app.companions[this.$store.state.storeParameters.platform].url)
     },
     check_app () {
       if (!this.hardwareSupported || !this.platformSupported || this.added === true || this.loading) return

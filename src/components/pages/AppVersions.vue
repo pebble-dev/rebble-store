@@ -26,6 +26,14 @@ export default {
     }
   },
   beforeMount: function () {
+    if (this.app.title !== undefined) {
+      this.setTitle(`${this.app.title} Versions`)
+    }
+  },
+  watch: {
+    'app' (to, from) {
+      this.setTitle(`${this.app.title} Versions`)
+    }
   }
 }
 </script>

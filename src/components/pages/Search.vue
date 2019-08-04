@@ -4,8 +4,8 @@
     <div>
       <header class="main">
         <div class="title-card search">
-          <ais-search-box autofocus>
-            <input placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" slot-scope="{ currentRefinement, refine }" :value="currentRefinement" @input="refine($event.currentTarget.value)">
+          <ais-search-box>
+            <input autofocus placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" slot-scope="{ currentRefinement, refine }" :value="currentRefinement" @input="refine($event.currentTarget.value)">
           </ais-search-box>
         </div>
       </header>
@@ -75,6 +75,9 @@ export default {
       }
       return filterList.join(',')
     }
+  },
+  beforeMount: function () {
+    this.setTitle('Search')
   }
 
 }
@@ -87,15 +90,21 @@ export default {
 
 .search {
   input {
+    margin: -20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    width: 100%;
+    width: calc(100% + 40px);
     height: 70px;
     font-size: 1.75rem;
     padding: 20px;
     border: 0;
     background: none;
     color: #373a3c;
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration { display: none; }
+
     &:focus {
       outline: none;
     }

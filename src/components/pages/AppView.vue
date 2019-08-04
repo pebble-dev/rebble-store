@@ -13,6 +13,7 @@
 import AppTitleBar from './widgets/AppTitleBar'
 import Slider from './widgets/AppSlider'
 import ScreenshotList from './widgets/ScreenshotList'
+import { Native } from '../../services'
 
 export default {
   name: 'app-view',
@@ -28,9 +29,11 @@ export default {
   },
   methods: {
     get_app: function (id) {
-      var that = this
       this.$http.get(this.buildResourceUrl(`apps/id/${id}`)).then(response => {
-        that.app = response.body.data[0]
+        this.app = response.body.data[0]
+        if (this.$store.state.inApp) {
+          Native.send('setVisibleApp', this.app)
+        }
       }, response => {
         console.error(response)
       })

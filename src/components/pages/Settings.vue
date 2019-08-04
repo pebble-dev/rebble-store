@@ -36,7 +36,7 @@ export default {
     }
   },
   beforeMount: function () {
-
+    this.setTitle('Settings')
   }
 }
 </script>
