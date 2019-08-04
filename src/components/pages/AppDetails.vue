@@ -17,16 +17,16 @@
             <span v-if="app.type === 'watchapp'" class="badge badge-pill badge-pebble">{{ app.category }}</span>
           </td>
         </tr>
-        <tr>
+        <tr v-if="app.latest_release">
           <td>Updated</td>
           <td>{{ app.latest_release.published_date | formatDate }}</td>
         </tr>
-        <tr>
+        <tr v-if="app.latest_release">
           <td>Version</td>
           <td>{{ app.latest_release.version }}</td>
         </tr>
       </table>
-      <router-link v-bind:to="'/app/' + $route.params.id + '/versions/'" class="app-button">
+      <router-link v-if="app.changelog.length > 0" v-bind:to="'/app/' + $route.params.id + '/versions/'" class="app-button">
         <div>
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
@@ -47,7 +47,7 @@
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.latest_release.pbw_file != '' && $store.state.devMode" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
+      <a v-if="app.latest_release && app.latest_release.pbw_file != '' && $store.state.devMode" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>

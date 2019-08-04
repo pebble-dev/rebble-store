@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header>
+        <header class="main">
             <div class="title-card">
                 <h3>Pebble Type</h3>
             </div>

@@ -82,8 +82,6 @@ export default {
   .icon-inverted-thumbs-up {
     fill: #FFF;
     stroke: #889097;
-    position: relative;
-    top: 2px;
   }
 
 // Select the dark translucent navbar
@@ -110,12 +108,6 @@ export default {
                             color: #fff;
                         }
                     }
-                }
-                // Default icon styles
-                svg {
-                    margin-bottom: -6px;
-                    position: relative;
-                    top: 1px;
                 }
             }
 
@@ -144,8 +136,6 @@ export default {
                 svg.thumbs-up {
                     height: 16px;
                     margin-right: -6px;
-                    position: relative;
-                    top: 2px;
                 }
             }
         }
@@ -171,15 +161,12 @@ export default {
             svg {
                 height: 16px !important;
                 margin-right: -5px;
-                margin-bottom: -10px;
-                top:-6px !important;
             }
         }
         // Set SVG size and margin
         svg {
             height: 20px;
             position: relative;
-            top: 2px;
         }
 
         // Set thumbs up SVG styles
@@ -194,7 +181,7 @@ export default {
             /*
             We're triggering the hover on the parent button instead of the SVG.
             */
-            &:hover, &.active {
+            &.active {
                 svg {
                     fill: #ccc;
                     stroke: #333;
@@ -221,7 +208,7 @@ export default {
                 fill: #333;
                 stroke: #ff4700;
             }
-            &:hover {
+            &:hover, &.active {
                 svg {
                     fill: #ff4700;
                     stroke: #333;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <header class="main">
         <div class="title-card">
             <h3>Collection: {{slug | capitalize}}</h3>
         </div>

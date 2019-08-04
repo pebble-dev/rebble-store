@@ -1,52 +1,49 @@
 <template>
-  <nav class="navbar fixed-top navbar-dark bg-dark text-sm-center translucent">
-    <div class="navbar-container">
+    <b-navbar toggleable="true" type="dark" variant="dark" class="translucent" fixed="top">
       <div class="navbar__items left" v-show="showBackButton">
-        <button class="float-left back" v-on:click="goBack()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+        <b-nav-item class="back" v-on:click="goBack()">
+            &#10094;
+        </b-nav-item>
       </div>
-      <router-link class="navbar-brand" to="/">
-        Rebble Store
-        <small>
-          for&nbsp;
-          <div class="pebble">pebble</div>
-        </small>
-      </router-link>
+      <b-navbar-brand to="/">Rebble Store
+          <small>
+            for&nbsp;
+            <div class="pebble">pebble</div>
+          </small>
+      </b-navbar-brand>
       <div class="navbar__items right">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorySelector" aria-controls="categorySelector" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <router-link class="search" to="/faces/search">
+        <b-navbar-toggle target="categorySelector"></b-navbar-toggle>
+        <b-nav-item class="search" to="/faces/search">
           <svg class="icon-search" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSearch"></use>
           </svg>
-        </router-link>
-        <router-link v-if="$store.state.devMode" class="settings" to="/settings">
+        </b-nav-item>
+        <b-nav-item v-if="$store.state.devMode" class="settings" to="/settings">
           <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSettings"></use>
           </svg>
-        </router-link>
+        </b-nav-item>
       </div>
-    </div>
-    <div class="collapse text-center" id="categorySelector" ref="categorySelector">
-      <div class="text-muted p-1">
-        <div class="btn-group btn-group-lg" role="group">
-          <router-link to="/" v-bind:class="{ active: currentRoute == '/faces'}" class="btn btn-outline-secondary btn-watchface" role="button">
-            <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <use xlink:href="#iconWatchface"></use>
-            </svg>
-            Watchfaces
-          </router-link>
+      <b-collapse id="categorySelector" class="text-center" v-model="showCollapse" is-nav>
+        <div class="text-muted category-container">
+          <div class="btn-group btn-group-lg" role="group">
+            <router-link to="/" v-bind:class="{ active: currentRoute == '/faces'}" class="btn btn-outline-secondary btn-watchface" role="button">
+              <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href="#iconWatchface"></use>
+              </svg>
+              Watchfaces
+            </router-link>
 
-          <router-link to="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
-            <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <use xlink:href="#iconApp"></use>
-            </svg>
-            Apps
-          </router-link>
+            <router-link to="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
+              <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href="#iconApp"></use>
+              </svg>
+              Apps
+            </router-link>
+          </div>
         </div>
-      </div>
-    </div>
-  </nav>
+      </b-collapse>
+    </b-navbar>
 </template>
 
 <script>
@@ -59,7 +56,8 @@ export default {
       currentRoute: '/',
       goBack () {
         this.$router.go(-1)
-      }
+      },
+      showCollapse: false
     }
   },
 
@@ -67,7 +65,6 @@ export default {
     // Update the route state on page load, in case we didn't start at home
     this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
     this.updateBackButton()
-    this.updateMenu()
   },
 
   watch: {
@@ -77,16 +74,13 @@ export default {
       // since that is currently the home route
       this.currentRoute = (this.$route.path === '' ? '/' : this.$route.path)
       this.updateBackButton()
-      this.updateMenu()
+      this.showCollapse = false
     }
   },
 
   methods: {
     updateBackButton () {
       this.showBackButton = (this.currentRoute !== '/faces' && this.currentRoute !== '/apps')
-    },
-    updateMenu () {
-      this.$refs.categorySelector.classList.remove('show')
     }
   }
 }
@@ -95,92 +89,87 @@ export default {
 <style lang="scss" scoped>
 // Select the dark translucent navbar
 .navbar-dark.bg-dark.translucent {
-  .navbar-container {
-    // Fix navbar being smaller than 58px
-    min-height: 42px;
-    width: 100%;
+  // Fix navbar being smaller than 58px
+  min-height: 42px;
+  width: 100%;
 
-      // Navbar brand (app logo or title) styles
-      .navbar-brand {
-          display: initial;
-          margin: 0;
-          position: relative;
-          top: 5px;
+    // Navbar brand (app logo or title) styles
+    .navbar-brand {
+        display: initial;
+        margin: 0;
+        position: relative;
+        top: 2px;
 
-          // Make text smaller on small screens
-          @media screen and (max-width: 370px) {
-            margin-left: -10px;
-              top: 9px;
-              font-size: 1rem;
-          }
+        // Make text smaller on small screens
+        @media screen and (max-width: 370px) {
+          margin-left: -10px;
+            top: 9px;
+            font-size: 1rem;
+        }
+    }
+
+    li.nav-item {
+      a {
+        padding: 0 2px;
       }
+    }
 
-      // Navbar items right container
-      .navbar__items {
-          position: absolute;
+    // Navbar items right container
+    .navbar__items {
 
-          // Items in the right
-          &.right {
-            right: 16px;
+        // Items in the right
+        &.right {
+          margin-left: auto;
 
-            // Search Icon
-            a.search {
-              padding-top: 5px; // Move it down
-            }
-
-            // Settings Icon
-            a.settings {
-              padding-top: 5px;
-            }
-
-            // Hamburger icon
-            .navbar-toggler {
-              cursor: pointer;
-              padding: .25rem .5rem;
-              margin-right: .25rem;
-            }
+          // Search Icon
+          .search a {
+            padding-top: 2px; // Move it down
           }
-
-          // Items in the left
-          &.left {
-            left: 16px;
-
-            // Prevent brand from going on top of this
-            @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-              position: static;
-            }
-
-            // Back arrow button
-            button.back {
-                font-size: 27px;
-                color: rgba(255, 255, 255, 0.5);
-                background: none;
-                border: none;
-                cursor: pointer;
-                // Add margin on breakpoint to prevent brand from being really close
-                @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-                  margin-right: 20px;
-                }
-
-            }
-
-          }
-
-          top: 8px;
 
           // Hamburger icon
-          .navbar-toggler, .navbar-toggler:focus {
-              border: 0;
-              border-radius: 0;
-              outline: none;
+          .navbar-toggler {
+            cursor: pointer;
+            padding: .25rem .35rem;
+            margin-right: .25rem;
+          }
+        }
+
+        // Items in the left
+        &.left {
+          left: 16px;
+
+          // Prevent brand from going on top of this
+          @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+            position: static;
           }
 
-          > * {
-              display: inline-block;
-              vertical-align: middle;
-          }
-      }
+          // Back arrow button
+          li.back a {
+            position: relative;
+            top: 2px;
+            font-size: 27px;
+            color: rgba(255, 255, 255, 0.5);
+            background: none;
+            border: none;
+            cursor: pointer;
+            // Add margin on breakpoint to prevent brand from being really close
+            margin-right: 20px;
 
+          }
+
+        }
+
+        // Hamburger icon
+        .navbar-toggler, .navbar-toggler:focus {
+            border: 0;
+            border-radius: 0;
+            outline: none;
+        }
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
     }
 
     @supports (not (backdrop-filter: blur(10px))) and (not (-webkit-backdrop-filter: blur(10px))) {
@@ -203,6 +192,10 @@ export default {
     width: 100vw;
     margin-left: -16px;
     margin-right: -16px;
+    .category-container {
+      padding: 0.25rem;
+      padding-top: calc(0.25rem + 10px);
+    }
 
     // Change default button group styles to ones that match the style
     .btn-group {

@@ -14,14 +14,9 @@
             <use xlink:href="#iconThumbsUp"></use>
           </svg>
 
-          {{ app.hearts }}
+          {{ hearts }}
           </button>
-          <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.storeParameters.platform === 'all' || app.compatibility[$store.state.storeParameters.platform].supported === true">
-          <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
-            <use xlink:href="#iconDownload"></use>
-          </svg>
-          GET
-          </a>
+          <get-app-button v-bind:app="app" v-bind:state="added"></get-app-button>
         </div>
       </div>
       <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
@@ -46,31 +41,33 @@
 </template>
 
 <script>
+import GetAppButton from './GetAppButton'
+
 export default {
   name: 'ScreenshotList',
+  components: {
+    GetAppButton
+  },
   props: ['app', 'urlArguments'],
   data: function () {
     return {
       heartClass: 'btn btn-outline-secondary btn-thumbs-up disabled',
-      hearted: false
+      hearts: 0,
+      hearted: false,
+      added: false,
+      flagged: false
     }
   },
   methods: {
-    get_hearts: function (id) {
-      if (this.$store.state.accessToken !== '' && this.$store.state.accessToken != null) {
-        var that = this
+    get_user_data: function (id) {
+      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
         this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
-          console.log(response.body)
-          let foundApp = response.body.users[0].voted_ids.find(function (appId) {
-            return id === appId
-          })
-
-          if (foundApp != null) {
-            that.hearted = true
-          } else {
-            that.hearted = false
-          }
-          that.build_hearts_class()
+          let userInfo = response.body.users[0]
+          this.added = !(!userInfo || !~userInfo.added_ids.indexOf(id))
+          this.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
+          this.flagged = !(!userInfo || !~userInfo.flagged_ids.indexOf(id))
+          console.log(this.added)
+          this.build_hearts_class()
         }, response => {
           console.error(response)
         })
@@ -78,6 +75,14 @@ export default {
     },
     change_heart: function (operation) {
       this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+        if (operation === 'add') {
+          this.hearts++
+          this.hearted = true
+        } else {
+          this.hearts--
+          this.hearted = false
+        }
+        this.build_hearts_class()
       }, response => {
         console.error(response)
         if (operation === 'add') {
@@ -92,10 +97,8 @@ export default {
       if (this.$store.state.storeParameters.accessToken !== null) {
         if (this.hearted) {
           this.change_heart('remove')
-          this.hearted = false
         } else {
           this.change_heart('add')
-          this.hearted = true
         }
         this.build_hearts_class()
       }
@@ -112,8 +115,16 @@ export default {
       }
     }
   },
+  watch: {
+    'app' (to, from) {
+      this.hearts = this.app.hearts
+    }
+  },
   beforeMount: function () {
-    this.get_hearts(this.$route.params.id)
+    if (this.app.hearts !== undefined) {
+      this.hearts = this.app.hearts
+    }
+    this.get_user_data(this.$route.params.id)
   }
 }
 </script>
@@ -193,8 +204,14 @@ export default {
         &.btn-thumbs-up {
           color: #ccc;
           border-color: #ccc;
+          cursor: hand;
           // Styles for when it is in focus, hovered, or active
-          &:hover, &:active, &.active {
+          &:hover, &:active {
+            color: #ccc;
+            border-color: #ccc;
+            background: none;
+          }
+          &.active {
             color: #333;
             outline: none;
             background: #ccc;

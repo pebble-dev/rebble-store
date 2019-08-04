@@ -1,5 +1,5 @@
 <template>
-  <div v-dragscroll.x="true" class="screenshots">
+  <div v-dragscroll.x="!$store.state.inApp" class="screenshots">
       <div id="scrollbar" v-bind:style="scrollStyle">
           <single-screenshot v-for="(screenshot, index) in screenshots" v-bind:key="index" v-bind:screenshotSrc="screenshot"></single-screenshot>
       </div>
@@ -32,7 +32,8 @@ export default {
 // Screenshots slider
 .screenshots {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
