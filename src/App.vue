@@ -227,7 +227,7 @@ ul.pagination {
     }
 }
 
-header {
+header.main {
   padding-top: 58px;
   background: linear-gradient(to bottom, rgba(55, 58, 60, 1) 0%, rgba(55, 58, 60, 1) 65%, rgba(55, 58, 60, 0) 65%, rgba(55, 58, 60, 0) 100%);
   .title-card {

@@ -82,8 +82,6 @@ export default {
   .icon-inverted-thumbs-up {
     fill: #FFF;
     stroke: #889097;
-    position: relative;
-    top: 2px;
   }
 
 // Select the dark translucent navbar
@@ -110,12 +108,6 @@ export default {
                             color: #fff;
                         }
                     }
-                }
-                // Default icon styles
-                svg {
-                    margin-bottom: -6px;
-                    position: relative;
-                    top: 1px;
                 }
             }
 
@@ -144,8 +136,6 @@ export default {
                 svg.thumbs-up {
                     height: 16px;
                     margin-right: -6px;
-                    position: relative;
-                    top: 2px;
                 }
             }
         }
@@ -172,14 +162,12 @@ export default {
                 height: 16px !important;
                 margin-right: -5px;
                 margin-bottom: -10px;
-                top:-6px !important;
             }
         }
         // Set SVG size and margin
         svg {
             height: 20px;
             position: relative;
-            top: 2px;
         }
 
         // Set thumbs up SVG styles

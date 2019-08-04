@@ -1,6 +1,6 @@
 <template>
   <section v-bind:class="app.type" >
-    <header v-bind:class="($store.state.inApp && !app.header_images) ? 'inApp no-banner': ''">
+    <header class="main" v-bind:class="($store.state.inApp && !app.header_images) ? 'inApp no-banner': ''">
       <slider v-if="app.header_images != ''" v-bind:banners="app.header_images"></slider>
     </header>
     <app-title-bar v-bind:app="app" v-bind:class="($store.state.inApp && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
@@ -47,7 +47,7 @@ export default {
 // App details page styles
 
 // Similar to carousel but only used when displaying only one image
-header {
+header.main {
   &.inApp.no-banner {
     padding: 0;
     display: none;
