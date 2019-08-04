@@ -31,7 +31,7 @@
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.website != ''" v-bind:href="app.website" class="app-button" target="_blank">
+      <a v-if="app.website != ''" v-on:click="openExternal(app.website)" class="app-button">
         <div>
           Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
@@ -40,14 +40,14 @@
         <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a-->
-      <a v-if="app.source != null" v-bind:href="app.source" class="app-button" target="_blank">
+      <a v-if="app.source != null" v-on:click="openExternal(app.source)" class="app-button" >
         <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i></div>
       </a>
       <router-link v-bind:to="'/author/' + app.developer_id" class="app-button">
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.latest_release && app.latest_release.pbw_file != '' && $store.state.devMode" v-bind:href="app.latest_release.pbw_file" class="app-button" target="_blank">
+      <a v-if="app.latest_release && app.latest_release.pbw_file != '' && $store.state.devMode" v-on:click="openExternal(app.latest_release.pbw_file)" class="app-button">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
@@ -69,6 +69,16 @@ export default {
     },
     clientWatchPlatform: {
       default: null
+    }
+  },
+  watch: {
+    'app' (to, from) {
+      this.setTitle(this.app.title)
+    }
+  },
+  beforeMount: function () {
+    if (this.app.title !== undefined) {
+      this.setTitle(this.app.title)
     }
   }
 }

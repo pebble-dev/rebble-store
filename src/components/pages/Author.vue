@@ -36,10 +36,10 @@ export default {
   },
   methods: {
     get_author: function (id, offsetPage) {
-      var that = this
       var offset = this.pageLimit * (offsetPage - 1)
       this.$http.get(`${this.buildResourceUrl(`apps/dev/${id}`)}&offset=${offset}&limit=${this.pageLimit}`).then(response => {
-        that.page = response.body
+        this.page = response.body
+        this.setTitle(this.page.data[0].author)
       }, response => {
         console.error(response)
       })

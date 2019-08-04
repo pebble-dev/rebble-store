@@ -2,7 +2,7 @@
   <div>
     <header class="main">
         <div class="title-card">
-            <h3>Collection: {{slug | capitalize}}</h3>
+            <h3>Collection: {{slug | readable-name}}</h3>
         </div>
     </header>
     <main class="apps container text-center">
@@ -41,10 +41,9 @@ export default {
   },
   methods: {
     get_collection: function () {
-      var that = this
       var offset = this.pageLimit * (this.offsetPage - 1)
       this.$http.get(`${this.buildResourceUrl(`apps/collection/${this.slug}/${this.type}`)}&offset=${offset}&limit=${this.pageLimit}`).then(response => {
-        that.page = response.body
+        this.page = response.body
       }, response => {
         console.error(response)
       })
@@ -54,6 +53,7 @@ export default {
       this.offsetPage = routeParams.page
       this.type = routeParams.type
 
+      this.setTitle(this.$options.filters['readable-name'](this.slug))
       this.get_collection()
     }
   },

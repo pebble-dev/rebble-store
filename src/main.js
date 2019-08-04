@@ -28,9 +28,17 @@ Vue.filter('capitalize', function (value) {
   return value.charAt(0).toUpperCase() + value.slice(1)
 })
 
+Vue.filter('readable-name', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value[0].toUpperCase() + value.replace(new RegExp('-', 'g'), ' ').substring(1)
+})
+
 Vue.mixin({
   methods: {
-    buildResourceUrl: mixin
+    buildResourceUrl: mixin.buildResourceUrl,
+    setTitle: mixin.setTitle,
+    openExternal: mixin.openExternal
   }
 })
 

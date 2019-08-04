@@ -2,7 +2,7 @@
   <div>
     <header class="main">
         <div class="title-card">
-            <h3>{{id | capitalize}}</h3>
+            <h3>{{id | readable-name}}</h3>
         </div>
     </header>
     <main class="apps container text-center">
@@ -58,6 +58,7 @@ export default {
       this.sort = routeParams.sort
       this.offsetPage = routeParams.page
 
+      this.setTitle(this.$options.filters['readable-name'](this.id))
       this.get_category()
     }
   },

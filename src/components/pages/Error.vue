@@ -51,7 +51,7 @@ export default {
     }
   },
   beforeMount: function () {
-
+    this.setTitle('404 Page not found')
   }
 }
 </script>

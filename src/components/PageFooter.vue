@@ -4,8 +4,8 @@
         Rebble Store&nbsp;<small>for&nbsp;pebble</small>
     </div>
     <div class="main">
-        <p>© {{ new Date().getFullYear() }} Rebble · <a :href="$store.state.contactLink" target="_blank">Contact Us</a> · <a :href="$store.state.tosLink" target="_blank">Terms</a></p>
-        <a class="pull-right" href="#" target="_blank">Developer Portal</a>
+        <p>© {{ new Date().getFullYear() }} Rebble · <a v-on:click="openExternal($store.state.contactLink)">Contact Us</a> · <a  v-on:click="openExternal($store.state.tosLink)">Terms</a></p>
+        <a class="pull-right" v-on:click="openExternal('#')">Developer Portal</a>
     </div>
   </footer>
 </template>

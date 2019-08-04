@@ -75,6 +75,9 @@ export default {
       }
       return filterList.join(',')
     }
+  },
+  beforeMount: function () {
+    this.setTitle('Search')
   }
 
 }
