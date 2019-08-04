@@ -6,17 +6,26 @@
       </svg>
       GET
     </a>
-    <button v-on:click="add_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| added === null?'disabled':''" v-if="$store.state.inApp === true">
+    <button v-on:click="check_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| (added === null || !hardwareSupported || !platformSupported)?'disabled':''" v-if="$store.state.inApp === true">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
       {{(loading)?'...':'GET'}}
     </button>
+    <b-modal id="modal-permissions" centered title="Pebble Permissions" ok-title="Accept"  cancel-title="Reject" @ok="add_app()">
+      <p>"{{app.title}}" is requesting access to the following services.</p>
+      <b-list-group class="my-4">
+        <b-list-group-item v-for="(item, index) in permissions" :key="index">{{ item }}</b-list-group-item>
+      </b-list-group>
+      <p>If you tap on accept you will grant "{{app.title}}" access to read and use your data.</p>
+    </b-modal>
+    <b-modal id="modal-companion" centered title="Companion Required" ok-title="Get"  cancel-title="Cancel" @ok="get_companion()">
+      <p class="my-4">"{{app.title}}" requires a companion a to be used.</p>
+    </b-modal>
   </span>
 </template>
 
 <script>
-/* eslint no-unused-expressions: ["error", { "allowShortCircuit": true }] */
 import { Native } from '../../../services'
 
 export default {
@@ -34,12 +43,14 @@ export default {
   data: function () {
     return {
       loading: false,
-      added: false
+      added: false,
+      hardwareSupported: false,
+      platformSupported: false,
+      permissions: []
     }
   },
   methods: {
     add_app () {
-      if (this.added === null || this.added === true || this.loading) return
       this.loading = true
       Native.send('loadAppToDeviceAndLocker', {
         id: this.app.id,
@@ -61,16 +72,54 @@ export default {
           this.added = true
         }
       })
+    },
+    get_companion () {
+      if (this.$store.state.inApp) {
+        Native.send('openURL', {
+          url: this.app.companions[this.$store.state.storeParameters.platform].url
+        })
+      } else {
+        window.open(this.app.companions[this.$store.state.storeParameters.platform].url, '_blank')
+      }
+    },
+    check_app () {
+      if (!this.hardwareSupported || !this.platformSupported || this.added === true || this.loading) return
+      if (this.permissions.length > 0) {
+        this.$bvModal.show('modal-permissions')
+        return
+      }
+      if (this.app.type === 'companion-app') {
+        this.$bvModal.show('modal-companion')
+        return
+      }
+      this.add_app()
+    },
+    check_supported () {
+      this.hardwareSupported = this.app.compatibility && this.app.compatibility[this.$store.state.storeParameters.hardware] && this.app.compatibility[this.$store.state.storeParameters.hardware].supported === true
+      this.platformSupported = this.$store.state.storeParameters.platform === 'all' || this.app.compatibility[this.$store.state.storeParameters.platform].supported
+    },
+    create_permissions () {
+      if (this.app.capabilities != null) {
+        this.permissions = this.app.capabilities
+        this.permissions.splice(this.permissions.indexOf('configurable'))
+      }
     }
-
   },
   watch: {
     'state' (to, from) {
       this.added = this.state
+    },
+    'app' (to, from) {
+      this.check_supported()
+      this.create_permissions()
     }
   },
   beforeMount: function () {
     this.added = this.state
+    if (this.app !== null) {
+      this.check_supported()
+      this.create_permissions()
+    }
   }
 }
 </script>
