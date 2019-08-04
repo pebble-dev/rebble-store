@@ -161,7 +161,6 @@ export default {
             svg {
                 height: 16px !important;
                 margin-right: -5px;
-                margin-bottom: -10px;
             }
         }
         // Set SVG size and margin
