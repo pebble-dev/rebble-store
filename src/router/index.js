@@ -1,3 +1,4 @@
+import qs from 'qs'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
@@ -57,5 +58,12 @@ const routes = [
 
 export default new Router({
   routes: routes,
-  mode: 'history'
+  parseQuery (query) {
+    return qs.parse(query)
+  },
+  stringifyQuery (query) {
+    const result = qs.stringify(query)
+
+    return result ? '?' + result : ''
+  }
 })
