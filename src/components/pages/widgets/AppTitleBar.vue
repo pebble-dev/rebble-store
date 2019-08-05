@@ -9,14 +9,14 @@
         </div>
 
         <div class="app-button-container float-right">
-          <button type="button" v-bind:class="heartClass" v-on:click="toggle_heart_button_state">
-          <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
-            <use xlink:href="#iconThumbsUp"></use>
-          </svg>
+          <button type="button" v-bind:class="heartClass" v-on:click="toggle_heart_button_state" ref="heartsButton">
+            <svg class="svg-icon icon-thumbs-up" width="25px" height="25px" viewBox="0 0 25 25">
+              <use xlink:href="#iconThumbsUp"></use>
+            </svg>
 
-          {{ hearts }}
+            {{ hearts }}
           </button>
-          <get-app-button v-bind:app="app" v-bind:state="added"></get-app-button>
+          <get-app-button v-bind:app="app" v-bind:state="added"  ref="addButton"></get-app-button>
         </div>
       </div>
       <div class="card subsection-extra card-inverse text-left p-2" v-if=" app.companions != undefined && (app.companions.ios != null || app.companions.android != null) && app.type != 'watchface'">
@@ -198,9 +198,10 @@ export default {
       padding-left: 5px;
       margin-top: 2px;
       margin-bottom: 2px;
-      min-width: 196px;
+      min-width: 206px;
+      text-align: right;
       @media screen and (max-width: 430px) {
-        min-width: 146px;
+        min-width: 156px;
       }
       .btn {
         @media screen and (max-width: 430px) {
