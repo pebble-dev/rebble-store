@@ -99,6 +99,10 @@ export default {
         margin: 0;
         position: relative;
         top: 2px;
+        @media screen and (min-width: 768px) {
+          margin-right: auto;
+          margin-left: auto;
+        }
 
         // Make text smaller on small screens
         @media screen and (max-width: 430px) {
@@ -119,7 +123,9 @@ export default {
 
         // Items in the right
         &.right {
-          margin-left: auto;
+          @media screen and (max-width: 767px) {
+            margin-left: auto;
+          }
 
           // Search Icon
           .search a {

@@ -36,7 +36,7 @@
 
 <script>
 import algoliasearch from 'algoliasearch/lite'
-import { history as historyRouter } from 'instantsearch.js/es/lib/routers'
+import { searchRouting } from '../../router/search-router'
 import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings'
 
 export default {
@@ -54,7 +54,7 @@ export default {
         '252f4938082b8693a8a9fc0157d1d24f'
       ),
       routing: {
-        router: historyRouter(),
+        router: searchRouting.router,
         stateMapping: simpleMapping()
       }
     }
