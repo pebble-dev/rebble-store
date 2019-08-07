@@ -2,7 +2,7 @@ import { Native } from '../services'
 
 const mixins = {
   buildResourceUrl (resource) {
-    return `${this.$store.state.backendUrl}/${resource}?platform=${this.$store.state.userParameters.platform}&hardware=${this.$store.state.userParameters.hardware}&filter_hardware=true`
+    return `${this.$store.state.config.backendUrl}/${resource}?platform=${this.$store.state.userParameters.platform}&hardware=${this.$store.state.userParameters.hardware}&filter_hardware=true`
   },
   setTitle (title = '') {
     document.title = title === '' ? 'Rebble Store' : `${title} | Rebble Store`

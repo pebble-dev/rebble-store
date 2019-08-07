@@ -58,7 +58,10 @@ new Vue({
   beforeCreate () {
     this.$store.commit('userParameters/INIT', null, { root: true })
     store.subscribe((mutation, state) => {
-      localStorage.setItem('rebbleStoreData', JSON.stringify(state))
+      if (mutation.type.substr(0, 15) === 'userParameters/') {
+        // Only save user parameters when needed
+        localStorage.setItem('rebbleUserParameters', JSON.stringify(state.userParameters))
+      }
     })
   },
   render: h => h(App)
