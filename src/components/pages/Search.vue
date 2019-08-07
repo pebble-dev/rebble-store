@@ -62,11 +62,11 @@ export default {
   methods: {
     build_filter_list: function () {
       var filterList = []
-      if (this.$store.state.storeParameters.platform !== '') {
-        filterList.push(this.$store.state.storeParameters.platform)
+      if (this.$store.state.userParameters.platform !== '') {
+        filterList.push(this.$store.state.userParameters.platform)
       }
-      if (this.$store.state.storeParameters.hardware !== '') {
-        filterList.push(this.$store.state.storeParameters.hardware)
+      if (this.$store.state.userParameters.hardware !== '') {
+        filterList.push(this.$store.state.userParameters.hardware)
       }
       if (this.type === 'faces' || this.type === 'watchfaces') {
         filterList.push('(watchface)')

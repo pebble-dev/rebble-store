@@ -1,12 +1,12 @@
 <template>
   <span>
-    <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.inApp !== true && ($store.state.storeParameters.platform === 'all' || app.compatibility[$store.state.storeParameters.platform].supported === true)">
+    <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.userParameters.inApp !== true && ($store.state.userParameters.platform === 'all' || app.compatibility[$store.state.userParameters.platform].supported === true)">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
       GET
     </a>
-    <button v-on:click="check_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| (added === null || !hardwareSupported || !platformSupported)?'disabled':''" v-if="$store.state.inApp === true">
+    <button v-on:click="check_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| (added === null || !hardwareSupported || !platformSupported)?'disabled':''" v-if="$store.state.userParameters.inApp === true">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
@@ -74,7 +74,7 @@ export default {
       })
     },
     get_companion () {
-      this.openExternal(this.app.companions[this.$store.state.storeParameters.platform].url)
+      this.openExternal(this.app.companions[this.$store.state.userParameters.platform].url)
     },
     check_app () {
       if (!this.hardwareSupported || !this.platformSupported || this.added === true || this.loading) return
@@ -89,8 +89,8 @@ export default {
       this.add_app()
     },
     check_supported () {
-      this.hardwareSupported = this.app.compatibility && this.app.compatibility[this.$store.state.storeParameters.hardware] && this.app.compatibility[this.$store.state.storeParameters.hardware].supported === true
-      this.platformSupported = this.$store.state.storeParameters.platform === 'all' || this.app.compatibility[this.$store.state.storeParameters.platform].supported
+      this.hardwareSupported = this.app.compatibility && this.app.compatibility[this.$store.state.userParameters.hardware] && this.app.compatibility[this.$store.state.userParameters.hardware].supported === true
+      this.platformSupported = this.$store.state.userParameters.platform === 'all' || this.app.compatibility[this.$store.state.userParameters.platform].supported
     },
     create_permissions () {
       if (this.app.capabilities != null) {

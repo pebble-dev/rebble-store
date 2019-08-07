@@ -49,7 +49,7 @@ class NativeService {
   _buildURI (methodName, callbackId, args) {
     let msg = this._encodeMsg(methodName, callbackId, args)
     let protocol = 'pebble-method-call-js-frame://'
-    let queryCharacter = store.state.storeParameters.platform === 'ios' ? '?' : ''
+    let queryCharacter = store.state.userParameters.platform === 'ios' ? '?' : ''
     let uri = protocol + queryCharacter + 'method=' + methodName + '&args=' + msg
     return uri
   }

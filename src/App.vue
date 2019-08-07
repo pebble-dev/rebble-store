@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div v-bind:class="$store.state.inApp ? 'flex-content main-in-app' : 'flex-content'">
+    <div v-bind:class="$store.state.userParameters.inApp ? 'flex-content main-in-app' : 'flex-content'">
       <svg-container></svg-container>
-      <navbar v-if="!$store.state.inApp"></navbar>
+      <navbar v-if="!$store.state.userParameters.inApp"></navbar>
       <router-view ></router-view>
     </div>
-    <page-footer v-bind:brand="$store.state.inApp"></page-footer>
+    <page-footer v-bind:brand="$store.state.userParameters.inApp"></page-footer>
   </div>
 </template>
 
@@ -38,39 +38,27 @@ export default {
     let routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
-      this.$store.state.storeParameters.platform = routeParameters.platform
-      // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('platform', routeParameters.platform)
-    } else if (window.localStorage.getItem('platform') !== null) {
-      this.$store.state.storeParameters.platform = window.localStorage.getItem('platform')
+      this.$store.set('userParameters/platform', routeParameters.platform)
     }
 
     if (routeParameters.inApp != null) {
-      this.$store.state.inApp = routeParameters.inApp !== 'false' && routeParameters.inApp !== '0'
+      this.$store.set('userParameters/inApp', routeParameters.inApp !== 'false' && routeParameters.inApp !== '0')
     }
 
     if (routeParameters.devMode != null) {
-      this.$store.state.devMode = routeParameters.devMode !== 'false' && routeParameters.devMode !== '0'
-      window.localStorage.setItem('devMode', this.$store.state.devMode)
-    } else if (window.localStorage.getItem('devMode') !== null) {
-      this.$store.state.devMode = window.localStorage.getItem('devMode')
+      this.$store.set('userParameters/devMode', routeParameters.devMode !== 'false' && routeParameters.devMode !== '0')
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
-      this.$store.state.storeParameters.hardware = routeParameters.hardware
-      // Set it to local storage for it to be used in other sessions
-      window.localStorage.setItem('hardware', routeParameters.hardware)
-    } else if (window.localStorage.getItem('hardware') !== null) {
-      this.$store.state.storeParameters.hardware = window.localStorage.getItem('hardware')
+      this.$store.set('userParameters/hardware', routeParameters.hardware)
     }
 
     // Bearer token provided by the mobile app, needed to fetch and set app hearts
     const accessTokenCookie = this.$cookie.get('access_token')
     if (accessTokenCookie != null && accessTokenCookie !== '') {
-      this.$store.state.storeParameters.accessToken = accessTokenCookie
+      this.$store.set('userParameters/accessToken', accessTokenCookie)
     } else if (routeParameters.accessToken) {
-      this.$store.state.storeParameters.accessToken = routeParameters.accessToken
-      this.$cookie.set('access_token', this.$store.state.storeParameters.accessToken, 1)
+      this.$store.set('userParameters/accessToken', routeParameters.accessToken)
     }
   }
 }

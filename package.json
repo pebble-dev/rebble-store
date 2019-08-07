@@ -22,7 +22,8 @@
     "vue-dragscroll": "^1.10.0",
     "vue-instantsearch": "^2.3.0",
     "vue-router": "^3.0.7",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vuex-pathify": "^1.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

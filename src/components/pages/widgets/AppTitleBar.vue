@@ -1,6 +1,6 @@
 <template>
 <!-- Fix url args -->
-  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
+  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.userParameters.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     get_user_data: function (id) {
-      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+      if (this.$store.state.userParameters.accessToken !== '' && this.$store.state.userParameters.accessToken != null) {
+        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.userParameters.accessToken}}).then(response => {
           let userInfo = response.body.users[0]
           this.added = !(!userInfo || !~userInfo.added_ids.indexOf(id))
           this.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
@@ -75,7 +75,7 @@ export default {
       }
     },
     change_heart: function (operation) {
-      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.userParameters.accessToken}}).then(response => {
         if (operation === 'add') {
           this.hearts++
           this.hearted = true
@@ -95,7 +95,7 @@ export default {
       })
     },
     toggle_heart_button_state: function () {
-      if (this.$store.state.storeParameters.accessToken !== null) {
+      if (this.$store.state.userParameters.accessToken !== null) {
         if (this.hearted) {
           this.change_heart('remove')
         } else {
@@ -105,7 +105,7 @@ export default {
       }
     },
     build_hearts_class: function () {
-      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
+      if (this.$store.state.userParameters.accessToken !== '' && this.$store.state.userParameters.accessToken != null) {
         if (this.hearted) {
           this.heartClass = 'btn btn-outline-secondary btn-thumbs-up active'
         } else {

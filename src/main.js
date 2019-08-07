@@ -55,5 +55,11 @@ new Vue({
   el: '#app',
   router,
   store,
+  beforeCreate () {
+    this.$store.commit('userParameters/INIT', null, { root: true })
+    store.subscribe((mutation, state) => {
+      localStorage.setItem('rebbleStoreData', JSON.stringify(state))
+    })
+  },
   render: h => h(App)
 })

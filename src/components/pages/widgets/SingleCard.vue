@@ -2,7 +2,7 @@
   <div v-bind:class="imageLoaded ? 'loaded' : 'loading'">
     <vcl-card class="loader"></vcl-card>
     <router-link class="real-card" v-bind:to="'/app/' + card.id" v-images-loaded="loaded">
-      <div class="card" :class="$store.state.storeParameters.hardware == 'chalk' ? 'round' : ''">
+      <div class="card" :class="$store.state.userParameters.hardware == 'chalk' ? 'round' : ''">
         <img class="card-img-top" v-bind:src="card.screenshot_images[0][Object.keys(card.screenshot_images[0])[0]]" alt="App Icon">
         <div class="card-block text-xs-center">
           <h6 class="card-title">{{ card.title }}</h6>
@@ -61,7 +61,7 @@ export default {
     },
     build_from_search: function () {
       // Identify platform and assign one screenshot in the right format
-      let hardware = this.$store.state.storeParameters.hardware
+      let hardware = this.$store.state.userParameters.hardware
       let thisAssetCollection = this.card.asset_collections.find(function (assetCollection) {
         return assetCollection.hardware_platform === hardware
       })

@@ -1,9 +1,9 @@
 <template>
   <section v-bind:class="app.type" >
-    <header class="main" v-bind:class="($store.state.inApp && !app.header_images) ? 'inApp no-banner': ''">
+    <header class="main" v-bind:class="($store.state.userParameters.inApp && !app.header_images) ? 'inApp no-banner': ''">
       <slider v-if="app.header_images != ''" v-bind:banners="app.header_images"></slider>
     </header>
-    <app-title-bar v-bind:app="app" v-bind:class="($store.state.inApp && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
+    <app-title-bar v-bind:app="app" v-bind:class="($store.state.userParameters.inApp && !app.header_images) ? 'title-bar extra-margin': ''"></app-title-bar>
 
     <router-view v-bind:app="app" ></router-view>
   </section>
@@ -31,7 +31,7 @@ export default {
     get_app: function (id) {
       this.$http.get(this.buildResourceUrl(`apps/id/${id}`)).then(response => {
         this.app = response.body.data[0]
-        if (this.$store.state.inApp) {
+        if (this.$store.state.userParameters.inApp) {
           Native.send('setVisibleApp', this.app)
         }
       }, response => {

@@ -18,7 +18,7 @@
             <use xlink:href="#iconSearch"></use>
           </svg>
         </b-nav-item>
-        <b-nav-item v-if="$store.state.devMode" class="settings" to="/settings">
+        <b-nav-item v-if="$store.state.userParameters.devMode" class="settings" to="/settings">
           <svg class="icon-settings" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="#iconSettings"></use>
           </svg>
