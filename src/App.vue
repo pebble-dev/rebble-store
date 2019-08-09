@@ -34,6 +34,7 @@ export default {
     // devMode: boolean
     // hardware = 'aplite' || 'basalt' || 'chalk' ...
     // accessToken: string = rebble access token
+    // appVersion
     let routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform) {
@@ -50,6 +51,10 @@ export default {
     // hardware refers to the watch. basalt, chalk, aplite, etc.
     if (routeParameters.hardware) {
       this.$store.set('userParameters/hardware', routeParameters.hardware)
+    }
+
+    if (routeParameters.appVersion) {
+      this.$store.set('userParameters/appVersion', routeParameters.appVersion)
     }
 
     // Bearer token provided by the mobile app, needed to fetch and set app hearts
