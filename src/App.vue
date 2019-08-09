@@ -53,10 +53,7 @@ export default {
     }
 
     // Bearer token provided by the mobile app, needed to fetch and set app hearts
-    const accessTokenCookie = this.$cookie.get('access_token')
-    if (accessTokenCookie != null && accessTokenCookie !== '') {
-      this.$store.set('secure/accessToken', accessTokenCookie)
-    } else if (routeParameters.accessToken) {
+    if (routeParameters.accessToken) {
       this.$store.set('secure/accessToken', routeParameters.accessToken)
     }
   }

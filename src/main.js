@@ -57,10 +57,15 @@ new Vue({
   store,
   beforeCreate () {
     this.$store.commit('userParameters/INIT', null, { root: true })
+    this.$store.commit('secure/INIT', null, { root: true })
     store.subscribe((mutation, state) => {
       if (mutation.type.substr(0, 15) === 'userParameters/') {
         // Only save user parameters when needed
         localStorage.setItem('rebbleUserParameters', JSON.stringify(state.userParameters))
+      }
+      if (mutation.type.substr(0, 23) === 'secure/SET_ACCESS_TOKEN') {
+        // Only save user parameters when needed
+        this.$cookie.set('access_token', state.secure.accessToken)
       }
     })
   },
