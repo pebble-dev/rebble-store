@@ -1,6 +1,6 @@
 {
   "name": "rebble-app-store",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Rebble Store, a pebble app store replacement.",
   "author": "Rebble Web Services Team",
   "private": true,
