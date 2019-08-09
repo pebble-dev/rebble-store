@@ -39,7 +39,7 @@ export default {
       var that = this
       this.type = routeParams.type
       this.setTitle(this.type === 'faces' || this.type === 'watchfaces' ? 'Watchfaces' : 'Apps')
-      this.$http.get(`${this.$store.state.backendUrl}/home/${this.type}?platform=${this.$store.state.storeParameters.platform}&hardware=${this.$store.state.storeParameters.hardware}&filter_hardware=true`).then(response => {
+      this.$http.get(`${this.$store.state.config.backendUrl}/home/${this.type}?platform=${this.$store.state.userParameters.platform}&hardware=${this.$store.state.userParameters.hardware}&filter_hardware=true`).then(response => {
         that.page = response.body
         this.build_collections()
       }, response => {

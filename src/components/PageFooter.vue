@@ -4,7 +4,7 @@
         Rebble Store&nbsp;<small>for&nbsp;pebble</small>
     </div>
     <div class="main">
-        <p>© {{ new Date().getFullYear() }} Rebble · <a v-on:click="openExternal($store.state.contactLink)">Contact Us</a> · <a  v-on:click="openExternal($store.state.tosLink)">Terms</a></p>
+        <p>© {{ new Date().getFullYear() }} Rebble · <a v-on:click="openExternal($store.state.config.contactLink)">Contact Us</a> · <a  v-on:click="openExternal($store.state.config.tosLink)">Terms</a></p>
         <a class="pull-right" v-on:click="openExternal('#')">Developer Portal</a>
     </div>
   </footer>

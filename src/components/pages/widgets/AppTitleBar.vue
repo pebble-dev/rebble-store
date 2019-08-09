@@ -1,6 +1,6 @@
 <template>
 <!-- Fix url args -->
-  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
+  <div  v-if="Object.entries(app).length !== 0" v-bind:class="(this.$store.state.userParameters.inApp) ? 'app-title-bar-cont sticky-top': 'app-title-bar-cont'">
       <div class="card subsection-inverse card-inverse text-left p-3 app-title-bar">
         <img class="app-icon" v-if="app.icon_image != null && app.icon_image['48x48'] != ''" v-bind:src="app.icon_image['48x48']">
         <div v-bind:class="app.icon_image ? 'title-author app' :  'title-author face'">
@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     get_user_data: function (id) {
-      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
-        this.$http.get(this.$store.state.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+      if (this.$store.state.secure.accessToken !== '' && this.$store.state.secure.accessToken != null) {
+        this.$http.get(this.$store.state.config.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.secure.accessToken}}).then(response => {
           let userInfo = response.body.users[0]
           this.added = !(!userInfo || !~userInfo.added_ids.indexOf(id))
           this.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
@@ -75,7 +75,7 @@ export default {
       }
     },
     change_heart: function (operation) {
-      this.$http.post(this.$store.state.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.storeParameters.accessToken}}).then(response => {
+      this.$http.post(this.$store.state.config.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.secure.accessToken}}).then(response => {
         if (operation === 'add') {
           this.hearts++
           this.hearted = true
@@ -95,7 +95,7 @@ export default {
       })
     },
     toggle_heart_button_state: function () {
-      if (this.$store.state.storeParameters.accessToken !== null) {
+      if (this.$store.state.secure.accessToken !== null) {
         if (this.hearted) {
           this.change_heart('remove')
         } else {
@@ -105,7 +105,7 @@ export default {
       }
     },
     build_hearts_class: function () {
-      if (this.$store.state.storeParameters.accessToken !== '' && this.$store.state.storeParameters.accessToken != null) {
+      if (this.$store.state.secure.accessToken !== '' && this.$store.state.secure.accessToken != null) {
         if (this.hearted) {
           this.heartClass = 'btn btn-outline-secondary btn-thumbs-up active'
         } else {
@@ -138,10 +138,11 @@ export default {
     flex-direction: row;
 
     img {
-        border-radius: 4px;
-        width: 42px;
-        height: 42px;
-        margin-right: 5px;
+      border-radius: 4px;
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      margin-right: 5px;
     }
     // Author name and app title text container
     .title-author {
@@ -258,13 +259,6 @@ export default {
     vertical-align: middle;
     color: #333;
     fill: currentColor
-  }
-}
-
-// Add space for icon if watchapp
-section.watchapp {
-  .app-title-bar {
-    padding-left: 68px !important;
   }
 }
 </style>

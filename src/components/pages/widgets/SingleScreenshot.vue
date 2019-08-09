@@ -1,8 +1,8 @@
 <template>
-    <div v-if="imageSize !== ''" class="screenshot" :class="$store.state.storeParameters.hardware === 'chalk' ? 'round' : ''" v-images-loaded:on.done="loaded">
+    <div v-if="imageSize !== ''" class="screenshot" :class="$store.state.userParameters.hardware === 'chalk' ? 'round' : ''" v-images-loaded:on.done="loaded">
         <img v-show="screenshotSrc[imageSize] && imageLoaded" v-bind:src="screenshotSrc[imageSize]" alt="Screenshot" />
-        <vcl-screenshot-square v-if="$store.state.storeParameters.hardware !== 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader square"></vcl-screenshot-square>
-        <vcl-screenshot-round v-if="$store.state.storeParameters.hardware === 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader round"></vcl-screenshot-round>
+        <vcl-screenshot-square v-if="$store.state.userParameters.hardware !== 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader square"></vcl-screenshot-square>
+        <vcl-screenshot-round v-if="$store.state.userParameters.hardware === 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader round"></vcl-screenshot-round>
     </div>
 </template>
 

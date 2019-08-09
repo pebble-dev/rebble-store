@@ -47,7 +47,7 @@
         <div>More From This Developer<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.latest_release && app.latest_release.pbw_file != '' && $store.state.devMode" v-on:click="openExternal(app.latest_release.pbw_file)" class="app-button">
+      <a v-if="app.latest_release && app.latest_release.pbw_file != '' && $store.state.userParameters.devMode" v-on:click="openExternal(app.latest_release.pbw_file)" class="app-button">
         <div>Download .pbw<i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>

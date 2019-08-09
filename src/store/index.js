@@ -1,20 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import pathify from 'vuex-pathify'
+import userParameters from './userParameters'
+import config from './config'
+import secure from './secure'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    backendUrl: 'https://appstore-api.rebble.io/api/v1',
-    devPortalBackendUrl: 'https://appstore-api.rebble.io/api/v0',
-    tosLink: 'https://rebble.io/tos/',
-    contactLing: '',
-    inApp: false,
-    devMode: false,
-    storeParameters: {
-      platform: 'all', // either 'android', 'ios', or 'all'
-      hardware: 'basalt',
-      accessToken: null
-    }
-  }
+  modules: {
+    userParameters: userParameters,
+    config: config,
+    secure: secure
+  },
+  plugins: [pathify.plugin]
 })

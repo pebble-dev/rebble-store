@@ -25,13 +25,13 @@ export default {
   name: 'settings',
   data: function () {
     return {
-      hardware: this.$store.state.storeParameters.hardware
+      hardware: this.$store.state.userParameters.hardware
     }
   },
   watch: {
     hardware: function (p) {
       this.hardware = p
-      this.$store.state.storeParameters.hardware = p
+      this.$store.state.userParameters.hardware = p
       window.localStorage.setItem('hardware', p)
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div v-dragscroll.x="!$store.state.inApp" class="screenshots">
+  <div v-dragscroll.x="!$store.state.userParameters.inApp" class="screenshots">
       <div id="scrollbar" v-bind:style="scrollStyle">
           <single-screenshot v-for="(screenshot, index) in screenshots" v-bind:key="index" v-bind:screenshotSrc="screenshot"></single-screenshot>
       </div>
