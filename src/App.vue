@@ -14,6 +14,7 @@ import SvgContainer from './components/SvgContainer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import PageFooter from './components/PageFooter'
+import { platformEnum, hardwareEnum } from './store/userParameters'
 
 export default {
   name: 'app',
@@ -37,8 +38,8 @@ export default {
     // appVersion
     let routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
-    if (routeParameters.platform) {
-      this.$store.set('userParameters/platform', routeParameters.platform)
+    if (routeParameters.platform && Object.values(platformEnum).includes(routeParameters.platform.toLowerCase())) {
+      this.$store.set('userParameters/platform', routeParameters.platform.toLowerCase())
     }
 
     if (routeParameters.inApp != null) {
@@ -49,8 +50,8 @@ export default {
       this.$store.set('userParameters/devMode', routeParameters.devMode !== 'false' && routeParameters.devMode !== '0')
     }
     // hardware refers to the watch. basalt, chalk, aplite, etc.
-    if (routeParameters.hardware) {
-      this.$store.set('userParameters/hardware', routeParameters.hardware)
+    if (routeParameters.hardware && Object.values(hardwareEnum).includes(routeParameters.hardware.toLowerCase())) {
+      this.$store.set('userParameters/hardware', routeParameters.hardware.toLowerCase())
     }
 
     if (routeParameters.appVersion) {

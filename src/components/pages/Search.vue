@@ -38,6 +38,7 @@
 import algoliasearch from 'algoliasearch/lite'
 import { searchRouting } from '../../router/search-router'
 import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings'
+import { platformEnum, hardwareEnum } from '../../store/userParameters'
 
 export default {
   name: 'search',
@@ -62,10 +63,10 @@ export default {
   methods: {
     build_filter_list: function () {
       var filterList = []
-      if (this.$store.state.userParameters.platform !== '') {
+      if (this.$store.state.userParameters.platform !== platformEnum.all) {
         filterList.push(this.$store.state.userParameters.platform)
       }
-      if (this.$store.state.userParameters.hardware !== '') {
+      if (this.$store.state.userParameters.hardware !== hardwareEnum.all) {
         filterList.push(this.$store.state.userParameters.hardware)
       }
       if (this.type === 'faces' || this.type === 'watchfaces') {

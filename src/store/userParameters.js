@@ -1,10 +1,24 @@
 import { make } from 'vuex-pathify'
 import { version } from '../../package.json'
 
+export const platformEnum = {
+  all: 'all',
+  ios: 'ios',
+  android: 'android'
+}
+
+export const hardwareEnum = {
+  all: 'all',
+  aplite: 'aplite', // OG Pebble and Pebble Steel
+  basalt: 'basalt', // Pebble Time and Pebble Time Steel
+  chalk: 'chalk', // Pebble Round
+  diorite: 'diorite' // Pebble 2
+}
+
 const state = {
   version: '',
-  platform: 'all', // either 'android', 'ios', or 'all'
-  hardware: 'basalt',
+  platform: platformEnum.all, // either 'android', 'ios', or 'all'
+  hardware: hardwareEnum.all,
   appVersion: '',
   inApp: false,
   devMode: false
