@@ -5,7 +5,6 @@ const state = {
   version: '',
   platform: 'all', // either 'android', 'ios', or 'all'
   hardware: 'basalt',
-  firmwareVersion: '',
   appVersion: '',
   inApp: false,
   devMode: false
