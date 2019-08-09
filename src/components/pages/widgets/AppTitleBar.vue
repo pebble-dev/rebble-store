@@ -138,10 +138,11 @@ export default {
     flex-direction: row;
 
     img {
-        border-radius: 4px;
-        width: 42px;
-        height: 42px;
-        margin-right: 5px;
+      border-radius: 4px;
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      margin-right: 5px;
     }
     // Author name and app title text container
     .title-author {
@@ -258,13 +259,6 @@ export default {
     vertical-align: middle;
     color: #333;
     fill: currentColor
-  }
-}
-
-// Add space for icon if watchapp
-section.watchapp {
-  .app-title-bar {
-    padding-left: 68px !important;
   }
 }
 </style>
