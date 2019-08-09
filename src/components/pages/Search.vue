@@ -16,19 +16,27 @@
             <router-link v-bind:to="'/apps/search'" v-bind:class="type == 'apps' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" role="button">Apps</router-link>
           </div>
         </div>
-        <ais-hits>
-          <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
-        </ais-hits>
-        <nav>
-          <ais-pagination :classNames="{
-              'ais-Pagination-list': 'pagination',
-              'ais-Pagination-item': 'page-item',
-              'ais-Pagination-link': 'page-link',
-              'ais-Pagination-item--selected': 'active',
-              'ais-Pagination-item--disabled': 'disabled'
+        <ais-state-results>
+          <template slot-scope="{ hits }">
+            <ais-hits v-if="hits.length > 0">
+              <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
+            </ais-hits>
+            <nav v-if="hits.length > 0">
+              <ais-pagination :classNames="{
+                  'ais-Pagination-list': 'pagination',
+                  'ais-Pagination-item': 'page-item',
+                  'ais-Pagination-link': 'page-link',
+                  'ais-Pagination-item--selected': 'active',
+                  'ais-Pagination-item--disabled': 'disabled'
 
-              }" />
-        </nav>
+                  }" />
+            </nav>
+            <div v-if="hits.length <= 0">
+              No results were found.
+            </div>
+
+          </template>
+        </ais-state-results>
       </main>
     </div>
   </ais-instant-search>
@@ -38,6 +46,7 @@
 import algoliasearch from 'algoliasearch/lite'
 import { searchRouting } from '../../router/search-router'
 import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings'
+import { platformEnum, hardwareEnum } from '../../store/userParameters'
 
 export default {
   name: 'search',
@@ -62,10 +71,10 @@ export default {
   methods: {
     build_filter_list: function () {
       var filterList = []
-      if (this.$store.state.userParameters.platform !== '') {
+      if (this.$store.state.userParameters.platform !== platformEnum.all) {
         filterList.push(this.$store.state.userParameters.platform)
       }
-      if (this.$store.state.userParameters.hardware !== '') {
+      if (this.$store.state.userParameters.hardware !== hardwareEnum.all) {
         filterList.push(this.$store.state.userParameters.hardware)
       }
       if (this.type === 'faces' || this.type === 'watchfaces') {
@@ -89,6 +98,7 @@ export default {
 }
 
 .search {
+  height: 70px;
   input {
     margin: -20px;
     font-family: 'Open Sans', sans-serif;
