@@ -31,7 +31,10 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      this.get_data(to.params)
+      if (to.fullPath !== from.fullPath) {
+        this.page = {}
+        this.get_data(to.params)
+      }
     }
   },
   methods: {
