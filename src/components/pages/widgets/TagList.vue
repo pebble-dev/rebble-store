@@ -1,6 +1,6 @@
 <template>
-  <div class="card subsection-inverse card-inverse text-center tags p-1">
-    <router-link v-for="(tag, index) in tags" v-bind:key="index" v-bind:to="'category/' + tag.slug"><span class="badge badge-pill badge-pebble">{{tag.name}}</span></router-link>
+  <div class="row tag-container">
+    <div v-for="(tag, index) in tags" v-bind:key="index" class="col-6"><router-link v-bind:to="'category/' + tag.slug"  class="card text-white bg-dark">{{tag.name}}</router-link></div>
   </div>
 </template>
 
@@ -15,7 +15,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a {
-  margin-right: 5px;
+.tag-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  .col-6 {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    .card {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      border: 0;
+      padding: 6px;
+      border-radius: 4px;
+      box-shadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
+    }
+  }
+  margin-bottom: 30px;
 }
 </style>
