@@ -12,6 +12,7 @@ import mixin from './mixin'
 
 import InstantSearch from 'vue-instantsearch'
 import VueCookie from 'vue-cookie'
+import VueI18n from 'vue-i18n'
 
 import CardCollection from './components/pages/widgets/CardCollection'
 
@@ -47,6 +48,7 @@ Vue.use(BootstrapVue)
 
 Vue.use(InstantSearch)
 Vue.use(VueCookie)
+Vue.use(VueI18n)
 
 Vue.component('card-collection', CardCollection)
 
