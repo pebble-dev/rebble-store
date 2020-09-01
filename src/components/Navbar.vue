@@ -1,3 +1,12 @@
+<i18n>
+{
+  "en": {
+    "watchfaces": "Watchfaces",
+    "apps": "Apps"
+  }
+}
+</i18n>
+
 <template>
     <b-navbar toggleable="true" type="dark" variant="dark" class="translucent" fixed="top">
       <div class="navbar__items left" v-show="showBackButton">
@@ -31,14 +40,14 @@
               <svg class="icon-watchface" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <use xlink:href="#iconWatchface"></use>
               </svg>
-              Watchfaces
+              {{ $t('watchfaces') }}
             </router-link>
 
             <router-link to="/apps" v-bind:class="{ active: currentRoute == '/apps'}" class="btn btn-outline-secondary btn-app" role="button">
               <svg class="icon-app" width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <use xlink:href="#iconApp"></use>
               </svg>
-              Apps
+              {{ $t('apps') }}
             </router-link>
           </div>
         </div>
