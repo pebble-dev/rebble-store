@@ -1,6 +1,6 @@
 <template>
   <div class="row tag-container">
-    <div v-for="(tag, index) in tags" v-bind:key="index" class="col-6"><router-link v-bind:to="'category/' + tag.slug"  class="card text-white bg-dark">{{tag.name}}</router-link></div>
+    <div v-for="(tag, index) in tags" v-bind:key="index" class="col-6"><router-link v-bind:to="'category/' + tag.slug"  class="card text-white bg-dark text-center">{{tag.name}}</router-link></div>
   </div>
 </template>
 
@@ -22,6 +22,9 @@ export default {
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
+    a:hover {
+      text-decoration: none;
+    }
     .card {
       font-family: 'Open Sans', sans-serif;
       font-weight: 400;
