@@ -31,7 +31,7 @@
           Version Information <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </router-link>
-      <a v-if="app.website != ''" v-on:click="openExternal(app.website)" class="app-button">
+      <a v-if="app.website != null" v-on:click="openExternal(app.website)" class="app-button">
         <div>
           Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
