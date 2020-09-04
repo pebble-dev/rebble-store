@@ -16,8 +16,9 @@ export default {
 
 <style lang="scss" scoped>
 .tag-container {
-  margin-left: 20px;
-  margin-right: 20px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
   .col-6 {
     padding-left: 5px;
     padding-right: 5px;
