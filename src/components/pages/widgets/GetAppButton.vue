@@ -89,7 +89,7 @@ export default {
       this.add_app()
     },
     check_supported () {
-      this.hardwareSupported = this.app.compatibility && this.app.compatibility[this.$store.state.userParameters.hardware] && this.app.compatibility[this.$store.state.userParameters.hardware].supported === true
+      this.hardwareSupported = this.$store.state.userParameters.hardware === 'all' || (this.app.compatibility && this.app.compatibility[this.$store.state.userParameters.hardware] !== undefined && this.app.compatibility[this.$store.state.userParameters.hardware].supported === true)
       this.platformSupported = this.$store.state.userParameters.platform === 'all' || this.app.compatibility[this.$store.state.userParameters.platform].supported
     },
     create_permissions () {
