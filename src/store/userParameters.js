@@ -12,7 +12,8 @@ export const hardwareEnum = {
   aplite: 'aplite', // OG Pebble and Pebble Steel
   basalt: 'basalt', // Pebble Time and Pebble Time Steel
   chalk: 'chalk', // Pebble Round
-  diorite: 'diorite' // Pebble 2
+  diorite: 'diorite', // Pebble 2
+  emery: 'emery' // Pebble Time 2
 }
 
 const state = {
