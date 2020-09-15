@@ -1,26 +1,40 @@
+<i18n src="../../../locales/common.json"></i18n>
+<i18n>
+{
+  "en": {
+    "get": "GET",
+    "is-requesting-access": "\"{app}\" is requesting access to the following services.",
+    "tap-on-accept": "If you tap on accept you will grant \"{app}\" access to read and use your data.",
+    "requires-companion": "\"{app}\" requires a companion a to be used.",
+    "pebble-permissions": "Pebble Permissions",
+    "companion-required": "Companion Required"
+  }
+}
+</i18n>
+
 <template>
   <span>
     <a v-bind:href="'pebble://appstore/' + app.id" class="btn btn-outline-pebble btn-download" v-if="$store.state.userParameters.inApp !== true && ($store.state.userParameters.platform === 'all' || app.compatibility[$store.state.userParameters.platform].supported === true)">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
-      GET
+      {{ $t('get') }}
     </a>
     <button v-on:click="check_app" class="btn btn-outline-pebble btn-download" :class="added || loading ? 'active': ''|| (added === null || !hardwareSupported || !platformSupported)?'disabled':''" v-if="$store.state.userParameters.inApp === true">
       <svg class="svg-icon icon-download" width="25px" height="25px" viewBox="0 0 25 25">
         <use xlink:href="#iconDownload"></use>
       </svg>
-      {{(loading)?'...':'GET'}}
+      {{(loading)?'...':$t('get')}}
     </button>
-    <b-modal id="modal-permissions" centered title="Pebble Permissions" ok-title="Accept"  cancel-title="Reject" @ok="add_app()">
-      <p>"{{app.title}}" is requesting access to the following services.</p>
+    <b-modal id="modal-permissions" centered title="$t('pebble-permissions')" ok-title="$t('common.accept')"  cancel-title="$t('common.reject')" @ok="add_app()">
+      <p>{{ $t('is-requesting-access', { app: app.title }) }}</p>
       <b-list-group class="my-4">
         <b-list-group-item v-for="(item, index) in permissions" :key="index">{{ item }}</b-list-group-item>
       </b-list-group>
-      <p>If you tap on accept you will grant "{{app.title}}" access to read and use your data.</p>
+      <p>{{ $t('tap-on-accept', { app: app.title }) }}</p>
     </b-modal>
-    <b-modal id="modal-companion" centered title="Companion Required" ok-title="Get"  cancel-title="Cancel" @ok="get_companion()">
-      <p class="my-4">"{{app.title}}" requires a companion a to be used.</p>
+    <b-modal id="modal-companion" centered title="$t('companion-required')" ok-title="$t('common.get')"  cancel-title="$t('common.cancel')" @ok="get_companion()">
+      <p class="my-4">{{ $t('requires-companion', { app: app.title }) }}</p>
     </b-modal>
   </span>
 </template>
