@@ -43,16 +43,16 @@ export default {
       this.type = routeParams.type
       this.setTitle(this.type === 'faces' || this.type === 'watchfaces' ? 'Watchfaces' : 'Apps')
       this.$http.get(this.buildResourceUrl(`home/${this.type}`)).then(response => {
-        that.page = response.body
+        that.page = response.data
         this.build_collections()
       }, response => {
         console.error(response)
       })
     },
     build_collections: function () {
-      for (let collection of this.page.collections) {
+      for (const collection of this.page.collections) {
         collection.data = []
-        for (let id of collection.application_ids) {
+        for (const id of collection.application_ids) {
           if (collection.data.length >= MAX_HOME_COLLECTION_SIZE) {
             // Limit collection size
             break

@@ -5,7 +5,7 @@
       <header class="main">
         <div class="title-card search">
           <ais-search-box>
-            <input autofocus placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" slot-scope="{ currentRefinement, refine }" :value="currentRefinement" @input="refine($event.currentTarget.value)">
+            <input autofocus placeholder="Search" type="search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" :value="currentRefinement" @input="refine($event.currentTarget.value)">
           </ais-search-box>
         </div>
       </header>
@@ -17,9 +17,9 @@
           </div>
         </div>
         <ais-state-results>
-          <template slot-scope="{ hits }">
+          <template v-slot="{ hits }">
             <ais-hits v-if="hits.length > 0">
-              <card-collection  slot-scope="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
+              <card-collection  v-slot="{ items }" :showTop="false" v-bind:cards="items" v-bind:searchData="true"></card-collection>
             </ais-hits>
             <nav v-if="hits.length > 0">
               <ais-pagination :classNames="{

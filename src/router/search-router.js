@@ -16,7 +16,7 @@ export const searchRouting = {
       }).href
     },
     onUpdate (cb) {
-      this._onPopState = ({state}) => {
+      this._onPopState = ({ state }) => {
         const routeState = state
         // at initial load, the state is read from the URL without
         // update. Therefore the state object is not there. In this

@@ -32,7 +32,7 @@ export default {
     ...make.mutations(state),
     INIT (state) {
       if (localStorage.getItem('rebbleUserParameters')) {
-        let cacheState = JSON.parse(localStorage.getItem('rebbleUserParameters'))
+        const cacheState = JSON.parse(localStorage.getItem('rebbleUserParameters'))
         if (cacheState.version === version) {
           Object.assign(state, cacheState)
         } else {

@@ -1,15 +1,11 @@
 <template>
     <div v-if="imageSize !== ''" class="screenshot" :class="$store.state.userParameters.hardware === 'chalk' ? 'round' : ''" v-images-loaded:on.done="loaded">
         <img v-show="screenshotSrc[imageSize] && imageLoaded" v-bind:src="screenshotSrc[imageSize]" alt="Screenshot" />
-        <vcl-screenshot-square v-if="$store.state.userParameters.hardware !== 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader square"></vcl-screenshot-square>
-        <vcl-screenshot-round v-if="$store.state.userParameters.hardware === 'chalk'" v-show="!screenshotSrc || !imageLoaded" class="loader round"></vcl-screenshot-round>
     </div>
 </template>
 
 <script>
 
-import VclScreenshotSquare from './content-loaders/SingleScreenshotSquare'
-import VclScreenshotRound from './content-loaders/SingleScreenshotRound'
 import imagesLoaded from 'vue-images-loaded'
 
 export default {
@@ -18,20 +14,19 @@ export default {
     imagesLoaded
   },
   components: {
-    VclScreenshotSquare,
-    VclScreenshotRound
   },
   props: [
     'screenshotSrc'
   ],
   data: function () {
     return {
-      'imageLoaded': false,
-      'imageSize': ''
+      imageLoaded: false,
+      imageSize: ''
     }
   },
   methods: {
     loaded: function (instance) {
+      console.log('loaded')
       this.imageLoaded = true
     }
   },

@@ -2,7 +2,7 @@
   <div>
     <header class="main">
         <div class="title-card">
-            <h3>{{id | readable-name}}</h3>
+            <h3>{{ readable_name(id) }}</h3>
         </div>
     </header>
     <main class="apps container text-center">
@@ -48,7 +48,7 @@ export default {
       var that = this
       var offset = this.pageLimit * (this.offsetPage - 1)
       this.$http.get(`${this.buildResourceUrl(`apps/category/${this.id}`)}&sort=${this.sort}&offset=${offset}&limit=${this.pageLimit}`).then(response => {
-        that.page = response.body
+        that.page = response.data
       }, response => {
         console.error(response)
       })

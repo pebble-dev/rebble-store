@@ -2,7 +2,7 @@
   <div>
     <header class="main">
         <div class="title-card">
-            <h3>Collection: {{slug | readable-name}}</h3>
+            <h3>Collection: {{ readable_name(slug) }}</h3>
         </div>
     </header>
     <main class="apps container text-center">
@@ -43,7 +43,7 @@ export default {
     get_collection: function () {
       var offset = this.pageLimit * (this.offsetPage - 1)
       this.$http.get(`${this.buildResourceUrl(`apps/collection/${this.slug}/${this.type}`)}&offset=${offset}&limit=${this.pageLimit}`).then(response => {
-        this.page = response.body
+        this.page = response.data
       }, response => {
         console.error(response)
       })

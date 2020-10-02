@@ -19,7 +19,7 @@
         </tr>
         <tr v-if="app.latest_release">
           <td>Updated</td>
-          <td>{{ app.latest_release.published_date | formatDate }}</td>
+          <td>{{ formatDate(app.latest_release.published_date) }}</td>
         </tr>
         <tr v-if="app.latest_release">
           <td>Version</td>

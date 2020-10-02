@@ -1,6 +1,5 @@
-import qs from 'qs'
-import Vue from 'vue'
-import Router from 'vue-router'
+// import qs from 'qs'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/components/Home'
 import Category from '@/components/pages/Category'
 import AppView from '@/components/pages/AppView'
@@ -12,10 +11,8 @@ import Collection from '@/components/pages/Collection'
 import Settings from '@/components/pages/Settings'
 import Error from '@/components/pages/Error'
 
-Vue.use(Router)
-
 const routes = [
-  {path: '', redirect: '/faces'},
+  { path: '', redirect: '/faces' },
   {
     path: '/category/:id/:sort/:page',
     component: Category
@@ -42,29 +39,23 @@ const routes = [
       }
     ]
   },
-  {path: '/author/:id', redirect: '/author/:id/1'},
-  {path: '/author/:id/:page', component: Author},
-  {path: '/settings', component: Settings},
-  {path: '/:type', component: Home},
+  { path: '/author/:id', redirect: '/author/:id/1' },
+  { path: '/author/:id/:page', component: Author },
+  { path: '/settings', component: Settings },
+  { path: '/:type', component: Home },
   {
     path: '/:type/search',
     component: Search,
     props: true
   },
-  {path: '/:type/:slug', redirect: '/:type/:slug/1'},
-  {path: '/:type/:slug/:page', component: Collection},
-  {path: '*', component: Error}
+  { path: '/:type/:slug', redirect: '/:type/:slug/1' },
+  { path: '/:type/:slug/:page', component: Collection },
+  { path: '/:pathMatch(.*)', component: Error }
 ]
 
-export default new Router({
-  mode: 'history',
-  routes: routes,
-  parseQuery (query) {
-    return qs.parse(query)
-  },
-  stringifyQuery (query) {
-    const result = qs.stringify(query)
-
-    return result ? '?' + result : ''
-  }
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
+
+export default router
