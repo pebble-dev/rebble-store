@@ -5,7 +5,7 @@
     </div>
     <div class="main">
         <p>© {{ new Date().getFullYear() }} Rebble · <a v-on:click="openExternal($store.state.config.contactLink)">Contact Us</a> · <a  v-on:click="openExternal($store.state.config.tosLink)">Terms</a></p>
-        <a class="pull-right" v-on:click="openExternal('#')">Developer Portal</a>
+        <a class="pull-right" v-on:click="openExternal('$store.state.config.devPortalLink')">Developer Portal</a>
     </div>
   </footer>
 </template>
