@@ -11,7 +11,6 @@
 
 <script>
 import SvgContainer from './components/SvgContainer'
-import Home from './components/Home'
 import Navbar from './components/Navbar'
 import PageFooter from './components/PageFooter'
 import { platformEnum, hardwareEnum } from './store/userParameters'
@@ -21,7 +20,6 @@ export default {
   components: {
     SvgContainer,
     Navbar,
-    Home,
     PageFooter
   },
   data: function () {
@@ -36,7 +34,7 @@ export default {
     // hardware = 'aplite' || 'basalt' || 'chalk' ...
     // accessToken: string = rebble access token
     // appVersion
-    let routeParameters = this.$route.query
+    const routeParameters = this.$route.query
     // Platform refers to phone. Android or iOS.
     if (routeParameters.platform && Object.values(platformEnum).includes(routeParameters.platform.toLowerCase())) {
       this.$store.set('userParameters/platform', routeParameters.platform.toLowerCase())
@@ -68,8 +66,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './static/css/_variables.scss';
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -169,7 +165,7 @@ body {
 }
 
   // Add new card style called subsection with inverse color (reusable component)
-  .card.subsection {
+  .card-subsection {
     max-width: 720px;
     margin-left: auto;
     margin-right: auto;
@@ -178,13 +174,13 @@ body {
     margin-bottom: 40px;
     display: block;
   }
-  .card.subsection-inverse {
-    @extend .card.subsection;
+  .card.card-subsection-inverse {
+    @extend .card-subsection;
     background-color: #333;
     border-color: #333;
  }
- .card.subsection-extra {
-   @extend .card.subsection;
+ .card.card-subsection-extra {
+   @extend .card-subsection;
    margin-top: -40px;
    background-color: #ccc;
    border-color: #ccc;

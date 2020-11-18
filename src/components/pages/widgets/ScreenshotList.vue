@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {dragscroll} from 'vue-dragscroll'
+import { dragscroll } from 'vue-dragscroll'
 import SingleScreenshot from './SingleScreenshot'
 
 export default {
@@ -22,7 +22,7 @@ export default {
   computed: {
     scrollStyle: function () {
       var screenshotsCount = this.screenshots.length
-      return {'width': 'calc(100% + (' + screenshotsCount + ' - 1) * 184px)'}
+      return { width: 'calc(100% + (' + screenshotsCount + ' - 1) * 184px)' }
     }
   }
 }

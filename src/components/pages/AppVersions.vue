@@ -1,19 +1,17 @@
 <template>
     <main class="text-center">
       <div class="card subsection text-left p-3 app-details" v-for="(changelog, index) in app.changelog" v-bind:key="index">
-        <h2>Version {{ changelog.version }}</h2> <h3 class="float-right">{{ changelog.published_date | formatDate }}</h3><hr>
+        <h2>Version {{ changelog.version }}</h2> <h3 class="float-right">{{ formatDate(changelog.published_date) }}</h3><hr>
         <pre class="description">{{ changelog.release_notes }}</pre>
         </div>
     </main>
 </template>
 
 <script>
-import AppTitleBar from './widgets/AppTitleBar'
 
 export default {
   name: 'app-version',
   components: {
-    AppTitleBar
   },
   props: {
     app: {}
@@ -21,7 +19,7 @@ export default {
   data: function () {
     return {
       versions: {
-        'versions': []
+        versions: []
       }
     }
   },

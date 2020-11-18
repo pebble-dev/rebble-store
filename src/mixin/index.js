@@ -19,6 +19,22 @@ const mixins = {
     } else {
       window.open(url, '_blank')
     }
+  },
+  formatDate (d) {
+    const date = new Date(d)
+    if (date) {
+      return date.getFullYear() + '-' + ((date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + (date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate()))
+    }
+  },
+  capitalize (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  },
+  readable_name (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value[0].toUpperCase() + value.replace(new RegExp('-', 'g'), ' ').substring(1)
   }
 }
 export default mixins

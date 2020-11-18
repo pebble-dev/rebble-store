@@ -12,7 +12,8 @@ export const hardwareEnum = {
   aplite: 'aplite', // OG Pebble and Pebble Steel
   basalt: 'basalt', // Pebble Time and Pebble Time Steel
   chalk: 'chalk', // Pebble Round
-  diorite: 'diorite' // Pebble 2
+  diorite: 'diorite', // Pebble 2
+  emery: 'emery' // Pebble Time 2
 }
 
 const state = {
@@ -31,7 +32,7 @@ export default {
     ...make.mutations(state),
     INIT (state) {
       if (localStorage.getItem('rebbleUserParameters')) {
-        let cacheState = JSON.parse(localStorage.getItem('rebbleUserParameters'))
+        const cacheState = JSON.parse(localStorage.getItem('rebbleUserParameters'))
         if (cacheState.version === version) {
           Object.assign(state, cacheState)
         } else {

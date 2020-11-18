@@ -1,13 +1,11 @@
 <template>
     <div class="app-banner" v-images-loaded:on.done="loaded">
         <img v-show="bannerSrc && imageLoaded" v-bind:src="bannerSrc" alt="Banner" />
-        <vcl-banner v-show="!bannerSrc || !imageLoaded" class="loader"></vcl-banner>
     </div>
 </template>
 
 <script>
 
-import VclBanner from './content-loaders/SingleBanner'
 import imagesLoaded from 'vue-images-loaded'
 
 export default {
@@ -16,19 +14,18 @@ export default {
     imagesLoaded
   },
   components: {
-    VclBanner
   },
   props: [
     'bannerSrc'
   ],
   watch: {
-    'bannerSrc': function () {
+    bannerSrc: function () {
       this.imageLoaded = false
     }
   },
   data: function () {
     return {
-      'imageLoaded': false
+      imageLoaded: false
     }
   },
   methods: {

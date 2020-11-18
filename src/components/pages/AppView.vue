@@ -12,14 +12,12 @@
 <script>
 import AppTitleBar from './widgets/AppTitleBar'
 import Slider from './widgets/AppSlider'
-import ScreenshotList from './widgets/ScreenshotList'
 import { Native } from '../../services'
 
 export default {
   name: 'app-view',
   components: {
     AppTitleBar,
-    ScreenshotList,
     Slider
   },
   data: function () {
@@ -30,7 +28,7 @@ export default {
   methods: {
     get_app: function (id) {
       this.$http.get(this.buildResourceUrl(`apps/id/${id}`)).then(response => {
-        this.app = response.body.data[0]
+        this.app = response.data.data[0]
         if (this.$store.state.userParameters.inApp) {
           Native.send('setVisibleApp', this.app)
         }
@@ -128,6 +126,7 @@ header.main {
 
   // Buttons at the bottom of the app-details container
   a.app-button {
+    cursor: pointer;
     div {
       width: calc(100% + 2rem);
       padding: 1rem;
@@ -147,6 +146,7 @@ header.main {
     &:hover, &:focus {
       text-decoration: none;
       outline: none;
+      color: darken($pebble-color, 5%);
     }
   }
 }

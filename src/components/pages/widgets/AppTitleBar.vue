@@ -62,8 +62,8 @@ export default {
   methods: {
     get_user_data: function (id) {
       if (this.$store.state.secure.accessToken !== '' && this.$store.state.secure.accessToken != null) {
-        this.$http.get(this.$store.state.config.devPortalBackendUrl + '/users/me', {headers: {Authorization: 'Bearer ' + this.$store.state.secure.accessToken}}).then(response => {
-          let userInfo = response.body.users[0]
+        this.$http.get(this.$store.state.config.devPortalBackendUrl + '/users/me', { headers: { Authorization: 'Bearer ' + this.$store.state.secure.accessToken } }).then(response => {
+          const userInfo = response.data.users[0]
           this.added = !(!userInfo || !~userInfo.added_ids.indexOf(id))
           this.hearted = !(!userInfo || !~userInfo.voted_ids.indexOf(id))
           this.flagged = !(!userInfo || !~userInfo.flagged_ids.indexOf(id))
@@ -75,7 +75,7 @@ export default {
       }
     },
     change_heart: function (operation) {
-      this.$http.post(this.$store.state.config.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, {headers: {Authorization: 'Bearer ' + this.$store.state.secure.accessToken}}).then(response => {
+      this.$http.post(this.$store.state.config.devPortalBackendUrl + '/applications/' + this.app.id + '/' + operation + '_heart', null, { headers: { Authorization: 'Bearer ' + this.$store.state.secure.accessToken } }).then(response => {
         if (operation === 'add') {
           this.hearts++
           this.hearted = true
