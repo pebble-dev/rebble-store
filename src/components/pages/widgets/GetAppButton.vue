@@ -77,7 +77,13 @@ export default {
       this.openExternal(this.app.companions[this.$store.state.userParameters.platform].url)
     },
     check_app () {
-      if (!this.hardwareSupported || !this.platformSupported || this.added === true || this.loading) return
+      if (this.added === true || this.loading) return
+      if (!this.hardwareSupported) {
+        return this.hardware_compatibility_modal()
+      }
+      if (!this.platformSupported) {
+        return this.platform_compatibility_modal()
+      }
       if (this.permissions.length > 0) {
         this.$bvModal.show('modal-permissions')
         return
@@ -97,6 +103,20 @@ export default {
         this.permissions = this.app.capabilities
         this.permissions.splice(this.permissions.indexOf('configurable'))
       }
+    },
+    hardware_compatibility_modal () {
+      this.$bvToast.toast('Sorry! This app is not compatible with your Pebble smartwatch.', {
+        title: 'Unable to add to locker',
+        autoHideDelay: 5000,
+        appendToast: true
+      })
+    },
+    platform_compatibility_modal () {
+      this.$bvToast.toast('Sorry! This app is not compatible with your smartphone.', {
+        title: 'Unable to add to locker',
+        autoHideDelay: 5000,
+        appendToast: true
+      })
     }
   },
   watch: {

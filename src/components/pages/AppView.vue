@@ -128,6 +128,7 @@ header.main {
 
   // Buttons at the bottom of the app-details container
   a.app-button {
+    cursor: pointer;
     div {
       width: calc(100% + 2rem);
       padding: 1rem;
@@ -147,6 +148,7 @@ header.main {
     &:hover, &:focus {
       text-decoration: none;
       outline: none;
+      color: darken($pebble-color, 5%);
     }
   }
 }

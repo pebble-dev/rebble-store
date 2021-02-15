@@ -36,10 +36,6 @@
           Website Link <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
         </div>
       </a>
-      <!--a v-if="app.appInfo.supportUrl != ''" v-bind:href="app.appInfo.supportUrl" class="app-button">
-        <div>Support <i class="fa fa-angle-right float-right" aria-hidden="true"></i>
-        </div>
-      </a-->
       <a v-if="app.source != null" v-on:click="openExternal(app.source)" class="app-button" >
         <div>Source code <i class="fa fa-angle-right float-right" aria-hidden="true"></i></div>
       </a>

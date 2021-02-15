@@ -136,7 +136,10 @@ export default {
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
-              margin: 7px 6px 5px 6px;
+              margin: 7px 6px 0px 6px;
+            }
+            .card-text {
+              margin-bottom: 5px;
             }
 
             // Make it smaller on small screens
